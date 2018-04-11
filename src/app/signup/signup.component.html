@@ -1,0 +1,61 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <h1>Register</h1>
+            <form role="form" (ngSubmit)="onRegister()">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text"
+                         [(ngModel)]="_user.name" name="name"
+                         class="form-control input-underline input-lg"
+                         id="name" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text"
+                         [(ngModel)]="_user.civilid" name="civilid"
+                         class="form-control input-underline input-lg"
+                         id="civilid" placeholder="Civil Id">
+                    </div>
+                    <div class="form-group">
+                        <input type="text"
+                               [(ngModel)]="_user.email"
+                               name="email"
+                               class="form-control input-underline input-lg"
+                               id="email"
+                               placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password"
+                               [(ngModel)]="_user.password"
+                               name="password"
+                               class="form-control input-underline input-lg"
+                               id="password"
+                               placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password"
+                        class="form-control input-underline input-lg"
+                        id="ConfirmPassword"
+                        placeholder="Confirm Password">
+                    </div>
+                    <div class="form-group">
+                        <select [(ngModel)]="_user.specialist_id"
+                         name="specialist_id"
+                         class="form-control">
+                        <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select [(ngModel)]="_user.hospital_id" name="hospital_id" placeholder="Hospital Name"
+                         class="form-control">
+                        <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <button type="submit" class="btn rounded-btn"> Register </button>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+            </form>
+        </div>
+    </div>
+</div>
