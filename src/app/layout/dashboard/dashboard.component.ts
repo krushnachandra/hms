@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { PatientService } from '../../service/patient-service';
+import { PatientModel } from '../../model/patient-model';
 
 @Component({
     selector: 'app-dashboard',
@@ -8,51 +10,36 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
+    sessid: string;
+    errorMessage: any;
+    patients: PatientModel[];
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor() {
-        this.sliders.push(
-            {
-                imagePath: 'assets/images/slider1.jpg',
-                label: 'First slide label',
-                text:
-                    'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-            },
-            {
-                imagePath: 'assets/images/slider2.jpg',
-                label: 'Second slide label',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-            },
-            {
-                imagePath: 'assets/images/slider3.jpg',
-                label: 'Third slide label',
-                text:
-                    'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-            }
-        );
-
-        this.alerts.push(
-            {
-                id: 1,
-                type: 'success',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
-            },
-            {
-                id: 2,
-                type: 'warning',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
-            }
-        );
+    constructor(private _patientService: PatientService) {
+       this.sessid = localStorage.getItem('sessid');
     }
 
-    ngOnInit() {}
+    public ngOnInit() {
+        // call the method on initial load of page to bind drop down
+        this.getHospgetPatientsitals();
+
+    }
+    public getHospgetPatientsitals() {
+        // this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+        this._patientService.getPatientLists({'transactiontype': 'getpatientdetail',
+        'sessid': this.sessid})
+        .subscribe((res) => {
+            if (res !== undefined) {
+                if (res.Result === 'SUCCESS') {
+                    this.patients = res.data;
+                }
+                if (res.Result === 'FAILED') {
+                    this.errorMessage = res.Result;
+                }
+            }
+        });
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);

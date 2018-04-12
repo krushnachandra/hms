@@ -15,7 +15,6 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class LoginComponent implements OnInit {
     errorMessage: any;
-    debugger;
     public loginCredentials: LoginCredentials = new LoginCredentials();
     constructor(public router: Router, private _authenticationService: AuthenticationService) { }
     public onLogin() {
@@ -23,11 +22,15 @@ export class LoginComponent implements OnInit {
         this.loginCredentials.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._authenticationService.logIn(this.loginCredentials)
             .subscribe((res) => {
-                debugger;
-                if (res!==undefined) {
-                    if (res.email) {
+                if (res !== undefined) {
+                    if (res.Result === 'SUCCESS') {
                         localStorage.setItem('isLoggedin', 'true');
+                        localStorage.setItem('user', res.data.name);
+                        localStorage.setItem('sessid', res.data.sessid);
                         this.router.navigateByUrl('dashboard');
+                    }
+                    if (res.Result === 'FAILED') {
+                        this.errorMessage = res.Result;
                     }
                 }
             });

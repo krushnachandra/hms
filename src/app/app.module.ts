@@ -8,12 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { PatientService } from './service/patient-service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -37,13 +38,15 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        ToastrModule.forRoot(), // ToastrModule added,
         AppRoutingModule
     ],
     declarations: [AppComponent],
     providers: [AuthGuard
         , AuthenticationService
         , HospitalService
-        , SpecialistService],
+        , SpecialistService,
+        PatientService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
