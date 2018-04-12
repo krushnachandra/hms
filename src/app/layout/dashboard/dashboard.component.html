@@ -26,23 +26,26 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Civil ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Hospital Name</th>
+                                    
+                                    <th>Age</th>
                                     <th>Referal Date</th>
-                                    <th>Referal Dr</th>
-                                    <th>Status</th>
-                                    <th>Resend</th>
+                                    <th>Diagnosis Sample</th>
+                                    <th>Referal Status</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr *ngFor="let patient of patients" >
-                                    <th scope="row">1</th>
+                                <tr *ngFor="let patient of patients; let i=index" >
+                                    <th scope="row">{{i + 1}}</th>
                                     <td>{{patient.patientName}}</td>
-                                    <td>{{patient.civilId}}</td>
-                                    <td>{{patient.RefDate}}</td>
-                                    <td>{{patient.patientName}}</td>
-                                    <td>{{patient.patientName}}</td>
+                                    <td>{{patient.name}}</td>
+                                    <td>{{patient.age}}</td>
+                                    <td>{{patient.referringDate}}</td>
+                                    <td>{{patient.admissionDiagnosis}}</td>
                                     <td>{{patient.status}}</td>
+                                    <td><a href="#">Resend</a></td>
                                 </tr>
                                 </tbody>
                             </table>
