@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
                         this.router.navigateByUrl('dashboard');
                     }
                     if (res.Result === 'FAILED') {
-                        //this.errorMessage = res.Result;
                         this.toastr.error(res.Result, res.Result);
                     }
                 }
