@@ -1,4 +1,4 @@
-<div class="login-page"
+<div
      [@routerTransition]>
     <div class="row justify-content-md-center">
         <div class="col-md-4">
@@ -14,7 +14,7 @@
                                class="form-control input-underline input-lg"
                                #name="ngModel"
                                id="name"
-                               placeholder="Full Name">
+                               placeholder="Full Name" required>
                             <div *ngIf="f.submitted && !name.valid"
                                  class="help-block"> Name is required</div>
                     </div>
@@ -25,7 +25,7 @@
                                class="form-control input-underline input-lg"
                                #civilid="ngModel"
                                id="civilid"
-                               placeholder="Civil Id">
+                               placeholder="Civil Id" required>
                                 <div *ngIf="f.submitted && !civilid.valid"
                                      class="help-block"> Name is required</div>
                     </div>
@@ -36,7 +36,7 @@
                                class="form-control input-underline input-lg"
                                id="email"
                                #email="ngModel"
-                               placeholder="Email">
+                               placeholder="Email" required>
                                 <div *ngIf="f.submitted && !email.valid"
                                      class="help-block"> Email is required</div>
                     </div>
@@ -47,7 +47,7 @@
                                class="form-control input-underline input-lg"
                                id="password"
                                #password="ngModel"
-                               placeholder="Password">
+                               placeholder="Password" required>
                             <div *ngIf="f.submitted && !password.valid"
                                  class="help-block"> Password is required</div>
                     </div>
@@ -55,7 +55,7 @@
                         <input type="password"
                                class="form-control input-underline input-lg"
                                id="ConfirmPassword"
-                               placeholder="Confirm Password">
+                               placeholder="Confirm Password" required>
                     </div>
                     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !specialist_id.valid }">
                         <select [(ngModel)]="_user.specialist_id"
@@ -63,8 +63,10 @@
                                 id="specialist_id"
                                 #specialist_id="ngModel"
                                 class="form-control"
-                                placeholder="Confirm Password">
-
+                                placeholder="Confirm Password" required>
+            <option [ngValue]="undefined"
+                    hidden
+                    selected> Please select specialist</option>
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
                     </div>
@@ -74,10 +76,10 @@
                                 id="hospital_id"
                                 #hospital_id="ngModel"
                                 placeholder="Hospital Name"
-                                class="form-control">
-                        <option value="null"
-                                disabled="true"
-                                [selected]="true">Select Hospital</option>
+                                class="form-control" required>
+                                        <option [ngValue]="undefined"
+                                                hidden
+                                                selected> Please select hospital</option>
                         <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                         </select>
                     </div>
