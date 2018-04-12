@@ -1,0 +1,38 @@
+<div [@routerTransition]>
+    
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Register Doctor List
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email ID</th>
+                            <th>Hospital</th>
+                            <th>Specialist</th>
+                            <th>Register Date</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let doctor of doctors; let i=index" >
+                            <th scope="row">{{i + 1}}</th>
+                                    <td>{{doctor.name}}</td>
+                                    <td>{{doctor.email}}</td>
+                                    <td>{{doctor.hospital}}</td>
+                                    <td>{{doctor.specialist}}</td>
+                                    <td>{{doctor.regdate}}</td>
+                                    <td>{{doctor.status}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

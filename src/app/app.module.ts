@@ -15,6 +15,7 @@ import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { PatientService } from './service/patient-service';
+import { DoctorService } from './service/doctorList-service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -46,7 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
         , AuthenticationService
         , HospitalService
         , SpecialistService,
-        PatientService],
+        PatientService,DoctorService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
