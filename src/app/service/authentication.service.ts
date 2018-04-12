@@ -36,7 +36,7 @@ export class AuthenticationService {
      * The UserModel object data.
      * @memberof AuthenticationService
      */
-    public Register(userData: User): Observable<User> {
+    public Register(userData: User): Observable<any> {
         const url = `${this.BASE_URL}/hms/api/Common/AddUpdateDoctor`;
         const body = JSON.stringify(userData); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
@@ -44,7 +44,7 @@ export class AuthenticationService {
         const options = new RequestOptions({ headers: headers }); // Create a request option
 
         return this.http.post(url, body, options) // ...using post request
-            .map((res: Response) => res.json().data) // ...and calling .json() on the response to return data
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
     }
 }

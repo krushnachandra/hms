@@ -1,10 +1,10 @@
 <div [@routerTransition]>
     <hr>
     <div class="row">
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa fa-comments fa-5x'" [count]="26" [label]="'New!'" ></app-stat>
+        <div *ngFor="let item of statusCount" class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'primary'" [icon]="'fa fa-comments fa-5x'" [count]="item.Value" [label]="item.Text" ></app-stat>
         </div>
-        <div class="col-xl-3 col-lg-6">
+        <!-- <div class="col-xl-3 col-lg-6">
             <app-stat [bgClass]="'success'" [icon]="'fa fa-check fa-5x'" [count]="12" [label]="'Approved!'" ></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
@@ -12,14 +12,14 @@
         </div>
         <div class="col-xl-3 col-lg-6">
             <app-stat [bgClass]="'danger'" [icon]="'fa fa-times fa-5x'" [count]="13" [label]="'Reject!'"></app-stat>
-        </div>
+        </div> -->
     </div>
-   
+
     <div class="row">
         <div class="col col-xl-12 col-lg-12">
                 <div class="card mb-3">
                         <div class="card-header">
-                            
+
                         </div>
                         <div class="card-body table-responsive">
                             <table class="table">

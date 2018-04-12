@@ -10,6 +10,8 @@ import { PatientModel } from '../../model/patient-model';
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
+    statusCount: any;
+
     sessid: string;
     errorMessage: any;
     patients: PatientModel[];
@@ -23,6 +25,7 @@ export class DashboardComponent implements OnInit {
     public ngOnInit() {
         // call the method on initial load of page to bind drop down
         this.getHospgetPatientsitals();
+        this.getStatusCount();
 
     }
     public getHospgetPatientsitals() {
@@ -39,6 +42,21 @@ export class DashboardComponent implements OnInit {
                 }
             }
         });
+    }
+     public getStatusCount(): any {
+         this._patientService.getStatusCount({
+             'sessid': this.sessid
+         }).subscribe((res) => {
+             debugger;
+             if (res !== undefined) {
+                 if (res.Result === 'SUCCESS') {
+                     this.statusCount = res.data;
+                 }
+                 if (res.Result === 'FAILED') {
+                     this.errorMessage = res.Result;
+                 }
+             }
+         });
     }
 
     public closeAlert(alert: any) {

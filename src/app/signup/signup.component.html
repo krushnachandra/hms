@@ -2,19 +2,22 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <h1>Register</h1>
-            <form role="form" (ngSubmit)="onRegister()">
+            <form role="form" #f="ngForm" (ngSubmit)="onRegister()">
                 <div class="form-content">
                     <div class="form-group">
                         <input type="text"
                          [(ngModel)]="_user.name" name="name"
                          class="form-control input-underline input-lg"
+                         #name="ngModel"
                          id="name" placeholder="Full Name">
                     </div>
                     <div class="form-group">
                         <input type="text"
                          [(ngModel)]="_user.civilid" name="civilid"
                          class="form-control input-underline input-lg"
-                         id="civilid" placeholder="Civil Id">
+                         #civilid="ngModel"
+                         id="civilid"
+                         placeholder="Civil Id">
                     </div>
                     <div class="form-group">
                         <input type="text"
@@ -22,6 +25,7 @@
                                name="email"
                                class="form-control input-underline input-lg"
                                id="email"
+                               #email="ngModel"
                                placeholder="Email">
                     </div>
                     <div class="form-group">
@@ -30,6 +34,7 @@
                                name="password"
                                class="form-control input-underline input-lg"
                                id="password"
+                               #password="ngModel"
                                placeholder="Password">
                     </div>
                     <div class="form-group">
@@ -41,19 +46,28 @@
                     <div class="form-group">
                         <select [(ngModel)]="_user.specialist_id"
                          name="specialist_id"
-                         class="form-control">
+                         id="specialist_id"
+                         #specialist_id="ngModel"
+                         class="form-control"
+                         placeholder="Confirm Password">
+
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select [(ngModel)]="_user.hospital_id" name="hospital_id" placeholder="Hospital Name"
+                        <select [(ngModel)]="_user.hospital_id"
+                        name="hospital_id"
+                        id="hospital_id"
+                        #hospital_id="ngModel"
+                        placeholder="Hospital Name"
                          class="form-control">
+                        <option>Select Hospital </option>
                         <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                         </select>
                     </div>
-                    
+
                 </div>
-                <button type="submit" class="btn rounded-btn"> Register </button>&nbsp;
+                <button type="submit" [disabled]="f.form.invalid" class="btn rounded-btn"> Register </button>&nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
             </form>
         </div>
