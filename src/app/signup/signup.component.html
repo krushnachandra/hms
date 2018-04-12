@@ -64,9 +64,9 @@
                                 #specialist_id="ngModel"
                                 class="form-control"
                                 placeholder="Confirm Password" required>
-            <option [ngValue]="undefined"
+            <!-- <option [ngValue]="undefined"
                     hidden
-                    selected> Please select specialist</option>
+                    selected> Please select specialist</option> -->
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
                     </div>
@@ -77,9 +77,9 @@
                                 #hospital_id="ngModel"
                                 placeholder="Hospital Name"
                                 class="form-control" required>
-                                        <option [ngValue]="undefined"
+                                        <!-- <option [ngValue]="undefined"
                                                 hidden
-                                                selected> Please select hospital</option>
+                                                selected> Please select hospital</option> -->
                         <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                         </select>
                     </div>
