@@ -50,20 +50,17 @@ export class PatientRagisterComponent implements OnInit {
         this._user.transactiontype = 'insert';
         this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this.created_by = +localStorage.getItem('created_by');
-        if (!this.created_by) {
+        if (this.created_by!== NaN) {
             this._user.created_by = this.created_by;
-
         }
-        debugger;
         this._authenticationService.Register(this._user)
             .subscribe((res) => {
                 debugger;
                 if (res !== undefined) {
-                    if (res.Result === 'SUCCESS') {
-                        this.toastr.error(res.Result, res.Result);
-                        this.router.navigateByUrl('login');
+                    if (res.Result === 'success') {
+                        this.toastr.success(res.Result, res.Result);
                     }
-                    if (res.Result === 'FAILED') {
+                    if (res.Result === 'failed') {
                         this.toastr.error(res.Result, res.Result);
                     }
                 }

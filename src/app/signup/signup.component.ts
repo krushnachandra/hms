@@ -54,11 +54,11 @@ export class SignupComponent implements OnInit {
             .subscribe((res) => {
                 debugger;
                 if (res !== undefined) {
-                    if (res.Result === 'SUCCESS') {
+                    if (res.Result === 'success') {
                         this.toastr.error(res.Result, res.Result);
                         this.router.navigateByUrl('login');
                     }
-                    if (res.Result === 'FAILED') {
+                    if (res.Result === 'failed') {
                         this.toastr.error(res.Result, res.Result);
                     }
                 }
