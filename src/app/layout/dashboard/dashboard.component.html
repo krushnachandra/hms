@@ -1,17 +1,8 @@
 <div [@routerTransition]>
     <hr>
     <div class="row">
-        <div  class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa fa-comments fa-5x'" [count]="statusCount[0].Value" [label]="statusCount[0].Text" ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'success'" [icon]="'fa fa-check fa-5x'" [count]="statusCount[1].Value" [label]="statusCount[1].Text" ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'warning'" [icon]="'fa fa-ban fa-5x'" [count]="statusCount[2].Value" [label]="statusCount[2].Text" ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [icon]="'fa fa-times fa-5x'" [count]="statusCount[3].Value" [label]="statusCount[3].Text"></app-stat>
+        <div *ngFor="let count of statusCount"  class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'primary'" [icon]="'fa fa-comments fa-5x'" [count]="count.Value" [label]="count.Text" ></app-stat>
         </div>
     </div>
 
