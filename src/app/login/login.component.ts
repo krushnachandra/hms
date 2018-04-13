@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem('isLoggedin', 'true');
                         localStorage.setItem('user', res.data.name);
                         localStorage.setItem('sessid', res.data.sessid);
+                        debugger;
+                        localStorage.setItem('created_by', res.data.docid);
                         this.router.navigateByUrl('dashboard');
                     }
                     if (res.Result === 'FAILED') {

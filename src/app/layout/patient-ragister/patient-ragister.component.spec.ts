@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlankPageComponent } from './blank-page.component';
+import { PatientRagisterComponent } from './patient-ragister.component';
 
-describe('BlankPageComponent', () => {
-    let component: BlankPageComponent;
-    let fixture: ComponentFixture<BlankPageComponent>;
+describe('PatientRagisterComponent', () => {
+    let component: PatientRagisterComponent;
+    let fixture: ComponentFixture<PatientRagisterComponent>;
 
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                declarations: [BlankPageComponent]
+                declarations: [PatientRagisterComponent]
             }).compileComponents();
         })
     );
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(BlankPageComponent);
+        fixture = TestBed.createComponent(PatientRagisterComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
