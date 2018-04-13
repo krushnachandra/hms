@@ -1,7 +1,7 @@
 <div
      [@routerTransition]>
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
+    <div class="container justify-content-md-center">
+        <div class="col-4 offset-4">
             <h1>Register</h1>
             <form role="form"
                   #f="ngForm"
@@ -82,7 +82,7 @@
                 <button type="submit"
                         [disabled]="f.form.invalid"
                         class="btn rounded-btn"> Register </button>&nbsp;
-                <a class="btn rounded-btn"
+                <a class="btn btn-primary"
                    [routerLink]="['/login']"> Log in </a>
             </form>
         </div>
