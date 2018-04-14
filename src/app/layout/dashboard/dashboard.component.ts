@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
     sessid: string;
     errorMessage: any;
-    patients: PatientModelList[];//PatientModel[];
+    patients: PatientModelList[];
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
     patientsNew: PatientModelList[];
@@ -31,12 +31,10 @@ export class DashboardComponent implements OnInit {
 
     }
     public getHospgetPatientsitals() {
-        debugger;
         // this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._patientService.getPatientLists({'transactiontype': 'getpatientdetail',
         'sessid': this.sessid})
         .subscribe((res) => {
-            debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this.patients = res.data;
@@ -52,7 +50,6 @@ export class DashboardComponent implements OnInit {
          this._patientService.getStatusCount({
              'sessid': this.sessid
          }).subscribe((res) => {
-             debugger;
              if (res !== undefined) {
                  if (res.Result === 'SUCCESS') {
                      this.statusCount = res.data;
@@ -63,10 +60,9 @@ export class DashboardComponent implements OnInit {
              }
          });
     }
-    public filter(status:string)
-    {
-        this.patients =this.patientsNew ;
-        this.patients = this.patients.filter(x=>x.status === status);
+    public filter(status: string) {
+        this.patients = this.patientsNew ;
+        this.patients = this.patients.filter(x => x.status === status);
     }
 
     public closeAlert(alert: any) {
