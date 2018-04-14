@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
     patients: PatientModelList[];//PatientModel[];
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    patientsNew: PatientModelList[];
 
     constructor(private _patientService: PatientService) {
        this.sessid = localStorage.getItem('sessid');
@@ -39,6 +40,7 @@ export class DashboardComponent implements OnInit {
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this.patients = res.data;
+                    this.patientsNew = res.data;
                 }
                 if (res.Result === 'FAILED') {
                     this.errorMessage = res.Result;
@@ -60,6 +62,11 @@ export class DashboardComponent implements OnInit {
                  }
              }
          });
+    }
+    public filter(status:string)
+    {
+        this.patients =this.patientsNew ;
+        this.patients = this.patients.filter(x=>x.status === status);
     }
 
     public closeAlert(alert: any) {
