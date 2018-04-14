@@ -4,10 +4,10 @@ import { HospitalModel } from '../../model/hospital-model';
 import { HospitalService } from '../../service/hospital-service';
 import { SpecialistService } from '../../service/specialist-service';
 import { routerTransition } from '../../router.animations';
-import { User } from '../../model/user-model';
 import { AuthenticationService } from '../../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { PatientModel } from '../../model/patient-model';
 @Component({
     selector: 'app-patient-ragister',
     templateUrl: './patient-ragister.component.html',
@@ -20,7 +20,7 @@ export class PatientRagisterComponent implements OnInit {
     hospitals: Array<HospitalModel>;
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
-    public _user: User = new User();
+    public _patient: PatientModel = new PatientModel();
     constructor(public router: Router,
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
@@ -47,13 +47,9 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
-        this._user.transactiontype = 'insert';
-        this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-        this.created_by = +localStorage.getItem('created_by');
-        if (this.created_by !== NaN) {
-            this._user.created_by = this.created_by;
-        }
-        this._authenticationService.Register(this._user)
+        this._patient.transactiontype = 'insert';
+        this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+        this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
                  if (res !== undefined) {
                     if (res.Result === 'success') {
