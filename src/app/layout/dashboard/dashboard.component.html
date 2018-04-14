@@ -2,7 +2,7 @@
     <hr>
     <div class="row">
         <div *ngFor="let count of statusCount"  class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa fa-comments fa-5x'" [count]="count.Value" [label]="count.Text" ></app-stat>
+            <app-stat [bgClass]="'primary'" [icon]="'fa fa-comments fa-5x'" [count]="count.Value" [label]="count.Text" (click)="filter(count.Text)"></app-stat>
         </div>
     </div>
 
