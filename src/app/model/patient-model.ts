@@ -20,7 +20,7 @@ export class PatientModel extends CommonModel {
     patientName: string ;
     civilId: number;
     gender: string = 'Male';
-    age: number;
+    // age: number;
     unit: string ;
     ward: string ;
     bed: string ;

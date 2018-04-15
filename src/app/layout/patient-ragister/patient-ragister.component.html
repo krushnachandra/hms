@@ -100,13 +100,13 @@
                     id="gender" >Female
                     </label>
                   </div>
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
+                  <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
                     <label for="disabledSelect">Age</label>
                     <input class="form-control" [(ngModel)]="_patient.age" 
                     name="age"
                     #age="ngModel" 
                     id="age" type="text">										   
-                  </div>
+                  </div> -->
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !unit.valid }">
                     <label for="disabledSelect">Unit</label>				
                     <input class="form-control" 
@@ -179,11 +179,11 @@
                     id="e"
                     #e="ngModel" 
                     id="e">
-                      <option>E</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+                      <option >E</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
                     <select class="form-control"  [(ngModel)]="_patient.v"
                     name="v"
@@ -191,10 +191,10 @@
                     #v="ngModel" 
                     id="v">
                       <option>V</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
                     <select class="form-control"  [(ngModel)]="_patient.m"
                     name="m"
@@ -202,10 +202,10 @@
                     #m="ngModel" 
                     id="m">
                       <option>M</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
                   </div>
                   <label for="disabledSelect"><u>Ventilation</u></label>
@@ -455,8 +455,8 @@
                     id="bloodgasBE">											
                   </div>
                   <button type="submit" class="btn btn-default">Submit Button</button>
-                  <button type="reset" class="btn btn-default">Reset Button</button>										  
                   </form>
+                  <button type="reset" (click)="reset()" class="btn btn-default">Reset Button</button>										  
                 </div>
               </div>
             </div>
