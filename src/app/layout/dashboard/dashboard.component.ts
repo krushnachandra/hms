@@ -70,7 +70,6 @@ export class DashboardComponent implements OnInit {
          this._patientService.getStatusCount({
              'sessid': this.sessid
          }).subscribe((res) => {
-             debugger;
              if (res !== undefined) {
                  if (res.Result === 'SUCCESS') {
                      this.statusCount = res.data;

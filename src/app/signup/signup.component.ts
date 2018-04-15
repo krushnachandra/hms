@@ -50,9 +50,8 @@ export class SignupComponent implements OnInit {
     public onRegister() {
         this._user.transactiontype = 'insert';
         this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-        this._authenticationService.Register(this._user)
+        this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
-                debugger;
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.error(res.Result, res.Result);

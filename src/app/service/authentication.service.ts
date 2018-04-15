@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { LoginCredentials } from '../model/login-credentials';
 import { User } from '../model/user-model';
+import { PatientModel } from '../model/patient-model';
 
 /**
  * Service provides Authentication and authorization.
@@ -36,9 +37,26 @@ export class AuthenticationService {
      * The UserModel object data.
      * @memberof AuthenticationService
      */
-    public Register(userData: User): Observable<any> {
+    public DoctorRegister(userData: User): Observable<any> {
         const url = `${this.BASE_URL}/hms/api/Common/AddUpdateDoctor`;
         const body = JSON.stringify(userData); // Stringify payload
+        const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        headers.append('Access-Control-Allow-Origin', '*');
+        const options = new RequestOptions({ headers: headers }); // Create a request option
+
+        return this.http.post(url, body, options) // ...using post request
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
+    }
+    /**
+     * Register function to Register the user.
+     * @param patientData
+     * The UserModel object data.
+     * @memberof AuthenticationService
+     */
+    public PatientRegister(patientData: PatientModel): Observable<any> {
+        const url = `${this.BASE_URL}/hms/api/RefPatient/AddUpdateRefPatient`;
+        const body = JSON.stringify(patientData); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
         const options = new RequestOptions({ headers: headers }); // Create a request option

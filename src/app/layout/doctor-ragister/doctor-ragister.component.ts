@@ -4,23 +4,23 @@ import { HospitalModel } from '../../model/hospital-model';
 import { HospitalService } from '../../service/hospital-service';
 import { SpecialistService } from '../../service/specialist-service';
 import { routerTransition } from '../../router.animations';
+import { User } from '../../model/user-model';
 import { AuthenticationService } from '../../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { PatientModel } from '../../model/patient-model';
 @Component({
-    selector: 'app-patient-ragister',
-    templateUrl: './patient-ragister.component.html',
-    styleUrls: ['./patient-ragister.component.scss']
+    selector: 'app-doctor-ragister',
+    templateUrl: './doctor-ragister.component.html',
+    styleUrls: ['./doctor-ragister.component.scss']
 })
-export class PatientRagisterComponent implements OnInit {
+export class DoctorRagisterComponent implements OnInit {
     created_by: number;
     errorMessage: any;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
-    public _patient: PatientModel = new PatientModel();
+    public _user: User = new User();
     constructor(public router: Router,
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
@@ -47,25 +47,22 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
-        this._patient.transactiontype = 'insert';
-        this._patient.sessid = localStorage.getItem('sessid');
+        this._user.transactiontype = 'insert';
+        this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this.created_by = +localStorage.getItem('created_by');
         if (this.created_by !== NaN) {
-            this._patient.docId = this.created_by;
+            this._user.created_by = this.created_by;
         }
-        this._authenticationService.PatientRegister(this._patient)
+        this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
                  if (res !== undefined) {
-                    if (res.Result === 'Success') {
+                    if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
                     }
-                    if (res.Result === 'Failed') {
+                    if (res.Result === 'failed') {
                         this.toastr.error(res.Result, res.Result);
                     }
                 }
             });
-    }
-    public reset() {
-        this._patient = new PatientModel();
     }
 }
