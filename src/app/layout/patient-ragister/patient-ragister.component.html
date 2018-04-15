@@ -2,14 +2,15 @@
   <div class="col-lg-12">
       <div class="panel panel-default">
           <div class="panel-heading">
-              Please Complete this consultation formfoe all ECMO referrals to Adan Hospital
+              <h5>Please Complete this consultation formfoe all ECMO referrals to Adan Hospital</h5>
           </div>
           <div class="panel-body">
               <div class="row">
-                  <div class="col-lg-6">
-                      <form role="form" #f="ngForm"
+                  <div class="col-lg-12">
+                      <form role="form" #f="ngForm" class="row"
                             (ngSubmit)="f.form.valid && onRegister()" novalidate>
-                          <div class="form-group"
+                          <div class="col-6">
+                            <div class="form-group"
                                [ngClass]="{ 'has-error': f.submitted && !speciallistId.valid }">
                               <label>Referring Speciality</label>
                               <select [(ngModel)]="_patient.speciallistId"
@@ -53,6 +54,8 @@
                                         id="history"
                                         class="form-control" rows="3"></textarea>
                           </div>
+                        </div>
+                        <div class="col-6">
                           <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patientName.valid }">
                               <label for="disabledSelect">Patient Name</label>
                               <input [(ngModel)]="_patient.patientName"
@@ -125,6 +128,9 @@
                                      #fileNo="ngModel"
                                      id="fileNo">
                           </div>
+                        </div>
+                        <hr>
+                        <div class="col-6">
                           <div class="form-group">
                               <label>Pre-morbid functional status</label>
                               <select class="form-control"
@@ -293,7 +299,8 @@
                                      #cxrquadrants="ngModel"
                                      id="cxrquadrants">
                           </div>
-
+</div>
+<div class="col-6">
                           <label for="disabledSelect"><u>Cardiovascular Parameters:</u></label>
                           <div class="form-group">
                               <label for="disabledSelect">HR</label>
@@ -610,6 +617,7 @@
 
                           <button type="submit" class="btn btn-default">Submit Button</button>
                           <button type="reset" class="btn btn-default">Reset Button</button>
+                          </div>
                       </form>
                   </div>
               </div>
