@@ -15,10 +15,10 @@ export class DashboardComponent implements OnInit {
 
     sessid: string;
     errorMessage: any;
-    patients: PatientModelList[];//PatientModel[];
+    patients: PatientModelList[] = [];//PatientModel[];
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
-    patientsNew: PatientModelList[];
+    patientsNew: PatientModelList[] = [];
 
     constructor(private _patientService: PatientService) {
        this.sessid = localStorage.getItem('sessid');
@@ -31,16 +31,34 @@ export class DashboardComponent implements OnInit {
 
     }
     public getHospgetPatientsitals() {
-        debugger;
         // this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._patientService.getPatientLists({'transactiontype': 'getpatientdetail',
         'sessid': this.sessid})
         .subscribe((res) => {
-            debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
-                    this.patients = res.data;
-                    this.patientsNew = res.data;
+                    //this.patients = res.data;
+                    //this.patientsNew = res.data;
+                    for(let i=0; i<res.data.length; i++)
+                    {
+                        let docdata = res.data[i];
+                        switch(docdata.status)
+                        {
+                            case "New":
+                            case "Approved":
+                            this.patients.push(Object.assign({action : ""},docdata));
+                            this.patientsNew.push(Object.assign({action : ""},docdata));
+                            break;
+                            case "Reject":
+                            case "Hold":
+                            case 1:
+                            this.patients.push(Object.assign({action : "Resend"},docdata));
+                            this.patientsNew.push(Object.assign({action : "Resend"},docdata));
+                            break;
+                            default:
+                            break;
+                        }
+                    }
                 }
                 if (res.Result === 'FAILED') {
                     this.errorMessage = res.Result;
@@ -65,7 +83,7 @@ export class DashboardComponent implements OnInit {
     }
     public filter(status:string)
     {
-        this.patients =this.patientsNew ;
+        this.patients = this.patientsNew ;
         this.patients = this.patients.filter(x=>x.status === status);
     }
 

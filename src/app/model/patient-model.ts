@@ -10,6 +10,7 @@ export class PatientModelList extends CommonModel
     referringhospitalId:number;
     refralFromid:number;
     status:string;
+    action:string;
 }
 
 export class PatientModel extends CommonModel {

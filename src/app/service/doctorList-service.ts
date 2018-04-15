@@ -15,8 +15,19 @@ export class DoctorService {
      * Returns the current login user.
      */
     public getDoctorLists(doclist: any): Observable<any> {
-        debugger;
         const url = `${this.BASE_URL}/hms/api/Common/GetAllDoctorDetails`;
+        const body = JSON.stringify(doclist); // Stringify payload
+        const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        headers.append('Access-Control-Allow-Origin', '*');
+        const options = new RequestOptions({ headers: headers }); // Create a request option
+
+        return this.http.post(url, body, options) // ...using post request
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
+    }
+
+    public changeDoctorStatus(doclist: any): Observable<any> {
+        const url = `${this.BASE_URL}/hms/api/Common/AddUpdateDoctor`;
         const body = JSON.stringify(doclist); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');

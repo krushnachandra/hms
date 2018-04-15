@@ -6,6 +6,13 @@ export class DoctorModelListIP extends CommonModel
     sessid:string;
 }
 
+export class DoctorStatusChange extends CommonModel
+{
+    docid:number;
+    created_by:number;
+    transactiontype: string;
+    sessid:string;
+}   
 
 
 export class DoctorModelList extends CommonModel
@@ -19,4 +26,5 @@ export class DoctorModelList extends CommonModel
     specialist:string;
     status:string;
     regdate:Date;
+    action:string;
 }
