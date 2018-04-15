@@ -19,4 +19,5 @@ export class DoctorModelList extends CommonModel
     specialist:string;
     status:string;
     regdate:Date;
+    //action:string;
 }

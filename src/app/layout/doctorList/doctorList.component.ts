@@ -15,6 +15,7 @@ export class DoctorListComponent implements OnInit {
     sessid: string;
     errorMessage: any;
     doctors:DoctorModelList[];//PatientModel[];
+    
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
     constructor(private __doctorService: DoctorService) 
