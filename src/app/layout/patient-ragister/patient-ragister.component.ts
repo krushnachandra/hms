@@ -49,6 +49,11 @@ export class PatientRagisterComponent implements OnInit {
     public onRegister() {
         this._patient.transactiontype = 'insert';
         this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+        this.created_by = +localStorage.getItem('created_by');
+        if (this.created_by !== NaN) {
+            this._patient.docId = this.created_by;
+        }
+        debugger;
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
                  if (res !== undefined) {

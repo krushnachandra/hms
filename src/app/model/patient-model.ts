@@ -12,14 +12,15 @@ export class PatientModelList extends CommonModel {
 }
 
 export class PatientModel extends CommonModel {
-    referHospitalId: number;
-    speciallistId: number;
+    referHospitalId = 0;
+    speciallistId = 0;
     docId: number;
     referConsulutantName: string ;
     admissionDiagnosis: string ;
     patientName: string ;
     civilId: number;
-    gender: string ;
+    gender: string = 'Male';
+    age: number;
     unit: string ;
     ward: string ;
     bed: string ;
@@ -70,8 +71,6 @@ export class PatientModel extends CommonModel {
     transactiontype: string;
     sessid: string;
   }
-
-
 
 // export class PatientModel extends CommonModel {
 //     referHospitalId: number;

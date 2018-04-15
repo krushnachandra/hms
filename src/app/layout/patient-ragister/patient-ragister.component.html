@@ -1,254 +1,465 @@
 <div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
             <div class="panel-heading">
-                Please Complete this consultation formfoe all ECMO referrals to Adan Hospital
+              Please Complete this consultation formfoe all ECMO referrals to Adan Hospital
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <form role="form">
-                            <div class="form-group">
-                                <label>Referring Hospital</label>
-                                <select class="form-control" id="sel1">
-                                    <option>xxxxxxxxx</option>
-                                    <option>YYYYYYYYY</option>
-                                    <option>ZZZZZZZZZ</option>
-                                    <option>MMMMMMMMM</option>
-                                  </select>
-                                                                           
-                            </div>
-                            <div class="form-group">
-                                <label>Referring Speciality</label>
-                                <select class="form-control" id="sel2">
-                                    <option>aaaaaaa</option>
-                                    <option>bbbbbbb</option>
-                                    <option>ccccccc</option>
-                                    <option>ddddddd</option>
-                                  </select>
-                            </div>
-                            <div class="form-group">
-                               
-                                <label for="disabledSelect">Referring Consultant</label>
-                                <input class="form-control" id="disabledInput" type="text" placeholder="Dr.XYZ MNP" disabled>
-                        
-                            </div>
-                            <div class="form-group">
-                               
-                                <label for="disabledSelect">Referring Date</label>
-                                <input class="form-control" id="disabledInput" type="text" placeholder="27-09-2015 9:15:4" disabled>
-                        
-                            </div>
-                             <div class="form-group">
-                                <label>Admission diagnosis</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>History(including comorbidities)</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                         </form>
-                    </div>
-                    <!-- /.col-lg-6 (nested) -->
-                    <div class="col-lg-6">
-                       
-                               <div class="form-group">
-                                <label for="disabledSelect">Patient Name</label>				
-                                <input class="form-control">
-                              </div>
-                               <div class="form-group has-success">
-                                <label class="control-label" for="inputSuccess">Civil ID</label>
-                                <input type="text" class="form-control" id="inputSuccess">
-                               </div>		 
-                                <div class="form-group">
-                                <label>Gender</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Male
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Female
-                                </label>
-                    
-                            </div>
-                             <div class="form-group">
-                               <label for="disabledSelect">Age</label>
-                                <input class="form-control" id="disabledInput" type="text" placeholder="26" disabled>										   
-                              
-                             </div>
-                              <div class="form-group">
-                                <label for="disabledSelect">Unit</label>				
-                                <input class="form-control">
-                              </div>
-                               <div class="form-group">
-                                <label for="disabledSelect">Ward</label>				
-                                <input class="form-control">
-                              </div>
-                               <div class="form-group">
-                                <label for="disabledSelect">Bed</label>				
-                                <input class="form-control">
-                              </div>
-                               <div class="form-group">
-                                <label for="disabledSelect">File no</label>				
-                                <input class="form-control">
-                              </div>
-                              
-                           
-                    </div>
-                    <!-- /.col-lg-6 (nested) -->
+              <div class="row">
+                <div class="col-lg-6">
+                  <form role="form"  #f="ngForm"
+                  (ngSubmit)="f.form.valid && onRegister()" novalidate>
+                  <div class="form-group"
+                    [ngClass]="{ 'has-error': f.submitted && !speciallistId.valid }">
+                    <label>Referring Speciality</label>
+                    <select [(ngModel)]="_patient.speciallistId"
+                    name="speciallistId"
+                    id="speciallistId"
+                    #speciallistId="ngModel"
+                    class="form-control"
+                    placeholder="Confirm Password"
+                    required>
+                    <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
+                    </select>
+                  </div>
+                  <div class="form-group"
+                    [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">
+                    <label>Referring Hospital</label>
+                    <select [(ngModel)]="_patient.referHospitalId"
+                    name="referHospitalId"
+                    id="referHospitalId"
+                    #referHospitalId="ngModel"
+                    placeholder="Hospital Name"
+                    class="form-control"
+                    required>
+                    <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
+                    </select>
+                  </div>
+                  <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !docId.valid }">
+                    <label for="disabledSelect">Referring Consultant</label>
+                    <input class="form-control" 
+                    [(ngModel)]="_patient.docId"
+                    name="docId"
+                    id="docId"
+                    #docId="ngModel" 
+                    id="docId" type="text" placeholder="Dr.XYZ MNP" disabled>
+                  </div> -->
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admissionDiagnosis.valid }">
+                    <label>Admission diagnosis</label>
+                    <textarea 
+                    [(ngModel)]="_patient.admissionDiagnosis"
+                    name="admissionDiagnosis"
+                    id="admissionDiagnosis"
+                    #admissionDiagnosis="ngModel" 
+                    id="admissionDiagnosis"
+                    class="form-control" rows="3"></textarea>
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !history.valid }">
+                    <label>History(including comorbidities)</label>
+                    <textarea 
+                    [(ngModel)]="_patient.history"
+                    name="history"
+                    id="history"
+                    #history="ngModel" 
+                    id="history" 
+                    class="form-control" rows="3"></textarea>
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patientName.valid }">
+                    <label for="disabledSelect">Patient Name</label>				
+                    <input [(ngModel)]="_patient.patientName"
+                    name="patientName"
+                    id="patientName"
+                    #patientName="ngModel" 
+                    id="patientName" class="form-control" type="text">
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !civilId.valid }">
+                    <label class="control-label" for="inputSuccess">Civil ID</label>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="_patient.civilId"
+                    name="civilId"
+                    id="civilId"
+                    #civilId="ngModel" 
+                    id="civilId">
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
+                    <label>Gender</label>
+                    <label class="radio-inline">
+                    <input type="radio"
+                    [(ngModel)]="_patient.gender" 
+                    value="Male"
+                    name="gender"
+                    #gender="ngModel" 
+                    id="gender" >Male
+                    </label>
+                    <label class="radio-inline">
+                    <input type="radio" 
+                    [(ngModel)]="_patient.gender" 
+                    value="Female"
+                    name="gender"
+                    #gender="ngModel" 
+                    id="gender" >Female
+                    </label>
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
+                    <label for="disabledSelect">Age</label>
+                    <input class="form-control" [(ngModel)]="_patient.age" 
+                    name="age"
+                    #age="ngModel" 
+                    id="age" type="text">										   
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !unit.valid }">
+                    <label for="disabledSelect">Unit</label>				
+                    <input class="form-control" 
+                    type="text" 
+                    [(ngModel)]="_patient.unit"
+                    name="unit"
+                    id="unit"
+                    #unit="ngModel" 
+                    id="unit">
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ward.valid }">
+                    <label for="disabledSelect">Ward</label>				
+                    <input class="form-control"
+                    type="text" 
+                    [(ngModel)]="_patient.ward"
+                    name="ward"
+                    id="ward"
+                    #ward="ngModel" 
+                    id="ward">
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bed.valid }">
+                    <label for="disabledSelect">Bed</label>				
+                    <input class="form-control"
+                    type="text" 
+                    [(ngModel)]="_patient.bed"
+                    name="bed"
+                    id="bed"
+                    #bed="ngModel" 
+                    id="bed">
+                  </div>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fileNo.valid }">
+                    <label for="disabledSelect">File no</label>				
+                    <input class="form-control"
+                    type="text" 
+                    [(ngModel)]="_patient.fileNo"
+                    name="fileNo"
+                    id="fileNo"
+                    #fileNo="ngModel" 
+                    id="fileNo">
+                  </div>
+                  <div class="form-group">
+                    <label>Pre-morbid functional status</label>
+                    <select class="form-control"  
+                    [(ngModel)]="_patient.preMorbFunctionalStatus"
+                    name="preMorbFunctionalStatus"
+                    id="preMorbFunctionalStatus"
+                    #preMorbFunctionalStatus="ngModel" 
+                    id="preMorbFunctionalStatus">
+                      <option>Bed bound</option>
+                      <option>Chair bound</option>
+                      <option>Mobile</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Pre-morbid functional conscious Status</label>
+                    <select class="form-control"  [(ngModel)]="_patient.preMorbFunctionalConsciousStatus"
+                    name="preMorbFunctionalConsciousStatus"
+                    id="preMorbFunctionalConsciousStatus"
+                    #preMorbFunctionalConsciousStatus="ngModel" 
+                    id="preMorbFunctionalConsciousStatus">
+                      <option>Alert and oriented</option>
+                      <option>Demented</option>
+                      <option>Coma/Vegetative status</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Current GCS Total(--/15)</label>
+                    <select class="form-control"  [(ngModel)]="_patient.e"
+                    name="e"
+                    id="e"
+                    #e="ngModel" 
+                    id="e">
+                      <option>E</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                    <select class="form-control"  [(ngModel)]="_patient.v"
+                    name="v"
+                    id="v"
+                    #v="ngModel" 
+                    id="v">
+                      <option>V</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                    <select class="form-control"  [(ngModel)]="_patient.m"
+                    name="m"
+                    id="m"
+                    #m="ngModel" 
+                    id="m">
+                      <option>M</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                  <label for="disabledSelect"><u>Ventilation</u></label>
+                  <div class="form-group">
+                    <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
+                    <input class="form-control" placeholder="Days" 
+                    type="text"
+                    [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
+                    name="durOfConventianalMechanicalVentination"
+                    id="durOfConventianalMechanicalVentination"
+                    #durOfConventianalMechanicalVentination="ngModel" 
+                    id="durOfConventianalMechanicalVentination">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">SPO2 %</label>
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.spO"
+                    name="spO"
+                    id="spO"
+                    #spO="ngModel" 
+                    id="spO">
+                    <label for="disabledSelect">PO2 %</label>
+                    <input class="form-control" placeholder="mmHg"
+                    type="text" 
+                    [(ngModel)]="_patient.pO"
+                    name="pO"
+                    id="pO"
+                    #pO="ngModel" 
+                    id="pO">
+                    <label for="disabledSelect">FIO2 %</label>
+                    <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="_patient.fiO"
+                    name="fiO"
+                    id="fiO"
+                    #fiO="ngModel" 
+                    id="fiO">
+                    <label for="disabledSelect">Pao2/Fio2 ratio</label>
+                    <input class="form-control" placeholder="mmHg" 
+                    type="text"
+                    [(ngModel)]="_patient.paofioratio"
+                    name="paofioratio"
+                    id="paofioratio"
+                    #paofioratio="ngModel" 
+                    id="paofioratio">
+                    <label for="disabledSelect">PIP</label>
+                    <input class="form-control" placeholder="CMH2O" 
+                    type="text"
+                    [(ngModel)]="_patient.pip"
+                    name="pip"
+                    id="pip"
+                    #pip="ngModel" 
+                    id="pip">
+                    <label for="disabledSelect">PEEP</label>
+                    <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="_patient.peep"
+                    name="peep"
+                    id="peep"
+                    #peep="ngModel" 
+                    id="peep">
+                    <label for="disabledSelect">TV</label>
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.tv"
+                    name="tv"
+                    id="tv"
+                    #tv="ngModel" 
+                    id="tv">
+                    <label for="disabledSelect">RR</label>
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.rr"
+                    name="rr"
+                    id="rr"
+                    #rr="ngModel" 
+                    id="rr">
+                    <label for="disabledSelect">Lung Compliance</label>
+                    <input class="form-control" placeholder="mls/CMH2O"
+                    type="text"
+                    [(ngModel)]="_patient.lungCompliance"
+                    name="lungCompliance"
+                    id="lungCompliance"
+                    #lungCompliance="ngModel" 
+                    id="lungCompliance">
+                    <label for="disabledSelect">CXR quadrants</label>
+                    <input class="form-control" placeholder="mls/CMH2O"
+                    type="text"
+                    [(ngModel)]="_patient.cxrquadrants"
+                    name="cxrquadrants"
+                    id="cxrquadrants"
+                    #cxrquadrants="ngModel" 
+                    id="cxrquadrants">
+                  </div>
+                  <label for="disabledSelect"><u>Cardiovascular Parameters:</u></label>
+                  <div class="form-group">
+                    <label for="disabledSelect">HR</label>				
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.hr"
+                    name="hr"
+                    id="hr"
+                    #hr="ngModel" 
+                    id="hr">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">BP</label>				
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.bp"
+                    name="bp"
+                    id="bp"
+                    #bp="ngModel" 
+                    id="bp">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">CVP</label>				
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.cvp"
+                    name="cvp"
+                    id="cvp"
+                    #cvp="ngModel" 
+                    id="cvp">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">TEMP</label>				
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.temp"
+                    name="temp"
+                    id="temp"
+                    #temp="ngModel" 
+                    id="temp">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">CO</label>				
+                    <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="_patient.co"
+                    name="co"
+                    id="co"
+                    #co="ngModel" 
+                    id="co">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">CARDIAC INDEX</label>				
+                    <input class="form-control" placeholder="L/min/m2"
+                    type="text"
+                    [(ngModel)]="_patient.cardiacindex"
+                    name="cardiacindex"
+                    id="cardiacindex"
+                    #cardiacindex="ngModel" 
+                    id="cardiacindex">
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledSelect">Left ventricular ejection fraction</label>				
+                    <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="_patient.leftventricularejectionfraction"
+                    name="leftventricularejectionfraction"
+                    id="leftventricularejectionfraction"
+                    #leftventricularejectionfraction="ngModel" 
+                    id="leftventricularejectionfraction">
+                  </div>
+                  <label for="disabledSelect"><u>Investigation Result:</u></label> 
+                  <div class="form-group">
+                    <label for="disabledSelect">UREA</label>				
+                    <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="_patient.urea"
+                    name="urea"
+                    id="urea"
+                    #urea="ngModel" 
+                    id="urea">
+                    <label for="disabledSelect">CR</label>				
+                    <input class="form-control"
+                    type="text"
+                    [(ngModel)]="_patient.cr"
+                    name="cr"
+                    id="cr"
+                    #cr="ngModel" 
+                    id="cr">
+                    <label for="disabledSelect">Lactate</label>				
+                    <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="_patient.lactate"
+                    name="lactate"
+                    id="lactate"
+                    #lactate="ngModel" 
+                    id="lactate">
+                    <label for="disabledSelect">UO</label>				
+                    <input class="form-control" placeholder="mls/hr"
+                    type="text"
+                    [(ngModel)]="_patient.uo"
+                    name="uo"
+                    id="uo"
+                    #uo="ngModel" 
+                    id="uo">
+                    <label>Dialysis</label>
+                    <select class="form-control"
+                    [(ngModel)]="_patient.dialysis"
+                    name="dialysis"
+                    id="dialysis"
+                    #dialysis="ngModel" 
+                    id="dialysis">
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                    <label for="disabledSelect">Blood Glass:</label>				
+                    <input class="form-control" placeholder="PH"
+                    type="text"
+                    [(ngModel)]="_patient.bloodgasPH"
+                    name="bloodgasPH"
+                    id="bloodgasPH"
+                    #bloodgasPH="ngModel" 
+                    id="bloodgasPH">
+                    <input class="form-control" placeholder="PO2"
+                    type="text"
+                    [(ngModel)]="_patient.bloodgasPO"
+                    name="bloodgasPO"
+                    id="bloodgasPO"
+                    #bloodgasPO="ngModel" 
+                    id="bloodgasPO">	
+                    <label for="disabledSelect"></label>				
+                    <input class="form-control" placeholder="PCO2"
+                     type="text"
+                    [(ngModel)]="_patient.bloodgasPCO"
+                    name="bloodgasPCO"
+                    id="bloodgasPCO"
+                    #bloodgasPCO="ngModel" 
+                    id="bloodgasPCO">
+                    <input class="form-control" placeholder="HCO3"
+                    type="text"
+                    [(ngModel)]="_patient.bloodgasHCO"
+                    name="bloodgasHCO"
+                    id="bloodgasHCO"
+                    #bloodgasHCO="ngModel" 
+                    id="bloodgasHCO">	
+                    <input class="form-control" placeholder="BE"
+                    type="text"
+                    [(ngModel)]="_patient.bloodgasBE"
+                    name="bloodgasBE"
+                    id="bloodgasBE"
+                    #bloodgasBE="ngModel" 
+                    id="bloodgasBE">											
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit Button</button>
+                  <button type="reset" class="btn btn-default">Reset Button</button>										  
+                  </form>
                 </div>
-                <!-- /.row (nested) -->
+              </div>
             </div>
-            <div class="panel-heading">
-                Patient Parameters(* has to be completed,other wise consultent will be rejected)
-            </div><!-- /.panel-body -->
-             <div class="panel-body">
-             <div class="row">
-                    <div class="col-lg-6">
-                        <form role="form">
-                            <div class="form-group">
-                                <label>Pre-morbid functional status</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Bed bound</option>
-                                    <option>Chair bound</option>
-                                    <option>Mobile</option>
-                                  </select>
-                                                                           
-                            </div>
-                            <div class="form-group">
-                                <label>Pre-morbid functional conscious Status</label>
-                                <select class="form-control" id="sel2">
-                                    <option>Alert and oriented</option>
-                                    <option>Demented</option>
-                                    <option>Coma/Vegetative status</option>
-                                  </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Current GCS Total(--/15)</label>
-                                <select class="form-control" id="sel2">
-                                    <option>E</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                                <select class="form-control" id="sel2">
-                                    <option>V</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                                <select class="form-control" id="sel2">
-                                    <option>M</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                            <label for="disabledSelect"><u>Ventilation</u></label>
-                            <div class="form-group">
-                               
-                                <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
-                                <input class="form-control" placeholder="Days" >
-                        
-                            </div>
-                            <div class="form-group">
-                               
-                                <label for="disabledSelect">SPO2 %</label>
-                                <input class="form-control">
-                                <label for="disabledSelect">PO2 %</label>
-                                <input class="form-control" placeholder="mmHg" >
-                                <label for="disabledSelect">FIO2 %</label>
-                                <input class="form-control">
-                                <label for="disabledSelect">Pao2/Fio2 ratio</label>
-                                <input class="form-control" placeholder="mmHg" >
-                                <label for="disabledSelect">PIP</label>
-                                <input class="form-control" placeholder="CMH2O" >
-                                <label for="disabledSelect">PEEP</label>
-                                <input class="form-control">
-                                <label for="disabledSelect">TV</label>
-                                <input class="form-control">
-                                <label for="disabledSelect">RR</label>
-                                <input class="form-control">
-                        <label for="disabledSelect">Lung Compliance</label>
-                                <input class="form-control" placeholder="mls/CMH2O">
-                                <label for="disabledSelect">CXR quadrants</label>
-                                <input class="form-control" placeholder="mls/CMH2O">
-                            </div>
-                            
-                            
-                        </form>
-                    </div>
-                    <!-- /.col-lg-6 (nested) -->
-                    <div class="col-lg-6">
-                       
-                        <form role="form">
-                             <label for="disabledSelect"><u>Cardiovascular Parameters:</u></label>
-                               <div class="form-group">
-                                <label for="disabledSelect">HR</label>				
-                                <input class="form-control">
-                              </div>
-                               <div class="form-group">
-                                <label for="disabledSelect">BP</label>				
-                                <input class="form-control">
-                              </div>
-                                <div class="form-group">
-                                <label for="disabledSelect">CVP</label>				
-                                <input class="form-control">
-                              </div>	
-                                <div class="form-group">
-                                <label for="disabledSelect">TEMP</label>				
-                                <input class="form-control">
-                              </div>										  
-                                   <div class="form-group">
-                                <label for="disabledSelect">CO</label>				
-                                <input class="form-control">
-                              </div>	
-                            <div class="form-group">
-                                <label for="disabledSelect">CARDIAC INDEX</label>				
-                                <input class="form-control" placeholder="L/min/m2">
-                              </div>
-                              <div class="form-group">
-                                <label for="disabledSelect">Left ventricular ejection fraction</label>				
-                                <input class="form-control" >
-                              </div>
-                                  <label for="disabledSelect"><u>Investigation Result:</u></label> 
-                                <div class="form-group">
-                                <label for="disabledSelect">UREA</label>				
-                                <input class="form-control">
-                                <label for="disabledSelect">CR</label>				
-                                <input class="form-control">
-                                <label for="disabledSelect">Lactate</label>				
-                                <input class="form-control">
-                                <label for="disabledSelect">UO</label>				
-                                <input class="form-control" placeholder="mls/hr">
-                                 <label>Dialysis</label>
-                                <select class="form-control" id="sel2">
-                                    <option>Yes</option>
-                                    <option>No</option>
-                                 </select>
-                                <label for="disabledSelect">Blood Glass:</label>				
-                                <input class="form-control" placeholder="PH">
-                                <input class="form-control" placeholder="PO2">	
-                                <label for="disabledSelect"></label>				
-                                <input class="form-control" placeholder="PCO2">
-                                <input class="form-control" placeholder="HCO3">	
-                                <input class="form-control" placeholder="BE">											
-                              </div>
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>										  
-                        </form>
-                         
-                    </div>
-                    <!-- /.col-lg-6 (nested) -->
-                </div>
-                <!-- /.row (nested) -->
-             </div>
+          </div>
         </div>
-        <!-- /.panel -->
-         
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
+      </div>
