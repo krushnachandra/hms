@@ -47,10 +47,13 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
+        debugger;
         this._patient.transactiontype = 'insert';
         this._patient.sessid = localStorage.getItem('sessid');
+        this._patient.referHospitalId = +localStorage.getItem('hospital_id');
+        this._patient.speciallistId = +localStorage.getItem('specialist_id');
         this.created_by = +localStorage.getItem('created_by');
-        if (this.created_by !== NaN) {
+        if (this.created_by !== undefined) {
             this._patient.docId = this.created_by;
         }
         this._authenticationService.PatientRegister(this._patient)
