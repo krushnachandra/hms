@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
+    // { path: 'getpatientdetails', loadChildren: './layout/patient-ragister/getpatientdetails/getpatientdetails-routing.module#GetPatientDetailsRoutingModule' },
     { path: '**', redirectTo: 'not-found' }
 ];
 
