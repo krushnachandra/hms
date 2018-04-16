@@ -687,6 +687,15 @@
                                   <option value="4">REJECT</option>
                                  </select>
                             </div>
+                            <div class="form-group">
+                                    <label for="disabledSelect">Comments</label>
+                                <textarea [(ngModel)]="_patient.admissionDiagnosis"
+                                          name="admissionDiagnosis"
+                                          id="admissionDiagnosis"
+                                          #admissionDiagnosis="ngModel"
+                                          id="admissionDiagnosis"
+                                          class="form-control" rows="3"></textarea>
+                            </div>
                             <button type="submit" class="btn btn-default">Submit Button</button>
                             <button type="reset" class="btn btn-default">Reset Button</button>
                             </div>
