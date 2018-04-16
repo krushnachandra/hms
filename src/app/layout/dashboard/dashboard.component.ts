@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
         .subscribe((res) => {
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
+                    debugger;
                     //this.patients = res.data;
                     //this.patientsNew = res.data;
                     for(let i=0; i<res.data.length; i++)
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
                             case "Hold":
                             case 1:
                             this.patients.push(Object.assign({action : "Resend"},docdata));
-                            this.patientsNew.push(Object.assign({action : "Resend"},docdata));
+                            this.patientsNew.push(Object.assign({action : 'Resend'},docdata));
                             break;
                             default:
                             break;
@@ -80,14 +81,16 @@ export class DashboardComponent implements OnInit {
              }
          });
     }
-    public filter(status:string)
-    {
+    public filter(status: string) {
         this.patients = this.patientsNew ;
-        this.patients = this.patients.filter(x=>x.status === status);
+        this.patients = this.patients.filter(x => x.status === status);
     }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);
+    }
+    public setPatientObject(patient: PatientModel) {
+        localStorage.setItem('patient', JSON.stringify(patient));
     }
 }

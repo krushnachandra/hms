@@ -38,7 +38,7 @@
                                     <td>{{patient.admissionDiagnosis}}</td>
                                     <td>{{patient.status}}</td>
                                     <td><a [routerLink]="['/getpatientdetails']" [queryParams]="{patid:patient.refralFromid}">View</a></td>
-                                    <td><a href="#">{{patient.action}}</a></td>
+                                    <td><a [routerLink]="['/patient-register']" (click)="setPatientObject(patient)">{{patient.action}}</a></td>
                                 </tr>
                                 </tbody>
                             </table>
