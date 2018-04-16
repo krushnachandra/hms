@@ -1,16 +1,15 @@
 import { CommonModel } from './common-model';
 
-export class PatientModelList extends CommonModel
-{
-    admissionDiagnosis:string;
-    age:number;
-    name:string;
-    patientName:string;
-    referringDate:Date;
-    referringhospitalId:number;
-    refralFromid:number;
-    status:string;
-    action:string;
+export class PatientModelList extends CommonModel {
+    admissionDiagnosis: string;
+    age: number;
+    name: string;
+    patientName: string;
+    referringDate: Date;
+    referringhospitalId: number;
+    refralFromid: number;
+    status: string;
+    action: string;
 }
 
  export class PatientModel extends CommonModel {
@@ -79,4 +78,6 @@ export class PatientModelList extends CommonModel
   history: string;
   transactiontype: string;
   sessid: string;
+  RefDate: Date = new Date();
+  age: number;
 }

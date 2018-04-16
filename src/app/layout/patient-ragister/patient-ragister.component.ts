@@ -14,6 +14,7 @@ import { PatientModel } from '../../model/patient-model';
     styleUrls: ['./patient-ragister.component.scss']
 })
 export class PatientRagisterComponent implements OnInit {
+    referConsulutantName: string;
     created_by: number;
     errorMessage: any;
     specialists: Array<SpecialistModel>;
@@ -31,6 +32,7 @@ export class PatientRagisterComponent implements OnInit {
         // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
+        this._patient.referConsulutantName = localStorage.getItem('user');
 
     }
     public getHospitals() {
@@ -47,7 +49,6 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
-        debugger;
         this._patient.transactiontype = 'insert';
         this._patient.sessid = localStorage.getItem('sessid');
         this._patient.referHospitalId = +localStorage.getItem('hospital_id');
