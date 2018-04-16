@@ -1,7 +1,7 @@
 <div>
     <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <h1>Register</h1>
+            <h4>Refral Doctor Register</h4>
             <form role="form"
                   #f="ngForm"
                   (ngSubmit)="f.form.valid && onRegister()"
@@ -28,10 +28,7 @@
                                class="form-control input-underline input-lg"
                                #civilid="ngModel"
                                id="civilid"
-                               placeholder="Civil Id"
-                               required>
-                        <div *ngIf="f.submitted && !civilid.valid"
-                             class="help-block"> Name is required</div>
+                               placeholder="Civil Id">
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !email.valid }">

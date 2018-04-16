@@ -129,7 +129,7 @@
                                      id="fileNo">
                           </div>
                         </div>
-                        <hr>
+                        <div class="clearfix col-12"><hr></div>
                         <div class="col-6">
                           <div class="form-group">
                               <label>Pre-morbid functional status</label>
@@ -160,6 +160,7 @@
                                       name="e"
                                       #e="ngModel"
                                       id="e">
+                                  <option>E</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -169,6 +170,7 @@
                                       name="v"
                                       #v="ngModel"
                                       id="v">
+                                  <option>V</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -178,6 +180,7 @@
                                       name="m"
                                       #m="ngModel"
                                       id="m">
+                                  <option>M</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -194,7 +197,7 @@
                                      id="totalscore">
                           </div>
 
-                          <label for="disabledSelect"><u>Ventilation</u></label>
+                          <label for="disabledSelect" class="col-12"><u>Ventilation</u></label>
                           <div class="form-group">
                               <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
                               <input class="form-control" placeholder="Days"
@@ -296,9 +299,62 @@
                                      #cxrquadrants="ngModel"
                                      id="cxrquadrants">
                           </div>
+<div class="clearfix col-12"><hr></div>
+                          <h6>Investigation Result:</h6>
+                          <div class="form-group">
+                              <label for="disabledSelect">UREA</label>
+                              <input class="form-control"
+                                     type="text"
+                                     [(ngModel)]="_patient.urea"
+                                     name="urea"
+                                     #urea="ngModel"
+                                     id="urea">
+                          </div>
+
+                          <div class="form-group">
+                              <label for="disabledSelect">CR</label>
+                              <input class="form-control"
+                                     type="text"
+                                     [(ngModel)]="_patient.cr"
+                                     name="cr"
+                                     #cr="ngModel"
+                                     id="cr">
+                          </div>
+
+                          <div class="form-group">
+                              <label for="disabledSelect">Lactate</label>
+                              <input class="form-control"
+                                     type="text"
+                                     [(ngModel)]="_patient.lactate"
+                                     name="lactate"
+                                     #lactate="ngModel"
+                                     id="lactate">
+                          </div>
+
+                          <div class="form-group">
+                              <label for="disabledSelect">UO</label>
+                              <input class="form-control" placeholder="mls/hr"
+                                     type="text"
+                                     [(ngModel)]="_patient.uo"
+                                     name="uo"
+                                     #uo="ngModel"
+                                     id="uo">
+                          </div>
+
+                          <div class="form-group">
+                              <label>Dialysis</label>
+                              <select class="form-control"
+                                      [(ngModel)]="_patient.dialysis"
+                                      name="dialysis"
+                                      #dialysis="ngModel"
+                                      id="dialysis">
+                                  <option>Yes</option>
+                                  <option>No</option>
+                              </select>
+                          </div>
 </div>
 <div class="col-6">
-                          <label for="disabledSelect"><u>Cardiovascular Parameters:</u></label>
+                          <label for="disabledSelect" class="col-12"><u>Cardiovascular Parameters:</u></label>
                           <div class="form-group">
                               <label for="disabledSelect">HR</label>
                               <input class="form-control"
@@ -370,9 +426,9 @@
                           </div>
 
 <div class="form-group row">
-    <h6 class="col-12">Inotropes/vasoconstrictors</h6>
+    <label for="disabledSelect" class="col-12"><u>Inotropes/vasoconstrictors</u></label>
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">Inotropesagent1</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Inotropesagent1"
@@ -382,8 +438,8 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
-                              <input class="form-control" placeholder="mcg/kg/mm"
+                              <label for="disabledSelect">Inotropesdose1</label>
+                              <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Inotropesdose1"
                                      name="Inotropesdose1"
@@ -393,7 +449,7 @@
                         </div>
                         <div class="form-group row">
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">Inotropesdose2</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Inotropesdose2"
@@ -403,8 +459,8 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
-                              <input class="form-control" placeholder="mcg/kg/mm"
+                              <label for="disabledSelect">Inotropesdose2</label>
+                              <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Inotropesdose2"
                                      name="Inotropesdose2"
@@ -414,7 +470,7 @@
 </div>
 <div class="form-group row">
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">Inotropesagent3</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Inotropesagent3"
@@ -424,8 +480,8 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
-                              <input class="form-control" placeholder="mcg/kg/mm"
+                              <label for="disabledSelect">Inotropesdose3</label>
+                              <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Inotropesdose3"
                                      name="Inotropesdose3"
@@ -434,9 +490,9 @@
                           </div>
 </div>
 <div class="form-group row">
-    <h6 class="col-12">Sedation</h6>
+    <label for="disabledSelect" class="col-12"><u>Sedation</u></label>
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">Sedationagent1</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Sedationagent1"
@@ -446,7 +502,7 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
+                              <label for="disabledSelect">Sedationdose1</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Sedationdose1"
@@ -457,7 +513,7 @@
 </div>
 <div class="form-group row">
                               <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">Sedationagent2</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Sedationagent2"
@@ -467,7 +523,7 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
+                              <label for="disabledSelect">Sedationdose2</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Sedationdose2"
@@ -478,7 +534,7 @@
                           </div>
                           <div class="form-group row">
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">Sedationagent3</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Sedationagent3"
@@ -488,7 +544,7 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
+                              <label for="disabledSelect">Sedationdose3</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.Sedationdose3"
@@ -498,9 +554,9 @@
                           </div>
 </div>
 <div class="form-group row">
-    <h6 class="col-12">Muscle relaxants</h6>
+    <label for="disabledSelect" class="col-12"><u>Muscle relaxants</u></label>
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Agent</label>
+                              <label for="disabledSelect">musclerelaxantsagent1</label>
                               <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.musclerelaxantsagent1"
@@ -510,8 +566,8 @@
                           </div>
 
                           <div class="form-group col-6">
-                              <label for="disabledSelect">Dose</label>
-                              <input class="form-control" placeholder="bolus/infusion"
+                              <label for="disabledSelect">musclerelaxantsdose1</label>
+                              <input class="form-control"
                                      type="text"
                                      [(ngModel)]="_patient.musclerelaxantsdose1"
                                      name="musclerelaxantsdose1"
@@ -519,58 +575,7 @@
                                      id="musclerelaxantsdose1">
                           </div>
 </div>
-                          <label for="disabledSelect"><u>Investigation Result:</u></label>
-                          <div class="form-group">
-                              <label for="disabledSelect">UREA</label>
-                              <input class="form-control"
-                                     type="text"
-                                     [(ngModel)]="_patient.urea"
-                                     name="urea"
-                                     #urea="ngModel"
-                                     id="urea">
-                          </div>
-
-                          <div class="form-group">
-                              <label for="disabledSelect">CR</label>
-                              <input class="form-control"
-                                     type="text"
-                                     [(ngModel)]="_patient.cr"
-                                     name="cr"
-                                     #cr="ngModel"
-                                     id="cr">
-                          </div>
-
-                          <div class="form-group">
-                              <label for="disabledSelect">Lactate</label>
-                              <input class="form-control"
-                                     type="text"
-                                     [(ngModel)]="_patient.lactate"
-                                     name="lactate"
-                                     #lactate="ngModel"
-                                     id="lactate">
-                          </div>
-
-                          <div class="form-group">
-                              <label for="disabledSelect">UO</label>
-                              <input class="form-control" placeholder="mls/hr"
-                                     type="text"
-                                     [(ngModel)]="_patient.uo"
-                                     name="uo"
-                                     #uo="ngModel"
-                                     id="uo">
-                          </div>
-
-                          <div class="form-group">
-                              <label>Dialysis</label>
-                              <select class="form-control"
-                                      [(ngModel)]="_patient.dialysis"
-                                      name="dialysis"
-                                      #dialysis="ngModel"
-                                      id="dialysis">
-                                  <option>Yes</option>
-                                  <option>No</option>
-                              </select>
-                          </div>
+                            
 
                           <div class="form-group">
                               <label for="disabledSelect">Blood Glass:</label>
