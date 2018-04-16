@@ -3,21 +3,34 @@ import { SpecialistModel } from '../../../model/specialist-model';
 import { HospitalModel } from '../../../model/hospital-model';
 import { HospitalService } from '../../../service/hospital-service';
 import { SpecialistService } from '../../../service/specialist-service';
+import { PatientService } from '../../../service/patient-service';
 import { routerTransition } from '../../../router.animations';
 import { AuthenticationService } from '../../../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { PatientModel } from '../../../model/patient-model';
+import { PatientDetail } from '../../../model/patient-model';
+import { PatientDetailReq } from '../../../model/patient-model';
+
+
 @Component({
     selector: 'app-getpatientdetails',
     templateUrl: './getpatientdetails.component.html',
     styleUrls: ['./getpatientdetails.component.scss']
 })
 export class GetPatientDetailsComponent1 implements OnInit {
+    transactiontype: string;
+    sessid: string;
+    refral_id: string;
+    patientid:any;
+    pageNum=0;
     created_by: number;
     errorMessage: any;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
+    patientDetail:PatientDetail[] = [];
+    public _PatientDetailReq: PatientDetailReq = new PatientDetailReq();
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
     public _patient: PatientModel = new PatientModel();
@@ -25,14 +38,42 @@ export class GetPatientDetailsComponent1 implements OnInit {
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
         private _specialistService: SpecialistService,
-        private toastr: ToastrService) { }
+        private toastr: ToastrService,private _activatedRoute: ActivatedRoute,private _patientService:PatientService) { }
 
     public ngOnInit() {
         // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
-
+        this.patientid = this._activatedRoute.queryParams
+                    .subscribe(params => { 
+                     this.pageNum = +params['patid']});
+        //alert(this.pageNum);
+        this.getPatientDetails(this.pageNum);
     }
+
+    public getPatientDetails(id:number)
+    {
+        this.sessid = localStorage.getItem('sessid');
+        this.transactiontype = "getpatientinfo";
+        this.refral_id = id.toString();
+        this._patientService.getPatientDetails ({'transactiontype': this.transactiontype,
+        'sessid': this.sessid,"refral_id": this.refral_id})
+        .subscribe((res) => {
+            if (res !== undefined) {
+                if (res.Result === 'SUCCESS') {
+                    this.patientDetail = res.data[0];
+                }
+                else if (res.Result === 'FAILED') {
+                    this.errorMessage = res.Result;
+                }
+            }
+            else
+            {
+                this.errorMessage = "Some error occured.Please try again after sometime.";
+            }
+        });
+    }
+
     public getHospitals() {
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._hospitalService.getHospitals(this._hospital).subscribe(
@@ -46,18 +87,13 @@ export class GetPatientDetailsComponent1 implements OnInit {
             error => this.errorMessage = <any>error
         );
     }
-    public onRegister() {
-        debugger;
-        this._patient.transactiontype = 'insert';
-        this._patient.sessid = localStorage.getItem('sessid');
-        this._patient.referHospitalId = +localStorage.getItem('hospital_id');
-        this._patient.speciallistId = +localStorage.getItem('specialist_id');
-        this.created_by = +localStorage.getItem('created_by');
-        if (this.created_by !== undefined) {
-            this._patient.docId = this.created_by;
-        }
-        this._authenticationService.PatientRegister(this._patient)
-            .subscribe((res) => {
+    public onApproved() {
+        this._patientService.patientStatusAction({'sessid':  localStorage.getItem('sessid'),
+        'action':this._PatientDetailReq.action,
+        'transactiontype': 'insertaction',
+        'refral_id': this.pageNum,
+        'comment':this._PatientDetailReq.comment,
+        }).subscribe((res) => {
                  if (res !== undefined) {
                     if (res.Result === 'Success') {
                         this.toastr.success(res.Result, res.Result);

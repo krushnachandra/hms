@@ -37,4 +37,28 @@ export class PatientService {
             .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
     }
+
+    public getPatientDetails(patient: any): Observable<any> {
+        const url = `${this.BASE_URL}/hms/api/RefPatient/GetRefPatientDetails`;
+        const body = JSON.stringify(patient); // Stringify payload
+        const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        headers.append('Access-Control-Allow-Origin', '*');
+        const options = new RequestOptions({ headers: headers }); // Create a request option
+
+        return this.http.post(url, body, options) // ...using post request
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
+    }
+
+    public patientStatusAction(patient: any): Observable<any> {
+        const url = `${this.BASE_URL}/hms/api/RefPatient/AddUpdatePatientStatus`;
+        const body = JSON.stringify(patient); // Stringify payload
+        const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        headers.append('Access-Control-Allow-Origin', '*');
+        const options = new RequestOptions({ headers: headers }); // Create a request option
+
+        return this.http.post(url, body, options) // ...using post request
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
+    }
 }
