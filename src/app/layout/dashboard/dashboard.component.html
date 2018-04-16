@@ -24,6 +24,7 @@
                                     <th>Referal Date</th>
                                     <th>Diagnosis Sample</th>
                                     <th>Referal Status</th>
+                                    <th>View</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -36,6 +37,7 @@
                                     <td>{{patient.referringDate}}</td>
                                     <td>{{patient.admissionDiagnosis}}</td>
                                     <td>{{patient.status}}</td>
+                                    <td><a [routerLink]="['/getpatientdetails']" [queryParams]="{patid:patient.refralFromid}">View</a></td>
                                     <td><a href="#">{{patient.action}}</a></td>
                                 </tr>
                                 </tbody>
