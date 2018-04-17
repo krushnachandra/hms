@@ -624,10 +624,24 @@
                                            #bloodgasBE="ngModel"
                                            id="bloodgasBE">
                                 </div>
-
-
-
-
+                                <div class="form-group">
+                                        <label for="disabledSelect">Designation</label>
+                                        <input readonly class="form-control" placeholder="Designation"
+                                               type="text"
+                                               [(ngModel)]="_patient.designation"
+                                               name="designation"
+                                               #designation="ngModel"
+                                               id="designation">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="disabledSelect">Telephone</label>
+                                            <input readonly class="form-control" placeholder="telephone"
+                                                   type="text"
+                                                   [(ngModel)]="_patient.telephone"
+                                                   name="telephone"
+                                                   #Inotropesdose2="ngModel"
+                                                   id="telephone">
+                                        </div>
                         <form role="form"
                               #f="ngForm"
                               class="row"
