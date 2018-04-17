@@ -50,7 +50,7 @@ export class PatientRagisterComponent implements OnInit {
         this.getHospitals();
         this.getSpecialists();
         this._patient.referConsulutantName = localStorage.getItem('user');
-        this.age();
+        //this.age();
         //this._patient = JSON.parse(localStorage.getItem('patient'));
 
     }
