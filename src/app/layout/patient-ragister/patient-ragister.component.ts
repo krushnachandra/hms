@@ -40,7 +40,7 @@ export class PatientRagisterComponent implements OnInit {
         private _patientService: PatientService
     ) {
             this.patientid = this._activatedRoute.queryParams
-                    .subscribe(params => { 
+                    .subscribe(params => {
                      this.pageNum = +params['patid']});
         this.getPatientDetails(this.pageNum);
          }
@@ -50,17 +50,20 @@ export class PatientRagisterComponent implements OnInit {
         this.getHospitals();
         this.getSpecialists();
         this._patient.referConsulutantName = localStorage.getItem('user');
-        this.age('283051409378');
-        this._patient = JSON.parse(localStorage.getItem('patient'));
-        debugger;
+        this.age();
+        //this._patient = JSON.parse(localStorage.getItem('patient'));
+
     }
     public getPatientDetails(id: number) {
+        debugger;
         this.sessid = localStorage.getItem('sessid');
-        this.transactiontype = 'getpatientinfo';
+        this.transactiontype = "getpatientinfo";
         this.refral_id = id.toString();
-        this._patientService.getPatientLists({'transactiontype': this.transactiontype,
-        'sessid': this.sessid, 'refral_id': this.refral_id})
-        .subscribe((res) => {
+        this._patientService.getPatientDetails({
+            'transactiontype': this.transactiontype,
+            'sessid': this.sessid, "refral_id": this.refral_id
+        }).subscribe((res) => {
+                debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     debugger;
@@ -101,6 +104,7 @@ export class PatientRagisterComponent implements OnInit {
                  if (res !== undefined) {
                     if (res.Result === 'Success') {
                         this.toastr.success(res.Result, res.Result);
+                        this.reset();
                     }
                     if (res.Result === 'Failed') {
                         this.toastr.error(res.Result, res.Result);
@@ -112,14 +116,13 @@ export class PatientRagisterComponent implements OnInit {
         this._patient = new PatientModel();
     }
 
-    public age(civilid: string) {
-                const datestring = '283051409378';
-                this.cidyy = +civilid.substr(1, 2);
-                const c = new Date();
-                this.year = +c.getFullYear();
-                if (this.cidyy <= this.year) {
-                    const x = this.year - (1900 + this.cidyy);
-                    console.log(x);
-                 }
+    public age() {
+        this.cidyy = +this._patient.civilId.substr(1, 2);
+        const c = new Date();
+        this.year = +c.getFullYear();
+        if (this.cidyy <= this.year) {
+            const x = this.year - (1900 + this.cidyy);
+            this._patient.age = x;
+            }
     }
 }

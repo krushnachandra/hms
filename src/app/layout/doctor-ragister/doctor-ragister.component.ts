@@ -58,12 +58,15 @@ export class DoctorRagisterComponent implements OnInit {
                  if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
-                       // this.form.reset();
+                        this.reset();
                     }
                     if (res.Result === 'failed') {
                         this.toastr.error(res.Result, res.Result);
                     }
                 }
             });
+    }
+    public reset() {
+        this._user = new User();
     }
 }

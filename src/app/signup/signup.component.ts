@@ -55,6 +55,7 @@ export class SignupComponent implements OnInit {
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.error(res.Result, res.Result);
+                        this.reset();
                         this.router.navigateByUrl('login');
                     }
                     if (res.Result === 'failed') {
@@ -62,5 +63,8 @@ export class SignupComponent implements OnInit {
                     }
                 }
             });
-        }
+    }
+    public reset() {
+        this._user = new User();
+    }
 }

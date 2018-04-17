@@ -99,7 +99,7 @@ export class PatientDetail extends CommonModel
   referConsulutantName: string ;
   admissionDiagnosis: string ;
   patientName: string ;
-  civilId: number;
+  civilId: string;
   gender: string ;
   unit: string ;
   ward: string ;
