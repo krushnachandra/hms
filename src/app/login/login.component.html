@@ -17,7 +17,7 @@
                            placeholder="Enter Email"
                            required />
                     <div *ngIf="f.submitted && !email.valid"
-                         class="help-block">Email is required</div>
+                         class="help-block">*Email is required</div>
                 </div>
                 <div class="form-group"
                      [ngClass]="{ 'has-error': f.submitted && !password.valid }">
@@ -29,7 +29,7 @@
                            #password="ngModel"
                            required />
                     <div *ngIf="f.submitted && !password.valid"
-                         class="help-block">Password is required</div>
+                         class="help-block">*Password is required</div>
                 </div>
                 <div class="form-group">
                     <button type="submit"
@@ -44,7 +44,7 @@
                                     </div>
                        <a [routerLink]="['/signup']" class="btn btn-warning btn-lg btn-block">Register</a>
                 </div>
-               
+
 
             </form>
         </div>

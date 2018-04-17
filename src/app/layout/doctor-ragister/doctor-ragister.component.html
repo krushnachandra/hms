@@ -18,7 +18,7 @@
                                placeholder="Full Name"
                                required>
                         <div *ngIf="f.submitted && !name.valid"
-                             class="help-block"> Name is required</div>
+                             class="help-block"> *Name is required</div>
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !civilid.valid }">
@@ -28,7 +28,9 @@
                                class="form-control input-underline input-lg"
                                #civilid="ngModel"
                                id="civilid"
-                               placeholder="Civil Id">
+                               placeholder="Civil Id" required>
+                            <div *ngIf="f.submitted && !civilid.valid"
+                                 class="help-block"> *Civil Id required</div>
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !email.valid }">
@@ -41,7 +43,7 @@
                                placeholder="Email"
                                required>
                         <div *ngIf="f.submitted && !email.valid"
-                             class="help-block"> Email is required</div>
+                             class="help-block"> *Email is required</div>
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !email.valid }">
@@ -54,7 +56,7 @@
                                placeholder="Password"
                                required>
                         <div *ngIf="f.submitted && !password.valid"
-                             class="help-block"> Password is required</div>
+                             class="help-block"> *Password is required</div>
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !specialist_id.valid }">
@@ -83,9 +85,7 @@
 
                 </div>
                 <button type="submit"
-                        [disabled]="f.form.invalid"
-                        class="btn rounded-btn"> Register </button>&nbsp;
-               
+                        class="btn  btn-primary btn-lg"> Register </button>&nbsp;
             </form>
         </div>
     </div>
