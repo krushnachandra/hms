@@ -36,7 +36,6 @@ export class DoctorListComponent implements OnInit {
         this.__doctorService.getDoctorLists({'transactiontype': this.transactiontype,
         'sessid': this.sessid})
         .subscribe((res) => {
-            debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                    // this.doctors = res.data;
@@ -71,7 +70,6 @@ export class DoctorListComponent implements OnInit {
         let action  =  docdata.action == "Disapprove"?"Disapproved":"Approved";
         this.__doctorService.changeDoctorStatus({'docid':docdata.docid,'created_by': this.loginId,'transactiontype':action, 'sessid': this.sessid})
         .subscribe((res) => {
-            debugger;
             if (res !== undefined) {
                 if (res.Result.toUpperCase() === 'SUCCESS') {
                    // this.doctors = res.data;

@@ -55,7 +55,6 @@ export class PatientRagisterComponent implements OnInit {
 
     }
     public getPatientDetails(id: number) {
-        debugger;
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getpatientinfo";
         this.refral_id = id.toString();
@@ -63,10 +62,8 @@ export class PatientRagisterComponent implements OnInit {
             'transactiontype': this.transactiontype,
             'sessid': this.sessid, "refral_id": this.refral_id
         }).subscribe((res) => {
-                debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
-                    debugger;
                     this._patient = res.data[0];
                 } else if (res.Result === 'FAILED') {
                     this.errorMessage = res.Result;

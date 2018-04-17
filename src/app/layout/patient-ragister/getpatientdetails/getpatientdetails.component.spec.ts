@@ -94,7 +94,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
         'refral_id': this.pageNum,
         'comment':this._PatientDetailReq.comment,
         }).subscribe((res) => {
-            debugger;
+           
                  if (res !== undefined) {
                     if (res.Result.toUpperCase() === 'SUCCESS') {
                         this.toastr.success('Status changed succssfully.', res.Result);
