@@ -36,20 +36,34 @@ export class DoctorListComponent implements OnInit {
         this.__doctorService.getDoctorLists({'transactiontype': this.transactiontype,
         'sessid': this.sessid})
         .subscribe((res) => {
+            debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                    // this.doctors = res.data;
                    for(let i=0; i<res.data.length; i++)
                    {
+                       if(res.data[i]["status"] == 0)
+                       {
+                            res.data[i]["status"] ="New";
+                       }
+                       else if(res.data[i]["status"] == 1)
+                       {
+                            res.data[i]["status"] ="Approved";
+                       }
+                       else if(res.data[i]["status"] == 0)
+                       {
+                            res.data[i]["status"] ="Rejected";
+                       }
+
                        let docdata = res.data[i];
                        let doctorsArra:DoctorModelList[];
                        switch(docdata.status)
                        {
-                           case 0:
-                           case 2:
+                           case "New":
+                           case "Rejected":
                            this.doctors.push(Object.assign({action : "Approve"},docdata));
                            break;
-                           case 1:
+                           case "Approved":
                            this.doctors.push(Object.assign({action : "Disapprove"},docdata));
                            break;
                            default:
@@ -64,17 +78,40 @@ export class DoctorListComponent implements OnInit {
         });
     }
 
-    public DocAction(docdata:any)
+    public DocActionA(docdata:any)
     {
         debugger
-        let action  =  docdata.action == "Disapprove"?"Disapproved":"Approved";
+        let action  =  "Approved";
         this.__doctorService.changeDoctorStatus({'docid':docdata.docid,'created_by': this.loginId,'transactiontype':action, 'sessid': this.sessid})
         .subscribe((res) => {
             if (res !== undefined) {
                 if (res.Result.toUpperCase() === 'SUCCESS') {
                    // this.doctors = res.data;
                    let msg:string = '';
-                   msg = docdata.action == "Disapprove"?"Doctor Disapproved Successfuly.":"Doctor Approved Successfuly.";
+                   msg =  "Doctor Approved Successfuly.";
+                   this.toastr.success(msg, 'Success');
+                }
+                if (res.Result.toUpperCase() === 'FAILED') {
+                    //this.errorMessage = res.Result;
+                    this.toastr.error(res.Result, res.Result);
+                }
+                this.doctors = [];
+                this.getDoctorList();
+            }
+        });
+    }
+
+    public DocActionD(docdata:any)
+    {
+        debugger
+        let action  =  "Disapproved";
+        this.__doctorService.changeDoctorStatus({'docid':docdata.docid,'created_by': this.loginId,'transactiontype':action, 'sessid': this.sessid})
+        .subscribe((res) => {
+            if (res !== undefined) {
+                if (res.Result.toUpperCase() === 'SUCCESS') {
+                   // this.doctors = res.data;
+                   let msg:string = '';
+                   msg = "Doctor Disapproved Successfuly";
                    this.toastr.success(msg, 'Success');
                 }
                 if (res.Result.toUpperCase() === 'FAILED') {

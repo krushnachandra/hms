@@ -16,8 +16,9 @@
                             <th>Hospital</th>
                             <th>Specialist</th>
                             <th>Register Date</th>
-                            <!-- <th>Status</th> -->
                             <th>Status</th>
+                            <th>Action</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,8 +29,13 @@
                                     <td>{{doctor.hospital}}</td>
                                     <td>{{doctor.specialist}}</td>
                                     <td>{{doctor.regdate}}</td>
-                                    <!-- <td>{{doctor.status}}</td> -->
-                                    <td><input type="button" value="{{doctor.action}}" (click)="DocAction(doctor)" class="btn btn-primary"></td>
+                                    <td>{{doctor.status}}</td>
+                                    <td>
+                                        <input type="button" value="APPROVE" (click)="DocActionA(doctor)" class="btn btn-primary">
+                                    </td>
+                                    <td>
+                                            <input type="button" value="DISAPPROVE" (click)="DocActionD(doctor)" class="btn btn-danger">
+                                        </td>
                         </tr>
                         </tbody>
                     </table>
