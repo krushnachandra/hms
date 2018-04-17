@@ -626,7 +626,7 @@
                                            #bloodgasBE="ngModel"
                                            id="bloodgasBE">
                                 </div>
-                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !action.valid }">
+                                <div class="form-group">  <!-- [ngClass]="{ 'has-error': f.submitted && !action.valid }" -->
                                     <label for="disabledSelect">Action</label>
                                     <select class="form-control" [(ngModel)]="_PatientDetailReq.action"
                                     name="action"
@@ -638,7 +638,7 @@
                                       <option value="4">REJECT</option>
                                      </select>
                                 </div>
-                                <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !comment.valid }">
+                                <div class="form-group" > <!-- [ngClass]="{ 'has-error': f.submitted && !comment.valid }">-->
                                         <label for="disabledSelect">Comments</label>
                                     <textarea [(ngModel)]="_PatientDetailReq.comment"
                                               name="comment"
