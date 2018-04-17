@@ -6,8 +6,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
-
+                        
                                 <div class="col-6">
                                     <div class="form-group">
                                                 <label for="disabledSelect">Referring Consultant</label>
@@ -625,12 +624,16 @@
                                            #bloodgasBE="ngModel"
                                            id="bloodgasBE">
                                 </div>
+
+
+
+
                         <form role="form"
                               #f="ngForm"
                               class="row"
                               (ngSubmit)="f.form.valid && onApproved()"
                               novalidate>
-                                <div class="form-group">
+                                <div class="form-group col-6">
                                     <label for="disabledSelect">Action</label>
                                     <select class="form-control" [(ngModel)]="_PatientDetailReq.action"
                                     name="action"
@@ -642,7 +645,7 @@
                                       <option value="4">REJECT</option>
                                      </select>
                                 </div>
-                                <div class="form-group" > <!-- [ngClass]="{ 'has-error': f.submitted && !comment.valid }">-->
+                                <div class="form-group col-6" > <!-- [ngClass]="{ 'has-error': f.submitted && !comment.valid }">-->
                                         <label for="disabledSelect">Comments</label>
                                     <textarea [(ngModel)]="_PatientDetailReq.comment"
                                               name="comment"
@@ -650,11 +653,12 @@
                                               #comment="ngModel"
                                               class="form-control" rows="3"></textarea>
                                 </div>
+                                <div class="col-12">
                                 <button type="submit" class="btn btn-default">Submit Button</button>
-                                <button type="reset" class="btn btn-default">Reset Button</button>
+                            </div>
                             </form>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
