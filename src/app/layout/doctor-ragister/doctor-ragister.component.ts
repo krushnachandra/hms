@@ -40,7 +40,6 @@ export class DoctorRagisterComponent implements OnInit {
         this._hospitalService.getHospitals(this._hospital).subscribe(
             (res)=> 
             {
-                alert(res)
                 debugger;
                 for(let i=0; i<res.length; i++)
                    {

@@ -74,6 +74,9 @@ export class SignupComponent implements OnInit {
                     if (res.Result === 'failed') {
                         this.toastr.error(res.Result, res.Result);
                     }
+                    if (res.Result === 'Email already exists.Please check') {
+                        this.toastr.error(res.Result, res.Result);
+                    }
                 }
             });
         }

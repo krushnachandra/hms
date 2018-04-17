@@ -38,6 +38,8 @@
                                id="email"
                                #email="ngModel"
                                placeholder="Email"
+                               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                           autocomplete="off"
                                required>
                         <div *ngIf="f.submitted && !email.valid"
                              class="help-block"> *Email is required</div>
