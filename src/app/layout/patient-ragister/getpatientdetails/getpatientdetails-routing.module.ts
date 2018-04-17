@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GetPatientDetailsComponent1 } from './getpatientdetails.component.spec';
+import { GetPatientDetailsComponent1 } from './getpatientdetails.component';
 
 const routes: Routes = [
     {

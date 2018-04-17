@@ -29,7 +29,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
     errorMessage: any;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
-    patientDetail:PatientDetail[] = [];
+    patientDetail: PatientDetail = new PatientDetail();
     public _PatientDetailReq: PatientDetail = new PatientDetail();
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
@@ -41,13 +41,11 @@ export class GetPatientDetailsComponent1 implements OnInit {
         private toastr: ToastrService,private _activatedRoute: ActivatedRoute,private _patientService:PatientService) { }
 
     public ngOnInit() {
-        // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
         this.patientid = this._activatedRoute.queryParams
-                    .subscribe(params => { 
+                    .subscribe(params => {
                      this.pageNum = +params['patid']});
-        //alert(this.pageNum);
         this.getPatientDetails(this.pageNum);
     }
 
@@ -94,7 +92,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
         'refral_id': this.pageNum,
         'comment':this._PatientDetailReq.comment,
         }).subscribe((res) => {
-           
+
                  if (res !== undefined) {
                     if (res.Result.toUpperCase() === 'SUCCESS') {
                         this.toastr.success('Status changed succssfully.', res.Result);

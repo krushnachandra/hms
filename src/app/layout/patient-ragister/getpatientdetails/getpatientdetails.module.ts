@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { GetPatientDetailsRoutingModule } from './getpatientdetails-routing.module';
-import { GetPatientDetailsComponent1 } from './getpatientdetails.component.spec';
+import { GetPatientDetailsComponent1 } from './getpatientdetails.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
