@@ -628,18 +628,19 @@
                                 </div>
                                 <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !action.valid }">
                                     <label for="disabledSelect">Action</label>
-                                    <select class="form-control" [(ngModel)]="PatientDetailReq.action"
+                                    <select class="form-control" [(ngModel)]="_PatientDetailReq.action"
                                     name="action"
                                     #hr="ngModel"
                                     id="action">
+                                      <option value="0">Select Action</option>
                                       <option value="2">HOLD</option>
                                       <option value="3">APPROVED</option>
                                       <option value="4">REJECT</option>
                                      </select>
                                 </div>
-                                <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !comments.valid }">
+                                <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !comment.valid }">
                                         <label for="disabledSelect">Comments</label>
-                                    <textarea [(ngModel)]="PatientDetailReq.comment"
+                                    <textarea [(ngModel)]="_PatientDetailReq.comment"
                                               name="comment"
                                               id="comment"
                                               #comment="ngModel"

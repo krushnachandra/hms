@@ -88,6 +88,8 @@ export class PatientDetail extends CommonModel
     RefDate:  string;
     age:  string;
     status:  string;
+    action:string = "0";
+    comment:string;
 }
 
  export class PatientModel extends CommonModel {

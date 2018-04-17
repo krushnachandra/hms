@@ -30,7 +30,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
     patientDetail:PatientDetail[] = [];
-    public _PatientDetailReq: PatientDetailReq = new PatientDetailReq();
+    public _PatientDetailReq: PatientDetail = new PatientDetail();
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
     public _patient: PatientModel = new PatientModel();
@@ -96,7 +96,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
         }).subscribe((res) => {
                  if (res !== undefined) {
                     if (res.Result === 'Success') {
-                        this.toastr.success(res.Result, res.Result);
+                        this.toastr.success('Status changed succssfully.', res.Result);
                     }
                     if (res.Result === 'Failed') {
                         this.toastr.error(res.Result, res.Result);
