@@ -21,18 +21,14 @@
                         <div *ngIf="f.submitted && !name.valid"
                              class="help-block"> *Name is required</div>
                     </div>
-                    <div class="form-group"
-                         [ngClass]="{ 'has-error': f.submitted && !civilid.valid }">
+                    <div class="form-group">
                         <input type="text"
                                [(ngModel)]="_user.civilid"
                                name="civilid"
                                class="form-control input-underline input-lg"
                                #civilid="ngModel"
                                id="civilid"
-                               placeholder="Civil Id"
-                               required>
-                        <div *ngIf="f.submitted && !civilid.valid"
-                             class="help-block"> *Civil Id required</div>
+                               placeholder="Civil Id">
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !email.valid }">
@@ -61,7 +57,7 @@
                              class="help-block"> *Password is required</div>
                     </div>
                     <div class="form-group"
-                         [ngClass]="{ 'has-error': f.submitted && !specialist_id.valid }">
+                         [ngClass]="{ 'has-error': f.submitted && specialist_id !==0 }">
                         <select [(ngModel)]="_user.specialist_id"
                                 name="specialist_id"
                                 id="specialist_id"
@@ -71,9 +67,11 @@
                                 required>
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
+                        <div *ngIf="f.submitted && specialist_id !==0"
+                             class="help-block"> *Specialist is required</div>
                     </div>
                     <div class="form-group"
-                         [ngClass]="{ 'has-error': f.submitted && !hospital_id.valid }">
+                         [ngClass]="{ 'has-error': f.submitted && hospital_id !==0 }">
                         <select [(ngModel)]="_user.hospital_id"
                                 name="hospital_id"
                                 id="hospital_id"
@@ -83,6 +81,8 @@
                                 required>
                         <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                         </select>
+                        <div *ngIf="f.submitted && hospital_id !==0"
+                             class="help-block"> *Hospital is required</div>
                     </div>
 
                 </div>
