@@ -103,6 +103,9 @@ export class GetPatientDetailsComponent1 implements OnInit {
                         this.toastr.error(res.Result, res.Result);
                     }
                 }
+                if (res.Result === 'not authorised to do so') {
+                    this.toastr.error('You not authorised to do so.', res.Result);
+                }
             });
     }
     public reset() {
