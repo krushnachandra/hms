@@ -28,15 +28,30 @@ export class DoctorRagisterComponent implements OnInit {
         private toastr: ToastrService) { }
 
     public ngOnInit() {
+        debugger;
         // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
 
     }
     public getHospitals() {
+        debugger;
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._hospitalService.getHospitals(this._hospital).subscribe(
-            res => this.hospitals = res,
+            (res)=> 
+            {
+                alert(res)
+                debugger;
+                for(let i=0; i<res.length; i++)
+                   {
+                       let hsdata = res[i];
+                       if("0" == "0")
+                       {
+                           this.hospitals.push(Object.assign({Value : ""},hsdata));
+                       }
+                   }
+                //this.hospitals = res
+            },
             error => this.errorMessage = <any>error);
     }
     public getSpecialists() {

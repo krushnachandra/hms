@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
     animations: [routerTransition()]
 })
 export class SignupComponent implements OnInit {
+    Spvalid:boolean=true;
+    Hsvalid:boolean=true;
     errorMessage: any;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
@@ -50,6 +52,17 @@ export class SignupComponent implements OnInit {
     public onRegister() {
         this._user.transactiontype = 'insert';
         this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+
+        if(this._user.hospital_id == 0) 
+        {
+            this.Hsvalid = false;
+        }
+        if(this._user.specialist_id == 0) 
+        {
+            this.Spvalid = false;
+        }
+        if (this.Hsvalid && this.Spvalid)
+        {
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
                 if (res !== undefined) {
@@ -63,8 +76,31 @@ export class SignupComponent implements OnInit {
                     }
                 }
             });
+        }
     }
     public reset() {
         this._user = new User();
     }
+
+    public onspecialist(event) {
+        var value:string = event.target.value;
+        if(value !="0")
+        {
+            this.Spvalid = true;
+        }else
+        {
+            this.Spvalid = false;
+        }
+      }
+
+    public onhospital(event) {
+        var value1:string = event.target.value;
+        if(value1 !="0")
+        {
+            this.Hsvalid = true;
+        }else
+        {
+            this.Hsvalid = false;
+        }
+      }
 }
