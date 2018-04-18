@@ -51,12 +51,14 @@ export class GetPatientDetailsComponent1 implements OnInit {
 
     public getPatientDetails(id:number)
     {
+        debugger;
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getpatientinfo";
         this.refral_id = id.toString();
         this._patientService.getPatientDetails ({'transactiontype': this.transactiontype,
         'sessid': this.sessid,"refral_id": this.refral_id})
         .subscribe((res) => {
+            debugger;
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this.patientDetail = res.data[0];

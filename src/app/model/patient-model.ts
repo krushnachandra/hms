@@ -93,8 +93,8 @@ export class PatientDetail extends CommonModel
 }
 
  export class PatientModel extends CommonModel {
-  referHospitalId: number;
-  speciallistId: number;
+  referHospitalId: number=0;
+  speciallistId: number=0;
   docId: number;
   referConsulutantName: string ;
   admissionDiagnosis: string ;
@@ -158,7 +158,7 @@ export class PatientDetail extends CommonModel
   history: string;
   transactiontype: string;
   sessid: string;
-  RefDate: Date = new Date();
+  RefDate: string = new Date().toLocaleDateString();
   age: number;
   refral_id: number;
   comments: string;
