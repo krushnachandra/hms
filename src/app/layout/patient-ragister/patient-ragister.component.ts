@@ -15,6 +15,8 @@ import { PatientService } from '../../service/patient-service';
     styleUrls: ['./patient-ragister.component.scss']
 })
 export class PatientRagisterComponent implements OnInit {
+    Spvalid:boolean=true;
+    Hsvalid:boolean=true;
     patientDetail: any;
     refral_id: string;
     transactiontype: string;
@@ -88,12 +90,24 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
+        debugger;
         this._patient.transactiontype = 'insert';
         this._patient.sessid = localStorage.getItem('sessid');
         this.created_by = +localStorage.getItem('created_by');
         if (this.created_by !== undefined) {
             this._patient.docId = this.created_by;
         }
+
+        if(this._patient.referHospitalId == 0) 
+        {
+            this.Hsvalid = false;
+        }
+        if(this._patient.speciallistId == 0) 
+        {
+            this.Spvalid = false;
+        }
+
+    if(this.Hsvalid && this.Spvalid){
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
                  if (res !== undefined) {
@@ -106,18 +120,72 @@ export class PatientRagisterComponent implements OnInit {
                     }
                 }
             });
+        }
     }
     public reset() {
         this._patient = new PatientModel();
     }
 
-    public age() {
-        this.cidyy = +this._patient.civilId.substr(1, 2);
-        const c = new Date();
-        this.year = +c.getFullYear();
-        if (this.cidyy <= this.year) {
-            const x = this.year - (1900 + this.cidyy);
-            this._patient.age = x;
+    public onCivilIdChange(val)
+    {
+        if(val.length >= 12)
+        {
+            this.cidyy = +val.substr(1, 2);//+this._patient.civilId.substr(1, 2);
+            const c = new Date();
+            this.year = +c.getFullYear();
+            let smallYear:number = +c.getFullYear().toString().substr(-2);
+
+            if(this.cidyy <= smallYear)
+            {
+                const x = this.year - (2000 + this.cidyy);
+                this._patient.age = x;
             }
+            else //if (this.cidyy <= this.year) 
+            {
+                const x = this.year - (1900 + this.cidyy);
+                this._patient.age = x;
+            }
+        }
+        else
+        {
+            this.toastr.error("Enter 12 digit CivilId.", "Error");
+        }
     }
+
+    public onEVMChanged()
+    {
+        debugger;
+        let E:string = "0";
+        let V:string = "0";
+        let M:string = "0";
+
+        E = this._patient.e == undefined ? E : this._patient.e.substr(0,1);
+        V = this._patient.v == undefined ? V : this._patient.v.substr(0,1);
+        M = this._patient.m == undefined ? M : this._patient.m.substr(0,1);
+
+        let totalscore:number = parseInt(E)+parseInt(V)+parseInt(M);
+        this._patient.totalscore = totalscore.toString()+"/15";
+    }
+
+    public onspecialist(event) {
+        var value:string = event.target.value;
+        if(value !="0")
+        {
+            this.Spvalid = true;
+        }else
+        {
+            this.Spvalid = false;
+        }
+      }
+
+    public onhospital(event) {
+        var value1:string = event.target.value;
+        if(value1 !="0")
+        {
+            this.Hsvalid = true;
+        }else
+        {
+            this.Hsvalid = false;
+        }
+      }
 }

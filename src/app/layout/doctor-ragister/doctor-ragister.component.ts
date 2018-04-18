@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 export class DoctorRagisterComponent implements OnInit {
     created_by: number;
     errorMessage: any;
+    Spvalid:boolean=true;
+    Hsvalid:boolean=true;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
     public _specialist: SpecialistModel = new SpecialistModel();
@@ -38,19 +40,7 @@ export class DoctorRagisterComponent implements OnInit {
         debugger;
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._hospitalService.getHospitals(this._hospital).subscribe(
-            (res)=> 
-            {
-                debugger;
-                for(let i=0; i<res.length; i++)
-                   {
-                       let hsdata = res[i];
-                       if("0" == "0")
-                       {
-                           this.hospitals.push(Object.assign({Value : ""},hsdata));
-                       }
-                   }
-                //this.hospitals = res
-            },
+            res => this.hospitals = res,
             error => this.errorMessage = <any>error);
     }
     public getSpecialists() {
@@ -64,9 +54,20 @@ export class DoctorRagisterComponent implements OnInit {
         this._user.transactiontype = 'insert';
         this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this.created_by = +localStorage.getItem('created_by');
+        
         if (this.created_by !== NaN) {
             this._user.created_by = this.created_by;
         }
+        if(this._user.hospital_id == 0) 
+        {
+            this.Hsvalid = false;
+        }
+        if(this._user.specialist_id == 0) 
+        {
+            this.Spvalid = false;
+        }
+        if (this.Hsvalid && this.Spvalid)
+        {
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
                  if (res !== undefined) {
@@ -79,8 +80,30 @@ export class DoctorRagisterComponent implements OnInit {
                     }
                 }
             });
-    }
+          }
+         }
     public reset() {
         this._user = new User();
     }
+    public onspecialist(event) {
+        var value:string = event.target.value;
+        if(value !="0")
+        {
+            this.Spvalid = true;
+        }else
+        {
+            this.Spvalid = false;
+        }
+      }
+
+    public onhospital(event) {
+        var value1:string = event.target.value;
+        if(value1 !="0")
+        {
+            this.Hsvalid = true;
+        }else
+        {
+            this.Hsvalid = false;
+        }
+      }
 }

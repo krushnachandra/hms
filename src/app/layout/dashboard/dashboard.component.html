@@ -19,13 +19,12 @@
                                     <th>#</th>
                                     <th>Patient Name</th>
                                     <th>Hospital Name</th>
-
                                     <th>Age</th>
                                     <th>Referal Date</th>
                                     <th>Diagnosis Sample</th>
                                     <th>Referal Status</th>
-                                    <th>View</th>
-                                    <th>Action</th>
+                                    <th *ngIf="docType===true">View</th>
+                                    <th *ngIf="docType===true">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -37,8 +36,12 @@
                                     <td>{{patient.referringDate}}</td>
                                     <td>{{patient.admissionDiagnosis}}</td>
                                     <td>{{patient.status}}</td>
-                                    <td><a [routerLink]="['/getpatientdetails']" [queryParams]="{patid:patient.refralFromid}">View</a></td>
-                                    <td><a [routerLink]="['/patient-register']" [queryParams]="{patid:patient.refralFromid}">{{patient.action}}</a></td>
+                                    <td *ngIf="docType===true">
+                                        <a [routerLink]="['/getpatientdetails']" [queryParams]="{patid:patient.refralFromid}" >View</a>
+                                    </td>
+                                    <td *ngIf="docType===true">
+                                        <a [routerLink]="['/patient-register']" [queryParams]="{patid:patient.refralFromid}" >{{patient.action}}</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

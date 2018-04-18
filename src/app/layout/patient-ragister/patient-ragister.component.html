@@ -26,9 +26,10 @@
                                                 #RefDate="ngModel"
                                                 id="RefDate" class="form-control" type="text" readonly>
                                     </div>
-                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && speciallistId !==0 }">
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !speciallistId.valid }">
                                     <label>Referring Speciality<span>*</span></label>
                                     <select [(ngModel)]="_patient.speciallistId"
+                                    (change)="onspecialist($event)"
                                             name="speciallistId"
                                             id="speciallistId"
                                             #speciallistId="ngModel"
@@ -37,13 +38,14 @@
                                             required>
                                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                                     </select>
-                                    <div *ngIf="f.submitted && speciallistId !==0"
-                                         class="help-block"> *Specialist is required</div>
+                                    <div *ngIf="f.submitted &&  Spvalid == false"
+                                         class="help-block" style="color:red"> *Specialist is required</div>
                                 </div>
                                 <div class="form-group"
-                                 [ngClass]="{ 'has-error': f.submitted && referHospitalId !==0 }">
+                                 [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">
                                 <label>Referring Hospital<span>*</span></label>
                                 <select [(ngModel)]="_patient.referHospitalId"
+                                (change)="onhospital($event)"
                                         name="referHospitalId"
                                         id="referHospitalId"
                                         #referHospitalId="ngModel"
@@ -52,8 +54,8 @@
                                         required>
                                     <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                                 </select>
-                                <div *ngIf="f.submitted && referHospitalId !==0"
-                                     class="help-block"> *Specialist is required</div>
+                                <div *ngIf="f.submitted && Hsvalid === false"
+                                     class="help-block" style="color:red"> *Specialist is required</div>
                             </div>
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admissionDiagnosis.valid }">
                                 <label>Admission diagnosis</label>
@@ -91,7 +93,9 @@
                                        [(ngModel)]="_patient.civilId"
                                        name="civilId"
                                        #civilId="ngModel"
-                                       id="civilId" required>
+                                       id="civilId" 
+                                       (blur)="onCivilIdChange($event.target.value)"
+                                       required>
                                         <div *ngIf="f.submitted && !civilId.valid"
                                              class="help-block"> *CivilId is required</div>
                             </div>
@@ -106,7 +110,7 @@
                                                  class="help-block"> *age is required</div>
                                 </div>
 
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !f.gender.valid }">
                                 <label>Gender</label>
                                 <label class="radio-inline">
                                     <input type="radio"
@@ -114,7 +118,7 @@
                                            value="Male"
                                            name="gender"
                                            #gender="ngModel"
-                                           id="gender">Male
+                                           id="gender" checked>Male
                                 </label>
                                 <label class="radio-inline">
                                     <input type="radio"
@@ -198,7 +202,9 @@
                                 <select class="form-control" [(ngModel)]="_patient.e"
                                       name="e"
                                       #e="ngModel"
-                                      id="e">
+                                      id="e"
+                                      (change)="onEVMChanged()"
+                                      >
                                   <option value="1/4">1/4</option>
                                   <option value="2/4">2/4</option>
                                   <option value="3/4">3/4</option>
@@ -208,24 +214,27 @@
                               <select class="form-control" [(ngModel)]="_patient.v"
                               name="v"
                               #v="ngModel"
-                              id="v">
-                          <option value="1">1/5</option>
-                          <option value="2">2/5</option>
-                          <option value="3">3/5</option>
-                          <option value="4">4/5</option>
-                          <option value="4">5/5</option>
+                              id="v"
+                              (change)="onEVMChanged()">
+                          <option value="1/5">1/5</option>
+                          <option value="2/5">2/5</option>
+                          <option value="3/5">3/5</option>
+                          <option value="4/5">4/5</option>
+                          <option value="5/5">5/5</option>
                       </select>
                       <label>M</label>
                       <select class="form-control" [(ngModel)]="_patient.m"
                               name="m"
                               #m="ngModel"
-                              id="m">
-                          <option value="1">1/6</option>
-                          <option value="2">2/6</option>
-                          <option value="3">3/6</option>
-                          <option value="4">4/6</option>
-                          <option value="5">5/6</option>
-                          <option value="5">6/6</option>
+                              id="m"
+                              (change)="onEVMChanged()"
+                              >
+                          <option value="1/6">1/6</option>
+                          <option value="2/6">2/6</option>
+                          <option value="3/6">3/6</option>
+                          <option value="4/6">4/6</option>
+                          <option value="5/6">5/6</option>
+                          <option value="6/6">6/6</option>
                       </select>
                             </div>
                             <div class="form-group">
@@ -235,7 +244,7 @@
                                        [(ngModel)]="_patient.totalscore"
                                        name="totalscore"
                                        #totalscore="ngModel"
-                                       id="totalscore">
+                                       id="totalscore" readonly>
                             </div>
 
                             <label for="disabledSelect" class="col-12"><u>Ventilation</u></label>
@@ -690,7 +699,7 @@
                                        id="bloodgasHCO3">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <input class="form-control" placeholder="BE"
                                        type="text"
                                        [(ngModel)]="_patient.bloodgasBE"
@@ -702,19 +711,19 @@
                                     <label for="disabledSelect">Refral Designation</label>
                                     <input class="form-control" placeholder="Refral Designation"
                                            type="text"
-                                           [(ngModel)]="_patient.designation"
-                                           name="designation"
+                                           [(ngModel)]="_patient.refdocdesignation"
+                                           name="refdocdesignation"
                                            #designation="ngModel"
-                                           id="designation">
+                                           id="refdocdesignation">
                                 </div>
                                 <div class="form-group">
                                         <label for="disabledSelect">Refral Telephone</label>
-                                        <input class="form-control" placeholder=" Refral Ttelephone"
+                                        <input class="form-control" placeholder=" Refral Telephone"
                                                type="text"
-                                               [(ngModel)]="_patient.telephone"
-                                               name="telephone"
+                                               [(ngModel)]="_patient.refdoctelephone"
+                                               name="refdoctelephone"
                                                #Inotropesdose2="ngModel"
-                                               id="telephone">
+                                               id="refdoctelephone">
                                     </div>
 
                             <button type="submit" class="btn btn-default">Submit Button</button>

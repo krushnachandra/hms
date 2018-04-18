@@ -50,7 +50,7 @@ export class DoctorListComponent implements OnInit {
                        {
                             res.data[i]["status"] ="Approved";
                        }
-                       else if(res.data[i]["status"] == 0)
+                       else if(res.data[i]["status"] == 2)
                        {
                             res.data[i]["status"] ="Rejected";
                        }

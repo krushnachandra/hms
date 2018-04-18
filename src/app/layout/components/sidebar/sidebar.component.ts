@@ -25,11 +25,17 @@ export class SidebarComponent {
             }
         });
        this.user_type = +localStorage.getItem('user_type');
-       debugger;
-        if (this.user_type === 1) {
-        this._sideMenu = [{url: '/doctorList', menuText: 'Doctor List'}, {url: '/doctor-register', menuText: 'Doctor Register'}];
-        } else {
+        if (this.user_type === 1 || this.user_type === 4) 
+        {
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'},{url: '/doctorList', menuText: 'Doctor List'}, {url: '/doctor-register', menuText: 'Doctor Register'},{url: '/patient-register', menuText: 'Patient Register'}];
+        }
+        else if (this.user_type === 3)
+        {
             this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}, {url: '/patient-register', menuText: 'Patient Register'}];
+        }
+        else
+        {
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}];
         }
     }
 
