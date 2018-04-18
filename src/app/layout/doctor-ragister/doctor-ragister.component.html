@@ -60,6 +60,7 @@
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && specialist_id !==0 }">
                         <select [(ngModel)]="_user.specialist_id"
+                             (change)="onspecialist($event)"
                                 name="specialist_id"
                                 id="specialist_id"
                                 #specialist_id="ngModel"
@@ -68,22 +69,23 @@
                                 required>
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
-                        <div *ngIf="f.submitted && specialist_id !==0"
-                             class="help-block"> *Specialist is required</div>
+                        <div *ngIf="f.submitted && Spvalid == false"
+                             class="help-block" style="color: red;"> *Specialist is required</div>
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && hospital_id !==0 }">
                         <select [(ngModel)]="_user.hospital_id"
+                               (change)="onhospital($event)"
                                 name="hospital_id"
                                 id="hospital_id"
                                 #hospital_id="ngModel"
-                                placeholder="Hospital Name"
                                 class="form-control"
+                                placeholder="Hospital Name"
                                 required>
                         <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                         </select>
-                        <div *ngIf="f.submitted && hospital_id !==0"
-                             class="help-block"> *Hospital is required</div>
+                        <div *ngIf="f.submitted && Hsvalid === false"
+                             class="help-block" style="color: red;"> *Hospital is required</div>
                     </div>
 
                 </div>
