@@ -18,6 +18,8 @@ const routes: Routes = [
             { path: 'doctor-register', loadChildren: './doctor-ragister/doctor-ragister.module#DoctorRagisterModule' },
             { path: 'patient-register', loadChildren: './patient-ragister/patient-ragister.module#PatientRagisterModule' },
             { path: 'doctorList', loadChildren: './doctorList/doctorList.module#DoctorListModule' },
+            { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
+            { path: 'change-password', loadChildren: './change-password/change-password.module#ChangePasswordModule' },
             { path: 'getpatientdetails', loadChildren: './patient-ragister/getpatientdetails/getpatientdetails.module#GetPatientDetailsModule' }
         ]
     }
