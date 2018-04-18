@@ -163,4 +163,6 @@ export class PatientDetail extends CommonModel
   refral_id: number;
   comments: string;
   action: number;
+  telephone: number;
+  designation: string;
 }
