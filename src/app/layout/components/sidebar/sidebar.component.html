@@ -1,17 +1,17 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+        <a *ngFor='let menu of _sideMenu ' routerLink="{{menu.url}}" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ menu.menuText}}
         </a>
-        <a [routerLink]="['/doctorList']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Doctor List' | translate }}
+        <!-- <a [routerLink]="['/doctorList']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Doctor List'}}
         </a>
         <a [routerLink]="['/doctor-register']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Doctor Registration' | translate }}
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Doctor Registration'}}
         </a>
         <a [routerLink]="['/patient-register']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Patient Registration' | translate }}
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Patient Registration'}}
         </a>
-        
+         -->
     </div>
 </nav>

@@ -8,17 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+    user_type: number;
     isActive: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
+    _sideMenu: SideMenu[];
 
     constructor(private translate: TranslateService, public router: Router) {
-        this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
-        this.translate.setDefaultLang('en');
-        const browserLang = this.translate.getBrowserLang();
-        this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
-
-        this.router.events.subscribe(val => {
+       this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
                 window.innerWidth <= 992 &&
@@ -27,6 +24,13 @@ export class SidebarComponent {
                 this.toggleSidebar();
             }
         });
+       this.user_type = +localStorage.getItem('user_type');
+       debugger;
+        if (this.user_type === 1) {
+        this._sideMenu = [{url: '/doctorList', menuText: 'Doctor List'}, {url: '/doctor-register', menuText: 'Doctor Register'}];
+        } else {
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}, {url: '/patient-register', menuText: 'Patient Register'}];
+        }
     }
 
     eventCalled() {
@@ -63,4 +67,8 @@ export class SidebarComponent {
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
     }
+}
+class SideMenu {
+    url: string;
+    menuText: string;
 }

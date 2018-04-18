@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem('user', res.data.name);
                         localStorage.setItem('sessid', res.data.sessid);
                         localStorage.setItem('created_by', res.data.docid);
+                        localStorage.setItem('user_type', res.data.docid);
                         this.router.navigateByUrl('dashboard');
                     }
                     if (res.Result === 'FAILED') {
