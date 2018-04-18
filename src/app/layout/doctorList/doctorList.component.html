@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    
+
     <div class="row">
         <div class="col col-xl-12 col-lg-12">
             <div class="card mb-3">
@@ -31,11 +31,29 @@
                                     <td>{{doctor.regdate}}</td>
                                     <td>{{doctor.status}}</td>
                                     <td>
-                                        <input type="button" value="APPROVE" (click)="DocActionA(doctor)" class="btn btn-primary">
+                                        <div *ngIf="doctor.status==='New'">
+                                            <input type="button"
+                                                   value="APPROVE"
+                                                   (click)="DocActionA(doctor)"
+                                                   class="btn btn-primary">
+                                            <input type="button"
+                                                   value="DISAPPROVE"
+                                                   (click)="DocActionD(doctor)"
+                                                   class="btn btn-danger">
+                                        </div>
+                                        <div  *ngIf="doctor.status==='Approved'">
+                                            <input type="button"
+                                                   value="DISAPPROVE"
+                                                   (click)="DocActionD(doctor)"
+                                                   class="btn btn-danger">
+                                        </div>
+                                        <div *ngIf="doctor.status==='Rejected'">
+                                            <input type="button"
+                                                   value="APPROVE"
+                                                   (click)="DocActionA(doctor)"
+                                                   class="btn btn-primary">
+                                        </div>
                                     </td>
-                                    <td>
-                                            <input type="button" value="DISAPPROVE" (click)="DocActionD(doctor)" class="btn btn-danger">
-                                        </td>
                         </tr>
                         </tbody>
                     </table>
