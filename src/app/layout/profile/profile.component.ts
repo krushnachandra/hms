@@ -16,6 +16,10 @@ import { Router } from '@angular/router';
     animations: [routerTransition()]
 })
 export class ProfileComponent implements OnInit {
+    username: string;
+    email: string;
+    hospital_id: string;
+    specialist_id: string;
     Spvalid = true;
     Hsvalid = true;
     errorMessage: any;
@@ -28,13 +32,22 @@ export class ProfileComponent implements OnInit {
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
         private _specialistService: SpecialistService,
-        private toastr: ToastrService) { }
+        private toastr: ToastrService) {
+        this.specialist_id = localStorage.getItem('specialist_id');
+        this.hospital_id = localStorage.getItem('hospital_id');
+        this.email = localStorage.getItem('email');
+       this.username = localStorage.getItem('user');
+         }
 
     public ngOnInit() {
         // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
-
+        this._user.specialist_id = +this.specialist_id;
+        this._user.hospital_id = +this.hospital_id;
+        this._user.email = this.email;
+        this._user.name = this.username;
+        debugger;
     }
     public getHospitals() {
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
@@ -49,8 +62,8 @@ export class ProfileComponent implements OnInit {
             error => this.errorMessage = <any>error
         );
     }
-    public onRegister() {
-        this._user.transactiontype = 'insert';
+    public onSave() {
+        this._user.transactiontype = 'updateuser';
         this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
 
         if (this._user.hospital_id === 0) {

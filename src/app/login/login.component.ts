@@ -31,6 +31,12 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem('sessid', res.data.sessid);
                         localStorage.setItem('created_by', res.data.docid);
                         localStorage.setItem('user_type', res.data.user_type);
+                        localStorage.setItem('hospitalname', res.data.hospitalname);
+                        localStorage.setItem('hospital_id', res.data.hospital_id);
+                        localStorage.setItem('specialist', res.data.specialist);
+                        localStorage.setItem('specialist_id', res.data.specialist_id);
+                        localStorage.setItem('phone', res.data.phone);
+                        localStorage.setItem('email', res.data.email);
                         this.router.navigateByUrl('dashboard');
                     }
                     if (res.Result === 'FAILED') {

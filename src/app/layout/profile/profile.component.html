@@ -1,15 +1,13 @@
-<div
-     [@routerTransition]>
+<div>
     <div class="container justify-content-md-center">
         <div class="col-4 offset-4">
             <h1>Register</h1>
             <form role="form"
                   #f="ngForm"
-                  (ngSubmit)="f.form.valid && onRegister()"
+                  (ngSubmit)="f.form.valid && onSave()"
                   novalidate>
                 <div class="form-content">
-                    <div class="form-group"
-                         [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                    <div class="form-group">
                         <input type="text"
                                [(ngModel)]="_user.name"
                                name="name"
@@ -17,24 +15,21 @@
                                #name="ngModel"
                                id="name"
                                placeholder="Full Name"
-                               autocomplete="off"
-                               required>
-                        <div *ngIf="f.submitted && !name.valid"
-                             class="help-block"> *Name is required</div>
+                               autocomplete="off">
                     </div>
                     <div class="form-group">
                         <input type="text"
-                               [(ngModel)]="_user.civilid"
-                               name="civilid"
+                               [(ngModel)]="_user.phone"
+                               name="phone"
                                class="form-control input-underline input-lg"
-                               #civilid="ngModel"
-                               id="civilid"
+                               #phone="ngModel"
+                               id="phone"
+                               placeholder="Phone Number"
                                autocomplete="off"
-                               placeholder="Civil Id">
+                               pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$">
                     </div>
-                    <div class="form-group"
-                         [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-                        <input type="text"
+                    <div class="form-group">
+                        <input type="email"
                                [(ngModel)]="_user.email"
                                name="email"
                                class="form-control input-underline input-lg"
@@ -43,23 +38,8 @@
                                placeholder="Email"
                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                                autocomplete="off"
-                               required>
-                        <div *ngIf="f.submitted && !email.valid"
-                             class="help-block"> *Email is not valid</div>
-                    </div>
-                    <div class="form-group"
-                         [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-                        <input type="password"
-                               [(ngModel)]="_user.password"
-                               name="password"
-                               class="form-control input-underline input-lg"
-                               id="password"
-                               #password="ngModel"
-                               placeholder="Password"
-                               required>
-                        <div *ngIf="f.submitted && !password.valid"
-                             class="help-block"> *Password is required</div>
-                    </div>
+                               readonly>
+                    </div>                    
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !specialist_id.valid}">
                         <select [(ngModel)]="_user.specialist_id"
@@ -69,7 +49,7 @@
                                 #specialist_id="ngModel"
                                 class="form-control"
                                 placeholder="Confirm Password"
-                                required>
+                                [disabled]="true">
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
                         <div *ngIf="f.submitted && Spvalid == false"
@@ -84,7 +64,7 @@
                                 #hospital_id="ngModel"
                                 placeholder="Hospital Name"
                                 class="form-control"
-                                required>
+                                [disabled]="true">
                         <option *ngFor="let hospital of hospitals" value="{{hospital.Value}}" >{{hospital.Text}} </option>
                         </select>
                         <div *ngIf="f.submitted && Hsvalid === false"
@@ -93,10 +73,7 @@
 
                 </div>
                 <button type="submit"
-                        class="btn  btn-primary"> Register </button>&nbsp;
-
-                <a class="btn btn-primary"
-                   [routerLink]="['/login']"> Log in </a>
+                        class="btn  btn-primary"> Save </button>&nbsp;
             </form>
         </div>
     </div>
