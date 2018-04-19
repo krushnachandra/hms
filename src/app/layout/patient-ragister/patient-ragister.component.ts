@@ -122,6 +122,7 @@ export class PatientRagisterComponent implements OnInit {
     }
     public reset() {
         this._patient = new PatientModel();
+        this._patient.referConsulutantName = localStorage.getItem('user');
     }
 
     public onCivilIdChange(val)
