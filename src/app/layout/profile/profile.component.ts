@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
     animations: [routerTransition()]
 })
 export class ProfileComponent implements OnInit {
+    phone: string;
     username: string;
     email: string;
     hospital_id: string;
@@ -36,6 +37,7 @@ export class ProfileComponent implements OnInit {
         this.specialist_id = localStorage.getItem('specialist_id');
         this.hospital_id = localStorage.getItem('hospital_id');
         this.email = localStorage.getItem('email');
+        this.phone = localStorage.getItem('phone');
        this.username = localStorage.getItem('user');
          }
 
@@ -46,9 +48,9 @@ export class ProfileComponent implements OnInit {
         this._user.specialist_id = +this.specialist_id;
         this._user.hospital_id = +this.hospital_id;
         this._user.email = this.email;
+        this._user.phone = this.phone;
         this._user.name = this.username;
-        this._user.password = '';
-        this._user.oldpassword = '';
+        this._user.docid = localStorage.getItem('created_by');
     }
     public getHospitals() {
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
@@ -65,8 +67,7 @@ export class ProfileComponent implements OnInit {
     }
     public onSave() {
         this._user.transactiontype = 'updateuser';
-        this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-
+        this._user.sessid = localStorage.getItem('sessid');
         if (this._user.hospital_id === 0) {
             this.Hsvalid = false;
         }
@@ -76,16 +77,13 @@ export class ProfileComponent implements OnInit {
         if (this.Hsvalid && this.Spvalid) {
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
+                debugger;
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
-                        this.reset();
-                        this.router.navigateByUrl('login');
+                        //this.reset();
                     }
                     if (res.Result === 'failed') {
-                        this.toastr.error(res.Result, res.Result);
-                    }
-                    if (res.Result === 'Email already exists.Please check') {
                         this.toastr.error(res.Result, res.Result);
                     }
                 }

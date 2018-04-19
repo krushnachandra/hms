@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { CommonModel } from './common-model';
 
 export class User  extends CommonModel {
+    docid: string;
     civilid: number;
     name: string;
     email: string;

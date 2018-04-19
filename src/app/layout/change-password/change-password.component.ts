@@ -16,51 +16,21 @@ import { Router } from '@angular/router';
     animations: [routerTransition()]
 })
 export class ChangePasswordComponent implements OnInit {
-    Spvalid = true;
-    Hsvalid = true;
-    errorMessage: any;
-    specialists: Array<SpecialistModel>;
-    hospitals: Array<HospitalModel>;
-    public _specialist: SpecialistModel = new SpecialistModel();
-    public _hospital: HospitalModel = new HospitalModel();
-    public _user: User = new User();
+    public output: any;
+    public updatePasswordData: User = new User();
     constructor(public router: Router,
         private _authenticationService: AuthenticationService,
-        private _hospitalService: HospitalService,
-        private _specialistService: SpecialistService,
         private toastr: ToastrService) { }
 
     public ngOnInit() {
         // call the method on initial load of page to bind drop down
-        this.getHospitals();
-        this.getSpecialists();
 
     }
-    public getHospitals() {
-        this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-        this._hospitalService.getHospitals(this._hospital).subscribe(
-            res => this.hospitals = res,
-            error => this.errorMessage = <any>error);
-    }
-    public getSpecialists() {
-        this._specialist.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-        this._specialistService.getSpecialists(this._specialist).subscribe(
-            res => this.specialists = res,
-            error => this.errorMessage = <any>error
-        );
-    }
-    public onRegister() {
-        this._user.transactiontype = 'insert';
-        this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+    public onSubmit() {
+        this.updatePasswordData.transactiontype = 'insert';
+        this.updatePasswordData.sessid = localStorage.getItem('sessid');
 
-        if (this._user.hospital_id === 0) {
-            this.Hsvalid = false;
-        }
-        if (this._user.specialist_id === 0) {
-            this.Spvalid = false;
-        }
-        if (this.Hsvalid && this.Spvalid) {
-        this._authenticationService.DoctorRegister(this._user)
+            this._authenticationService.DoctorRegister(this.updatePasswordData)
             .subscribe((res) => {
                 if (res !== undefined) {
                     if (res.Result === 'success') {
@@ -76,7 +46,6 @@ export class ChangePasswordComponent implements OnInit {
                     }
                 }
             });
-        }
     }
     public reset() {
         this._user = new User();

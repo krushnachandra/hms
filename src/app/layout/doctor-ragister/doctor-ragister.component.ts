@@ -52,11 +52,8 @@ export class DoctorRagisterComponent implements OnInit {
     }
     public onRegister() {
         this._user.transactiontype = 'insert';
-        this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+        this._user.sessid = localStorage.getItem('sessid');
         this.created_by = +localStorage.getItem('created_by');
-        
-        
-        
         if (this.created_by !== NaN) {
             this._user.created_by = this.created_by;
         }
