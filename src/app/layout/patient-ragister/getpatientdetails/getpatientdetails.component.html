@@ -646,8 +646,8 @@
                               #f="ngForm"
                               class="row"
                               (ngSubmit)="f.form.valid && onApproved()"
-                              novalidate>
-                                <div class="form-group col-6">
+                              novalidate  *ngIf="docType===true">
+                                <div class="form-group col-6" *ngIf="docType===true">
                                     <label for="disabledSelect">Action</label>
                                     <select class="form-control" [(ngModel)]="_PatientDetailReq.action"
                                     name="action"

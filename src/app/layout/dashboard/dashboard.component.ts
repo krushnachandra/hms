@@ -14,7 +14,6 @@ export class DashboardComponent implements OnInit {
     statusCount: any;
 
     docType:boolean;
-    icu:boolean;
     sessid: string;
     errorMessage: any;
     patients: PatientModelList[] = [];//PatientModel[];
@@ -25,10 +24,9 @@ export class DashboardComponent implements OnInit {
     constructor(private _patientService: PatientService) {
        this.sessid = localStorage.getItem('sessid');
        debugger;
-       if( localStorage.getItem('user_type') == "1" || localStorage.getItem('user_type') == "4" || localStorage.getItem('user_type') == "2")
+       if( localStorage.getItem('user_type') == "1" || localStorage.getItem('user_type') == "4" )
        {
        this. docType=true;
-       this. icu=true;
        }
        else
        {

@@ -25,6 +25,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
     refral_id: string;
     patientid:any;
     pageNum=0;
+    docType:boolean;
     created_by: number;
     errorMessage: any;
     specialists: Array<SpecialistModel>;
@@ -39,8 +40,17 @@ export class GetPatientDetailsComponent1 implements OnInit {
         private _hospitalService: HospitalService,
         private _specialistService: SpecialistService,
         private toastr: ToastrService,private _activatedRoute: ActivatedRoute,private _patientService:PatientService) { }
-
+        
     public ngOnInit() {
+        debugger;
+        if( localStorage.getItem('user_type') == "1" || localStorage.getItem('user_type') == "4" )
+        {
+        this. docType=true;
+        }
+        else
+        {
+         this. docType=false;
+        }
         this.getHospitals();
         this.getSpecialists();
         this.patientid = this._activatedRoute.queryParams
