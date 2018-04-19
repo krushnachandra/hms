@@ -28,12 +28,7 @@
                     <i class="fa fa-user"></i>{{username}} <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
-                        <a class="dropdown-item" [routerLink]="['/profile']">
-                            <i class="fa fa-fw fa-address-book-o"></i> Profile'
-                        </a>
-                        <a class="dropdown-item" [routerLink]="['/change-password']">
-                            <i class="fa fa-fw fa-address-book-o"></i> Change Password
-                        </a>
+                       
                     <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
                         <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
                     </a>

@@ -23,7 +23,7 @@
                                     <th>Referal Date</th>
                                     <th>Diagnosis Sample</th>
                                     <th>Referal Status</th>
-                                    <th *ngIf="docType===true">View</th>
+                                    <th *ngIf="docType===true || icu == true">View</th>
                                     <th *ngIf="docType===true">Action</th>
                                 </tr>
                                 </thead>
@@ -36,7 +36,7 @@
                                     <td>{{patient.referringDate}}</td>
                                     <td>{{patient.admissionDiagnosis}}</td>
                                     <td>{{patient.status}}</td>
-                                    <td *ngIf="docType===true">
+                                    <td *ngIf="docType===true || icu == true">
                                         <a [routerLink]="['/getpatientdetails']" [queryParams]="{patid:patient.refralFromid}" >View</a>
                                     </td>
                                     <td *ngIf="docType===true">
