@@ -47,7 +47,8 @@ export class ProfileComponent implements OnInit {
         this._user.hospital_id = +this.hospital_id;
         this._user.email = this.email;
         this._user.name = this.username;
-        debugger;
+        this._user.password = '';
+        this._user.oldpassword = '';
     }
     public getHospitals() {
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
@@ -97,7 +98,7 @@ export class ProfileComponent implements OnInit {
 
     public onspecialist(event) {
         var value:string = event.target.value;
-        if(value !="0")
+        if(value != "0")
         {
             this.Spvalid = true;
         }else
@@ -108,7 +109,7 @@ export class ProfileComponent implements OnInit {
 
     public onhospital(event) {
         var value1:string = event.target.value;
-        if(value1 !="0")
+        if(value1 != "0")
         {
             this.Hsvalid = true;
         }else

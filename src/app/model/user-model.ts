@@ -8,6 +8,7 @@ export class User  extends CommonModel {
     email: string;
     phone: string;
     password: string;
+    oldpassword: string;
     hospital_id: number=0;
     specialist_id: number=0;
     user_type: string;
