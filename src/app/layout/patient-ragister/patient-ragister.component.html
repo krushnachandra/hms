@@ -58,13 +58,16 @@
                                      class="help-block" style="color:red"> *Specialist is required</div>
                             </div>
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admissionDiagnosis.valid }">
-                                <label>Admission diagnosis</label>
+                                <label class="control-label">Admission diagnosis<span>*</span></label>
                                 <textarea [(ngModel)]="_patient.admissionDiagnosis"
                                           name="admissionDiagnosis"
                                           id="admissionDiagnosis"
                                           #admissionDiagnosis="ngModel"
                                           id="admissionDiagnosis"
-                                          class="form-control" rows="3"></textarea>
+                                          class="form-control" rows="3" required></textarea>
+                                <span class="help-block "*ngIf="f.submitted && admissionDiagnosis.errors?.required">
+                                        *Admission diagnosis is required
+                                          </span>
                             </div>
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !history.valid }">
                                 <label>History(including comorbidities)</label>
@@ -110,15 +113,16 @@
                                                  class="help-block"> *age is required</div>
                                 </div>
 
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !f.gender.valid }">
-                                <label>Gender</label>
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && gender.invalid }">
+                                <label class="control-label" >Gender<span>*</span></label>
+                                <div class="form-control">
                                 <label class="radio-inline">
                                     <input type="radio"
                                            [(ngModel)]="_patient.gender"
                                            value="Male"
                                            name="gender"
                                            #gender="ngModel"
-                                           id="gender" checked>Male
+                                           id="gender" required>Male
                                 </label>
                                 <label class="radio-inline">
                                     <input type="radio"
@@ -126,10 +130,14 @@
                                            value="Female"
                                            name="gender"
                                            #gender="ngModel"
-                                           id="gender">Female
+                                           id="gender" required>Female
                                 </label>
-                                <div *ngIf="f.submitted && !gender.valid"
-                                     class="help-block"> *gender is required</div>
+                                </div>
+                                <span class="help-block "*ngIf="f.submitted && gender.errors?.required">
+                                        *gender is required
+                                </span>
+                                <!-- <div *ngIf="f.submitted && gender.invalid"
+                                     class="help-block"> *gender is required</div> -->
                             </div>
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !unit.valid }">
                                 <label for="disabledSelect">Unit</label>
@@ -160,15 +168,17 @@
                                        id="bed">
                             </div>
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fileNo.valid }">
-                                <label for="disabledSelect">File no</label>
+                                <label  class="control-label" >File no<span>*</span></label>
                                 <input class="form-control"
                                        type="text"
                                        [(ngModel)]="_patient.fileNo"
                                        name="fileNo"
                                        #fileNo="ngModel"
-                                       id="fileNo">
-                                    <div *ngIf="f.submitted && !fileNo.valid"
-                                         class="help-block"> *fileNo is required</div>
+                                       id="fileNo" required>
+
+                                       <span class="help-block "*ngIf="f.submitted && fileNo.errors?.required">
+                                            *fileNo is required
+                                              </span>
                             </div>
                           </div>
                           <div class="clearfix col-12"><hr></div>
