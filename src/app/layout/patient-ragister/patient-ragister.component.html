@@ -258,44 +258,57 @@
                             </div>
 
                             <label for="disabledSelect" class="col-12"><u>Ventilation</u></label>
-                            <div class="form-group">
-                                <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
-                                <input class="form-control" placeholder="Days"
-                                       type="text"
-                                       [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
-                                       name="durOfConventianalMechanicalVentination"
-                                       #durOfConventianalMechanicalVentination="ngModel"
-                                       id="durOfConventianalMechanicalVentination">
-                            </div>
-                            <div class="form-group">
-                                <label for="disabledSelect">SPO2 %</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.spO2"
-                                       name="spO2"
-                                       id="spO2"
-                                       #spO2="ngModel">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="disabledSelect">PO2 %</label>
-                                <input class="form-control" placeholder="mmHg"
-                                       type="text"
-                                       [(ngModel)]="_patient.pO2"
-                                       name="pO2"
-                                       #pO2="ngModel"
-                                       id="pO2">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="disabledSelect">FIO2 %</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.fiO2"
-                                       name="fiO2"
-                                       #fiO2="ngModel"
-                                       id="fiO2">
-                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !durOfConventianalMechanicalVentination.valid }">
+                                    <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
+                                    <input class="form-control" placeholder="Days" type="text"
+                                           [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
+                                           name="durOfConventianalMechanicalVentination"
+                                           #durOfConventianalMechanicalVentination="ngModel"
+                                           id="durOfConventianalMechanicalVentination" required>
+                                           <span class="help-block "*ngIf="f.submitted && durOfConventianalMechanicalVentination.errors?.required">
+                                            *Duraton of conventional mechanical ventination is required
+                                              </span>
+                                </div>
+                           							
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">
+                        <label for="disabledSelect">SPO2 %<span>*</span></label>							
+                        <input class="form-control" placeholder="Spo2" 
+                            type="text"
+                            [(ngModel)]="_patient.spO2"
+                            name="spO2"
+                            id="spO2"
+                            #spO2="ngModel"
+                            required>
+                            <span class="help-block "*ngIf="f.submitted && spO2.errors?.required">
+                             *SPO2 is required
+                            </span>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pO2.valid }">
+                                <label for="disabledSelect">PO2 %<span>*</span></label>							
+                                <input class="form-control" placeholder="pO2" 
+                                    type="text"
+                                    [(ngModel)]="_patient.pO2"
+                                    name="pO2"
+                                    id="pO2"
+                                    #pO2="ngModel"
+                                    required>
+                                    <span class="help-block "*ngIf="f.submitted && pO2.errors?.required">
+                                     *PO2 is required
+                                    </span>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fiO2.valid }">
+                                        <label for="disabledSelect">FIO2 %<span>*</span></label>							
+                                        <input class="form-control" placeholder="fiO2" 
+                                            type="text"
+                                            [(ngModel)]="_patient.fiO2"
+                                            name="fiO2"
+                                            id="fiO2"
+                                            #fiO2="ngModel"
+                                            required>
+                                            <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
+                                             *FIO2 is required
+                                            </span>
+                                        </div>
                             <div class="form-group">
                                 <label for="disabledSelect">Pao2/Fio2 ratio</label>
                                 <select class="form-control" [(ngModel)]="_patient.pao2fio2ratio"
@@ -307,15 +320,21 @@
                                   <option><100</option>
                                  </select>
                             </div>
-                            <div class="form-group">
-                                <label for="disabledSelect">PIP</label>
-                                <input class="form-control" placeholder="CMH2O"
-                                       type="text"
-                                       [(ngModel)]="_patient.pip"
-                                       name="pip"
-                                       #pip="ngModel"
-                                       id="pip">
-                            </div>
+
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">
+                                    <label for="disabledSelect">pip %<span>*</span></label>							
+                                    <input class="form-control" placeholder="pip" 
+                                        type="text"
+                                        [(ngModel)]="_patient.pip"
+                                        name="pip"
+                                        id="pip"
+                                        #pip="ngModel"
+                                        required>
+                                        <span class="help-block "*ngIf="f.submitted && pip.errors?.required">
+                                         *PIP is required
+                                        </span>
+                                    </div>
+
                             <div class="form-group">
                                 <label for="disabledSelect">PEEP</label>
                                 <select class="form-control" [(ngModel)]="_patient.peep"
@@ -328,15 +347,19 @@
                                   <option value=">20">>20</option>
                                  </select>
                             </div>
-                            <div class="form-group">
-                                <label for="disabledSelect">TV</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.tv"
-                                       name="tv"
-                                       #tv="ngModel"
-                                       id="tv">
-                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !tv.valid }">
+                                    <label for="disabledSelect">TV<span>*</span></label>							
+                                    <input class="form-control" placeholder="tv" 
+                                        type="text"
+                                        [(ngModel)]="_patient.tv"
+                                        name="tv"
+                                        id="tv"
+                                        #tv="ngModel"
+                                        required>
+                                        <span class="help-block "*ngIf="f.submitted && tv.errors?.required">
+                                         *TV is required
+                                        </span>
+                                    </div>
                             <div class="form-group">
                                 <label for="disabledSelect">RR</label>
                                        <select class="form-control" [(ngModel)]="_patient.rr"
@@ -348,13 +371,14 @@
                                          <option value="40">>40</option>
                                         </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="disabledSelect">Lung Compliance</label>
                                 <input class="form-control"
                                 type="text"
                                 [(ngModel)]="_patient.lungCompliance"
                                 name="lungCompliance"
-                                #tv="ngModel"
+                                #lungCompliance="ngModel"
                                 id="lungCompliance">
                             </div>
                             <div class="form-group">
