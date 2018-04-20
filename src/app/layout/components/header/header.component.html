@@ -27,8 +27,12 @@
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <i class="fa fa-user"></i>{{username}} <b class="caret"></b>
                 </a>
+
                 <div class="dropdown-menu-right" ngbDropdownMenu>
-                       
+                      <a class="dropdown-item" [routerLink]="['/profile']" (click)="onLoggedout()">
+                        <i class="fa fa-address-book-o"></i> {{ 'Update User' | translate }}
+                    </a>
+                    
                     <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
                         <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
                     </a>

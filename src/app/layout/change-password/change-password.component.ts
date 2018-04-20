@@ -17,6 +17,8 @@ import { Router } from '@angular/router';
 })
 export class ChangePasswordComponent implements OnInit {
     public output: any;
+    Spvalid:boolean;
+    Hsvalid:boolean;
     public updatePasswordData: User = new User();
     constructor(public router: Router,
         private _authenticationService: AuthenticationService,
@@ -35,7 +37,7 @@ export class ChangePasswordComponent implements OnInit {
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
-                        this.reset();
+                        //this.reset();
                         this.router.navigateByUrl('login');
                     }
                     if (res.Result === 'failed') {
@@ -47,9 +49,9 @@ export class ChangePasswordComponent implements OnInit {
                 }
             });
     }
-    public reset() {
-        this._user = new User();
-    }
+   // public reset() {
+   ///     this._user = new User();
+   // }
 
     public onspecialist(event) {
         const value: string = event.target.value;

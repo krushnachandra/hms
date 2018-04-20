@@ -1,7 +1,7 @@
 <div>
     <div class="container justify-content-md-center">
         <div class="col-4 offset-4">
-            <h1>Profile</h1>
+            <h1>Update Profile</h1>
             <form role="form"
                   #f="ngForm"
                   (ngSubmit)="f.form.valid && onSave()"
@@ -49,7 +49,7 @@
                                 #specialist_id="ngModel"
                                 class="form-control"
                                 placeholder="Confirm Password"
-                                [disabled]="true">
+                                >
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                         </select>
                         <div *ngIf="f.submitted && Spvalid == false"
@@ -63,8 +63,7 @@
                                 id="hospital_id"
                                 #hospital_id="ngModel"
                                 placeholder="Hospital Name"
-                                class="form-control"
-                                [disabled]="true">
+                                class="form-control">
                         <option *ngFor="let hospital of hospitals" value="{{hospital.Value}}" >{{hospital.Text}} </option>
                         </select>
                         <div *ngIf="f.submitted && Hsvalid === false"
@@ -73,7 +72,7 @@
 
                 </div>
                 <button type="submit"
-                        class="btn  btn-primary"> Save </button>&nbsp;
+                        class="btn  btn-primary"> Update </button>&nbsp;
             </form>
         </div>
     </div>
