@@ -438,54 +438,6 @@
                                            <span class="help-block "*ngIf="f.submitted && urea.errors?.required">
                                                 *UREA is required
                                                   </span>
-<<<<<<< HEAD
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }">
-                                <label for="disabledSelect">Lung Compliance</label>
-                                <select class="form-control" [(ngModel)]="_patient.lungCompliance"
-                                name="lungCompliance"
-                                #lungCompliancerr="ngModel"
-                                id="lungCompliance" required>
-                                  <option value=">30">30</option>
-                                  <option value="30-20">30-20</option>
-                                  <option value="20-15">20-15</option>
-                                  <option value="15-10">15-10</option>
-                                  <option value="10-5">10-5</option>
-                                  <option value="<5"><5</option>
-                                  </select>
-                                <span class="help-block "*ngIf="f.submitted && lungCompliance.errors?.required">
-                                        *Lung Compliance is required
-                                </span>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }">
-                                <label for="disabledSelect">CXR quadrants</label>
-                                <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
-                              name="cxrquadrants"
-                              #cxrquadrants="ngModel"
-                              id="cxrquadrants" required>
-                                <option value="0">>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                            <span class="help-block "*ngIf="f.submitted && cxrquadrants.errors?.required">
-                                    *CXR quadrants is required
-                                      </span>
-                            </div>
-  <div class="clearfix col-12"><hr></div>
-                            <h6>Investigation Result:</h6>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !urea.valid }">
-                                <label for="disabledSelect">UREA</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.urea"
-                                       name="urea"
-                                       #urea="ngModel"
-                                       id="urea" required>
-                                       <span class="help-block "*ngIf="f.submitted && urea.errors?.required">
-                                            *UREA is required
-=======
                                 </div>
     
                                 <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cr.valid }">
@@ -539,7 +491,6 @@
                                     </select>
                                     <span class="help-block "*ngIf="f.submitted && dialysis.errors?.required">
                                             *Dialysis is required
->>>>>>> daeba3173943a06fb086c5559f34c709e89f5ee5
                                               </span>
                                 </div>
                                 </div>
