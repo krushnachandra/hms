@@ -28,11 +28,13 @@
                     <i class="fa fa-user"></i>{{username}} <b class="caret"></b>
                 </a>
 
-                <div class="dropdown-menu-right" ngbDropdownMenu>
-                      <a class="dropdown-item" [routerLink]="['/profile']" (click)="onLoggedout()">
-                        <i class="fa fa-address-book-o"></i> {{ 'Update User' | translate }}
+                <div class="dropdown-menu-right" ngbDropdownMenu=""style="top: 40px;">
+                    <a class="dropdown-item" [routerLink]="['/profile']">
+                        <i class="fa fa-address-book-o"></i> {{ 'Update Profile' | translate }}
                     </a>
-                    
+                    <a class="dropdown-item" [routerLink]="['/change-password']">
+                        <i class="fa fa-address-card-o"></i> {{ 'Update Password' | translate }}
+                    </a>
                     <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
                         <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
                     </a>

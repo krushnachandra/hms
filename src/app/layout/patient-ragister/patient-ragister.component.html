@@ -1,396 +1,444 @@
 <div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h5>Please Complete this consultation formfoe all ECMO referrals to Adan Hospital</h5>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" #f="ngForm" class="row"
-                              (ngSubmit)="f.form.valid && onRegister()" novalidate>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="disabledSelect">ReferConsulutant Name <span>*</span></label>
-                                    <input [(ngModel)]="_patient.referConsulutantName"
-                                            name="referConsulutantName"
-                                            id="referConsulutantName"
-                                            #referConsulutantName="ngModel"
-                                            id="referConsulutantName" class="form-control" type="text" readonly>
-                                </div>
-                                <div class="form-group">
-                                        <label for="disabledSelect">Date<span>*</span></label>
-                                        <input [(ngModel)]="_patient.RefDate"
-                                                name="RefDate"
-                                                id="RefDate"
-                                                #RefDate="ngModel"
-                                                id="RefDate" class="form-control" type="text" readonly>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5>Please Complete this consultation formfoe all ECMO referrals to Adan Hospital</h5>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form role="form" #f="ngForm" class="row"
+                                  (ngSubmit)="f.form.valid && onRegister()" novalidate>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="disabledSelect">ReferConsulutant Name <span>*</span></label>
+                                        <input [(ngModel)]="_patient.referConsulutantName"
+                                                name="referConsulutantName"
+                                                id="referConsulutantName"
+                                                #referConsulutantName="ngModel"
+                                                id="referConsulutantName" class="form-control" type="text" readonly>
                                     </div>
-                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !speciallistId.valid }">
-                                    <label>Referring Speciality<span>*</span></label>
-                                    <select [(ngModel)]="_patient.speciallistId"
-                                    (change)="onspecialist($event)"
-                                            name="speciallistId"
-                                            id="speciallistId"
-                                            #speciallistId="ngModel"
+                                    <div class="form-group">
+                                            <label for="disabledSelect">Date<span>*</span></label>
+                                            <input [(ngModel)]="_patient.RefDate"
+                                                    name="RefDate"
+                                                    id="RefDate"
+                                                    #RefDate="ngModel"
+                                                    id="RefDate" class="form-control" type="text" readonly>
+                                        </div>
+                                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !speciallistId.valid }">
+                                        <label>Referring Speciality<span>*</span></label>
+                                        <select [(ngModel)]="_patient.speciallistId"
+                                        (change)="onspecialist($event)"
+                                                name="speciallistId"
+                                                id="speciallistId"
+                                                #speciallistId="ngModel"
+                                                class="form-control"
+                                                placeholder="Confirm Password"
+                                                required>
+                                            <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
+                                        </select>
+                                        <div *ngIf="f.submitted &&  Spvalid == false"
+                                             class="help-block" style="color:red"> *Specialist is required</div>
+                                    </div>
+                                    <div class="form-group"
+                                     [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">
+                                    <label>Referring Hospital<span>*</span></label>
+                                    <select [(ngModel)]="_patient.referHospitalId"
+                                    (change)="onhospital($event)"
+                                            name="referHospitalId"
+                                            id="referHospitalId"
+                                            #referHospitalId="ngModel"
+                                            placeholder="Hospital Name"
                                             class="form-control"
-                                            placeholder="Confirm Password"
                                             required>
-                                        <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
+                                        <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
                                     </select>
-                                    <div *ngIf="f.submitted &&  Spvalid == false"
+                                    <div *ngIf="f.submitted && Hsvalid === false"
                                          class="help-block" style="color:red"> *Specialist is required</div>
                                 </div>
-                                <div class="form-group"
-                                 [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">
-                                <label>Referring Hospital<span>*</span></label>
-                                <select [(ngModel)]="_patient.referHospitalId"
-                                (change)="onhospital($event)"
-                                        name="referHospitalId"
-                                        id="referHospitalId"
-                                        #referHospitalId="ngModel"
-                                        placeholder="Hospital Name"
-                                        class="form-control"
-                                        required>
-                                    <option *ngFor="let hospital of hospitals" value={{hospital.Value}}>{{hospital.Text}} </option>
-                                </select>
-                                <div *ngIf="f.submitted && Hsvalid === false"
-                                     class="help-block" style="color:red"> *Specialist is required</div>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admissionDiagnosis.valid }">
-                                <label class="control-label">Admission diagnosis<span>*</span></label>
-                                <textarea [(ngModel)]="_patient.admissionDiagnosis"
-                                          name="admissionDiagnosis"
-                                          id="admissionDiagnosis"
-                                          #admissionDiagnosis="ngModel"
-                                          id="admissionDiagnosis"
-                                          class="form-control" rows="3" required></textarea>
-                                <span class="help-block "*ngIf="f.submitted && admissionDiagnosis.errors?.required">
-                                        *Admission diagnosis is required
-                                          </span>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !history.valid }">
-                                <label>History(including comorbidities)</label>
-                                <textarea [(ngModel)]="_patient.history"
-                                          name="history"
-                                          id="history"
-                                          #history="ngModel"
-                                          id="history"
-                                          class="form-control" rows="3"></textarea>
-                            </div>
-                          </div>
-                          <div class="col-6">
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patientName.valid }">
-                                <label for="disabledSelect">Patient Name<span>*</span></label>
-                                <input [(ngModel)]="_patient.patientName"
-                                       name="patientName"
-                                       id="patientName"
-                                       #patientName="ngModel"
-                                       id="patientName" class="form-control" type="text" required>
-                                        <div *ngIf="f.submitted && !patientName.valid"
-                                             class="help-block"> *PatientName is required</div>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !civilId.valid }">
-                                <label class="control-label">Civil ID<span>*</span></label>
-                                <input type="text" class="form-control"
-                                       [(ngModel)]="_patient.civilId"
-                                       name="civilId"
-                                       #civilId="ngModel"
-                                       id="civilId" 
-                                       (blur)="onCivilIdChange($event.target.value)"
-                                       required>
-                                        <div *ngIf="f.submitted && !civilId.valid"
-                                             class="help-block"> *CivilId is required</div>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
-                                    <label class="control-label" for="inputSuccess">Age<span>*</span></label>
-                                    <input type="text" class="form-control"
-                                           [(ngModel)]="_patient.age"
-                                           name="age"
-                                           #age="ngModel"
-                                           id="age" required>
-                                            <div *ngIf="f.submitted && !age.valid"
-                                                 class="help-block"> *age is required</div>
-                                </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && gender.invalid }">
-                                <label class="control-label" >Gender<span>*</span></label>
-                                <div class="form-control">
-                                <label class="radio-inline">
-                                    <input type="radio"
-                                           [(ngModel)]="_patient.gender"
-                                           value="Male"
-                                           name="gender"
-                                           #gender="ngModel"
-                                           id="gender" required>Male
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio"
-                                           [(ngModel)]="_patient.gender"
-                                           value="Female"
-                                           name="gender"
-                                           #gender="ngModel"
-                                           id="gender" required>Female
-                                </label>
-                                </div>
-                                <span class="help-block "*ngIf="f.submitted && gender.errors?.required">
-                                        *gender is required
-                                </span>
-                                <!-- <div *ngIf="f.submitted && gender.invalid"
-                                     class="help-block"> *gender is required</div> -->
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !unit.valid }">
-                                <label for="disabledSelect">Unit</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.unit"
-                                       name="unit"
-                                       id="unit"
-                                       #unit="ngModel"
-                                       id="unit">
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ward.valid }">
-                                <label for="disabledSelect">Ward</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.ward"
-                                       name="ward"
-                                       #ward="ngModel"
-                                       id="ward">
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bed.valid }">
-                                <label for="disabledSelect">Bed</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.bed"
-                                       name="bed"
-                                       #bed="ngModel"
-                                       id="bed">
-                            </div>
-                            <div class="form-group">
-                                <label  class="control-label" >File no</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.fileNo"
-                                       name="fileNo"
-                                       #fileNo="ngModel"
-                                       id="fileNo">
-                            </div>
-                          </div>
-                          <div class="clearfix col-12"><hr></div>
-                          <div class="col-6">
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !preMorbFunctionalStatus.valid }">
-                                <label class="control-label" >Pre-morbid functional status<span>*</span></label>
-                                <select class="form-control"
-                                        [(ngModel)]="_patient.preMorbFunctionalStatus"
-                                        name="preMorbFunctionalStatus"
-                                        #preMorbFunctionalStatus="ngModel"
-                                        id="preMorbFunctionalStatus" required>
-                                    <option>Bed bound</option>
-                                    <option>Chair bound</option>
-                                    <option>Mobile</option>
-                                </select>
-                                <span class="help-block "*ngIf="f.submitted && preMorbFunctionalStatus.errors?.required">
-                                        *Pre-morbid functional status is required
-                                          </span>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !preMorbFunctionalConsciousStatus.valid }">
-                                <label>Pre-morbid functional conscious Status</label>
-                                <select class="form-control" [(ngModel)]="_patient.preMorbFunctionalConsciousStatus"
-                                        name="preMorbFunctionalConsciousStatus"
-                                        #preMorbFunctionalConsciousStatus="ngModel"
-                                        id="preMorbFunctionalConsciousStatus" required>
-                                    <option>Alert and oriented</option>
-                                    <option>Demented</option>
-                                    <option>Coma/Vegetative status</option>
-                                </select>
-                                <span class="help-block "*ngIf="f.submitted && preMorbFunctionalConsciousStatus.errors?.required">
-                                        *Pre-morbid functional conscious Status is required
-                                          </span>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !e.valid }"> 
-                                <label>Current GCS Total</label><br>
-                                <label>E</label>
-                                <select class="form-control" [(ngModel)]="_patient.e"
-                                      name="e"
-                                      #e="ngModel"
-                                      id="e"
-                                      (change)="onEVMChanged()"
-                                      required>
-                                  <option value="1/4">1/4</option>
-                                  <option value="2/4">2/4</option>
-                                  <option value="3/4">3/4</option>
-                                  <option value="4/4">4/4</option>
-                              </select>
-                              <span class="help-block "*ngIf="f.submitted && e.errors?.required">
-                                    *E value is required
-                                      </span>
-                                    </div>
-                                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !v.valid }"> 
-                              <label>V</label>
-                              <select class="form-control" [(ngModel)]="_patient.v"
-                              name="v"
-                              #v="ngModel"
-                              id="v"
-                              (change)="onEVMChanged()" required>
-                          <option value="1/5">1/5</option>
-                          <option value="2/5">2/5</option>
-                          <option value="3/5">3/5</option>
-                          <option value="4/5">4/5</option>
-                          <option value="5/5">5/5</option>
-                      </select>
-                      <span class="help-block "*ngIf="f.submitted && v.errors?.required">
-                            *V value is required
-                              </span>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !m.valid }"> 
-                      <label>M</label>
-                      <select class="form-control" [(ngModel)]="_patient.m"
-                              name="m"
-                              #m="ngModel"
-                              id="m"
-                              (change)="onEVMChanged()"
-                              required>
-                          <option value="1/6">1/6</option>
-                          <option value="2/6">2/6</option>
-                          <option value="3/6">3/6</option>
-                          <option value="4/6">4/6</option>
-                          <option value="5/6">5/6</option>
-                          <option value="6/6">6/6</option>
-                      </select>
-                      <span class="help-block "*ngIf="f.submitted && m.errors?.required">
-                            *M value is required
-                              </span>
-                            </div>
-                            <div class="form-group">
-                                <label for="disabledSelect">Total</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.totalscore"
-                                       name="totalscore"
-                                       #totalscore="ngModel"
-                                       id="totalscore" readonly>
-                            </div>
-
-                            <label for="disabledSelect" class="col-12"><u>Ventilation</u></label>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !durOfConventianalMechanicalVentination.valid }">
-                                    <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
-                                    <input class="form-control" placeholder="Days" type="text"
-                                           [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
-                                           name="durOfConventianalMechanicalVentination"
-                                           #durOfConventianalMechanicalVentination="ngModel"
-                                           id="durOfConventianalMechanicalVentination" required>
-                                           <span class="help-block "*ngIf="f.submitted && durOfConventianalMechanicalVentination.errors?.required">
-                                            *Duraton of conventional mechanical ventination is required
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admissionDiagnosis.valid }">
+                                    <label class="control-label">Admission diagnosis<span>*</span></label>
+                                    <textarea [(ngModel)]="_patient.admissionDiagnosis"
+                                              name="admissionDiagnosis"
+                                              id="admissionDiagnosis"
+                                              #admissionDiagnosis="ngModel"
+                                              id="admissionDiagnosis"
+                                              class="form-control" rows="3" required></textarea>
+                                    <span class="help-block "*ngIf="f.submitted && admissionDiagnosis.errors?.required">
+                                            *Admission diagnosis is required
                                               </span>
                                 </div>
-                           							
-                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">
-                        <label for="disabledSelect">SPO2 %<span>*</span></label>							
-                        <input class="form-control" placeholder="Spo2" 
-                            type="text"
-                            [(ngModel)]="_patient.spO2"
-                            name="spO2"
-                            id="spO2"
-                            #spO2="ngModel"
-                            required>
-                            <span class="help-block "*ngIf="f.submitted && spO2.errors?.required">
-                             *SPO2 is required
-                            </span>
-                        </div>
-                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pO2.valid }">
-                                <label for="disabledSelect">PO2 %<span>*</span></label>							
-                                <input class="form-control" placeholder="pO2" 
-                                    type="text"
-                                    [(ngModel)]="_patient.pO2"
-                                    name="pO2"
-                                    id="pO2"
-                                    #pO2="ngModel"
-                                    required>
-                                    <span class="help-block "*ngIf="f.submitted && pO2.errors?.required">
-                                     *PO2 is required
-                                    </span>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !history.valid }">
+                                    <label>History(including comorbidities)</label>
+                                    <textarea [(ngModel)]="_patient.history"
+                                              name="history"
+                                              id="history"
+                                              #history="ngModel"
+                                              id="history"
+                                              class="form-control" rows="3"></textarea>
                                 </div>
-                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fiO2.valid }">
-                                        <label for="disabledSelect">FIO2 %<span>*</span></label>							
-                                        <input class="form-control" placeholder="fiO2" 
+                              </div>
+                              <div class="col-6">
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patientName.valid }">
+                                    <label for="disabledSelect">Patient Name<span>*</span></label>
+                                    <input [(ngModel)]="_patient.patientName"
+                                           name="patientName"
+                                           id="patientName"
+                                           #patientName="ngModel"
+                                           id="patientName" class="form-control" type="text" required>
+                                            <div *ngIf="f.submitted && !patientName.valid"
+                                                 class="help-block"> *PatientName is required</div>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !civilId.valid }">
+                                    <label class="control-label">Civil ID<span>*</span></label>
+                                    <input type="text" class="form-control"
+                                           [(ngModel)]="_patient.civilId"
+                                           name="civilId"
+                                           #civilId="ngModel"
+                                           id="civilId" 
+                                           (blur)="onCivilIdChange($event.target.value)"
+                                           required>
+                                            <div *ngIf="f.submitted && !civilId.valid"
+                                                 class="help-block"> *CivilId is required</div>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
+                                        <label class="control-label" for="inputSuccess">Age<span>*</span></label>
+                                        <input type="text" class="form-control"
+                                               [(ngModel)]="_patient.age"
+                                               name="age"
+                                               #age="ngModel"
+                                               id="age" required>
+                                                <div *ngIf="f.submitted && !age.valid"
+                                                     class="help-block"> *age is required</div>
+                                    </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && gender.invalid }">
+                                    <label class="control-label" >Gender<span>*</span></label>
+                                    <div class="form-control">
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               [(ngModel)]="_patient.gender"
+                                               value="Male"
+                                               name="gender"
+                                               #gender="ngModel"
+                                               id="gender" required>Male
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               [(ngModel)]="_patient.gender"
+                                               value="Female"
+                                               name="gender"
+                                               #gender="ngModel"
+                                               id="gender" required>Female
+                                    </label>
+                                    </div>
+                                    <span class="help-block "*ngIf="f.submitted && gender.errors?.required">
+                                            *gender is required
+                                    </span>
+                                    <!-- <div *ngIf="f.submitted && gender.invalid"
+                                         class="help-block"> *gender is required</div> -->
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !unit.valid }">
+                                    <label for="disabledSelect">Unit</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.unit"
+                                           name="unit"
+                                           id="unit"
+                                           #unit="ngModel"
+                                           id="unit">
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ward.valid }">
+                                    <label for="disabledSelect">Ward</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.ward"
+                                           name="ward"
+                                           #ward="ngModel"
+                                           id="ward">
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bed.valid }">
+                                    <label for="disabledSelect">Bed</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.bed"
+                                           name="bed"
+                                           #bed="ngModel"
+                                           id="bed">
+                                </div>
+                                <div class="form-group">
+                                    <label  class="control-label" >File no</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.fileNo"
+                                           name="fileNo"
+                                           #fileNo="ngModel"
+                                           id="fileNo">
+                                </div>
+                              </div>
+                              <div class="clearfix col-12"><hr></div>
+                              <div class="col-6">
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !preMorbFunctionalStatus.valid }">
+                                    <label class="control-label" >Pre-morbid functional status<span>*</span></label>
+                                    <select class="form-control"
+                                            [(ngModel)]="_patient.preMorbFunctionalStatus"
+                                            name="preMorbFunctionalStatus"
+                                            #preMorbFunctionalStatus="ngModel"
+                                            id="preMorbFunctionalStatus" required>
+                                        <option>Bed bound</option>
+                                        <option>Chair bound</option>
+                                        <option>Mobile</option>
+                                    </select>
+                                    <span class="help-block "*ngIf="f.submitted && preMorbFunctionalStatus.errors?.required">
+                                            *Pre-morbid functional status is required
+                                              </span>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !preMorbFunctionalConsciousStatus.valid }">
+                                    <label>Pre-morbid functional conscious Status</label>
+                                    <select class="form-control" [(ngModel)]="_patient.preMorbFunctionalConsciousStatus"
+                                            name="preMorbFunctionalConsciousStatus"
+                                            #preMorbFunctionalConsciousStatus="ngModel"
+                                            id="preMorbFunctionalConsciousStatus" required>
+                                        <option>Alert and oriented</option>
+                                        <option>Demented</option>
+                                        <option>Coma/Vegetative status</option>
+                                    </select>
+                                    <span class="help-block "*ngIf="f.submitted && preMorbFunctionalConsciousStatus.errors?.required">
+                                            *Pre-morbid functional conscious Status is required
+                                              </span>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !e.valid }"> 
+                                    <label>Current GCS Total</label><br>
+                                    <label>E</label>
+                                    <select class="form-control" [(ngModel)]="_patient.e"
+                                          name="e"
+                                          #e="ngModel"
+                                          id="e"
+                                          (change)="onEVMChanged()"
+                                          required>
+                                      <option value="1/4">1/4</option>
+                                      <option value="2/4">2/4</option>
+                                      <option value="3/4">3/4</option>
+                                      <option value="4/4">4/4</option>
+                                  </select>
+                                  <span class="help-block "*ngIf="f.submitted && e.errors?.required">
+                                        *E value is required
+                                          </span>
+                                        </div>
+                                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !v.valid }"> 
+                                  <label>V</label>
+                                  <select class="form-control" [(ngModel)]="_patient.v"
+                                  name="v"
+                                  #v="ngModel"
+                                  id="v"
+                                  (change)="onEVMChanged()" required>
+                              <option value="1/5">1/5</option>
+                              <option value="2/5">2/5</option>
+                              <option value="3/5">3/5</option>
+                              <option value="4/5">4/5</option>
+                              <option value="5/5">5/5</option>
+                          </select>
+                          <span class="help-block "*ngIf="f.submitted && v.errors?.required">
+                                *V value is required
+                                  </span>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !m.valid }"> 
+                          <label>M</label>
+                          <select class="form-control" [(ngModel)]="_patient.m"
+                                  name="m"
+                                  #m="ngModel"
+                                  id="m"
+                                  (change)="onEVMChanged()"
+                                  required>
+                              <option value="1/6">1/6</option>
+                              <option value="2/6">2/6</option>
+                              <option value="3/6">3/6</option>
+                              <option value="4/6">4/6</option>
+                              <option value="5/6">5/6</option>
+                              <option value="6/6">6/6</option>
+                          </select>
+                          <span class="help-block "*ngIf="f.submitted && m.errors?.required">
+                                *M value is required
+                                  </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Total</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.totalscore"
+                                           name="totalscore"
+                                           #totalscore="ngModel"
+                                           id="totalscore" readonly>
+                                </div>
+    
+                                <label for="disabledSelect" class="col-12"><u>Ventilation</u></label>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !durOfConventianalMechanicalVentination.valid }">
+                                        <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
+                                        <input class="form-control" placeholder="Days" type="text"
+                                               [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
+                                               name="durOfConventianalMechanicalVentination"
+                                               #durOfConventianalMechanicalVentination="ngModel"
+                                               id="durOfConventianalMechanicalVentination" required>
+                                               <span class="help-block "*ngIf="f.submitted && durOfConventianalMechanicalVentination.errors?.required">
+                                                *Duraton of conventional mechanical ventination is required
+                                                  </span>
+                                    </div>
+                                                           
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">
+                            <label for="disabledSelect">SPO2 %<span>*</span></label>							
+                            <input class="form-control" placeholder="Spo2" 
+                                type="text"
+                                [(ngModel)]="_patient.spO2"
+                                name="spO2"
+                                id="spO2"
+                                #spO2="ngModel"
+                                required>
+                                <span class="help-block "*ngIf="f.submitted && spO2.errors?.required">
+                                 *SPO2 is required
+                                </span>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pO2.valid }">
+                                    <label for="disabledSelect">PO2 %<span>*</span></label>							
+                                    <input class="form-control" placeholder="pO2" 
+                                        type="text"
+                                        [(ngModel)]="_patient.pO2"
+                                        name="pO2"
+                                        id="pO2"
+                                        #pO2="ngModel"
+                                        required>
+                                        <span class="help-block "*ngIf="f.submitted && pO2.errors?.required">
+                                         *PO2 is required
+                                        </span>
+                                    </div>
+                                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fiO2.valid }">
+                                            <label for="disabledSelect">FIO2 %<span>*</span></label>							
+                                            <input class="form-control" placeholder="fiO2" 
+                                                type="text"
+                                                [(ngModel)]="_patient.fiO2"
+                                                name="fiO2"
+                                                id="fiO2"
+                                                #fiO2="ngModel"
+                                                required>
+                                                <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
+                                                 *FIO2 is required
+                                                </span>
+                                            </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pao2fio2ratio.valid }">
+                                    <label for="disabledSelect">Pao2/Fio2 ratio</label>
+                                    <select class="form-control" [(ngModel)]="_patient.pao2fio2ratio"
+                                    name="pao2fio2ratio"
+                                    #pao2fio2ratio="ngModel"
+                                    id="pao2fio2ratio" required>
+                                      <option>>200</option>
+                                      <option>100-200</option>
+                                      <option><100</option>
+                                     </select>
+                                     <span class="help-block "*ngIf="f.submitted && pao2fio2ratio.errors?.required">
+                                            *Pao2/Fio2 ratio is required
+                                              </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">
+                                        <label for="disabledSelect">pip %<span>*</span></label>							
+                                        <input class="form-control" placeholder="pip" 
                                             type="text"
-                                            [(ngModel)]="_patient.fiO2"
-                                            name="fiO2"
-                                            id="fiO2"
-                                            #fiO2="ngModel"
+                                            [(ngModel)]="_patient.pip"
+                                            name="pip"
+                                            id="pip"
+                                            #pip="ngModel"
                                             required>
-                                            <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
-                                             *FIO2 is required
+                                            <span class="help-block "*ngIf="f.submitted && pip.errors?.required">
+                                             *PIP is required
                                             </span>
                                         </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pao2fio2ratio.valid }">
-                                <label for="disabledSelect">Pao2/Fio2 ratio</label>
-                                <select class="form-control" [(ngModel)]="_patient.pao2fio2ratio"
-                                name="pao2fio2ratio"
-                                #pao2fio2ratio="ngModel"
-                                id="pao2fio2ratio" required>
-                                  <option>>200</option>
-                                  <option>100-200</option>
-                                  <option><100</option>
-                                 </select>
-                                 <span class="help-block "*ngIf="f.submitted && pao2fio2ratio.errors?.required">
-                                        *Pao2/Fio2 ratio is required
+    
+                                <div class="form-group">
+                                    <label for="disabledSelect">PEEP</label>
+                                    <select class="form-control" [(ngModel)]="_patient.peep"
+                                    name="peep"
+                                    #peep="ngModel"
+                                    id="peep">
+                                      <option value="<10"><10</option>
+                                      <option value="10-15">10-15</option>
+                                      <option value="15-20">15-20</option>
+                                      <option value=">20">>20</option>
+                                     </select>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !tv.valid }">
+                                        <label for="disabledSelect">TV<span>*</span></label>							
+                                        <input class="form-control" placeholder="tv" 
+                                            type="text"
+                                            [(ngModel)]="_patient.tv"
+                                            name="tv"
+                                            id="tv"
+                                            #tv="ngModel"
+                                            required>
+                                            <span class="help-block "*ngIf="f.submitted && tv.errors?.required">
+                                             *TV is required
+                                            </span>
+                                        </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !rr.valid }">
+                                    <label for="disabledSelect">RR</label>
+                                           <select class="form-control" [(ngModel)]="_patient.rr"
+                                           name="rr"
+                                           #rr="ngModel"
+                                           id="rr" required>
+                                             <option value="<20"><20</option>
+                                             <option value="20-40">20-40</option>
+                                             <option value="40">>40</option>
+                                            </select>
+                                            <span class="help-block "*ngIf="f.submitted && rr.errors?.required">
+                                                    *RR is required
+                                                      </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }">
+                                    <label for="disabledSelect">Lung Compliance</label>
+                                    <select class="form-control" [(ngModel)]="_patient.lungCompliance"
+                                    name="lungCompliance"
+                                    #lungCompliancerr="ngModel"
+                                    id="lungCompliance" required>
+                                      <option value=">30">30</option>
+                                      <option value="30-20">30-20</option>
+                                      <option value="20-15">20-15</option>
+                                      <option value="15-10">15-10</option>
+                                      <option value="10-5">10-5</option>
+                                      <option value="<5"><5</option>
+                                      </select>
+                                    <span class="help-block "*ngIf="f.submitted && lungCompliance.errors?.required">
+                                            *Lung Compliance is required
+                                    </span>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }">
+                                    <label for="disabledSelect">CXR quadrants</label>
+                                    <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
+                                  name="cxrquadrants"
+                                  #cxrquadrants="ngModel"
+                                  id="cxrquadrants" required>
+                                    <option value="0">>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <span class="help-block "*ngIf="f.submitted && cxrquadrants.errors?.required">
+                                        *CXR quadrants is required
                                           </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">
-                                    <label for="disabledSelect">pip %<span>*</span></label>							
-                                    <input class="form-control" placeholder="pip" 
-                                        type="text"
-                                        [(ngModel)]="_patient.pip"
-                                        name="pip"
-                                        id="pip"
-                                        #pip="ngModel"
-                                        required>
-                                        <span class="help-block "*ngIf="f.submitted && pip.errors?.required">
-                                         *PIP is required
-                                        </span>
-                                    </div>
-
-                            <div class="form-group">
-                                <label for="disabledSelect">PEEP</label>
-                                <select class="form-control" [(ngModel)]="_patient.peep"
-                                name="peep"
-                                #peep="ngModel"
-                                id="peep">
-                                  <option value="<10"><10</option>
-                                  <option value="10-15">10-15</option>
-                                  <option value="15-20">15-20</option>
-                                  <option value=">20">>20</option>
-                                 </select>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !tv.valid }">
-                                    <label for="disabledSelect">TV<span>*</span></label>							
-                                    <input class="form-control" placeholder="tv" 
-                                        type="text"
-                                        [(ngModel)]="_patient.tv"
-                                        name="tv"
-                                        id="tv"
-                                        #tv="ngModel"
-                                        required>
-                                        <span class="help-block "*ngIf="f.submitted && tv.errors?.required">
-                                         *TV is required
-                                        </span>
-                                    </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !rr.valid }">
-                                <label for="disabledSelect">RR</label>
-                                       <select class="form-control" [(ngModel)]="_patient.rr"
-                                       name="rr"
-                                       #rr="ngModel"
-                                       id="rr" required>
-                                         <option value="<20"><20</option>
-                                         <option value="20-40">20-40</option>
-                                         <option value="40">>40</option>
-                                        </select>
-                                        <span class="help-block "*ngIf="f.submitted && rr.errors?.required">
-                                                *RR is required
+                                </div>
+      <div class="clearfix col-12"><hr></div>
+                                <h6>Investigation Result:</h6>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !urea.valid }">
+                                    <label for="disabledSelect">UREA</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.urea"
+                                           name="urea"
+                                           #urea="ngModel"
+                                           id="urea" required>
+                                           <span class="help-block "*ngIf="f.submitted && urea.errors?.required">
+                                                *UREA is required
                                                   </span>
+<<<<<<< HEAD
                             </div>
 
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }">
@@ -437,408 +485,410 @@
                                        id="urea" required>
                                        <span class="help-block "*ngIf="f.submitted && urea.errors?.required">
                                             *UREA is required
-                                              </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cr.valid }">
-                                <label for="disabledSelect">CR</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.cr"
-                                       name="cr"
-                                       #cr="ngModel"
-                                       id="cr">
-                                       <span class="help-block "*ngIf="f.submitted && cr.errors?.required">
-                                            *CR is required
-                                              </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lactate.valid }">
-                                <label for="disabledSelect">Lactate</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.lactate"
-                                       name="lactate"
-                                       #lactate="ngModel"
-                                       id="lactate" required>
-                                       <span class="help-block "*ngIf="f.submitted && lactate.errors?.required">
-                                            *Lactate is required
-                                              </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !uo.valid }">
-                                <label for="disabledSelect">UO</label>
-                                <input class="form-control" placeholder="UO"
-                                       type="text"
-                                       [(ngModel)]="_patient.uo"
-                                       name="uo"
-                                       #uo="ngModel"
-                                       id="uo" required>
-                                       <span class="help-block "*ngIf="f.submitted && uo.errors?.required">
-                                            *Lactate is required
-                                              </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dialysis.valid }">
-                                <label>Dialysis</label>
-                                <select class="form-control"
-                                        [(ngModel)]="_patient.dialysis"
-                                        name="dialysis"
-                                        #dialysis="ngModel"
-                                        id="dialysis" required>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                </select>
-                                <span class="help-block "*ngIf="f.submitted && dialysis.errors?.required">
-                                        *Dialysis is required
-                                          </span>
-                            </div>
-                            </div>
-                            <div class="col-6">
-                            <label for="disabledSelect" class="col-12"><u>Cardiovascular Parameters:</u></label>
-                            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !hr.valid }">
-                                <label for="disabledSelect">HR</label>
-                                <select class="form-control" [(ngModel)]="_patient.hr"
-                                name="hr"
-                                #hr="ngModel"
-                                id="hr" required>
-                                  <option value=">120">>120</option>
-                                  <option value="120-80">120-80</option>
-                                  <option value="<80"><80</option>
-                                 </select>
-                                 <span class="help-block "*ngIf="f.submitted && hr.errors?.required">
-                                        *HR is required
-                                          </span>
-                            </div>
-
-                            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !bp.valid }">
-                                <label for="disabledSelect">BP</label>
-                                <select class="form-control" [(ngModel)]="_patient.bp"
-                                name="bp"
-                                #bp="ngModel"
-                                id="bp" required>
-                                  <option value="150">>150</option>
-                                  <option value="150-120">150-120</option>
-                                  <option value="120-100">120-100</option>
-                                  <option value="100-80">100-80</option>
-                                  <option value="<80"><80</option>
-                                 </select>
-                                 <span class="help-block "*ngIf="f.submitted && bp.errors?.required">
-                                        *BP is required
-                                          </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cvp.valid }">
-                                <label for="disabledSelect">CVP</label>
-                                <input class="form-control" placeholder="CVP"
-                                type="text"
-                                [(ngModel)]="_patient.cvp"
-                                name="cvp"
-                                #cvp="ngModel"
-                                id="cvp" required>
-                                <span class="help-block "*ngIf="f.submitted && cvp.errors?.required">
-                                        *BP is required
-                                          </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !temp.valid }">
-                                <label for="disabledSelect">TEMP</label>
-                                <select class="form-control" [(ngModel)]="_patient.temp"
-                                name="temp"
-                                #temp="ngModel"
-                                id="temp" required>
-                                  <option value="<35"><35</option>
-                                  <option value="35-37">35-37</option>
-                                  <option value="37-39">37-39</option>
-                                  <option value="39-41">39-41</option>
-                                 </select>
-                                 <span class="help-block "*ngIf="f.submitted && temp.errors?.required">
-                                        *TEMP is required
-                                          </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !co.valid }">
-                                <label for="disabledSelect">CO</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.co"
-                                       name="co"
-                                       #co="ngModel"
-                                       id="co" required>
-                                       <span class="help-block "*ngIf="f.submitted && co.errors?.required">
-                                            *CO is required
-                                              </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cardiacindex.valid }">
-                                <label for="disabledSelect">CARDIAC INDEX</label>
-                                <select class="form-control" [(ngModel)]="_patient.cardiacindex"
-                                name="cardiacindex"
-                                #cardiacindex="ngModel"
-                                id="cardiacindex" required>
-                                  <option value="1">1</option>
-                                  <option value="1.5">1.5</option>
-                                  <option value="2">2</option>
-                                  <option value="2.5">2.5</option>
-                                  <option value="3">3</option>
-                                  <option value="3.5">3.5</option>
-                                  <option value="4">4</option>
-                                  <option value="45">4.5</option>
-                                  <option value="5">5</option>
-                                 </select>
-                                 <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
-                                        *CARDIAC INDEX is required
-                                          </span>
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !leftventricularejectionfraction.valid }">
-                                <label for="disabledSelect">Left ventricular ejection fraction</label>
-                                <select class="form-control" [(ngModel)]="_patient.leftventricularejectionfraction"
-                                name="leftventricularejectionfraction"
-                                #leftventricularejectionfraction="ngModel"
-                                id="leftventricularejectionfraction" required>
-                                  <option value="5">5</option>
-                                  <option value="15">15</option>
-                                  <option value="15-50">15-50</option>
-                                  <option value=">50">>50</option>
-                                 </select>
-                                 <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
-                                        *Left ventricular ejection fraction is required
-                                          </span>
-                            </div>
-
-  <div class="form-group row">
-      <label for="disabledSelect" class="col-12"><u>Inotropes/vasoconstrictors</u></label>
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Inotropesagent1"
-                                       name="Inotropesagent1"
-                                       #Inotropesagent1="ngModel"
-                                       id="Inotropesagent1">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Inotropesdose1"
-                                       name="Inotropesdose1"
-                                       #Inotropesdose1="ngModel"
-                                       id="Inotropesdose1">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Inotropesdose2"
-                                       name="Inotropesdose2"
-                                       #Inotropesdose2="ngModel"
-                                       id="Inotropesdose2">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Inotropesdose2"
-                                       name="Inotropesdose2"
-                                       #Inotropesdose2="ngModel"
-                                       id="Inotropesdose2">
-                            </div>
-  </div>
-  <div class="form-group row">
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Inotropesagent3"
-                                       name="Inotropesagent3"
-                                       #Inotropesagent3="ngModel"
-                                       id="Inotropesagent3">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Inotropesdose3"
-                                       name="Inotropesdose3"
-                                       #Inotropesdose3="ngModel"
-                                       id="Inotropesdose3">
-                            </div>
-  </div>
-  <div class="form-group row">
-      <label for="disabledSelect" class="col-12"><u>Sedation</u></label>
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Sedationagent1"
-                                       name="Sedationagent1"
-                                       #Sedationagent1="ngModel"
-                                       id="Sedationagent1">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Sedationdose1"
-                                       name="Sedationdose1"
-                                       #Sedationdose1="ngModel"
-                                       id="Sedationdose1">
-                            </div>
-  </div>
-  <div class="form-group row">
-                                <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Sedationagent2"
-                                       name="Sedationagent2"
-                                       #Sedationagent2="ngModel"
-                                       id="Sedationagent2">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Sedationdose2"
-                                       name="Sedationdose2"
-                                       #Sedationdose2="ngModel"
-                                       id="Sedationdose2">
-                            </div>
-                            </div>
-                            <div class="form-group row">
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Sedationagent3"
-                                       name="Sedationagent3"
-                                       #Sedationagent3="ngModel"
-                                       id="Sedationagent3">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.Sedationdose3"
-                                       name="Sedationdose3"
-                                       #Sedationdose3="ngModel"
-                                       id="Sedationdose3">
-                            </div>
-  </div>
-  <div class="form-group row">
-      <label for="disabledSelect" class="col-12"><u>Muscle relaxants</u></label>
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Agent</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.musclerelaxantsagent1"
-                                       name="musclerelaxantsagent1"
-                                       #musclerelaxantsagent1="ngModel"
-                                       id="musclerelaxantsagent1">
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="disabledSelect">Dose</label>
-                                <input class="form-control"
-                                       type="text"
-                                       [(ngModel)]="_patient.musclerelaxantsdose1"
-                                       name="musclerelaxantsdose1"
-                                       #musclerelaxantsdose1="ngModel"
-                                       id="musclerelaxantsdose1">
-                            </div>
-  </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bloodgasPH.valid }">
-                                <label for="disabledSelect">Blood Glass:</label>
-                                <input class="form-control" placeholder="PH"
-                                       type="text"
-                                       [(ngModel)]="_patient.bloodgasPH"
-                                       name="bloodgasPH"
-                                       #bloodgasPH="ngModel"
-                                       id="bloodgasPH" required>
-                                       <span class="help-block "*ngIf="f.submitted && bloodgasPH.errors?.required">
-                                            *Blood Glass PH is required
-                                              </span>  
-                            </div>
-
-                            <div class="form-group">
-                                <input class="form-control" placeholder="PO2"
-                                       type="text"
-                                       [(ngModel)]="_patient.bloodgasPO2"
-                                       name="bloodgasPO2"
-                                       #bloodgasPO2="ngModel"
-                                       id="bloodgasPO2">
-                            </div>
-
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bloodgasPCO2.valid }">
-                                <label for="disabledSelect"></label>
-                                <input class="form-control" placeholder="PCO2"
-                                       type="text"
-                                       [(ngModel)]="_patient.bloodgasPCO2"
-                                       name="bloodgasPCO2"
-                                       #bloodgasPCO2="ngModel"
-                                       id="bloodgasPCO2" required>
-                                       <span class="help-block "*ngIf="f.submitted && bloodgasPCO2.errors?.required">
-                                            *Blood Glass PC02 is required
-                                              </span> 
-                            </div>
-
-                            <div class="form-group">
-                                <input class="form-control" placeholder="HCO3"
-                                       type="text"
-                                       [(ngModel)]="_patient.bloodgasHCO3"
-                                       name="bloodgasHCO3"
-                                       #bloodgasHCO3="ngModel"
-                                       id="bloodgasHCO3">
-                            </div>
-
-                            <div class="form-group ">
-                                <input class="form-control" placeholder="BE"
-                                       type="text"
-                                       [(ngModel)]="_patient.bloodgasBE"
-                                       name="bloodgasBE"
-                                       #bloodgasBE="ngModel"
-                                       id="bloodgasBE">
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !refdocdesignation.valid }">
-                                    <label for="disabledSelect">Refral Designation</label>
-                                    <input class="form-control" placeholder="Refral Designation"
+=======
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cr.valid }">
+                                    <label for="disabledSelect">CR</label>
+                                    <input class="form-control"
                                            type="text"
-                                           [(ngModel)]="_patient.refdocdesignation"
-                                           name="refdocdesignation"
-                                           #refdocdesignation="ngModel"
-                                           id="refdocdesignation" required>
-                                           <span class="help-block "*ngIf="f.submitted && refdocdesignation.errors?.required">
-                                                *Refral Designation is required
+                                           [(ngModel)]="_patient.cr"
+                                           name="cr"
+                                           #cr="ngModel"
+                                           id="cr">
+                                           <span class="help-block "*ngIf="f.submitted && cr.errors?.required">
+                                                *CR is required
+                                                  </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lactate.valid }">
+                                    <label for="disabledSelect">Lactate</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.lactate"
+                                           name="lactate"
+                                           #lactate="ngModel"
+                                           id="lactate" required>
+                                           <span class="help-block "*ngIf="f.submitted && lactate.errors?.required">
+                                                *Lactate is required
+                                                  </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !uo.valid }">
+                                    <label for="disabledSelect">UO</label>
+                                    <input class="form-control" placeholder="UO"
+                                           type="text"
+                                           [(ngModel)]="_patient.uo"
+                                           name="uo"
+                                           #uo="ngModel"
+                                           id="uo" required>
+                                           <span class="help-block "*ngIf="f.submitted && uo.errors?.required">
+                                                *Lactate is required
+                                                  </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dialysis.valid }">
+                                    <label>Dialysis</label>
+                                    <select class="form-control"
+                                            [(ngModel)]="_patient.dialysis"
+                                            name="dialysis"
+                                            #dialysis="ngModel"
+                                            id="dialysis" required>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="help-block "*ngIf="f.submitted && dialysis.errors?.required">
+                                            *Dialysis is required
+>>>>>>> daeba3173943a06fb086c5559f34c709e89f5ee5
+                                              </span>
+                                </div>
+                                </div>
+                                <div class="col-6">
+                                <label for="disabledSelect" class="col-12"><u>Cardiovascular Parameters:</u></label>
+                                <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !hr.valid }">
+                                    <label for="disabledSelect">HR</label>
+                                    <select class="form-control" [(ngModel)]="_patient.hr"
+                                    name="hr"
+                                    #hr="ngModel"
+                                    id="hr" required>
+                                      <option value=">120">>120</option>
+                                      <option value="120-80">120-80</option>
+                                      <option value="<80"><80</option>
+                                     </select>
+                                     <span class="help-block "*ngIf="f.submitted && hr.errors?.required">
+                                            *HR is required
+                                              </span>
+                                </div>
+    
+                                <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !bp.valid }">
+                                    <label for="disabledSelect">BP</label>
+                                    <select class="form-control" [(ngModel)]="_patient.bp"
+                                    name="bp"
+                                    #bp="ngModel"
+                                    id="bp" required>
+                                      <option value="150">>150</option>
+                                      <option value="150-120">150-120</option>
+                                      <option value="120-100">120-100</option>
+                                      <option value="100-80">100-80</option>
+                                      <option value="<80"><80</option>
+                                     </select>
+                                     <span class="help-block "*ngIf="f.submitted && bp.errors?.required">
+                                            *BP is required
+                                              </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cvp.valid }">
+                                    <label for="disabledSelect">CVP</label>
+                                    <input class="form-control" placeholder="CVP"
+                                    type="text"
+                                    [(ngModel)]="_patient.cvp"
+                                    name="cvp"
+                                    #cvp="ngModel"
+                                    id="cvp" required>
+                                    <span class="help-block "*ngIf="f.submitted && cvp.errors?.required">
+                                            *BP is required
+                                              </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !temp.valid }">
+                                    <label for="disabledSelect">TEMP</label>
+                                    <select class="form-control" [(ngModel)]="_patient.temp"
+                                    name="temp"
+                                    #temp="ngModel"
+                                    id="temp" required>
+                                      <option value="<35"><35</option>
+                                      <option value="35-37">35-37</option>
+                                      <option value="37-39">37-39</option>
+                                      <option value="39-41">39-41</option>
+                                     </select>
+                                     <span class="help-block "*ngIf="f.submitted && temp.errors?.required">
+                                            *TEMP is required
+                                              </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !co.valid }">
+                                    <label for="disabledSelect">CO</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.co"
+                                           name="co"
+                                           #co="ngModel"
+                                           id="co" required>
+                                           <span class="help-block "*ngIf="f.submitted && co.errors?.required">
+                                                *CO is required
+                                                  </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cardiacindex.valid }">
+                                    <label for="disabledSelect">CARDIAC INDEX</label>
+                                    <select class="form-control" [(ngModel)]="_patient.cardiacindex"
+                                    name="cardiacindex"
+                                    #cardiacindex="ngModel"
+                                    id="cardiacindex" required>
+                                      <option value="1">1</option>
+                                      <option value="1.5">1.5</option>
+                                      <option value="2">2</option>
+                                      <option value="2.5">2.5</option>
+                                      <option value="3">3</option>
+                                      <option value="3.5">3.5</option>
+                                      <option value="4">4</option>
+                                      <option value="45">4.5</option>
+                                      <option value="5">5</option>
+                                     </select>
+                                     <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
+                                            *CARDIAC INDEX is required
+                                              </span>
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !leftventricularejectionfraction.valid }">
+                                    <label for="disabledSelect">Left ventricular ejection fraction</label>
+                                    <select class="form-control" [(ngModel)]="_patient.leftventricularejectionfraction"
+                                    name="leftventricularejectionfraction"
+                                    #leftventricularejectionfraction="ngModel"
+                                    id="leftventricularejectionfraction" required>
+                                      <option value="5">5</option>
+                                      <option value="15">15</option>
+                                      <option value="15-50">15-50</option>
+                                      <option value=">50">>50</option>
+                                     </select>
+                                     <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
+                                            *Left ventricular ejection fraction is required
+                                              </span>
+                                </div>
+    
+      <div class="form-group row">
+          <label for="disabledSelect" class="col-12"><u>Inotropes/vasoconstrictors</u></label>
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Inotropesagent1"
+                                           name="Inotropesagent1"
+                                           #Inotropesagent1="ngModel"
+                                           id="Inotropesagent1">
+                                </div>
+    
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Inotropesdose1"
+                                           name="Inotropesdose1"
+                                           #Inotropesdose1="ngModel"
+                                           id="Inotropesdose1">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Inotropesdose2"
+                                           name="Inotropesdose2"
+                                           #Inotropesdose2="ngModel"
+                                           id="Inotropesdose2">
+                                </div>
+    
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Inotropesdose2"
+                                           name="Inotropesdose2"
+                                           #Inotropesdose2="ngModel"
+                                           id="Inotropesdose2">
+                                </div>
+      </div>
+      <div class="form-group row">
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Inotropesagent3"
+                                           name="Inotropesagent3"
+                                           #Inotropesagent3="ngModel"
+                                           id="Inotropesagent3">
+                                </div>
+    
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Inotropesdose3"
+                                           name="Inotropesdose3"
+                                           #Inotropesdose3="ngModel"
+                                           id="Inotropesdose3">
+                                </div>
+      </div>
+      <div class="form-group row">
+          <label for="disabledSelect" class="col-12"><u>Sedation</u></label>
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Sedationagent1"
+                                           name="Sedationagent1"
+                                           #Sedationagent1="ngModel"
+                                           id="Sedationagent1">
+                                </div>
+    
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Sedationdose1"
+                                           name="Sedationdose1"
+                                           #Sedationdose1="ngModel"
+                                           id="Sedationdose1">
+                                </div>
+      </div>
+      <div class="form-group row">
+                                    <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Sedationagent2"
+                                           name="Sedationagent2"
+                                           #Sedationagent2="ngModel"
+                                           id="Sedationagent2">
+                                </div>
+    
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Sedationdose2"
+                                           name="Sedationdose2"
+                                           #Sedationdose2="ngModel"
+                                           id="Sedationdose2">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Sedationagent3"
+                                           name="Sedationagent3"
+                                           #Sedationagent3="ngModel"
+                                           id="Sedationagent3">
+                                </div>
+    
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.Sedationdose3"
+                                           name="Sedationdose3"
+                                           #Sedationdose3="ngModel"
+                                           id="Sedationdose3">
+                                </div>
+      </div>
+      <div class="form-group row">
+          <label for="disabledSelect" class="col-12"><u>Muscle relaxants</u></label>
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Agent</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.musclerelaxantsagent1"
+                                           name="musclerelaxantsagent1"
+                                           #musclerelaxantsagent1="ngModel"
+                                           id="musclerelaxantsagent1">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="disabledSelect">Dose</label>
+                                    <input class="form-control"
+                                           type="text"
+                                           [(ngModel)]="_patient.musclerelaxantsdose1"
+                                           name="musclerelaxantsdose1"
+                                           #musclerelaxantsdose1="ngModel"
+                                           id="musclerelaxantsdose1">
+                                </div>
+      </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bloodgasPH.valid }">
+                                    <label for="disabledSelect">Blood Glass:</label>
+                                    <input class="form-control" placeholder="PH"
+                                           type="text"
+                                           [(ngModel)]="_patient.bloodgasPH"
+                                           name="bloodgasPH"
+                                           #bloodgasPH="ngModel"
+                                           id="bloodgasPH" required>
+                                           <span class="help-block "*ngIf="f.submitted && bloodgasPH.errors?.required">
+                                                *Blood Glass PH is required
+                                                  </span>  
+                                </div>
+    
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="PO2"
+                                           type="text"
+                                           [(ngModel)]="_patient.bloodgasPO2"
+                                           name="bloodgasPO2"
+                                           #bloodgasPO2="ngModel"
+                                           id="bloodgasPO2">
+                                </div>
+    
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bloodgasPCO2.valid }">
+                                    <label for="disabledSelect"></label>
+                                    <input class="form-control" placeholder="PCO2"
+                                           type="text"
+                                           [(ngModel)]="_patient.bloodgasPCO2"
+                                           name="bloodgasPCO2"
+                                           #bloodgasPCO2="ngModel"
+                                           id="bloodgasPCO2" required>
+                                           <span class="help-block "*ngIf="f.submitted && bloodgasPCO2.errors?.required">
+                                                *Blood Glass PC02 is required
                                                   </span> 
                                 </div>
-                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !refdoctelephone.valid }">
-                                        <label for="disabledSelect">Refral Telephone</label>
-                                        <input class="form-control" placeholder=" Refral Telephone"
+    
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="HCO3"
+                                           type="text"
+                                           [(ngModel)]="_patient.bloodgasHCO3"
+                                           name="bloodgasHCO3"
+                                           #bloodgasHCO3="ngModel"
+                                           id="bloodgasHCO3">
+                                </div>
+    
+                                <div class="form-group ">
+                                    <input class="form-control" placeholder="BE"
+                                           type="text"
+                                           [(ngModel)]="_patient.bloodgasBE"
+                                           name="bloodgasBE"
+                                           #bloodgasBE="ngModel"
+                                           id="bloodgasBE">
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !refdocdesignation.valid }">
+                                        <label for="disabledSelect">Refral Designation</label>
+                                        <input class="form-control" placeholder="Refral Designation"
                                                type="text"
-                                               [(ngModel)]="_patient.refdoctelephone"
-                                               name="refdoctelephone"
-                                               #refdoctelephone="ngModel"
-                                               id="refdoctelephone" required> 
-                                               <span class="help-block "*ngIf="f.submitted && refdoctelephone.errors?.required">
-                                                    *Refral Telephone is required
+                                               [(ngModel)]="_patient.refdocdesignation"
+                                               name="refdocdesignation"
+                                               #refdocdesignation="ngModel"
+                                               id="refdocdesignation" required>
+                                               <span class="help-block "*ngIf="f.submitted && refdocdesignation.errors?.required">
+                                                    *Refral Designation is required
                                                       </span> 
                                     </div>
-
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            </div>
-                        </form>
+                                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !refdoctelephone.valid }">
+                                            <label for="disabledSelect">Refral Telephone</label>
+                                            <input class="form-control" placeholder=" Refral Telephone"
+                                                   type="text"
+                                                   [(ngModel)]="_patient.refdoctelephone"
+                                                   name="refdoctelephone"
+                                                   #refdoctelephone="ngModel"
+                                                   id="refdoctelephone" required> 
+                                                   <span class="help-block "*ngIf="f.submitted && refdoctelephone.errors?.required">
+                                                        *Refral Telephone is required
+                                                          </span> 
+                                        </div>
+    
+                                <button type="submit" class="btn btn-default">Submit Button</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  </div>
+      </div>
+    

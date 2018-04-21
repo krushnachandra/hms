@@ -29,22 +29,33 @@ export class ChangePasswordComponent implements OnInit {
 
     }
     public onSubmit() {
-        this.updatePasswordData.transactiontype = 'insert';
-        this.updatePasswordData.sessid = localStorage.getItem('sessid');
+        debugger;
 
+        this.updatePasswordData.specialist_id = parseInt(localStorage.getItem('specialist_id'));
+        this.updatePasswordData.hospital_id = parseInt(localStorage.getItem('hospital_id'));
+        this.updatePasswordData.email = localStorage.getItem('email');
+        this.updatePasswordData.phone = localStorage.getItem('phone');
+        this.updatePasswordData.name = localStorage.getItem('user');
+        this.updatePasswordData.transactiontype = 'updateuser';
+        this.updatePasswordData.sessid = localStorage.getItem('sessid');
+        this.updatePasswordData.docid = localStorage.getItem('created_by');
             this._authenticationService.DoctorRegister(this.updatePasswordData)
             .subscribe((res) => {
+                debugger;
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
                         //this.reset();
                         this.router.navigateByUrl('login');
                     }
-                    if (res.Result === 'failed') {
+                    else if (res.Result === 'failed') {
                         this.toastr.error(res.Result, res.Result);
                     }
-                    if (res.Result === 'Email already exists.Please check') {
+                    else if (res.Result === 'Email already exists.Please check') {
                         this.toastr.error(res.Result, res.Result);
+                    }
+                    else{
+                        this.toastr.error(res.Result, 'Error');
                     }
                 }
             });
