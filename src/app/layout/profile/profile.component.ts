@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
     email: string;
     hospital_id: string;
     specialist_id: string;
+    sessid:string;
     Spvalid = true;
     Hsvalid = true;
     errorMessage: any;
@@ -34,11 +35,13 @@ export class ProfileComponent implements OnInit {
         private _hospitalService: HospitalService,
         private _specialistService: SpecialistService,
         private toastr: ToastrService) {
+            debugger;
         this.specialist_id = localStorage.getItem('specialist_id');
         this.hospital_id = localStorage.getItem('hospital_id');
         this.email = localStorage.getItem('email');
         this.phone = localStorage.getItem('phone');
-       this.username = localStorage.getItem('user');
+        this.username = localStorage.getItem('user');
+        this.sessid= localStorage.getItem('sessid');
          }
 
     public ngOnInit() {
@@ -66,6 +69,7 @@ export class ProfileComponent implements OnInit {
         );
     }
     public onSave() {
+        debugger;
         this._user.transactiontype = 'updateuser';
         this._user.sessid = localStorage.getItem('sessid');
         if (this._user.hospital_id === 0) {
