@@ -167,18 +167,14 @@
                                        #bed="ngModel"
                                        id="bed">
                             </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fileNo.valid }">
-                                <label  class="control-label" >File no<span>*</span></label>
+                            <div class="form-group">
+                                <label  class="control-label" >File no</label>
                                 <input class="form-control"
                                        type="text"
                                        [(ngModel)]="_patient.fileNo"
                                        name="fileNo"
                                        #fileNo="ngModel"
-                                       id="fileNo" required>
-
-                                       <span class="help-block "*ngIf="f.submitted && fileNo.errors?.required">
-                                            *fileNo is required
-                                              </span>
+                                       id="fileNo">
                             </div>
                           </div>
                           <div class="clearfix col-12"><hr></div>
@@ -334,7 +330,7 @@
                                 name="pao2fio2ratio"
                                 #pao2fio2ratio="ngModel"
                                 id="pao2fio2ratio" required>
-                                  <option>200</option>
+                                  <option>>200</option>
                                   <option>100-200</option>
                                   <option><100</option>
                                  </select>
@@ -399,15 +395,20 @@
 
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }">
                                 <label for="disabledSelect">Lung Compliance</label>
-                                <input class="form-control"
-                                type="text"
-                                [(ngModel)]="_patient.lungCompliance"
+                                <select class="form-control" [(ngModel)]="_patient.lungCompliance"
                                 name="lungCompliance"
-                                #lungCompliance="ngModel"
-                                id="lungCompliance">
+                                #lungCompliancerr="ngModel"
+                                id="lungCompliance" required>
+                                  <option value=">30">>30</option>
+                                  <option value="30-20">30-20</option>
+                                  <option value="20-15">20-15</option>
+                                  <option value="15-10">15-10</option>
+                                  <option value="10-5">10-5</option>
+                                  <option value="<5"><5</option>
+                                  </select>
                                 <span class="help-block "*ngIf="f.submitted && lungCompliance.errors?.required">
                                         *Lung Compliance is required
-                                          </span>
+                                </span>
                             </div>
                             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }">
                                 <label for="disabledSelect">CXR quadrants</label>
@@ -484,7 +485,7 @@
                                         [(ngModel)]="_patient.dialysis"
                                         name="dialysis"
                                         #dialysis="ngModel"
-                                        id="dialysis">
+                                        id="dialysis" required>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
                                 </select>
@@ -503,7 +504,7 @@
                                 id="hr" required>
                                   <option value=">120">>120</option>
                                   <option value="120-80">120-80</option>
-                                  <option value="80">80</option>
+                                  <option value="<80"><80</option>
                                  </select>
                                  <span class="help-block "*ngIf="f.submitted && hr.errors?.required">
                                         *HR is required
@@ -596,17 +597,10 @@
                                 name="leftventricularejectionfraction"
                                 #leftventricularejectionfraction="ngModel"
                                 id="leftventricularejectionfraction" required>
-                                  <option value="5%">5%</option>
-                                  <option value="10%">10%</option>
-                                  <option value="15%">15%</option>
-                                  <option value="20%">20%</option>
-                                  <option value="25%">25%</option>
-                                  <option value="30%">30%</option>
-                                  <option value="35%">35%</option>
-                                  <option value="40%">40%</option>
-                                  <option value="45%">45%</option>
-                                  <option value="50%">50%</option>
-                                  <option value=">50%">>50%</option>
+                                  <option value="5">5</option>
+                                  <option value="15">15</option>
+                                  <option value="15-50">15-50</option>
+                                  <option value=">50">>50</option>
                                  </select>
                                  <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
                                         *Left ventricular ejection fraction is required
