@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     constructor(private _patientService: PatientService) {
        this.sessid = localStorage.getItem('sessid');
        debugger;
-       if( localStorage.getItem('user_type') == "1" || localStorage.getItem('user_type') == "4" )
+       if( localStorage.getItem('user_type') == "2" )
        {
        this. docType=true;
        }
