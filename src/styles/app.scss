@@ -5,6 +5,8 @@
 @import "rtl";
 @import "responsive";
 @import "~ngx-toastr/toastr.css";
+@import "custome.scss";
 // or import a bootstrap 4 alert styled design (SASS ONLY)
 // should be after your bootstrap imports, it uses bs4 variables
 @import "~ngx-toastr/toastr-bs4-alert"
+

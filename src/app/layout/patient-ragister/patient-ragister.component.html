@@ -564,6 +564,9 @@
                           <option value="15-20">15-20</option>
                           <option value=">20">>20</option>
                         </select>
+                        <span class="help-block "*ngIf="f.submitted && rr.errors?.required">
+                            *PEEP is required
+                          </span>
                       </div>
                     </div> <!-- col1 close -->
                     <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">  <!-- col2 -->
@@ -623,10 +626,104 @@
                         </span>
                       </div>
                     </div> <!-- col2 close -->
+                    <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }"> <!-- col1 -->
+                      <label for="disabledSelect" class="col-4 col-form-label">
+                          Lung Compliance
+                      </label>
+                      <div class="col-8">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="_patient.lungCompliance"
+                          name="lungCompliance"
+                          #lungCompliance="ngModel"
+                          id="lungCompliance" required>
+                          <option value=">30">30</option>
+                          <option value="30-20">30-20</option>
+                          <option value="20-15">20-15</option>
+                          <option value="15-10">15-10</option>
+                          <option value="10-5">10-5</option>
+                          <option value="<5"><5</option>
+                        </select>
+                        <span class="help-block "*ngIf="f.submitted && lungCompliance.errors?.required">
+                          *Lung Compliance is required
+                        </span>
+                      </div>
+                    </div>
                   </div><!--form group -->
                 </div>
               </div> <!-- closing of Ventilation -->
 
+              <div class="col-12" style="padding:15px;"><!-- start for Investigation Result -->
+                <h6>
+                  <label class="text-primary">Investigation Result :</label>
+                </h6>
+                <div class="" [ngClass]="{ 'has-error': f.submitted && !urea.valid }">
+                    <label for="disabledSelect">UREA</label>
+                    <input class="form-control" placeholder="Urea"
+                           type="text"
+                           [(ngModel)]="_patient.urea"
+                           name="urea"
+                           #urea="ngModel"
+                           id="urea" required>
+                            <span class="help-block "*ngIf="f.submitted && urea.errors?.required">
+                                *UREA is required
+                            </span>
+                </div>
+  
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cr.valid }">
+                      <label for="disabledSelect">CR</label>
+                      <input class="form-control" placeholder="CR"
+                             type="text"
+                             [(ngModel)]="_patient.cr"
+                             name="cr"
+                             #cr="ngModel"
+                             id="cr">
+                             <span class="help-block "*ngIf="f.submitted && cr.errors?.required">
+                                  *CR is required
+                                    </span>
+                  </div>
+  
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lactate.valid }">
+                      <label for="disabledSelect">Lactate</label>
+                      <input class="form-control" placeholder="Locate"
+                             type="text"
+                             [(ngModel)]="_patient.lactate"
+                             name="lactate"
+                             #lactate="ngModel"
+                             id="lactate" required>
+                             <span class="help-block "*ngIf="f.submitted && lactate.errors?.required">
+                                  *Lactate is required
+                                    </span>
+                  </div>
+  
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !uo.valid }">
+                      <label for="disabledSelect">UO</label>
+                      <input class="form-control" placeholder="UO"
+                             type="text"
+                             [(ngModel)]="_patient.uo"
+                             name="uo"
+                             #uo="ngModel"
+                             id="uo" required>
+                             <span class="help-block "*ngIf="f.submitted && uo.errors?.required">
+                                  *Lactate is required
+                                    </span>
+                  </div>
+  
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dialysis.valid }">
+                                  <label>Dialysis</label>
+                                  <select class="form-control"
+                                          [(ngModel)]="_patient.dialysis"
+                                          name="dialysis"
+                                          #dialysis="ngModel"
+                                          id="dialysis" required>
+                                      <option value="yes">Yes</option>
+                                      <option value="no">No</option>
+                                  </select>
+                                  <span class="help-block "*ngIf="f.submitted && dialysis.errors?.required">
+                                          *Dialysis is required
+                                  </span>
+                  </div>
+            </div>
 
               <div class="col-12" style="padding:15px;"><!-- start for Cardiovascular Parameters: complication -->
                 <h6>
@@ -1092,8 +1189,36 @@
                 </div><!--form group -->
 
               </div> <!-- closing for Blood Glass: -->
+            <div class="col-6 row">
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !refdocdesignation.valid }">
+                  <label for="disabledSelect" class="col-4 col-form-label">
+                      Refral Designation
+                    </label>  
+                  <input class="form-control" placeholder="Refral Designation"
+                         type="text"
+                         [(ngModel)]="_patient.refdocdesignation"
+                         name="refdocdesignation"
+                         #refdocdesignation="ngModel"
+                         id="refdocdesignation" required>
+                         <span class="help-block "*ngIf="f.submitted && refdocdesignation.errors?.required">
+                              *Refral Designation is required
+                                </span>
 
-
+          </div>
+          <div class="form-group"
+          [ngClass]="{ 'has-error': f.submitted && !refdoctelephone.valid }">
+                <label for="disabledSelect">Refral Telephone</label>
+                <input class="form-control" placeholder=" Refral Telephone"
+                       type="text"
+                       [(ngModel)]="_patient.refdoctelephone"
+                       name="refdoctelephone"
+                       #refdoctelephone="ngModel"
+                       id="refdoctelephone" required> 
+                       <span class="help-block "*ngIf="f.submitted && refdoctelephone.errors?.required">
+                            *Refral Telephone is required
+                              </span> 
+        </div>
+          </div>
               <div class="col-12" align="center">
                 <button type="submit" class="btn btn-success">Submit Button</button>
               </div>
