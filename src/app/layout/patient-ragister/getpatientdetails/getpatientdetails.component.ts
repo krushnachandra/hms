@@ -98,6 +98,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
         );
     }
     public onApproved() {
+        debugger;
         this._patientService.patientStatusAction({'sessid':  localStorage.getItem('sessid'),
         'action':this._PatientDetailReq.action,
         'transactiontype': 'insertaction',
