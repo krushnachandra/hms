@@ -16,6 +16,7 @@ export class DoctorListComponent implements OnInit {
     loginId:number;
     transactiontype: string;
     sessid: string;
+    docType:boolean;
     errorMessage: any;
     doctors:DoctorModelList[] = [];//PatientModel[];
     doctorstatus:DoctorStatusChange[] = [];//PatientModel[];
@@ -26,6 +27,14 @@ export class DoctorListComponent implements OnInit {
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getdrdetail";
         this.loginId = parseInt(localStorage.getItem('created_by'));
+        if( localStorage.getItem('user_type') == "4" )
+       {
+       this. docType=true;
+       }
+       else
+       {
+        this. docType=false;
+       }
     }
 
     ngOnInit() {
@@ -112,6 +121,28 @@ export class DoctorListComponent implements OnInit {
                    // this.doctors = res.data;
                    let msg:string = '';
                    msg = "Doctor Disapproved Successfuly";
+                   this.toastr.success(msg, 'Success');
+                }
+                if (res.Result.toUpperCase() === 'FAILED') {
+                    //this.errorMessage = res.Result;
+                    this.toastr.error(res.Result, res.Result);
+                }
+                this.doctors = [];
+                this.getDoctorList();
+            }
+        });
+    }
+    public DocActionDel(docdata:any)
+    {
+        debugger
+        let action  =  "Delete";
+        this.__doctorService.changeDoctorStatus({'docid':docdata.docid,'created_by': this.loginId,'transactiontype':action, 'sessid': this.sessid})
+        .subscribe((res) => {
+            if (res !== undefined) {
+                if (res.Result.toUpperCase() === 'SUCCESS') {
+                   // this.doctors = res.data;
+                   let msg:string = '';
+                   msg = "Doctor Deleted Successfuly";
                    this.toastr.success(msg, 'Success');
                 }
                 if (res.Result.toUpperCase() === 'FAILED') {

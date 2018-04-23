@@ -3,7 +3,7 @@ import { routerTransition } from '../../router.animations';
 import { PatientService } from '../../service/patient-service';
 import { PatientModel } from '../../model/patient-model';
 import { PatientModelList } from '../../model/patient-model';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     public sliders: Array<any> = [];
     patientsNew: PatientModelList[] = [];
 
-    constructor(private _patientService: PatientService) {
+    constructor(public router: Router,private _patientService: PatientService) {
        this.sessid = localStorage.getItem('sessid');
        debugger;
        if( localStorage.getItem('user_type') == "3" )
@@ -36,10 +36,14 @@ export class DashboardComponent implements OnInit {
     }
 
     public ngOnInit() {
+        debugger;
         // call the method on initial load of page to bind drop down
-        this.getHospgetPatientsitals();
-        this.getStatusCount();
-
+        if( localStorage.getItem('user_type') == "4" )
+       { 
+        this.router.navigateByUrl('doctorList');
+       }
+       this.getHospgetPatientsitals();
+       this.getStatusCount();
     }
     public getHospgetPatientsitals() {
         // this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';

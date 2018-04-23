@@ -22,6 +22,19 @@
                         <div *ngIf="f.submitted && !name.valid"
                              class="help-block"> *Name is required</div>
                     </div>
+                    <div class="form-group"
+                    [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+                   <input type="text"
+                          [(ngModel)]="_user.phone"
+                          name="name"
+                          class="form-control input-underline input-lg"
+                          #phone="ngModel"
+                          id="phone"
+                          placeholder="Phone No"
+                          required maxlength="9">
+                   <div *ngIf="f.submitted && !phone.valid"
+                        class="help-block"> *Phone is required</div>
+               </div>
                     <div class="form-group">
                         <input type="text"
                                [(ngModel)]="_user.civilid"

@@ -29,7 +29,7 @@
                                     <td>{{doctor.specialist}}</td>
                                     <td>{{doctor.regdate}}</td>
                                     <td>{{doctor.status}}</td>
-                                    <td>
+                                    <td *ngIf="docType===false ">
                                         <div *ngIf="doctor.status==='New'">
                                             <input type="button"
                                                    value="APPROVE"
@@ -52,6 +52,12 @@
                                                    (click)="DocActionA(doctor)"
                                                    class="btn btn-primary">
                                         </div>
+                                    </td>
+                                    <td *ngIf="docType===true">
+                                            <input type="button"
+                                            value="DELETE"
+                                            (click)="DocActionDel(doctor)"
+                                            class="btn btn-danger">
                                     </td>
                         </tr>
                         </tbody>
