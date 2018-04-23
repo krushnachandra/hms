@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
     hospital_id: string;
     specialist_id: string;
     sessid:string;
-    civil_id:string;
+    civilid:string;
     Spvalid = true;
     Hsvalid = true;
     errorMessage: any;
@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
         this.specialist_id = localStorage.getItem('specialist_id');
         this.hospital_id = localStorage.getItem('hospital_id');
         this.email = localStorage.getItem('email');
-        this.civil_id= localStorage.getItem('civil_id');
+        this.civilid= localStorage.getItem('civilid');
         this.phone = localStorage.getItem('phone');
         this.username = localStorage.getItem('user');
         this.sessid= localStorage.getItem('sessid');
