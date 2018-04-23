@@ -53,6 +53,8 @@ export class PatientRagisterComponent implements OnInit {
         this.getSpecialists();
         this._patient.referConsulutantName = localStorage.getItem('user');
         //this.age();
+        this._patient.referHospitalId = parseInt(localStorage.getItem('hospital_id'));
+        this._patient.speciallistId = parseInt(localStorage.getItem('specialist_id'));
     }
     public getPatientDetails(id: number) {
         this.sessid = localStorage.getItem('sessid');
@@ -111,7 +113,8 @@ export class PatientRagisterComponent implements OnInit {
                  if (res !== undefined) {
                     if (res.Result === 'Success') {
                         this.toastr.success(res.Result, res.Result);
-                        this.reset();
+                        this.router.navigateByUrl('dashboard');
+                        //this.reset();
                     }
                     if (res.Result === 'Failed') {
                         this.toastr.error(res.Result, res.Result);

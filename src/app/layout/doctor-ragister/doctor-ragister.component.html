@@ -26,10 +26,10 @@
                           [(ngModel)]="_user.phone"
                           name="name"
                           class="form-control input-underline input-lg"
-                          #name="ngModel"
+                          #phone="ngModel"
                           id="phone"
                           placeholder="Phone No"
-                          required>
+                          required maxlength="9">
                    <div *ngIf="f.submitted && !phone.valid"
                         class="help-block"> *Phone is required</div>
                </div>
@@ -40,7 +40,7 @@
                                class="form-control input-underline input-lg"
                                #civilid="ngModel"
                                id="civilid"
-                               placeholder="Civil Id">
+                               placeholder="Civil Id" autocomplete="off">
                     </div>
                     <div class="form-group"
                          [ngClass]="{ 'has-error': f.submitted && !email.valid }">
@@ -100,7 +100,7 @@
                         <div *ngIf="f.submitted && Hsvalid === false"
                              class="help-block" style="color: red;"> *Hospital is required</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && user_type !==0 }">
                                     <select
                                       class="form-control"
                                       [(ngModel)]="_user.user_type"
@@ -109,7 +109,7 @@
                                       id="user_type" required>
                                       <option value="1">Approval</option>
                                       <option value="2">ICU</option>
-                                      <option value="3">Referral<option>
+                                      <option value="3">Referral</option>
                                       <option value="4">Admin</option>
                                     </select>
                                     <div class="help-block" style="color: red;" *ngIf="f.submitted && user_type.errors?.required">

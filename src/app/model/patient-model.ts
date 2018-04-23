@@ -158,7 +158,7 @@ export class PatientDetail extends CommonModel
   history: string;
   transactiontype: string;
   sessid: string;
-  RefDate: string = new Date().toLocaleDateString();
+  RefDate: string = new Date().toLocaleDateString('en-GB');
   age: number;
   refral_id: number;
   comments: string;

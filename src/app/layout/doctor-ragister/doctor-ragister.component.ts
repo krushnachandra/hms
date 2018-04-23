@@ -51,8 +51,9 @@ export class DoctorRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
+        debugger;
         this._user.transactiontype = 'insert';
-        this._user.sessid = localStorage.getItem('sessid');
+        this._user.sessid ='E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';// localStorage.getItem('sessid');
         this.created_by = +localStorage.getItem('created_by');
         if (this.created_by !== NaN) {
             this._user.created_by = this.created_by;
@@ -69,6 +70,7 @@ export class DoctorRagisterComponent implements OnInit {
         {
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
+                debugger;
                  if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);

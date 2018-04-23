@@ -27,11 +27,11 @@ export class SidebarComponent {
        this.user_type = +localStorage.getItem('user_type');
         if (this.user_type === 1 || this.user_type === 4) 
         {
-            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'},{url: '/doctorList', menuText: 'Doctor List'}, {url: '/doctor-register', menuText: 'Doctor Register'},{url: '/patient-register', menuText: 'Patient Register'}];
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'},{url: '/doctorList', menuText: 'Doctor List'}, {url: '/doctor-register', menuText: 'Doctor Register'},{url: '/patient-register', menuText: 'ECMO Referal Form'}];
         }
         else if (this.user_type === 3)
         {
-            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}, {url: '/patient-register', menuText: 'Patient Register'}];
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}, {url: '/patient-register', menuText: 'ECMO Referal Form'}];
         }
         else
         {

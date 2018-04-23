@@ -617,7 +617,7 @@
                     <div class="col-6 row"
                       [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }"> <!-- col1 -->
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        Lung Compliance
+                        Lung Compliance<span>*</span>
                       </label>
                       <div class="col-8">
                         <select
@@ -643,7 +643,7 @@
                     <div class="col-6 row"
                       [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }"> <!-- col2 -->
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        CXR quadrants
+                        CXR quadrants<span>*</span>
                       </label>
                       <div class="col-8">
                         <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
@@ -672,7 +672,7 @@
                   <div class="col-6 row" 
                     [ngClass]="{ 'has-error': f.submitted && !urea.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      UREA
+                      UREA<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder="Urea"
@@ -709,7 +709,7 @@
                   <div class="col-6 row" 
                     [ngClass]="{ 'has-error': f.submitted && !lactate.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Lactate
+                      Lactate<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder="Locate"
@@ -727,7 +727,7 @@
                   <div class="col-6 row" 
                     [ngClass]="{ 'has-error': f.submitted && !uo.valid }"> <!-- col2 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      CO
+                      CO<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder="UO"
@@ -746,7 +746,7 @@
                   <div class="col-6 row" 
                     [ngClass]="{ 'has-error': f.submitted && !dialysis.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Dialysis
+                      Dialysis<span>*</span>
                     </label>
                     <div class="col-8">
                       <select class="form-control"
@@ -774,7 +774,7 @@
                 <div class="form-group row">
                   <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !hr.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      HR
+                      HR<span>*</span>
                     </label>
                     <div class="col-8">
                       <select class="form-control" [(ngModel)]="_patient.hr"
@@ -792,7 +792,7 @@
                   </div> <!-- col1 close -->
                   <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !bp.valid }">  <!-- col2 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      BP
+                      BP<span>*</span>
                     </label>
                     <div class="col-8">
                       <select class="form-control" [(ngModel)]="_patient.bp"
@@ -834,7 +834,7 @@
 
                     <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !temp.valid }">  <!-- col2 -->
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        TEMP
+                        TEMP<span>*</span>
                       </label>
                       <div class="col-8">
                         <select class="form-control" [(ngModel)]="_patient.temp"
