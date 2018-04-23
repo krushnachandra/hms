@@ -29,6 +29,16 @@
                                pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$">
                     </div>
                     <div class="form-group">
+                            <input type="text"
+                                   [(ngModel)]="_user.civilid"
+                                   name="civilid"
+                                   class="form-control input-underline input-lg"
+                                   #civilid="ngModel"
+                                   id="civilid"
+                                   placeholder="Civil Id"
+                                   autocomplete="off"                                   >
+                        </div>
+                    <div class="form-group">
                         <input type="email"
                                [(ngModel)]="_user.email"
                                name="email"
