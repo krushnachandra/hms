@@ -10,7 +10,7 @@
                 <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
                     <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
                 </a>
-                <ul class="dropdown-menu-right messages" ngbDropdownMenu>
+                <ul class="dropdown-menu dropdown-menu-right messages" ngbDropdownMenu>
                     <li class="media">
                         <img class="d-flex align-self-center mr-3"
                             src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg" alt="Generic placeholder image"
@@ -28,7 +28,7 @@
                     <i class="fa fa-user"></i>{{username}} <b class="caret"></b>
                 </a>
 
-                <div class="dropdown-menu-right" ngbDropdownMenu=""style="top: 40px;">
+                <div class="dropdown-menu dropdown-menu-right messages" ngbDropdownMenu>
                     <a class="dropdown-item" [routerLink]="['/profile']">
                         <i class="fa fa-address-book-o"></i> {{ 'Update Profile' | translate }}
                     </a>

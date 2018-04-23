@@ -129,18 +129,14 @@
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !patientName.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Patient Name<span>*</span>
+                      Patient Name
                     </label>
                     <div class="col-8">
                       <input [(ngModel)]="_patient.patientName"
                         name="patientName"
                         id="patientName"
                         #patientName="ngModel"
-                        id="patientName" class="form-control" type="text" required>
-                        <div
-                          *ngIf="f.submitted && !patientName.valid"
-                          class="help-block"> *PatientName is required
-                        </div>
+                        id="patientName" class="form-control" type="text">
                     </div>
                   </div> <!-- col1 close -->
                   <div class="col-6 row"
@@ -164,22 +160,8 @@
                 </div><!--form group -->
 
                 <div class="form-group row">
-                  <div class="col-6 row"
-                    [ngClass]="{ 'has-error': f.submitted && !age.valid }"> <!-- col1 -->
-                    <label for="disabledSelect" class="col-4 col-form-label">
-                      Age<span>*</span>
-                    </label>
-                    <div class="col-8">
-                      <input type="text" class="form-control"
-                        [(ngModel)]="_patient.age"
-                        name="age"
-                        #age="ngModel"
-                        id="age" required>
-                        <div *ngIf="f.submitted && !age.valid"
-                          class="help-block"> *age is required
-                        </div>
-                    </div>
-                  </div> <!-- col1 close -->
+
+            <!-- col1 close -->
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && gender.invalid }">  <!-- col2 -->
                     <label class="col-4 col-form-label">
@@ -256,9 +238,9 @@
                         id="bed">
                     </div>
                   </div> <!-- col1 close -->
-                  <div class="col-6 row">  <!-- col2 -->
-                    <label class="col-4 col-form-label">
-                      File no
+                  <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !fileNo.valid }">  <!-- col2 -->
+                    <label for="disabledSelect" class="col-4 col-form-label">
+                      File No<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control"
@@ -266,7 +248,10 @@
                         [(ngModel)]="_patient.fileNo"
                         name="fileNo"
                         #fileNo="ngModel"
-                        id="fileNo">
+                        id="fileNo" required>
+                         <div *ngIf="f.submitted && !fileNo.valid"
+                          class="help-block"> *File No is required
+                        </div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
@@ -548,8 +533,8 @@
                     </div> <!-- col2 close -->
                   </div><!--form group -->
 
-                  <div class="form-group row">
-                    <div class="col-6 row"> <!-- col1 -->
+                  <div class="form-group row" >
+                    <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !peep.valid }"> <!-- col1 -->
                       <label for="disabledSelect" class="col-4 col-form-label">
                         PEEP<span>*</span>
                       </label>
@@ -557,12 +542,15 @@
                         <select class="form-control" [(ngModel)]="_patient.peep"
                           name="peep"
                           #peep="ngModel"
-                          id="peep">
+                          id="peep" required>
                           <option value="<10"><10</option>
                           <option value="10-15">10-15</option>
                           <option value="15-20">15-20</option>
                           <option value=">20">>20</option>
                         </select>
+                        <span class="help-block "*ngIf="f.submitted && peep.errors?.required">
+                            *PEEP is required
+                          </span>
                       </div>
                     </div> <!-- col1 close -->
                     <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">  <!-- col2 -->
@@ -587,7 +575,7 @@
                   <div class="form-group row">
                     <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !rr.valid }"> <!-- col1 -->
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        RR
+                        RR<span>*</span>
                       </label>
                       <div class="col-8">
                         <select
@@ -889,7 +877,7 @@
                 <div class="form-group row">
                   <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !leftventricularejectionfraction.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Left ventricular ejection fraction
+                      Left ventricular ejection fraction <span>*</span>
                     </label>
                     <div class="col-8">
                       <select class="form-control" [(ngModel)]="_patient.leftventricularejectionfraction"
@@ -908,7 +896,7 @@
                   </div> <!-- col1 close -->
                   <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !cardiacindex.valid }">  <!-- col2 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      CARDIAC INDEX
+                      CARDIAC INDEX<span>*</span>
                     </label>
                     <div class="col-8">
                       <select class="form-control" [(ngModel)]="_patient.cardiacindex"
@@ -1162,7 +1150,7 @@
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !bloodgasPH.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      PH:
+                      PH:<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder="PH"
@@ -1196,7 +1184,7 @@
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !bloodgasPCO2.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      PCO2
+                      PCO2<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder="PCO2"
@@ -1252,7 +1240,7 @@
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !refdocdesignation.valid }"> <!-- col1 -->
                     <label for="disabledSelect" class="col-5 col-form-label">
-                      Refral Designation
+                      Refral Designation<span>*</span>
                     </label>
                     <div class="col-7">
                       <input class="form-control" placeholder="Refral Designation"
@@ -1269,7 +1257,7 @@
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !refdoctelephone.valid }">  <!-- col2 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Refral Telephone
+                      Refral Telephone<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder=" Refral Telephone"

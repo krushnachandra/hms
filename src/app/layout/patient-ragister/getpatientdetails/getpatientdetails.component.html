@@ -1,679 +1,1077 @@
 <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h5>Please Complete this consultation formfoe all ECMO referrals to Adan Hospital</h5>
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <!--<div class="panel-heading">
+        <h5>Panel heading here</h5>
+      </div>-->
+      <div class="panel-body">
+        <div class="col-12"> <!-- start of hospital information -->
+          <h5>
+              <strong>Hospital Information</strong>
+              <span class="text-warning">
+                (* has to completed, other the consultation will be rejected)
+              </span>
+          </h5>
+          <hr>
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Ref Consulutant Name
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.referConsulutantName"
+                  name="referConsulutantName"
+                  id="referConsulutantName"
+                  #referConsulutantName="ngModel" >
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Ref Date
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.RefDate"
+                  name="RefDate"
+                  id="RefDate"
+                  #RefDate="ngModel" >
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Ref Speciality
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.speciallist"
+                  name="speciallist"
+                  id="speciallist"
+                  #speciallist="ngModel" >
+              </div>
+            </div> <!-- col1 close -->
+
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Ref Hospital
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.referHospital"
+                  name="referHospital"
+                  id="referHospital"
+                  #referHospital="ngModel" >
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-12 row"> <!-- col1 -->
+              <label class="col-3 col-form-label">
+                Admission diagnosis
+              </label>
+              <div class="col-9">
+                <textarea readonly  [(ngModel)]="patientDetail.admissionDiagnosis"
+                  name="admissionDiagnosis"
+                  id="admissionDiagnosis"
+                  #admissionDiagnosis="ngModel"
+                  id="admissionDiagnosis"
+                  class="form-control" rows="3"></textarea>
+              </div>
+            </div> <!-- col1 close -->
+          </div><!--form group -->                
+        </div><!--col 12 closing of hospital information--> 
+
+
+        <div class="col-12">
+          <h5>
+              <strong>Patients Information</strong>
+              <span class="text-warning">
+                (* has to completed, other the consultation will be rejected)
+              </span>
+              <!--Please Complete this consultation formfoe all ECMO referrals to Adan Hospital-->
+          </h5>
+          <hr>
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Patient Name
+              </label>
+              <div class="col-8">
+                <input readonly  [(ngModel)]="patientDetail.patientName"
+                  name="patientName"
+                  id="patientName"
+                  #patientName="ngModel"
+                  id="patientName" class="form-control" type="text">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Civil ID
+              </label>
+              <div class="col-8">
+                <input readonly  type="text" class="form-control"
+                  [(ngModel)]="patientDetail.civilId"
+                  name="civilId"
+                  #civilId="ngModel"
+                  id="civilId">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Age
+              </label>
+              <div class="col-8">
+                <input readonly  type="text" class="form-control"
+                  [(ngModel)]="patientDetail.age"
+                  name="age"
+                  #age="ngModel"
+                  id="age">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Gender
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.gender"
+                  name="gender"
+                  id="gender"
+                  #gender="ngModel"
+                  id="gender">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Unit
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.unit"
+                  name="unit"
+                  id="unit"
+                  #unit="ngModel"
+                  id="unit">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Ward
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.ward"
+                  name="ward"
+                  #ward="ngModel"
+                  id="ward">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Bed
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.bed"
+                  name="bed"
+                  #bed="ngModel"
+                  id="bed">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                File no
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.fileNo"
+                  name="fileNo"
+                  #fileNo="ngModel"
+                  id="fileNo">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-12 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                History(including comorbidities)
+              </label>
+              <div class="col-8">
+                <textarea readonly  [(ngModel)]="patientDetail.history"
+                  name="history"
+                  id="history"
+                  #history="ngModel"
+                  id="history"
+                  class="form-control" rows="3">
+                </textarea>
+              </div>
+            </div> <!-- col1 close -->
+          </div><!--form group -->
+        </div> <!-- end of pratients information -->
+
+
+        <div class="col-12">
+          <h5>
+              <strong>Patients Parameters</strong>
+              <span class="text-warning">
+                (* has to completed, other the consultation will be rejected)
+              </span>
+              <!--Please Complete this consultation formfoe all ECMO referrals to Adan Hospital-->
+          </h5>
+          <hr>
+
+          <div class="form-group row">
+            <div class="col-6 row">
+              <!-- col1 -->
+              <label class="col-6 col-form-label">
+                Pre-morbid functional status
+              </label>
+              <div class="col-6">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.preMorbFunctionalStatus"
+                  name="preMorbFunctionalStatus"
+                  #preMorbFunctionalStatus="ngModel"
+                  id="preMorbFunctionalStatus">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-6 col-form-label">
+                Pre-morbid functional conscious Status
+              </label>
+              <div class="col-6">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.preMorbFunctionalConsciousStatus"
+                  name="preMorbFunctionalConsciousStatus"
+                  #preMorbFunctionalConsciousStatus="ngModel"
+                  id="preMorbFunctionalConsciousStatus">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div style="padding:15px;">
+            <h6> 
+              <label class="text-primary">
+                Current GCS Total
+              </label>
+            </h6>
+            <div class="form-group row">
+              <div class="col-3 row"> <!-- col1 -->
+                <label class="col-2 col-form-label">E</label>
+                <div class="col-10">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.e"
+                    name="e"
+                    #e="ngModel"
+                    id="e">
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        
-                                <div class="col-6">
-                                    <div class="form-group">
-                                                <label for="disabledSelect">Referring Consultant</label>
-                                                <input readonly  class="form-control"
-                                                       type="text"
-                                                       [(ngModel)]="patientDetail.referConsulutantName"
-                                                       name="referConsulutantName"
-                                                       id="referConsulutantName"
-                                                       #referConsulutantName="ngModel" >
-                                            </div>
-                                  <div class="form-group" >
-                                    <label>Referring Speciality</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.speciallist"
-                                    name="speciallist"
-                                    id="speciallist"
-                                    #speciallist="ngModel" >
-                                </div>
-                                <div class="form-group">
-                                    <label>Referring Hospital</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.referHospital"
-                                    name="referHospital"
-                                    id="referHospital"
-                                    #referHospital="ngModel" >
-                                </div>
-
-                                <div class="form-group">
-                                        <label>Referring Date</label>
-                                        <input readonly  class="form-control"
-                                        type="text"
-                                        [(ngModel)]="patientDetail.RefDate"
-                                        name="RefDate"
-                                        id="RefDate"
-                                        #RefDate="ngModel" >
-                                    </div>
-
-                                <div class="form-group" >
-                                    <label>Admission diagnosis</label>
-                                    <textarea readonly  [(ngModel)]="patientDetail.admissionDiagnosis"
-                                              name="admissionDiagnosis"
-                                              id="admissionDiagnosis"
-                                              #admissionDiagnosis="ngModel"
-                                              id="admissionDiagnosis"
-                                              class="form-control" rows="3"></textarea>
-                                </div>
-                                <div class="form-group" >
-                                    <label>History(including comorbidities)</label>
-                                    <textarea readonly  [(ngModel)]="patientDetail.history"
-                                              name="history"
-                                              id="history"
-                                              #history="ngModel"
-                                              id="history"
-                                              class="form-control" rows="3"></textarea>
-                                </div>
-                              </div>
-                              <div class="col-6">
-                                <div class="form-group">
-                                    <label for="disabledSelect">Patient Name</label>
-                                    <input readonly  [(ngModel)]="patientDetail.patientName"
-                                           name="patientName"
-                                           id="patientName"
-                                           #patientName="ngModel"
-                                           id="patientName" class="form-control" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="inputSuccess">Civil ID</label>
-                                    <input readonly  type="text" class="form-control"
-                                           [(ngModel)]="patientDetail.civilId"
-                                           name="civilId"
-                                           #civilId="ngModel"
-                                           id="civilId">
-                                </div>
-                                <div class="form-group">
-                                        <label class="control-label" for="inputSuccess">Age</label>
-                                        <input readonly  type="text" class="form-control"
-                                               [(ngModel)]="patientDetail.age"
-                                               name="age"
-                                               #age="ngModel"
-                                               id="age">
-                                    </div>
-                                <div class="form-group">
-                                    <label>Gender</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.gender"
-                                           name="gender"
-                                           id="gender"
-                                           #gender="ngModel"
-                                           id="gender">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Unit</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.unit"
-                                           name="unit"
-                                           id="unit"
-                                           #unit="ngModel"
-                                           id="unit">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Ward</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.ward"
-                                           name="ward"
-                                           #ward="ngModel"
-                                           id="ward">
-                                </div>
-                                <div class="form-group" >
-                                    <label for="disabledSelect">Bed</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bed"
-                                           name="bed"
-                                           #bed="ngModel"
-                                           id="bed">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">File no</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.fileNo"
-                                           name="fileNo"
-                                           #fileNo="ngModel"
-                                           id="fileNo">
-                                </div>
-                              </div>
-                              <div class="clearfix col-12"><hr></div>
-                              <div class="col-6">
-                                <div class="form-group">
-                                    <label>Pre-morbid functional status</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.preMorbFunctionalStatus"
-                                           name="preMorbFunctionalStatus"
-                                           #preMorbFunctionalStatus="ngModel"
-                                           id="preMorbFunctionalStatus">
-                                </div>
-                                <div class="form-group">
-                                    <label>Pre-morbid functional conscious Status</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.preMorbFunctionalConsciousStatus"
-                                           name="preMorbFunctionalConsciousStatus"
-                                           #preMorbFunctionalConsciousStatus="ngModel"
-                                           id="preMorbFunctionalConsciousStatus">
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Current GCS Total</label><br>
-                                    <label>E</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.e"
-                                           name="e"
-                                           #e="ngModel"
-                                           id="e">
-
-                                  <label>V</label>
-                                  <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.v"
-                                           name="v"
-                                           #v="ngModel"
-                                           id="v">
-                          <label>M</label>
-                          <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.m"
-                                           name="m"
-                                           #m="ngModel"
-                                           id="m">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Total</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.totalscore"
-                                           name="totalscore"
-                                           #totalscore="ngModel"
-                                           id="totalscore">
-                                </div>
-
-                                <label for="disabledSelect" class="col-12"><u>Ventilation</u></label>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Duraton of conventional mechanical ventination</label>
-                                    <input readonly  class="form-control" placeholder="Days"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.durOfConventianalMechanicalVentination"
-                                           name="durOfConventianalMechanicalVentination"
-                                           #durOfConventianalMechanicalVentination="ngModel"
-                                           id="durOfConventianalMechanicalVentination">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">SPO2 %</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.spO2"
-                                           name="spO2"
-                                           id="spO2"
-                                           #spO2="ngModel">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">PO2 %</label>
-                                    <input readonly  class="form-control" placeholder="mmHg"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.pO2"
-                                           name="pO2"
-                                           #pO2="ngModel"
-                                           id="pO2">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">FIO2 %</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.fiO2"
-                                           name="fiO2"
-                                           #fiO2="ngModel"
-                                           id="fiO2">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Pao2/Fio2 ratio</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.pao2fio2ratio"
-                                    name="pao2fio2ratio"
-                                    #pao2fio2ratio="ngModel"
-                                    id="pao2fio2ratio">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">PIP</label>
-                                    <input readonly  class="form-control" placeholder="CMH2O"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.pip"
-                                           name="pip"
-                                           #pip="ngModel"
-                                           id="pip">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">PEEP</label>
-                                    <input readonly  class="form-control" placeholder="CMH2O"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.peep"
-                                    name="peep"
-                                    #peep="ngModel"
-                                    id="peep">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">TV</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.tv"
-                                           name="tv"
-                                           #tv="ngModel"
-                                           id="tv">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">RR</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.rr"
-                                           name="rr"
-                                           #rr="ngModel"
-                                           id="rr">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Lung Compliance</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.lungCompliance"
-                                    name="lungCompliance"
-                                    #lungCompliance="ngModel"
-                                    id="lungCompliance">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">CXR quadrants</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.cxrquadrants"
-                                    name="cxrquadrants"
-                                    #cxrquadrants="ngModel"
-                                    id="cxrquadrants">
-                                </div>
-      <div class="clearfix col-12"><hr></div>
-                                <h6>Investigation Result:</h6>
-                                <div class="form-group">
-                                    <label for="disabledSelect">UREA</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.urea"
-                                           name="urea"
-                                           #urea="ngModel"
-                                           id="urea">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">CR</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.cr"
-                                           name="cr"
-                                           #cr="ngModel"
-                                           id="cr">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">Lactate</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.lactate"
-                                           name="lactate"
-                                           #lactate="ngModel"
-                                           id="lactate">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">UO</label>
-                                    <input readonly  class="form-control" placeholder="mls/hr"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.uo"
-                                           name="uo"
-                                           #uo="ngModel"
-                                           id="uo">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Dialysis</label>
-                                    <input readonly  class="form-control" placeholder="mls/hr"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.dialysis"
-                                           name="dialysis"
-                                           #dialysis="ngModel"
-                                           id="dialysis">
-                                </div>
-      </div>
-      <div class="col-6">
-                                <label for="disabledSelect" class="col-12"><u>Cardiovascular Parameters:</u></label>
-                                <div class="form-group">
-                                    <label for="disabledSelect">HR</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.hr"
-                                           name="hr"
-                                           #hr="ngModel"
-                                           id="hr">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">BP</label>
-
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bp"
-                                           name="bp"
-                                           #bp="ngModel"
-                                           id="bp">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">CVP</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.cvp"
-                                    name="cvp"
-                                    #cvp="ngModel"
-                                    id="cvp">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">TEMP</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.temp"
-                                    name="temp"
-                                    #temp="ngModel"
-                                    id="temp">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">CO</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.co"
-                                           name="co"
-                                           #co="ngModel"
-                                           id="co">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">CARDIAC INDEX</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.cardiacindex"
-                                    name="cardiacindex"
-                                    #cardiacindex="ngModel"
-                                    id="cardiacindex">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">Left ventricular ejection fraction</label>
-                                    <input readonly  class="form-control"
-                                    type="text"
-                                    [(ngModel)]="patientDetail.leftventricularejectionfraction"
-                                    name="leftventricularejectionfraction"
-                                    #leftventricularejectionfraction="ngModel"
-                                    id="leftventricularejectionfraction">
-
-                                </div>
-
-                                <div class="form-group row">
-                                <label for="disabledSelect" class="col-12"><u>Inotropes/vasoconstrictors</u></label>
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Inotropesagent1"
-                                           name="Inotropesagent1"
-                                           #Inotropesagent1="ngModel"
-                                           id="Inotropesagent1">
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Inotropesdose1"
-                                           name="Inotropesdose1"
-                                           #Inotropesdose1="ngModel"
-                                           id="Inotropesdose1">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Inotropesdose2"
-                                           name="Inotropesdose2"
-                                           #Inotropesdose2="ngModel"
-                                           id="Inotropesdose2">
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Inotropesdose2"
-                                           name="Inotropesdose2"
-                                           #Inotropesdose2="ngModel"
-                                           id="Inotropesdose2">
-                                </div>
-      </div>
-      <div class="form-group row">
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Inotropesagent3"
-                                           name="Inotropesagent3"
-                                           #Inotropesagent3="ngModel"
-                                           id="Inotropesagent3">
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Inotropesdose3"
-                                           name="Inotropesdose3"
-                                           #Inotropesdose3="ngModel"
-                                           id="Inotropesdose3">
-                                </div>
-      </div>
-      <div class="form-group row">
-          <label for="disabledSelect" class="col-12"><u>Sedation</u></label>
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Sedationagent1"
-                                           name="Sedationagent1"
-                                           #Sedationagent1="ngModel"
-                                           id="Sedationagent1">
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Sedationdose1"
-                                           name="Sedationdose1"
-                                           #Sedationdose1="ngModel"
-                                           id="Sedationdose1">
-                                </div>
-      </div>
-      <div class="form-group row">
-                                    <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Sedationagent2"
-                                           name="Sedationagent2"
-                                           #Sedationagent2="ngModel"
-                                           id="Sedationagent2">
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Sedationdose2"
-                                           name="Sedationdose2"
-                                           #Sedationdose2="ngModel"
-                                           id="Sedationdose2">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Sedationagent3"
-                                           name="Sedationagent3"
-                                           #Sedationagent3="ngModel"
-                                           id="Sedationagent3">
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.Sedationdose3"
-                                           name="Sedationdose3"
-                                           #Sedationdose3="ngModel"
-                                           id="Sedationdose3">
-                                </div>
-      </div>
-      <div class="form-group row">
-          <label for="disabledSelect" class="col-12"><u>Muscle relaxants</u></label>
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Agent</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.musclerelaxantsagent1"
-                                           name="musclerelaxantsagent1"
-                                           #musclerelaxantsagent1="ngModel"
-                                           id="musclerelaxantsagent1">
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="disabledSelect">Dose</label>
-                                    <input readonly  class="form-control"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.musclerelaxantsdose1"
-                                           name="musclerelaxantsdose1"
-                                           #musclerelaxantsdose1="ngModel"
-                                           id="musclerelaxantsdose1">
-                                </div>
-      </div>
-
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">Blood Glass:</label>
-                                    <input readonly  class="form-control" placeholder="PH"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bloodgasPH"
-                                           name="bloodgasPH"
-                                           #bloodgasPH="ngModel"
-                                           id="bloodgasPH">
-                                </div>
-
-                                <div class="form-group">
-                                    <input readonly  class="form-control" placeholder="PO2"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bloodgasPO2"
-                                           name="bloodgasPO2"
-                                           #bloodgasPO2="ngModel"
-                                           id="bloodgasPO2">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect"></label>
-                                    <input readonly  class="form-control" placeholder="PCO2"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bloodgasPCO2"
-                                           name="bloodgasPCO2"
-                                           #bloodgasPCO2="ngModel"
-                                           id="bloodgasPCO2">
-                                </div>
-
-                                <div class="form-group">
-                                    <input readonly  class="form-control" placeholder="HCO3"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bloodgasHCO3"
-                                           name="bloodgasHCO3"
-                                           #bloodgasHCO3="ngModel"
-                                           id="bloodgasHCO3">
-                                </div>
-
-                                <div class="form-group">
-                                    <input readonly  class="form-control" placeholder="BE"
-                                           type="text"
-                                           [(ngModel)]="patientDetail.bloodgasBE"
-                                           name="bloodgasBE"
-                                           #bloodgasBE="ngModel"
-                                           id="bloodgasBE">
-                                </div>
-                                <div class="form-group">
-                                        <label for="disabledSelect">Designation</label>
-                                        <input readonly class="form-control" placeholder="Designation"
-                                               type="text"
-                                               [(ngModel)]="patientDetail.refdocdesignation"
-                                               name="refdocdesignation"
-                                               #designation="ngModel"
-                                               id="refdocdesignation">
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="disabledSelect">Telephone</label>
-                                            <input readonly class="form-control" placeholder="telephone"
-                                                   type="text"
-                                                   [(ngModel)]="patientDetail.refdoctelephone"
-                                                   name="refdoctelephone"
-                                                   #Inotropesdose2="ngModel"
-                                                   id="refdoctelephone">
-                                        </div>
-                        <form role="form"
-                              #f="ngForm"
-                              class="row"
-                              (ngSubmit)="f.form.valid && onApproved()"
-                              novalidate  *ngIf="docType===true">
-                                <div class="form-group col-6" *ngIf="docType===true">
-                                    <label for="disabledSelect">Action</label>
-                                    <select class="form-control" [(ngModel)]="_PatientDetailReq.action"
-                                    name="action"
-                                    #hr="ngModel"
-                                    id="action">
-                                      <option value="0">Select Action</option>
-                                      <option value="2">HOLD</option>
-                                      <option value="3">APPROVED</option>
-                                      <option value="4">REJECT</option>
-                                     </select>
-                                </div>
-                                <div class="form-group col-6" > <!-- [ngClass]="{ 'has-error': f.submitted && !comment.valid }">-->
-                                        <label for="disabledSelect">Comments</label>
-                                    <textarea [(ngModel)]="_PatientDetailReq.comment"
-                                              name="comment"
-                                              id="comment"
-                                              #comment="ngModel"
-                                              class="form-control" rows="3"></textarea>
-                                </div>
-                                <div class="col-12">
-                                <button type="submit" class="btn btn-default">Submit Button</button>
-                            </div>
-                            </form>
-                        </div>
-                    
+              </div> <!-- col1 close -->
+              <div class="col-3 row">  <!-- col2 -->
+                <label class="col-2 col-form-label">
+                  V
+                </label>
+                <div class="col-10">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.v"
+                    name="v"
+                    #v="ngModel"
+                    id="v">
                 </div>
-            </div>
+              </div> <!-- col2 close -->
+
+              <div class="col-3 row">  <!-- col3 -->
+                <label class="col-2 col-form-label">
+                  M
+                </label>
+                <div class="col-10">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.m"
+                    name="m"
+                    #m="ngModel"
+                    id="m">
+                </div>
+              </div> <!-- col3 close -->
+
+              <div class="col-3 row">  <!-- col4 -->
+                <label class="col-4 col-form-label">
+                  Total
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.totalscore"
+                    name="totalscore"
+                    #totalscore="ngModel"
+                    id="totalscore">
+                </div>
+              </div> <!-- col4 close -->
+            </div><!--form group --> 
+
+          </div> <!-- closing EVM -->
+
+          <div style="padding:15px;">
+            <h6>
+              <label class="text-primary">Ventilation</label>
+            </h6>
+            <div class="form-group row">
+              <div class="col-12 row"> <!-- col1 -->
+                <label class="col-6 col-form-label">
+                  Duraton of conventional mechanical ventination
+                </label>
+                <div class="col-6">
+                  <input readonly  class="form-control" placeholder="Days"
+                    type="text"
+                    [(ngModel)]="patientDetail.durOfConventianalMechanicalVentination"
+                    name="durOfConventianalMechanicalVentination"
+                    #durOfConventianalMechanicalVentination="ngModel"
+                    id="durOfConventianalMechanicalVentination">
+                </div>
+              </div> <!-- col1 close -->
+            </div> <!--form group -->
+
+            <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  PO2 %
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control" placeholder="mmHg"
+                    type="text"
+                    [(ngModel)]="patientDetail.pO2"
+                    name="pO2"
+                    #pO2="ngModel"
+                    id="pO2">
+                </div>
+              </div> <!-- col1 close -->
+
+              <div class="col-6 row">  <!-- col2 -->
+                <label class="col-4 col-form-label">
+                  SPO2 %
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.spO2"
+                    name="spO2"
+                    id="spO2">
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+            <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  Pao2/Fio2 ratio
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.pao2fio2ratio"
+                    name="pao2fio2ratio"
+                    #pao2fio2ratio="ngModel"
+                    id="pao2fio2ratio">
+                </div>
+              </div> <!-- col1 close -->
+
+              <div class="col-6 row">  <!-- col2 -->
+                <label class="col-4 col-form-label">
+                  FIO2 %
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.fiO2"
+                    name="fiO2"
+                    #fiO2="ngModel"
+                    id="fiO2">
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+            <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  PEEP
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control" placeholder="CMH2O"
+                    type="text"
+                    [(ngModel)]="patientDetail.peep"
+                    name="peep"
+                    #peep="ngModel"
+                    id="peep">
+                </div>
+              </div> <!-- col1 close -->
+              <div class="col-6 row">  <!-- col2 -->
+                <label class="col-4 col-form-label">
+                  pip %
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control" placeholder="CMH2O"
+                    type="text"
+                    [(ngModel)]="patientDetail.pip"
+                    name="pip"
+                    #pip="ngModel"
+                    id="pip">
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+            <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  RR
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.rr"
+                    name="rr"
+                    #rr="ngModel"
+                    id="rr">
+                </div>
+              </div> <!-- col1 close -->
+              <div class="col-6 row">  <!-- col2 -->
+                <label class="col-4 col-form-label">
+                  TV
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.tv"
+                    name="tv"
+                    #tv="ngModel"
+                    id="tv">
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+
+            <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  Lung Compliance
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.lungCompliance"
+                    name="lungCompliance"
+                    #lungCompliance="ngModel"
+                    id="lungCompliance">
+                </div>
+              </div> <!-- col1 close -->
+
+
+              <div class="col-6 row"> <!-- col2 -->
+                <label class="col-4 col-form-label">
+                  CXR quadrants
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.cxrquadrants"
+                    name="cxrquadrants"
+                    #cxrquadrants="ngModel"
+                    id="cxrquadrants">
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+          </div>
+        </div> <!-- closing of Ventilation -->
+
+        <div style="padding:15px;">
+          <h6>
+            <label class="text-primary">Investigation Result</label>
+          </h6>
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                UREA
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.urea"
+                  name="urea"
+                  #urea="ngModel"
+                  id="urea">
+              </div>
+            </div> <!-- col1 close -->
+
+            <div class="col-6 row"> <!-- col2 -->
+              <label class="col-4 col-form-label">
+                CR
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.cr"
+                  name="cr"
+                  #cr="ngModel"
+                  id="cr">
+              </div>
+            </div> <!-- col2 close -->
+          </div>
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Lactate
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.lactate"
+                  name="lactate"
+                  #lactate="ngModel"
+                  id="lactate">
+              </div>
+            </div> <!-- col1 close -->
+
+            <div class="col-6 row"> <!-- col2 -->
+              <label class="col-4 col-form-label">
+                UO
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="mls/hr"
+                  type="text"
+                  [(ngModel)]="patientDetail.uo"
+                  name="uo"
+                  #uo="ngModel"
+                  id="uo">
+              </div>
+            </div> <!-- col2 close -->
+          </div>
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Dialysis
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="mls/hr"
+                  type="text"
+                  [(ngModel)]="patientDetail.dialysis"
+                  name="dialysis"
+                  #dialysis="ngModel"
+                  id="dialysis">
+              </div>
+            </div> <!-- col1 close -->
+            
+          </div> <!--form group -->
+        </div><!-- investigation result close -->
+
+        <div class="col-12" style="padding:15px;"><!-- start for Cardiovascular Parameters: complication -->
+          <h6>
+            <label class="text-primary">Cardiovascular Parameters:</label>
+          </h6>
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                HR
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.hr"
+                  name="hr"
+                  #hr="ngModel"
+                  id="hr">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                BP
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.bp"
+                  name="bp"
+                  #bp="ngModel"
+                  id="bp">  
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+
+          <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  CVP
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.cvp"
+                    name="cvp"
+                    #cvp="ngModel"
+                    id="cvp">
+                </div>
+              </div> <!-- col1 close -->
+
+              <div class="col-6 row">  <!-- col2 -->
+                <label class="col-4 col-form-label">
+                  TEMP
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.temp"
+                    name="temp"
+                    #temp="ngModel"
+                    id="temp">
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+
+            <div class="form-group row">
+              <div class="col-6 row"> <!-- col1 -->
+                <label class="col-4 col-form-label">
+                  CO
+                </label>
+                <div class="col-8">
+                  <input readonly  class="form-control"
+                    type="text"
+                    [(ngModel)]="patientDetail.co"
+                    name="co"
+                    #co="ngModel"
+                    id="co">
+                </div>
+              </div> <!-- col1 close -->
+            </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Left ventricular ejection fraction
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.leftventricularejectionfraction"
+                  name="leftventricularejectionfraction"
+                  #leftventricularejectionfraction="ngModel"
+                  id="leftventricularejectionfraction">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                CARDIAC INDEX
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.cardiacindex"
+                  name="cardiacindex"
+                  #cardiacindex="ngModel"
+                  id="cardiacindex">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+        </div> <!-- closing for Cardiovascular Parameters: complication -->
+
+        <div class="col-8" style="padding:15px;"><!-- start for Inotropes/vasoconstrictors -->
+          <h6>
+            <label class="text-primary">Inotropes/vasoconstrictors</label>
+          </h6>
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropesagent1"
+                  name="Inotropesagent1"
+                  #Inotropesagent1="ngModel"
+                  id="Inotropesagent1">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropesdose1"
+                  name="Inotropesdose1"
+                  #Inotropesdose1="ngModel"
+                  id="Inotropesdose1">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropesagent2"
+                  name="Inotropesagent2"
+                  #Inotropesagent2="ngModel"
+                  id="Inotropesagent2">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropesdose2"
+                  name="Inotropesdose2"
+                  #Inotropesdose2="ngModel"
+                  id="Inotropesdose2">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropesagent3"
+                  name="Inotropesagent3"
+                  #Inotropesagent3="ngModel"
+                  id="Inotropesagent3">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropesdose3"
+                  name="Inotropesdose3"
+                  #Inotropesdose3="ngModel"
+                  id="Inotropesdose3">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+        </div> <!-- closing for Inotropes/vasoconstrictors -->
+
+        <div class="col-8" style="padding:15px;"><!-- start for Sedation -->
+          <h6>
+            <label class="text-primary">Sedation</label>
+          </h6>
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedationagent1"
+                  name="Sedationagent1"
+                  #Sedationagent1="ngModel"
+                  id="Sedationagent1">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedationdose1"
+                  name="Sedationdose1"
+                  #Sedationdose1="ngModel"
+                  id="Sedationdose1">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedationagent2"
+                  name="Sedationagent2"
+                  #Sedationagent2="ngModel"
+                  id="Sedationagent2">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedationdose2"
+                  name="Sedationdose2"
+                  #Sedationdose2="ngModel"
+                  id="Sedationdose2">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedationagent3"
+                  name="Sedationagent3"
+                  #Sedationagent3="ngModel"
+                  id="Sedationagent3">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedationdose3"
+                  name="Sedationdose3"
+                  #Sedationdose3="ngModel"
+                  id="Sedationdose3">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+        </div> <!-- closing for Sedation -->
+
+        <div class="col-8" style="padding:15px;"><!-- start for Muscle relaxants -->
+          <h6>
+            <label class="text-primary">Muscle relaxants</label>
+          </h6>
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                Agent
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.musclerelaxantsagent1"
+                  name="musclerelaxantsagent1"
+                  #musclerelaxantsagent1="ngModel"
+                  id="musclerelaxantsagent1">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Dose
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control"
+                  type="text"
+                  [(ngModel)]="patientDetail.musclerelaxantsdose1"
+                  name="musclerelaxantsdose1"
+                  #musclerelaxantsdose1="ngModel"
+                  id="musclerelaxantsdose1">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+        </div> <!-- closing for Muscle relaxants -->
+
+        <div class="col-8" style="padding:15px;"><!-- start for Blood Glass: -->
+          <h6>
+            <label class="text-primary">Blood Gas</label>
+          </h6>
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                PH
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="PH"
+                  type="text"
+                  [(ngModel)]="patientDetail.bloodgasPH"
+                  name="bloodgasPH"
+                  #bloodgasPH="ngModel"
+                  id="bloodgasPH">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                PO2
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="PO2"
+                  type="text"
+                  [(ngModel)]="patientDetail.bloodgasPO2"
+                  name="bloodgasPO2"
+                  #bloodgasPO2="ngModel"
+                  id="bloodgasPO2">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                PCO2
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="PCO2"
+                  type="text"
+                  [(ngModel)]="patientDetail.bloodgasPCO2"
+                  name="bloodgasPCO2"
+                  #bloodgasPCO2="ngModel"
+                  id="bloodgasPCO2">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                HC03
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="HCO3"
+                  type="text"
+                  [(ngModel)]="patientDetail.bloodgasHCO3"
+                  name="bloodgasHCO3"
+                  #bloodgasHCO3="ngModel"
+                  id="bloodgasHCO3">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-4 col-form-label">
+                BE
+              </label>
+              <div class="col-8">
+                <input readonly  class="form-control" placeholder="BE"
+                  type="text"
+                  [(ngModel)]="patientDetail.bloodgasBE"
+                  name="bloodgasBE"
+                  #bloodgasBE="ngModel"
+                  id="bloodgasBE">
+              </div>
+            </div> <!-- col1 close -->
+          </div><!--form group -->
+
+        </div> <!-- closing for Blood Glass: -->
+
+        <div class="col-12">
+          <h6>
+            <label class="text-primary">Refral's</label>
+          </h6>
+
+          <div class="form-group row">
+            <div class="col-6 row"> <!-- col1 -->
+              <label class="col-5 col-form-label">
+                Refral Designation
+              </label>
+              <div class="col-7">
+                <input readonly class="form-control" placeholder="Designation"
+                  type="text"
+                  [(ngModel)]="patientDetail.refdocdesignation"
+                  name="refdocdesignation"
+                  #designation="ngModel"
+                  id="refdocdesignation">
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-6 row">  <!-- col2 -->
+              <label class="col-4 col-form-label">
+                Refral Telephone
+              </label>
+              <div class="col-8">
+                <input readonly class="form-control" placeholder="telephone"
+                  type="text"
+                  [(ngModel)]="patientDetail.refdoctelephone"
+                  name="refdoctelephone"
+                  #Inotropesdose2="ngModel"
+                  id="refdoctelephone">
+              </div>
+            </div> <!-- col2 close -->
+          </div><!--form group -->
         </div>
+
+
+        <div class="col-12" align="center">
+          <!--<form role="form" (ngSubmit)="f.form.valid && onApproved()"> -->
+          <form role="form"
+            #f="ngForm"
+            (ngSubmit)="f.form.valid && onApproved()"
+            novalidate  *ngIf="docType===true">
+            <div class="form-group col-6" > 
+              <label for="disabledSelect">Comments</label>
+              <textarea [(ngModel)]="_PatientDetailReq.comment"
+                name="comment"
+                id="comment"
+                #comment="ngModel"
+                class="form-control" rows="3">
+              </textarea>
+            </div>
+            <button type="submit"
+              (click)="_PatientDetailReq.action = '2'"
+              class="btn btn-warning">
+              HOLD
+            </button>
+            <button type="submit"
+              class="btn btn-success"
+              (click)="_PatientDetailReq.action = '3'">
+              APPROVED
+            </button>
+            <button type="submit"
+              class="btn btn-danger"
+              (click)="_PatientDetailReq.action = '4'">
+              REJECT
+            </button>
+          </form>
+        </div>
+
       </div>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,19 @@
                         <div *ngIf="f.submitted && !name.valid"
                              class="help-block"> *Name is required</div>
                     </div>
+                    <div class="form-group"
+                    [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+                   <input type="text"
+                          [(ngModel)]="_user.phone"
+                          name="name"
+                          class="form-control input-underline input-lg"
+                          #name="ngModel"
+                          id="phone"
+                          placeholder="Phone No"
+                          required>
+                   <div *ngIf="f.submitted && !phone.valid"
+                        class="help-block"> *Phone is required</div>
+               </div>
                     <div class="form-group">
                         <input type="text"
                                [(ngModel)]="_user.civilid"
@@ -86,6 +99,22 @@
                         </select>
                         <div *ngIf="f.submitted && Hsvalid === false"
                              class="help-block" style="color: red;"> *Hospital is required</div>
+                    </div>
+                    <div class="form-group">
+                                    <select
+                                      class="form-control"
+                                      [(ngModel)]="_user.user_type"
+                                      name="user_type"
+                                      #user_type="ngModel"
+                                      id="user_type" required>
+                                      <option value="1">Approval</option>
+                                      <option value="2">ICU</option>
+                                      <option value="3">Referral<option>
+                                      <option value="4">Admin</option>
+                                    </select>
+                                    <div class="help-block" style="color: red;" *ngIf="f.submitted && user_type.errors?.required">
+                                      *User type is required
+                                    </div>
                     </div>
 
                 </div>
