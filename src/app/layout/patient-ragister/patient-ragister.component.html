@@ -314,7 +314,7 @@
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !preMorbFunctionalConsciousStatus.valid }">  <!-- col2 -->
                     <label class="col-6 col-form-label">
-                      Pre-morbid functional conscious Status
+                      Pre-morbid functional conscious Status<span>*</span>
                     </label>
                     <div class="col-6">
                       <select
@@ -437,7 +437,7 @@
                     <div class="col-12 row" 
                       [ngClass]="{ 'has-error': f.submitted && !durOfConventianalMechanicalVentination.valid }"> <!-- col1 -->
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        Duraton of conventional mechanical ventination
+                        Duraton of conventional mechanical ventination<span>*</span>
                       </label>
                       <div class="col-8">
                         <input class="form-control" placeholder="Days" type="text"
