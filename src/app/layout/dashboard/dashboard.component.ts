@@ -4,7 +4,7 @@ import { PatientService } from '../../service/patient-service';
 import { PatientModel } from '../../model/patient-model';
 import { PatientModelList } from '../../model/patient-model';
 import { Router } from '@angular/router';
-import {Pushwoosh} from 'web-push-notifications';
+import { Pushwoosh } from 'web-push-notifications';
 
 @Component({
     selector: 'app-dashboard',
@@ -23,64 +23,81 @@ export class DashboardComponent implements OnInit {
     patientsNew: PatientModelList[] = [];
     public pwInstance: Pushwoosh = new Pushwoosh();
     constructor(public router: Router, private _patientService: PatientService) {
-       this.sessid = localStorage.getItem('sessid');
-       if ( localStorage.getItem('user_type') === '3' ) {
-       this. docType = true;
-       } else {
-        this. docType = false;
-       }
-       this.pwInstance.push(['init', {
-        logLevel: 'info', // or debug
-        applicationCode: 'E8803-68B8E',
-        safariWebsitePushID: 'web.com.example.domain',
-        defaultNotificationTitle: 'Pushwoosh',
-        defaultNotificationImage: 'https://yoursite.com/img/logo-medium.png',
-        autoSubscribe: true,
-        userId: 'user_id',
-        tags: {
-            'Name': 'John Smith'
+        this.sessid = localStorage.getItem('sessid');
+        if (localStorage.getItem('user_type') === '3') {
+            this.docType = true;
+        } else {
+            this.docType = false;
         }
-    }]);
+        this.pwInstance.push(['init', {
+            logLevel: 'info', // or debug
+            applicationCode: 'E8803-68B8E',
+            safariWebsitePushID: 'http://13.127.190.221/online',
+            defaultNotificationTitle: 'test',
+            defaultNotificationImage: 'http://13.127.190.221/online/assets/images/logo.png',
+            autoSubscribe: true,
+            userId: 'user_id',
+            tags: {
+                'Name': 'John Smith'
+            }
+        }]);
 
     }
 
     public ngOnInit() {
 
         // call the method on initial load of page to bind drop down
-        if ( localStorage.getItem('user_type') === '4' ) {
-        this.router.navigateByUrl('doctorList');
-       }
-       this.getHospgetPatientsitals();
-       this.getStatusCount();
+        if (localStorage.getItem('user_type') === '4') {
+            this.router.navigateByUrl('doctorList');
+        }
+        this.getHospgetPatientsitals();
+        this.getStatusCount();
+        // this.subscribeAtStart();
     }
     public getHospgetPatientsitals() {
         // this._patient.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-        this._patientService.getPatientLists({'transactiontype': 'getpatientdetail',
-        'sessid': this.sessid})
-        .subscribe((res) => {
-            if (res !== undefined) {
-                if (res.Result === 'SUCCESS') {
+        this._patientService.getPatientLists({
+            'transactiontype': 'getpatientdetail',
+            'sessid': this.sessid
+        })
+            .subscribe((res) => {
+                if (res !== undefined) {
+                    if (res.Result === 'SUCCESS') {
 
-                    //this.patients = res.data;
-                    //this.patientsNew = res.data;
-                    for (let i = 0; i < res.data.length; i++) {
-                        let docdata = res.data[i];
-                        switch (docdata.status) {
-                            case "New":
-                            case "Approved":
-                            this.patients.push(Object.assign({action : ""}, docdata));
-                            this.patientsNew.push(Object.assign({action : ""}, docdata));
-                            break;
-                            case "Reject":
-                            case "Hold":
-                            case 1:
-                            this.patients.push(Object.assign({action : "Resend"}, docdata));
-                            this.patientsNew.push(Object.assign({action : 'Resend'}, docdata));
-                            break;
-                            default:
-                            break;
+                        // this.patients = res.data;
+                        // this.patientsNew = res.data;
+                        for (let i = 0; i < res.data.length; i++) {
+                            const docdata = res.data[i];
+                            switch (docdata.status) {
+                                case 'New':
+                                case 'Approved':
+                                    this.patients.push(Object.assign({ action: '' }, docdata));
+                                    this.patientsNew.push(Object.assign({ action: '' }, docdata));
+                                    break;
+                                case 'Reject':
+                                case 'Hold':
+                                case 1:
+                                    this.patients.push(Object.assign({ action: 'Resend' }, docdata));
+                                    this.patientsNew.push(Object.assign({ action: 'Resend' }, docdata));
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
+                    if (res.Result === 'FAILED') {
+                        this.errorMessage = res.Result;
+                    }
+                }
+            });
+    }
+    public getStatusCount(): any {
+        this._patientService.getStatusCount({
+            'sessid': this.sessid
+        }).subscribe((res) => {
+            if (res !== undefined) {
+                if (res.Result === 'SUCCESS') {
+                    this.statusCount = res.data;
                 }
                 if (res.Result === 'FAILED') {
                     this.errorMessage = res.Result;
@@ -88,23 +105,9 @@ export class DashboardComponent implements OnInit {
             }
         });
     }
-     public getStatusCount(): any {
-         this._patientService.getStatusCount({
-             'sessid': this.sessid
-         }).subscribe((res) => {
-             if (res !== undefined) {
-                 if (res.Result === 'SUCCESS') {
-                     this.statusCount = res.data;
-                 }
-                 if (res.Result === 'FAILED') {
-                     this.errorMessage = res.Result;
-                 }
-             }
-         });
-    }
     public filter(status: string) {
 
-        this.patients = this.patientsNew ;
+        this.patients = this.patientsNew;
         this.patients = this.patients.filter(x => x.status === status);
     }
 
@@ -114,5 +117,38 @@ export class DashboardComponent implements OnInit {
     }
     public setPatientObject(patient: PatientModel) {
         localStorage.setItem('patient', JSON.stringify(patient));
+    }
+
+    isBrowserChrome() {
+        return navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    }
+    isBrowserFirefox() {
+        return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    }
+
+    isBrowserSafari() {
+        return navigator.userAgent.toLowerCase().indexOf('safari') > -1 && !this.isBrowserChrome();
+    }
+    isBrowserSupported() {
+        return this.isBrowserChrome() || this.isBrowserFirefox();
+    }
+    subscribeAtStart() {
+        if (this.isBrowserSupported()) {
+            if (null === localStorage.getItem('pwAllowPushNotifications')) {
+                this.showSubscriptionWindow();
+            }
+        }
+    }
+    showSubscriptionWindow() {
+        if (this.isBrowserSupported()) {
+            const windowWidth = screen.width / 2;
+            const windowHeight = screen.height / 2;
+
+            const windowLeft = screen.width / 2 - windowWidth / 2;
+            const windowRight = screen.height / 2 - windowHeight / 2;
+            let URL = 'https://' + 'E8803-68B8E' + '.chrome.pushwoosh.com/';
+            // tslint:disable-next-line:max-line-length
+            const pwSubscribeWindow = window.open(URL, '_blank', 'width=' + windowWidth + ',height=' + windowHeight + ',resizable=yes,scrollbars=yes,status=yes,left=' + windowLeft + ',top=' + windowRight);
+        }
     }
 }
