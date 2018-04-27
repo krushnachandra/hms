@@ -45,7 +45,7 @@ export class DoctorListComponent implements OnInit {
         this.__doctorService.getDoctorLists({'transactiontype': this.transactiontype,
         'sessid': this.sessid})
         .subscribe((res) => {
-            debugger;
+            
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                    // this.doctors = res.data;

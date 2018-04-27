@@ -4,6 +4,8 @@ import { PatientService } from '../../service/patient-service';
 import { PatientModel } from '../../model/patient-model';
 import { PatientModelList } from '../../model/patient-model';
 import { Router } from '@angular/router';
+import {Pushwoosh} from 'web-push-notifications';
+
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -12,34 +14,40 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
     statusCount: any;
-
-    docType:boolean;
+    docType: boolean;
     sessid: string;
     errorMessage: any;
-    patients: PatientModelList[] = [];//PatientModel[];
+    patients: PatientModelList[] = [];
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
     patientsNew: PatientModelList[] = [];
-
-    constructor(public router: Router,private _patientService: PatientService) {
+    public pwInstance: Pushwoosh = new Pushwoosh();
+    constructor(public router: Router, private _patientService: PatientService) {
        this.sessid = localStorage.getItem('sessid');
-       debugger;
-       if( localStorage.getItem('user_type') == "3" )
-       {
-       this. docType=true;
+       if ( localStorage.getItem('user_type') === '3' ) {
+       this. docType = true;
+       } else {
+        this. docType = false;
        }
-       else
-       {
-        this. docType=false;
-       }
-       
+       this.pwInstance.push(['init', {
+        logLevel: 'info', // or debug
+        applicationCode: 'E8803-68B8E',
+        safariWebsitePushID: 'web.com.example.domain',
+        defaultNotificationTitle: 'Pushwoosh',
+        defaultNotificationImage: 'https://yoursite.com/img/logo-medium.png',
+        autoSubscribe: true,
+        userId: 'user_id',
+        tags: {
+            'Name': 'John Smith'
+        }
+    }]);
+
     }
 
     public ngOnInit() {
-        debugger;
+
         // call the method on initial load of page to bind drop down
-        if( localStorage.getItem('user_type') == "4" )
-       { 
+        if ( localStorage.getItem('user_type') === '4' ) {
         this.router.navigateByUrl('doctorList');
        }
        this.getHospgetPatientsitals();
@@ -52,24 +60,22 @@ export class DashboardComponent implements OnInit {
         .subscribe((res) => {
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
-                    debugger;
+
                     //this.patients = res.data;
                     //this.patientsNew = res.data;
-                    for(let i=0; i<res.data.length; i++)
-                    {
+                    for (let i = 0; i < res.data.length; i++) {
                         let docdata = res.data[i];
-                        switch(docdata.status)
-                        {
+                        switch (docdata.status) {
                             case "New":
                             case "Approved":
-                            this.patients.push(Object.assign({action : ""},docdata));
-                            this.patientsNew.push(Object.assign({action : ""},docdata));
+                            this.patients.push(Object.assign({action : ""}, docdata));
+                            this.patientsNew.push(Object.assign({action : ""}, docdata));
                             break;
                             case "Reject":
                             case "Hold":
                             case 1:
-                            this.patients.push(Object.assign({action : "Resend"},docdata));
-                            this.patientsNew.push(Object.assign({action : 'Resend'},docdata));
+                            this.patients.push(Object.assign({action : "Resend"}, docdata));
+                            this.patientsNew.push(Object.assign({action : 'Resend'}, docdata));
                             break;
                             default:
                             break;
@@ -97,7 +103,7 @@ export class DashboardComponent implements OnInit {
          });
     }
     public filter(status: string) {
-        debugger;
+
         this.patients = this.patientsNew ;
         this.patients = this.patients.filter(x => x.status === status);
     }

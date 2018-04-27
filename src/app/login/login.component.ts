@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
             .subscribe((res) => {
                 if (res !== undefined) {
                     if (res.Result === 'SUCCESS') {
-                        debugger;
+                        
                         localStorage.setItem('isLoggedin', 'true');
                         localStorage.setItem('user', res.data.name);
                         localStorage.setItem('sessid', res.data.sessid);

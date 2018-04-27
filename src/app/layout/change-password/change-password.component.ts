@@ -29,7 +29,7 @@ export class ChangePasswordComponent implements OnInit {
 
     }
     public onSubmit() {
-        debugger;
+        
 
         this.updatePasswordData.specialist_id = parseInt(localStorage.getItem('specialist_id'));
         this.updatePasswordData.hospital_id = parseInt(localStorage.getItem('hospital_id'));
@@ -41,7 +41,7 @@ export class ChangePasswordComponent implements OnInit {
         this.updatePasswordData.docid = localStorage.getItem('created_by');
             this._authenticationService.DoctorRegister(this.updatePasswordData)
             .subscribe((res) => {
-                debugger;
+                
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);

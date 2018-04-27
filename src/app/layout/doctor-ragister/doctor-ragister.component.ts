@@ -30,14 +30,14 @@ export class DoctorRagisterComponent implements OnInit {
         private toastr: ToastrService) { }
 
     public ngOnInit() {
-        debugger;
+        
         // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
 
     }
     public getHospitals() {
-        debugger;
+        
         this._hospital.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this._hospitalService.getHospitals(this._hospital).subscribe(
             res => this.hospitals = res,
@@ -51,7 +51,7 @@ export class DoctorRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
-        debugger;
+        
         this._user.transactiontype = 'insert';
         this._user.sessid ='E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';// localStorage.getItem('sessid');
         this.created_by = +localStorage.getItem('created_by');
@@ -70,7 +70,7 @@ export class DoctorRagisterComponent implements OnInit {
         {
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
-                debugger;
+                
                  if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
