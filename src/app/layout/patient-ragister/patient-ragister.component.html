@@ -189,6 +189,22 @@
                       </span>
                     </div>
                   </div> <!-- col2 close -->
+                  <div class="col-6 row"
+                  [ngClass]="{ 'has-error': f.submitted && age.invalid }"> <!-- col1 -->
+                    <label class="col-4 col-form-label">
+                      Age<span>*</span>
+                    </label>
+                    <div class="col-8">
+                      <input  type="text" class="form-control"
+                        [(ngModel)]="_patient.age"
+                        name="age"
+                        #age="ngModel"
+                        id="age" type="number">
+                        <span class="help-block "*ngIf="f.submitted && age.errors?.required">
+                          *Age is required
+                        </span>
+                    </div>
+                  </div> <!-- col1 close -->
                 </div><!--form group -->
 
                 <div class="form-group row">

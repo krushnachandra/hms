@@ -37,10 +37,11 @@ export class ProfileComponent implements OnInit {
         private _specialistService: SpecialistService,
         private toastr: ToastrService) {
             debugger;
+
+        this._user.civilid = parseInt(localStorage.getItem('civilid'));
         this.specialist_id = localStorage.getItem('specialist_id');
         this.hospital_id = localStorage.getItem('hospital_id');
         this.email = localStorage.getItem('email');
-        this.civilid= localStorage.getItem('civilid');
         this.phone = localStorage.getItem('phone');
         this.username = localStorage.getItem('user');
         this.sessid= localStorage.getItem('sessid');
