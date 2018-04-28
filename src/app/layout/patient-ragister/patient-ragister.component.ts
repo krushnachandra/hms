@@ -91,7 +91,7 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
-        debugger;
+        
         this._patient.transactiontype = 'insert';
         this._patient.sessid = localStorage.getItem('sessid');
         this.created_by = +localStorage.getItem('created_by');
@@ -157,7 +157,7 @@ export class PatientRagisterComponent implements OnInit {
 
     public onEVMChanged()
     {
-        debugger;
+        
         let E:string = "0";
         let V:string = "0";
         let M:string = "0";

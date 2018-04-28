@@ -25,7 +25,7 @@ export class SidebarComponent {
             }
         });
        this.user_type = +localStorage.getItem('user_type');
-       debugger;
+       
         if (this.user_type === 1) 
         {
             this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'},{url: '/doctorList', menuText: 'Doctor List'},{url: '/patient-register', menuText: 'ECMO Referal Form'}];

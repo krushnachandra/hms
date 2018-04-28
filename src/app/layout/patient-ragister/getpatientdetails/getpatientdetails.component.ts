@@ -42,7 +42,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
         private toastr: ToastrService,private _activatedRoute: ActivatedRoute,private _patientService:PatientService) { }
         
     public ngOnInit() {
-        debugger;
+        
         if( localStorage.getItem('user_type') == "1" || localStorage.getItem('user_type') == "4" )
         {
         this. docType=true;
@@ -61,14 +61,14 @@ export class GetPatientDetailsComponent1 implements OnInit {
 
     public getPatientDetails(id:number)
     {
-        debugger;
+        
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getpatientinfo";
         this.refral_id = id.toString();
         this._patientService.getPatientDetails ({'transactiontype': this.transactiontype,
         'sessid': this.sessid,"refral_id": this.refral_id})
         .subscribe((res) => {
-            debugger;
+            
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this.patientDetail = res.data[0];
@@ -98,7 +98,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
         );
     }
     public onApproved() {
-        debugger;
+        
         this._patientService.patientStatusAction({'sessid':  localStorage.getItem('sessid'),
         'action':this._PatientDetailReq.action,
         'transactiontype': 'insertaction',

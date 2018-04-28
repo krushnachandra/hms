@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
         private _hospitalService: HospitalService,
         private _specialistService: SpecialistService,
         private toastr: ToastrService) {
-            debugger;
+            
 
         this._user.civilid = parseInt(localStorage.getItem('civilid'));
         this.specialist_id = localStorage.getItem('specialist_id');
@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
         );
     }
     public onSave() {
-        debugger;
+        
         this._user.transactiontype = 'updateuser';
         this._user.sessid = localStorage.getItem('sessid');
         if (this._user.hospital_id === 0) {
@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit {
         if (this.Hsvalid && this.Spvalid) {
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
-                debugger;
+                
                 if (res !== undefined) {
                     if (res.Result === 'success') {
                         this.toastr.success(res.Result, res.Result);
