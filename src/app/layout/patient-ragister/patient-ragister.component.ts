@@ -131,7 +131,7 @@ export class PatientRagisterComponent implements OnInit {
 
     public onCivilIdChange(val)
     {
-        if(val.length >= 12)
+        if(val.length = 12)
         {
             this.cidyy = +val.substr(1, 2);//+this._patient.civilId.substr(1, 2);
             const c = new Date();

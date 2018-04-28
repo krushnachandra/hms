@@ -151,7 +151,7 @@
                         #civilId="ngModel"
                         id="civilId" 
                         (blur)="onCivilIdChange($event.target.value)"
-                        required>
+                        required maxlength="12">
                         <div *ngIf="f.submitted && !civilId.valid"
                           class="help-block"> *CivilId is required
                         </div>
@@ -743,7 +743,7 @@
                   <div class="col-6 row" 
                     [ngClass]="{ 'has-error': f.submitted && !uo.valid }"> <!-- col2 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      CO<span>*</span>
+                      UO<span>*</span>
                     </label>
                     <div class="col-8">
                       <input class="form-control" placeholder="UO"
@@ -1281,7 +1281,7 @@
                         [(ngModel)]="_patient.refdoctelephone"
                         name="refdoctelephone"
                         #refdoctelephone="ngModel"
-                        id="refdoctelephone" required> 
+                        id="refdoctelephone" maxlength="9" required>    
                         <span class="help-block "*ngIf="f.submitted && refdoctelephone.errors?.required">
                           *Refral Telephone is required
                         </span>
