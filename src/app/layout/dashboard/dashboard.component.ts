@@ -4,7 +4,7 @@ import { PatientService } from '../../service/patient-service';
 import { PatientModel } from '../../model/patient-model';
 import { PatientModelList } from '../../model/patient-model';
 import { Router } from '@angular/router';
-import { Pushwoosh } from 'web-push-notifications';
+
 
 @Component({
     selector: 'app-dashboard',
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
     patientsNew: PatientModelList[] = [];
-    public pwInstance: Pushwoosh = new Pushwoosh();
+   // public pwInstance: Pushwoosh = new Pushwoosh();
     constructor(public router: Router, private _patientService: PatientService) {
         this.sessid = localStorage.getItem('sessid');
         if (localStorage.getItem('user_type') === '3') {
@@ -29,18 +29,7 @@ export class DashboardComponent implements OnInit {
         } else {
             this.docType = false;
         }
-        this.pwInstance.push(['init', {
-            logLevel: 'info', // or debug
-            applicationCode: 'E8803-68B8E',
-            safariWebsitePushID: 'http://13.127.190.221/online',
-            defaultNotificationTitle: 'test',
-            defaultNotificationImage: 'http://13.127.190.221/online/assets/images/logo.png',
-            autoSubscribe: true,
-            userId: 'user_id',
-            tags: {
-                'Name': 'John Smith'
-            }
-        }]);
+       
 
     }
 
