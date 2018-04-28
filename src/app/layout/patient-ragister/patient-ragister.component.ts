@@ -28,6 +28,7 @@ export class PatientRagisterComponent implements OnInit {
     referConsulutantName: string;
     created_by: number;
     errorMessage: any;
+    guid :string;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
     public _specialist: SpecialistModel = new SpecialistModel();
@@ -189,5 +190,82 @@ export class PatientRagisterComponent implements OnInit {
         {
             this.Hsvalid = false;
         }
+      }
+
+      public fileChange(event,value)
+      {
+          debugger;
+          if (value == 1)
+          {
+            let fileList: FileList = event.target.files;
+            if (fileList.length > 0) 
+            {
+                let file: File = fileList[0];  
+                let formData: FormData = new FormData();  
+                formData.append('file', file); 
+                formData.append('guid',localStorage.getItem('sessid'));
+                formData.append('filetype','1');
+                formData.append('docid',localStorage.getItem('created_by'));
+                this._patientService.patientFileUpload(formData)
+                .subscribe((res) => {
+                     if (res !== undefined) {
+                        if (res.Result === 'Success') {
+                            this.toastr.success(res.Result, res.Result);
+                        }
+                        if (res.Result === 'Failed') {
+                            this.toastr.error(res.Result, res.Result);
+                        }
+                    }
+                });
+            }
+          }
+          else if (value == 2)
+          {
+            let fileList: FileList = event.target.files;
+            if (fileList.length > 0) 
+            {
+                let file: File = fileList[0];  
+                let formData: FormData = new FormData();  
+                formData.append('file', file); 
+                formData.append('guid',localStorage.getItem('sessid'));
+                formData.append('filetype','2');
+                formData.append('docid',localStorage.getItem('created_by'));
+                this._patientService.patientFileUpload(formData)
+                .subscribe((res) => {
+                     if (res !== undefined) {
+                        if (res.Result === 'Success') {
+                            this.toastr.success(res.Result, res.Result);
+                        }
+                        if (res.Result === 'Failed') {
+                            this.toastr.error(res.Result, res.Result);
+                        }
+                    }
+                });
+            }
+          }
+          else if (value == 3)
+          {
+            let fileList: FileList = event.target.files;
+            if (fileList.length > 0) 
+            {
+                let file: File = fileList[0];  
+                let formData: FormData = new FormData();  
+                formData.append('file', file); 
+                formData.append('guid',localStorage.getItem('sessid'));
+                formData.append('filetype','3');
+                formData.append('docid',localStorage.getItem('created_by'));
+                this._patientService.patientFileUpload(formData)
+                .subscribe((res) => {
+                     if (res !== undefined) {
+                        if (res.Result === 'Success') {
+                            this.toastr.success(res.Result, res.Result);
+                        }
+                        if (res.Result === 'Failed') {
+                            this.toastr.error(res.Result, res.Result);
+                        }
+                    }
+                });
+            }
+          }
       }
 }

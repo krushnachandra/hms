@@ -61,4 +61,17 @@ export class PatientService {
             .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
     }
+
+    public patientFileUpload(formData: FormData): Observable<any> {
+        const url = `${this.BASE_URL}/hms/api/RefPatient/SavePatientFile`;
+        //const body = JSON.stringify(formData); // Stringify payload
+        //const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        //headers.append('Access-Control-Allow-Origin', '*');
+        let headers = new Headers() ; 
+        const options = new RequestOptions({ headers: headers }); // Create a request option
+
+        return this.http.post(url, formData, options) // ...using post request
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // errors if any
+    }
 }
