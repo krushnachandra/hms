@@ -1003,7 +1003,7 @@
         </div> <!-- closing for Blood Glass: -->
 
         <div class="col-12">
-          <h6>
+          <h6 >
             <label class="text-primary">Refral's</label>
           </h6>
 
@@ -1036,6 +1036,37 @@
             </div> <!-- col2 close -->
           </div><!--form group -->
         </div>
+
+        <div class="col-12"  *ngIf="patientDetail.file1 != 'NA' || patientDetail.file2!= 'NA' ||patientDetail.file3 != 'NA'">
+          <h6 >
+            <label class="text-primary">Patient Document</label>
+          </h6>
+
+          <div class="form-group row">
+            <div class="col-4 row"> <!-- col1 -->
+              
+              <div class="col-7"  *ngIf="patientDetail.file1 != 'NA'">
+                <a [href]="patientDetail.file1"  download target="_blank">Document 1</a>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-4 row"> <!-- col1 -->
+              
+              <div class="col-7" *ngIf="patientDetail.file2 != 'NA'">
+                <a [href]="patientDetail.file2" download target="_blank">Document 2</a>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-4 row"> <!-- col1 -->
+              
+              <div class="col-7" *ngIf="patientDetail.file3 !='NA'">
+                <a [href]="patientDetail.file3" download target="_blank">Document 3</a>
+              </div>
+            </div> <!-- col1 close -->
+          </div><!--form group -->
+        </div>
+
+
+
+
 
 
         <div class="col-12" align="center">

@@ -90,6 +90,9 @@ export class PatientDetail extends CommonModel
     status:  string;
     action:string = "0";
     comment:string;
+    file1:string;
+    file2:string;
+    file3:string;
 }
 
  export class PatientModel extends CommonModel {

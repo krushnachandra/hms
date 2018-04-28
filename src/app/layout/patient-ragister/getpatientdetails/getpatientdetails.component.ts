@@ -28,6 +28,9 @@ export class GetPatientDetailsComponent1 implements OnInit {
     docType:boolean;
     created_by: number;
     errorMessage: any;
+    IsDocAvailable1:boolean=true;
+    IsDocAvailable2:boolean=true;
+    IsDocAvailable3:boolean=true;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
     patientDetail: PatientDetail = new PatientDetail();
@@ -72,6 +75,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this.patientDetail = res.data[0];
+                    
                 }
                 else if (res.Result === 'FAILED') {
                     this.errorMessage = res.Result;
