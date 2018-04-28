@@ -131,8 +131,10 @@ export class PatientRagisterComponent implements OnInit {
 
     public onCivilIdChange(val)
     {
-        if(val.length = 12)
+    debugger;
+        if(val.length == 12)
         {
+            debugger;
             this.cidyy = +val.substr(1, 2);//+this._patient.civilId.substr(1, 2);
             const c = new Date();
             this.year = +c.getFullYear();
@@ -200,6 +202,7 @@ export class PatientRagisterComponent implements OnInit {
             let fileList: FileList = event.target.files;
             if (fileList.length > 0) 
             {
+                debugger;
                 let file: File = fileList[0];  
                 let formData: FormData = new FormData();  
                 formData.append('file', file); 
@@ -208,12 +211,13 @@ export class PatientRagisterComponent implements OnInit {
                 formData.append('docid',localStorage.getItem('created_by'));
                 this._patientService.patientFileUpload(formData)
                 .subscribe((res) => {
+                    debugger;
                      if (res !== undefined) {
-                        if (res.Result === 'Success') {
-                            this.toastr.success(res.Result, res.Result);
+                        if (res.Result === 'SUCCESS') {
+                            this.toastr.success("File Uploaded Successfully.", res.Result);
                         }
-                        if (res.Result === 'Failed') {
-                            this.toastr.error(res.Result, res.Result);
+                        if (res.Result === 'FAILED') {
+                            this.toastr.error("File Uploaded Failed.", res.Result);
                         }
                     }
                 });
@@ -233,11 +237,11 @@ export class PatientRagisterComponent implements OnInit {
                 this._patientService.patientFileUpload(formData)
                 .subscribe((res) => {
                      if (res !== undefined) {
-                        if (res.Result === 'Success') {
-                            this.toastr.success(res.Result, res.Result);
+                        if (res.Result === 'SUCCESS') {
+                            this.toastr.success("File Uploaded Successfully.", res.Result);
                         }
-                        if (res.Result === 'Failed') {
-                            this.toastr.error(res.Result, res.Result);
+                        if (res.Result === 'FAILED') {
+                            this.toastr.error("File Uploaded Failed.", res.Result);
                         }
                     }
                 });
@@ -257,11 +261,11 @@ export class PatientRagisterComponent implements OnInit {
                 this._patientService.patientFileUpload(formData)
                 .subscribe((res) => {
                      if (res !== undefined) {
-                        if (res.Result === 'Success') {
-                            this.toastr.success(res.Result, res.Result);
+                        if (res.Result === 'SUCCESS') {
+                            this.toastr.success("File Uploaded Successfully.", res.Result);
                         }
-                        if (res.Result === 'Failed') {
-                            this.toastr.error(res.Result, res.Result);
+                        if (res.Result === 'FAILED') {
+                            this.toastr.error("File Uploaded Failed.", res.Result);
                         }
                     }
                 });
