@@ -254,9 +254,9 @@
                         id="bed">
                     </div>
                   </div> <!-- col1 close -->
-                  <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !fileNo.valid }">  <!-- col2 -->
+                  <div class="col-6 row">  <!-- col2 -->
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      File No<span>*</span>
+                      File No
                     </label>
                     <div class="col-8">
                       <input class="form-control"
@@ -264,10 +264,8 @@
                         [(ngModel)]="_patient.fileNo"
                         name="fileNo"
                         #fileNo="ngModel"
-                        id="fileNo" required>
-                         <div *ngIf="f.submitted && !fileNo.valid"
-                          class="help-block"> *File No is required
-                        </div>
+                        id="fileNo" >
+                        
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
