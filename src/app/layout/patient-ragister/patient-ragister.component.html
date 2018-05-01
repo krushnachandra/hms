@@ -11,7 +11,7 @@
                 <h5>
                     <strong>Hospital Information</strong>
                     <span class="text-warning">
-                      (* has to completed, other the consultation will be rejected)
+                      (* has to completed, otherwise the consultation will be rejected)
                     </span>
                 </h5>
                 <hr>
@@ -29,10 +29,10 @@
                     </div>
                   </div> <!-- col1 close -->
                   <div class="col-6 row">  <!-- col2 -->
-                    <label for="disabledSelect" class="col-4 col-form-label">
+                    <label for="disabledSelect" class="col-2 col-form-label">
                       Ref Date<span>*</span>
                     </label>
-                    <div class="col-8">
+                    <div class="col-10">
                       <input [(ngModel)]="_patient.RefDate"
                         name="RefDate"
                         id="RefDate"
@@ -44,7 +44,7 @@
 
                 <div class="form-group row">
                   <div class="col-6 row"> <!-- col1 -->
-                    <label for="disabledSelect" class="col-4 col-form-label">
+                    <label for="disabledSelect" class="col-2 col-form-label">
                       Ref Speciality <span>*</span>
                     </label>
                     <div class="col-8">
@@ -65,10 +65,10 @@
                   </div> <!-- col1 close -->
 
                   <div class="col-6 row" [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">  <!-- col2 -->
-                    <label for="disabledSelect" class="col-4 col-form-label">
+                    <label for="disabledSelect" class="col-2 col-form-label">
                       Ref Hospital<span>*</span>
                     </label>
-                    <div class="col-8">
+                    <div class="col-10">
                       <select
                         [(ngModel)]="_patient.referHospitalId"
                         (change)="onhospital($event)"
@@ -141,10 +141,10 @@
                   </div> <!-- col1 close -->
                   <div class="col-6 row"
                     [ngClass]="{ 'has-error': f.submitted && !civilId.valid }">  <!-- col2 -->
-                    <label for="disabledSelect" class="col-4 col-form-label">
+                    <label for="disabledSelect" class="col-2 col-form-label">
                       Civil ID<span>*</span>
                     </label>
-                    <div class="col-8">
+                    <div class="col-10">
                       <input type="text" class="form-control"
                         [(ngModel)]="_patient.civilId"
                         name="civilId"
@@ -191,7 +191,7 @@
                   </div> <!-- col2 close -->
                   <div class="col-6 row"
                   [ngClass]="{ 'has-error': f.submitted && age.invalid }"> <!-- col1 -->
-                    <label class="col-4 col-form-label">
+                    <label class="col-2 col-form-label">
                       Age<span>*</span>
                     </label>
                     <div class="col-8">
