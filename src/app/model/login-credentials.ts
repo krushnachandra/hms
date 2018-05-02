@@ -25,4 +25,6 @@ export class LoginCredentials extends CommonModel {
      * @type {boolean}
      */
     sessid: string;
+    web_token:string;
+    hwid:string;
 }

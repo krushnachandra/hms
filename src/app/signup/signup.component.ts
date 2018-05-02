@@ -7,7 +7,7 @@ import { routerTransition } from '../router.animations';
 import { User } from '../model/user-model';
 import { AuthenticationService } from '../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
     animations: [routerTransition()]
 })
 export class SignupComponent implements OnInit {
+    hwid:any = '';
+    web_token:any = '';
     Spvalid:boolean=true;
     Hsvalid:boolean=true;
     errorMessage: any;
@@ -28,7 +30,14 @@ export class SignupComponent implements OnInit {
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
         private _specialistService: SpecialistService,
-        private toastr: ToastrService) { }
+        private toastr: ToastrService,private _activatedRoute: ActivatedRoute) { 
+
+            this._activatedRoute.queryParams
+                    .subscribe(params => {
+                    this.hwid = params['hwid'];
+                    this.web_token = params['wt'];
+                    });
+        }
 
     public ngOnInit() {
         // call the method on initial load of page to bind drop down
@@ -63,6 +72,8 @@ export class SignupComponent implements OnInit {
         }
         if (this.Hsvalid && this.Spvalid)
         {
+            this._user.hwid = this.hwid ;
+            this._user.web_token = this.web_token;
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
                 if (res !== undefined) {

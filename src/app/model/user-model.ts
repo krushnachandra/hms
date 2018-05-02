@@ -18,4 +18,6 @@ export class User  extends CommonModel {
     EditTime: string;
     EditHostName: string;
     EditHostAddress: string;
+    web_token:string;
+    hwid:string;
 }

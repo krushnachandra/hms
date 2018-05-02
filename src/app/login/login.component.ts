@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { LoginCredentials } from '../model/login-credentials';
 import { LoggingServiceInterface, loggingToken } from '../model/logging-service-interface';
@@ -15,12 +15,22 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
     errorMessage: any;
+    hwid:any = '';
+    web_token:any = '';
     public loginCredentials: LoginCredentials = new LoginCredentials();
     constructor(public router: Router, private _authenticationService: AuthenticationService,
-        private toastr: ToastrService) { }
+        private toastr: ToastrService,private _activatedRoute: ActivatedRoute) { 
+            this._activatedRoute.queryParams
+                    .subscribe(params => {
+                    this.hwid = params['hwid'];
+                    this.web_token = params['wt'];
+                    });
+        }
     public onLogin() {
         this.loginCredentials.transactiontype = 'login';
         this.loginCredentials.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
+        this.loginCredentials.web_token = this.web_token;
+        this.loginCredentials.hwid = this.hwid;
         this._authenticationService.logIn(this.loginCredentials)
             .subscribe((res) => {
                 if (res !== undefined) {
@@ -47,6 +57,5 @@ export class LoginComponent implements OnInit {
             });
     }
     public ngOnInit() {
-
     }
 }
