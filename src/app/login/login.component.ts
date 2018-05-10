@@ -20,13 +20,17 @@ export class LoginComponent implements OnInit {
     public loginCredentials: LoginCredentials = new LoginCredentials();
     constructor(public router: Router, private _authenticationService: AuthenticationService,
         private toastr: ToastrService,private _activatedRoute: ActivatedRoute) { 
-            this._activatedRoute.queryParams
-                    .subscribe(params => {
-                    this.hwid = params['hwid'];
-                    this.web_token = params['wt'];
-                    });
+            // this._activatedRoute.queryParams
+            //         .subscribe(params => {
+            //         this.hwid = params['hwid'];
+            //         this.web_token = params['wt'];
+            //         });
+
+                    this.hwid = localStorage.getItem('hwid');
+                    this.web_token = localStorage.getItem('wt');
         }
     public onLogin() {
+        debugger;
         this.loginCredentials.transactiontype = 'login';
         this.loginCredentials.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
         this.loginCredentials.web_token = this.web_token;

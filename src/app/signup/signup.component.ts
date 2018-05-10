@@ -32,11 +32,14 @@ export class SignupComponent implements OnInit {
         private _specialistService: SpecialistService,
         private toastr: ToastrService,private _activatedRoute: ActivatedRoute) { 
 
-            this._activatedRoute.queryParams
-                    .subscribe(params => {
-                    this.hwid = params['hwid'];
-                    this.web_token = params['wt'];
-                    });
+            // this._activatedRoute.queryParams
+            //         .subscribe(params => {
+            //         this.hwid = params['hwid'];
+            //         this.web_token = params['wt'];
+            //         });
+                    
+                    this.hwid = localStorage.getItem('hwid');
+                    this.web_token = localStorage.getItem('wt');
         }
 
     public ngOnInit() {

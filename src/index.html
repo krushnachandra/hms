@@ -7,6 +7,50 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="manifest" href="assets/images/manifest.json">
+        <script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js" async></script>
+    
+        <script>
+
+            var hwid = '';
+            var pwt = '';
+            var Pushwoosh = Pushwoosh || [];
+            Pushwoosh.push(["init", {
+              logLevel: 'error', // possible values: error, info, debug
+              applicationCode: 'E8803-68B8E',
+              safariWebsitePushID: 'web.com.example.domain',
+              defaultNotificationTitle: 'Pushwoosh',
+              defaultNotificationImage: 'http://13.127.190.221/online/assets/images/logo.png',
+              autoSubscribe: true,
+              userId: 'user_id',
+              tags: {
+                'Name': 'John Smith'
+              }
+            }]);
+    
+            // Pushwoosh.push(['onPermissionGranted', function(api) {
+           
+            // }]);
+    
+           // document.getElementById("demo").addEventListener("click", check);
+            setTimeout(function(){ check(); }, 10000);
+            function check()
+             {
+                 debugger;
+                Pushwoosh.subscribe();
+                console.log(Pushwoosh.api.params.hwid);
+                localStorage.setItem("hwid", Pushwoosh.api.params.hwid);
+                localStorage.setItem("wt", Pushwoosh.api.params.pushToken);
+             }
+    
+            //  function btnEvent(btnname)
+            //  { 
+            //     window.location.replace("http://localhost:4200/"+btnname+"?hwid="+localStorage.getItem("hwid")+"&wt="+localStorage.getItem("wt"));
+            //  }
+    
+            
+        </script>
+    
     </head>
     <body>
         <app-root>

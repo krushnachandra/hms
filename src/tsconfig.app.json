@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "baseUrl": "./",
+    "baseUrl": "http://localhost:4200",
     "module": "es2015",
     "types": []
   },

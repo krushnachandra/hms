@@ -1,0 +1,7 @@
+{
+  "name": "Notifications",
+  "short_name": "ECOM",
+  "gcm_sender_id": "562387292074",
+  "display": "standalone",
+  "gcm_user_visible_only": true
+}

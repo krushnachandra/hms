@@ -113,6 +113,7 @@ export class GetPatientDetailsComponent1 implements OnInit {
                  if (res !== undefined) {
                     if (res.Result.toUpperCase() === 'SUCCESS') {
                         this.toastr.success('Status changed succssfully.', res.Result);
+                        this.router.navigateByUrl('dashboard');
                     }
                     if (res.Result.toUpperCase() === 'FAILED') {
                         this.toastr.error(res.Result, res.Result);
