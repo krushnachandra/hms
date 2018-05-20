@@ -9,12 +9,15 @@ import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PatientModel } from '../../model/patient-model';
 import { PatientService } from '../../service/patient-service';
+import { connectableObservableDescriptor } from 'rxjs/observable/ConnectableObservable';
 @Component({
     selector: 'app-patient-ragister',
     templateUrl: './patient-ragister.component.html',
     styleUrls: ['./patient-ragister.component.scss']
 })
 export class PatientRagisterComponent implements OnInit {
+    bp1:any;
+    bp2:any;
     Spvalid:boolean=true;
     Hsvalid:boolean=true;
     patientDetail: any;
@@ -107,7 +110,7 @@ export class PatientRagisterComponent implements OnInit {
         {
             this.Spvalid = false;
         }
-
+       // this._patient.bp = this.bp1+"-"+this.bp2;
     if(this.Hsvalid && this.Spvalid){
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
@@ -170,6 +173,64 @@ export class PatientRagisterComponent implements OnInit {
 
         let totalscore:number = parseInt(E)+parseInt(V)+parseInt(M);
         this._patient.totalscore = totalscore.toString()+"/15";
+    }
+
+
+    public PaO2FiO2ratio(ev,val)
+    {
+        let runtimeVarible ;
+        let op = 0;
+        if(val == 1)
+        {
+            if(typeof ev!='undefined' && ev)
+            {
+                runtimeVarible = this._patient.spO2 == undefined ? 0 : this._patient.spO2;
+                if(runtimeVarible > 0)
+                {
+                    op =  parseInt(ev) / parseInt(runtimeVarible);
+                }
+                else    {op = parseInt(ev)}
+            }
+        }
+        else if(val == 2)
+        {
+            if(typeof ev!='undefined' && ev)
+            {
+                runtimeVarible = this._patient.pO2 == undefined ? 0 : this._patient.pO2;
+                if(runtimeVarible > 0)
+                {op = parseInt(runtimeVarible) /parseInt(ev);}else    {op = parseInt(ev)}
+            }
+        }
+
+        if(op < 13)
+        {
+            this._patient.pao2fio2ratio = "100";
+        }
+        else if(op >= 13 && op < 23)
+        {
+            this._patient.pao2fio2ratio = "100-174";
+        }
+        else if(op >= 23 && op < 30)
+        {
+            this._patient.pao2fio2ratio = "175-224";
+        }
+        else if(op >= 30 && op < 40)
+        {
+            this._patient.pao2fio2ratio = "225-229";
+        }
+        else if( op> 40)
+        {
+            this._patient.pao2fio2ratio = "300";
+        }
+    }
+
+    public LungComplianceCalc(ev)
+    {
+        let pipval:number = this._patient.pip == undefined ? 0 : parseInt(this._patient.pip);
+        let peepval:number = this._patient.peep == undefined ? 0 : parseInt(this._patient.peep);
+        let tvval:number = ev == undefined ? 0 : parseInt(ev);
+
+        this._patient.lungCompliance = (tvval/ (pipval-peepval)).toString();
     }
 
     public onspecialist(event) {
