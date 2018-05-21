@@ -568,7 +568,7 @@
                             [(ngModel)]="_patient.fiO2"
                             name="fiO2"
                             id="fiO2" (change)="PaO2FiO2ratio($event.target.value,2)"
-                            #fiO2="ngModel" pattern="^(1|\d)(\.\d{1})?$"
+                            #fiO2="ngModel" pattern="^(0+(\.\d{1,2})?|1)$"
                             required>
                           <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
                            *FiO2 is required
