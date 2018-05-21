@@ -8,7 +8,7 @@
                 <h5>
                     <strong>Hospital Information</strong>
                     <span class="text-warning">
-                      (* has to completed, otherwise the consultation will be rejected)
+                      (* has to be completed, otherwise the consultation will be rejected)
                     </span>
                 </h5>
                 <hr>
@@ -16,7 +16,7 @@
                   <div class="col-6"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Ref Consulutant Name <span>*</span>
+                      Referring Consultant<span>*</span>
                     </label>
                     <div class="col-8">
                       <input [(ngModel)]="_patient.referConsulutantName"
@@ -30,7 +30,7 @@
                   <div class="col-6">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label pr-0">
-                      Ref Date<span>*</span>
+                      Referral Date<span>*</span>
                     </label>
                     <div class="col-10">
                       <input [(ngModel)]="_patient.RefDate"
@@ -47,7 +47,7 @@
                   <div class="col-6"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Ref Speciality <span>*</span>
+                      Referring Speciality <span>*</span>
                     </label>
                     <div class="col-8">
                       <select [(ngModel)]="_patient.speciallistId"
@@ -61,7 +61,7 @@
                         <option *ngFor="let splt of specialists" value={{splt.Value}}>{{splt.Text}} </option>
                       </select>
                       <div *ngIf="f.submitted &&  Spvalid == false"
-                        class="help-block" style="color:red"> *Specialist is required
+                        class="help-block" style="color:red"> *Speciality is required
                       </div>
                     </div>
                     </div>
@@ -70,7 +70,7 @@
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label pr-0">
-                      Ref Hospital<span>*</span>
+                      Referring Hospital<span>*</span>
                     </label>
                     <div class="col-10">
                       <select
@@ -86,7 +86,7 @@
                       </select>
                       <div
                         *ngIf="f.submitted && Hsvalid === false"
-                         class="help-block" style="color:red"> *Specialist is required
+                         class="help-block" style="color:red"> *Hospital is required
                        </div>
                     </div>
                   </div> <!-- col2 close -->
@@ -124,9 +124,9 @@
 
               <div class="col-12">
                 <h5>
-                    <strong>Patients Information</strong>
+                    <strong>Patient Informations</strong>
                     <span class="text-warning">
-                      (* has to completed, otherwise the consultation will be rejected)
+                      (* has to be completed, otherwise the consultation will be rejected)
                     </span>
                     <!--Please Complete this consultation formfoe all ECMO referrals to Adan Hospital-->
                 </h5>
@@ -137,7 +137,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !patientName.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Patient Name
+                      Patient name
                     </label>
                     <div class="col-8">
                       <input [(ngModel)]="_patient.patientName"
@@ -152,7 +152,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !civilId.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      Civil ID<span>*</span>
+                      civil ID<span>*</span>
                     </label>
                     <div class="col-10">
                       <input type="text" class="form-control"
@@ -163,7 +163,7 @@
                         (blur)="onCivilIdChange($event.target.value)"
                         required maxlength="12">
                         <div *ngIf="f.submitted && !civilId.valid"
-                          class="help-block"> *CivilId is required
+                          class="help-block"> *civil ID is required
                         </div>
                         </div>
                     </div>
@@ -278,7 +278,7 @@
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !fileNo.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      File No<span>*</span>
+                      File no<span>*</span>
                     </label>
                     <div class="col-10">
                       <input class="form-control"
@@ -319,9 +319,9 @@
 
               <div class="col-12">
                 <h5>
-                    <strong>Patients Parameters</strong>
+                    <strong>Patient parameters</strong>
                     <span class="text-warning">
-                      (* has to completed, otherwise the consultation will be rejected)
+                      (* has to be completed, otherwise the consultation will be rejected)
                     </span>
                     <!--Please Complete this consultation formfoe all ECMO referrals to Adan Hospital-->
                 </h5>
@@ -341,9 +341,9 @@
                         name="preMorbFunctionalStatus"
                         #preMorbFunctionalStatus="ngModel"
                         id="preMorbFunctionalStatus" required>
-                        <option>Bed bound</option>
-                        <option>Chair bound</option>
-                        <option>Mobile</option>
+                        <option>bed bound</option>
+                        <option>chair bound</option>
+                        <option>mobile</option>
                       </select>
                       <span
                         class="help-block"
@@ -357,7 +357,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !preMorbFunctionalConsciousStatus.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label class="col-6 col-form-label">
-                      Pre-morbid functional conscious Status<span>*</span>
+                      Pre-morbid conscious status<span>*</span>
                     </label>
                     <div class="col-6">
                       <select
@@ -368,12 +368,12 @@
                         id="preMorbFunctionalConsciousStatus" required>
                         <option>Alert and oriented</option>
                         <option>Demented</option>
-                        <option>Coma/Vegetative status</option>
+                        <option>Coma/vegetative status</option>
                       </select>
                       <span
                         class="help-block"
                         *ngIf="f.submitted && preMorbFunctionalConsciousStatus.errors?.required">
-                        *Pre-morbid functional conscious Status is required
+                        *Pre-morbid conscious status is required
                       </span>
                     </div>
                     </div>
@@ -383,7 +383,7 @@
                 <div class="col-12">
                  <h6> 
                     <label class="text-primary">
-                      Current GCS Total
+                      Current GCS
                     </label>
                   </h6>
                   <div class="form-group row">
@@ -464,7 +464,7 @@
                     <div class="col-3">  <!-- col4 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        Total
+                        Total score
                       </label>
                       <div class="col-8">
                         <input class="form-control"
@@ -488,7 +488,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !durOfConventianalMechanicalVentination.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-5 col-form-label">
-                        Duraton of conventional mechanical ventination<span>*</span>
+                        Duration of conventional mechanical ventilation<span>*</span>
                       </label>
                       <div class="col-2">
                         <input class="form-control" placeholder="Days" type="text"
@@ -496,12 +496,13 @@
                           name="durOfConventianalMechanicalVentination"
                           #durOfConventianalMechanicalVentination="ngModel"
                           id="durOfConventianalMechanicalVentination" required>
-                        <span
-                          class="help-block"
-                          *ngIf="f.submitted && durOfConventianalMechanicalVentination.errors?.required">
-                          *Duraton of conventional mechanical ventination is required
-                        </span>
+                       
                       </div>
+                      <span
+                      class="help-block"
+                      *ngIf="f.submitted && durOfConventianalMechanicalVentination.errors?.required">
+                      *Duration of conventional mechanical ventilation is required
+                    </span>
                       </div>
                     </div> <!-- col1 close -->
                   </div> <!--form group -->
@@ -514,7 +515,7 @@
                         PO2 %<span>*</span>
                       </label>
                       <div class="col-9">
-                        <input class="form-control" placeholder="pO2" 
+                        <input class="form-control" placeholder="PO2" 
                           type="text"
                           [(ngModel)]="_patient.pO2"
                           name="pO2"
@@ -545,10 +546,10 @@
                           #spO2="ngModel" pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
                           required>
                         <span class="help-block "*ngIf="f.submitted && spO2.errors?.required">
-                          *SPO2 is required
+                          *SpO2 is required
                         </span>
                         <span class="help-block " style="color:red;" *ngIf="spO2.errors?.pattern">
-                          *SPO2  should be in between 0 and 100.
+                          *SpO2  should be in between 0 and 100.
                         </span>
                       </div>
                       </div>
@@ -559,10 +560,10 @@
                       <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !fiO2.valid }">  <!-- col2 -->
                         <div class="row"> 
                         <label for="disabledSelect" class="col-3 col-form-label">
-                          FIO2 %<span>*</span>
+                          FiO2 %<span>*</span>
                         </label>
                         <div class="col-9">
-                          <input class="form-control" placeholder="fiO2" 
+                          <input class="form-control" placeholder="FiO2" 
                             type="text"
                             [(ngModel)]="_patient.fiO2"
                             name="fiO2"
@@ -570,10 +571,10 @@
                             #fiO2="ngModel" pattern="^(1|\d)(\.\d{1})?$"
                             required>
                           <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
-                           *FIO2 is required
+                           *FiO2 is required
                           </span>
                           <span class="help-block " style="color:red;" *ngIf="fiO2.errors?.pattern">
-                            *FIO2  should be in between 0 and 1.
+                            *FiO2  should be in between 0 and 1.
                           </span>
                         </div>
                         </div>
@@ -584,21 +585,17 @@
                       [ngClass]="{ 'has-error': f.submitted && !pao2fio2ratio.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        Pao2/Fio2 ratio<span>*</span>
+                        PaO2/FiO2 ratio<span>*</span>
                       </label>
                       <div class="col-9">
-                        <select class="form-control" [(ngModel)]="_patient.pao2fio2ratio"
+                          <input class="form-control" placeholder="PaO2/FiO2 ratio" 
+                          type="text"
+                          [(ngModel)]="_patient.pao2fio2ratio"
                           name="pao2fio2ratio"
-                          #pao2fio2ratio="ngModel"
-                          id="pao2fio2ratio" required>
-                          <option>100</option>
-                          <option>100-174</option>
-                          <option>175-224</option>
-                          <option>225-229</option>
-                          <option>300</option>
-                        </select>
+                          id="pao2fio2ratio"
+                          #pao2fio2ratio="ngModel" required>
                         <span class="help-block "*ngIf="f.submitted && pao2fio2ratio.errors?.required">
-                          *Pao2/Fio2 ratio is required
+                          *PaO2/FiO2 ratio is required
                         </span>
                       </div>
                       </div>
@@ -613,16 +610,7 @@
                         PEEP<span>*</span>
                       </label>
                       <div class="col-9">
-                        <!-- <select class="form-control" [(ngModel)]="_patient.peep"
-                          name="peep"
-                          #peep="ngModel"   pattern="^[0-9]*$"
-                          id="peep" required>
-                          <option value="<10"><10</option>
-                          <option value="10-15">10-15</option>
-                          <option value="15-20">15-20</option>
-                          <option value=">20">>20</option>
-                        </select> -->
-                        <input class="form-control" placeholder="peep" 
+                        <input class="form-control" placeholder="PEEP" 
                           type="text"
                           [(ngModel)]="_patient.peep"
                           name="peep"
@@ -641,10 +629,10 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        pip %<span>*</span>
+                        PIP %<span>*</span>
                       </label>
                       <div class="col-9">
-                        <input class="form-control" placeholder="pip" 
+                        <input class="form-control" placeholder="PIP" 
                           type="text"
                           [(ngModel)]="_patient.pip"
                           name="pip"
@@ -669,22 +657,12 @@
                         RR<span>*</span>
                       </label>
                       <div class="col-9">
-                        <!-- <select
-                          class="form-control"
-                          [(ngModel)]="_patient.rr"
-                          name="rr"
-                          #rr="ngModel"
-                          id="rr" required>
-                          <option value="<20"><20</option>
-                          <option value="20-40">20-40</option>
-                          <option value="40">>40</option>
-                        </select> -->
                         <input class="form-control" placeholder="RR" 
                         type="text"
                         [(ngModel)]="_patient.rr"
                         name="rr"
                         id="rr"
-                        #rr="ngModel" pattern="^$|^([0-9]|[1-9][0-9]|[6][0][0])?"
+                        #rr="ngModel" pattern="^([1-9][0-9]{0,2}|600)$"
                         required>
                         <span class="help-block "*ngIf="f.submitted && rr.errors?.required">
                           *RR is required
@@ -701,19 +679,18 @@
                         TV<span>*</span>
                       </label>
                       <div class="col-9">
-                        <input class="form-control" placeholder="tv" 
+                        <input class="form-control" placeholder="TV" 
                           type="text"
                           [(ngModel)]="_patient.tv"
                           name="tv" (change)="LungComplianceCalc($event.target.value)"
                           id="tv"
-                          #tv="ngModel" pattern="^$|^([0-9]|[1-9][0-9]|[6][0][0])?"
-                          required>
+                          #tv="ngModel" required pattern="[0-9]" >
                         <span class="help-block "*ngIf="f.submitted && tv.errors?.required">
                          *TV is required
                         </span>
-                        <span class="help-block " style="color:red;" *ngIf="tv.errors?.pattern">
+                        <!--<span class="help-block " style="color:red;" *ngIf="tv.errors?.pattern">
                             *TV  should be in between 0 to 600.
-                          </span>
+                          </span>-->
                       </div>
                       </div>
                     </div> <!-- col2 close -->
@@ -728,19 +705,6 @@
                         Lung Compliance<span>*</span>
                       </label>
                       <div class="col-9">
-                        <!-- <select
-                          class="form-control"
-                          [(ngModel)]="_patient.lungCompliance"
-                          name="lungCompliance"
-                          #lungCompliance="ngModel"
-                          id="lungCompliance" required>
-                          <option value=">30">30</option>
-                          <option value="30-20">30-20</option>
-                          <option value="20-15">20-15</option>
-                          <option value="15-10">15-10</option>
-                          <option value="10-5">10-5</option>
-                          <option value="<5"><5</option>
-                        </select> -->
                         <input class="form-control" placeholder="lungCompliance" 
                         type="text"
                         [(ngModel)]="_patient.lungCompliance"
@@ -784,24 +748,24 @@
 
               <div class="col-12">
                 <h6>
-                  <label class="text-primary">Investigation Result</label>
+                  <label class="text-primary">Investigation results</label>
                 </h6>
                 <div class="form-group row">
                   <div class="col-6" 
                     [ngClass]="{ 'has-error': f.submitted && !urea.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      UREA<span>*</span>
+                      urea<span>*</span>
                     </label>
                     <div class="col-10">
-                      <input class="form-control" placeholder="Urea"
+                      <input class="form-control" placeholder="urea"
                         type="text"
                         [(ngModel)]="_patient.urea"
                         name="urea"
                         #urea="ngModel"
                         id="urea" required>
                       <span class="help-block "*ngIf="f.submitted && urea.errors?.required">
-                        *UREA is required
+                        *urea is required
                       </span>
                     </div>
                           </div>
@@ -811,17 +775,17 @@
                     [ngClass]="{ 'has-error': f.submitted && !cr.valid }"> <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      CR
+                      Cr
                     </label>
                     <div class="col-10">
-                      <input class="form-control" placeholder="CR"
+                      <input class="form-control" placeholder="Cr"
                         type="text"
                         [(ngModel)]="_patient.cr"
                         name="cr"
                         #cr="ngModel"
                         id="cr">
                       <span class="help-block "*ngIf="f.submitted && cr.errors?.required">
-                        *CR is required
+                        *Cr is required
                       </span>
                     </div>
                     </div>
@@ -896,7 +860,7 @@
 
               <div class="col-12"><!-- start for Cardiovascular Parameters: complication -->
                 <h6>
-                  <label class="text-primary">Cardiovascular Parameters:</label>
+                  <label class="text-primary">Cardiovascular parameters:</label>
                 </h6>
 
                 <div class="form-group row">
@@ -923,18 +887,22 @@
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !bp.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      BP(s/p)<span>*</span>
+                      BP<span>*</span>
                     </label>
                     <div class="col-10">
-                        <input class="form-control" placeholder="S/P"
+                        <input class="form-control" placeholder="___ - ___"
                         type="text"
                         [(ngModel)]="_patient.bp"
                         name="bp"
                         #bp="ngModel"
-                        id="bp" required>
+                        id="bp" required
+                        pattern="[0-9]{3}[\-]?[0-9]{3}" />
                       <span class="help-block "*ngIf="f.submitted && bp.errors?.required">
                         *BP is required
-                      </span>  
+                      </span> 
+                      <span class="help-block " style="color: red" *ngIf="bp.errors?.pattern">
+                        *BP should be 100-80 format
+                      </span> 
                     </div>
                     </div>
                   </div> <!-- col2 close -->
@@ -965,20 +933,20 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !temp.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-2 col-form-label">
-                        TEMP<span>*</span>
+                        Temp<span>*</span>
                       </label>
                       <div class="col-10">
-                        <input class="form-control" placeholder="temp"
+                        <input class="form-control" placeholder="Temp"
                         type="text"
                         [(ngModel)]="_patient.temp"
                         name="temp"
                         #temp="ngModel" pattern="^(\d)(\.\d{1,2})?$"
                         id="temp" required>
                         <span class="help-block "*ngIf="f.submitted && temp.errors?.required">
-                          *TEMP is required
+                          *Temp is required
                         </span>
                         <span class="help-block " style="color: red" *ngIf="temp.errors?.pattern">
-                            *TEMP should be in decimal format.
+                            *Temp should be in decimal format.
                           </span>
                       </div>
                       </div>
@@ -1012,7 +980,7 @@
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !leftventricularejectionfraction.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Left ventricular ejection fraction <span>*</span>
+                      left ventricular ejection fraction <span>*</span>
                     </label>
                     <div class="col-8">
                         <input class="form-control" 
@@ -1022,20 +990,12 @@
                         id="leftventricularejectionfraction"
                         #leftventricularejectionfraction="ngModel" pattern="^(\d{0,2}(\.\d{1,2})?|100(\.00?)?)$"
                         required>
-                      <!-- <select class="form-control" [(ngModel)]="_patient.leftventricularejectionfraction"
-                        name="leftventricularejectionfraction"
-                        #leftventricularejectionfraction="ngModel"
-                        id="leftventricularejectionfraction" required>
-                        <option value="5">5</option>
-                        <option value="15">15</option>
-                        <option value="15-50">15-50</option>
-                        <option value=">50">>50</option>
-                        </select> -->
+                      
                         <span class="help-block "*ngIf="f.submitted && leftventricularejectionfraction.errors?.required">
-                          *Left ventricular ejection fraction is required
+                          *left ventricular ejection fraction is required
                         </span>
                         <span class="help-block " style="color: red" *ngIf="leftventricularejectionfraction.errors?.pattern">
-                            *Left ventricular ejection fraction should be in 0 to 100.
+                            *left ventricular ejection fraction should be in 0 to 100.
                           </span>
                     </div>
                     </div>
@@ -1043,7 +1003,7 @@
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !cardiacindex.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      CARDIAC INDEX<span>*</span>
+                      cardiac index<span>*</span>
                     </label>
                     <div class="col-10">
                       <select class="form-control" [(ngModel)]="_patient.cardiacindex"
@@ -1061,7 +1021,7 @@
                         <option value="5">5</option>
                       </select>
                       <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
-                        *CARDIAC INDEX is required
+                        *cardiac index is required
                       </span>
                     </div>
 
@@ -1073,7 +1033,7 @@
 
               <div class="col-12"><!-- start for Inotropes/vasoconstrictors -->
                 <h6>
-                  <label class="text-primary">Inotropes/vasoconstrictors</label>
+                  <label class="text-primary">Inotropes/vasopressors</label>
                 </h6>
                 <div class="form-group row">
                   <div class="col-6"> <!-- col1 -->
@@ -1338,7 +1298,7 @@
                         #bloodgasPH="ngModel"
                         id="bloodgasPH" required>
                       <span class="help-block "*ngIf="f.submitted && bloodgasPH.errors?.required">
-                        *Blood Glass PH is required
+                        *Blood Gas PH is required
                       </span>
                     </div>
                     </div>
@@ -1376,10 +1336,10 @@
                         #bloodgasPCO2="ngModel" pattern="^(\d{0,2}(\.\d{1,2})?|600(\.00?)?)$"
                         id="bloodgasPCO2" required>
                       <span class="help-block "*ngIf="f.submitted && bloodgasPCO2.errors?.required">
-                        *Blood Glass PC02 is required
+                        *Blood Gas PCO2 is required
                       </span> 
                       <span class="help-block " style="color: red" *ngIf="bloodgasPCO2.errors?.pattern">
-                          *Blood Glass PC02 should be in between 0 to 600.
+                          *Blood Gas PCO2 should be in between 0 to 600.
                         </span> 
                     </div>
                     </div>
@@ -1387,7 +1347,7 @@
                   <div class="col-6">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      HC03
+                      HCO3
                     </label>
                     <div class="col-10">
                       <input class="form-control" placeholder="HCO3"
@@ -1431,17 +1391,17 @@
                     [ngClass]="{ 'has-error': f.submitted && !refdocdesignation.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Refral Designation<span>*</span>
+                      Designation<span>*</span>
                     </label>
                     <div class="col-8">
-                      <input class="form-control" placeholder="Refral Designation"
+                      <input class="form-control" placeholder="Designation"
                         type="text"
                         [(ngModel)]="_patient.refdocdesignation"
                         name="refdocdesignation"
                         #refdocdesignation="ngModel"
                         id="refdocdesignation" required>
                       <span class="help-block "*ngIf="f.submitted && refdocdesignation.errors?.required">
-                        *Refral Designation is required
+                        *Designation is required
                       </span>
                     </div>
                     </div>
@@ -1450,17 +1410,17 @@
                     [ngClass]="{ 'has-error': f.submitted && !refdoctelephone.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Refral Telephone<span>*</span>
+                      Telephone number<span>*</span>
                     </label>
                     <div class="col-8">
-                      <input class="form-control" placeholder=" Refral Telephone"
+                      <input class="form-control" placeholder="Telephone number"
                         type="text"
                         [(ngModel)]="_patient.refdoctelephone"
                         name="refdoctelephone" pattern="^[0-9]*$"
                         #refdoctelephone="ngModel"
                         id="refdoctelephone" maxlength="9" required>    
                         <span class="help-block "*ngIf="f.submitted && refdoctelephone.errors?.required">
-                          *Refral Telephone is required
+                          *Telephone number is required
                         </span>
                         <span class="help-block" style="color: red" *ngIf="refdoctelephone.errors?.pattern">
                             *Numbers only
@@ -1472,7 +1432,7 @@
               </div>
               <div class="col-12">
                   <h6>
-                    <label class="text-primary">Patient Document Upload</label>
+                    <label class="text-primary">Patient documents upload</label>
                   </h6>
   
                   <div class="form-group row">
