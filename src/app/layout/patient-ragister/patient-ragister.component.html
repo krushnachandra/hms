@@ -534,7 +534,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        SPO2 %<span>*</span>
+                        SpO2 %<span>*</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="Spo2" 
@@ -923,19 +923,15 @@
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !bp.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      BP<span>*</span>
+                      BP(s/p)<span>*</span>
                     </label>
                     <div class="col-10">
-                      <select class="form-control" [(ngModel)]="_patient.bp"
+                        <input class="form-control" placeholder="S/P"
+                        type="text"
+                        [(ngModel)]="_patient.bp"
                         name="bp"
                         #bp="ngModel"
                         id="bp" required>
-                        <option value="150">>150</option>
-                        <option value="150-120">150-120</option>
-                        <option value="120-100">120-100</option>
-                        <option value="100-80">100-80</option>
-                        <option value="<80"><80</option>
-                      </select>
                       <span class="help-block "*ngIf="f.submitted && bp.errors?.required">
                         *BP is required
                       </span>  
