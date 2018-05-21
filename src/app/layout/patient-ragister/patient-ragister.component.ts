@@ -159,7 +159,8 @@ export class PatientRagisterComponent implements OnInit {
             this.toastr.error("Enter 12 digit CivilId.", "Error");
         }
     }
-
+    
+    
     public onEVMChanged()
     {
         
@@ -178,6 +179,7 @@ export class PatientRagisterComponent implements OnInit {
 
     public PaO2FiO2ratio(ev,val)
     {
+        
         let runtimeVarible ;
         let op = 0;
         if(val == 1)
@@ -187,9 +189,9 @@ export class PatientRagisterComponent implements OnInit {
                 runtimeVarible = this._patient.spO2 == undefined ? 0 : this._patient.spO2;
                 if(runtimeVarible > 0)
                 {
-                    op =  parseInt(ev) / parseInt(runtimeVarible);
+                    op =  ev /runtimeVarible;
                 }
-                else    {op = parseInt(ev)}
+                else    {op = ev;}
             }
         }
         else if(val == 2)
@@ -198,7 +200,13 @@ export class PatientRagisterComponent implements OnInit {
             {
                 runtimeVarible = this._patient.pO2 == undefined ? 0 : this._patient.pO2;
                 if(runtimeVarible > 0)
-                {op = parseInt(runtimeVarible) /parseInt(ev);}else    {op = parseInt(ev)}
+                {
+                    op = runtimeVarible /ev;
+                }
+                else    
+                {
+                    op = ev;
+                }
             }
         }
 
