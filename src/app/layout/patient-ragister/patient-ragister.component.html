@@ -631,7 +631,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        PIP %<span>*</span>
+                        PIP<span>*</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="PIP" 
@@ -713,7 +713,7 @@
                         name="lungCompliance"
                         id="lungCompliance"
                         #lungCompliance="ngModel"
-                        required>
+                        required readonly>
                         <span class="help-block "*ngIf="f.submitted && lungCompliance.errors?.required">
                           *Lung Compliance is required
                         </span>
@@ -1328,7 +1328,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !bloodgasPCO2.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      PCO2<span>*</span>
+                        <span style="color:red;">PCO2*</span>
                     </label>
                     <div class="col-10">
                       <input class="form-control" placeholder="PCO2"
