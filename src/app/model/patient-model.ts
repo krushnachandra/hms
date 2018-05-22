@@ -127,6 +127,7 @@ export class PatientDetail extends CommonModel
   cxrquadrants: string;
   hr: string;
   bp: string;
+  bp1:  string;
   cvp: string;
   temp: string;
   co: string;

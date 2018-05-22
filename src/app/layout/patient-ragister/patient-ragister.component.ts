@@ -110,7 +110,7 @@ export class PatientRagisterComponent implements OnInit {
         {
             this.Spvalid = false;
         }
-       // this._patient.bp = this.bp1+"-"+this.bp2;
+       this._patient.bp = this._patient.bp +"-"+this._patient.bp1;
     if(this.Hsvalid && this.Spvalid){
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
@@ -234,11 +234,21 @@ export class PatientRagisterComponent implements OnInit {
 
     public LungComplianceCalc(ev)
     {
+        
         let pipval:number = this._patient.pip == undefined ? 0 : parseInt(this._patient.pip);
         let peepval:number = this._patient.peep == undefined ? 0 : parseInt(this._patient.peep);
-        let tvval:number = ev == undefined ? 0 : parseInt(ev);
+        let tvval:number = this._patient.tv == undefined ? 0 : parseInt(this._patient.tv);;
 
-        this._patient.lungCompliance = (tvval/ (pipval-peepval)).toString();
+        let OP:any = (tvval/ (pipval-peepval)).toString();
+
+        if(OP == Infinity)
+        {
+            this._patient.lungCompliance = "";
+        }
+        else
+        {
+            this._patient.lungCompliance = OP;
+        }
     }
 
     public onspecialist(event) {
