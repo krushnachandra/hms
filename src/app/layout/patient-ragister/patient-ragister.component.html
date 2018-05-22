@@ -486,18 +486,20 @@
                   <div class="form-group row">
                     <div class="col-12" 
                       [ngClass]="{ 'has-error': f.submitted && !durOfConventianalMechanicalVentination.valid }"> <!-- col1 -->
-                      <div class="row"> 
-                      <label for="disabledSelect" class="col-5 col-form-label">
+                      <div class="col-6">
+                      <div class="row">
+                        
+                      <label for="disabledSelect" class="col-9 pl-0 col-form-label">
                         Duration of conventional mechanical ventilation<span>*</span>
                       </label>
-                      <div class="col-2">
+                      <div class="col-3">
                         <input class="form-control" placeholder="Days" type="text"
                           [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
                           name="durOfConventianalMechanicalVentination"
                           #durOfConventianalMechanicalVentination="ngModel"
                           id="durOfConventianalMechanicalVentination" required>
-                       
                       </div>
+                    </div>
                       <span
                       class="help-block"
                       *ngIf="f.submitted && durOfConventianalMechanicalVentination.errors?.required">
@@ -512,10 +514,10 @@
                       [ngClass]="{ 'has-error': f.submitted && !pO2.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        PO2 %<span>*</span>
+                        PO2<span>*</span>
                       </label>
                       <div class="col-9">
-                        <input class="form-control" placeholder="PO2" 
+                        <input class="form-control" placeholder="mmHG" 
                           type="text"
                           [(ngModel)]="_patient.pO2"
                           name="pO2"
@@ -535,7 +537,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        SpO2 %<span>*</span>
+                        SpO2<span>*</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="Spo2" 
@@ -560,7 +562,7 @@
                       <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !fiO2.valid }">  <!-- col2 -->
                         <div class="row"> 
                         <label for="disabledSelect" class="col-3 col-form-label">
-                          FiO2 %<span>*</span>
+                          FiO2<span>*</span>
                         </label>
                         <div class="col-9">
                           <input class="form-control" placeholder="FiO2" 
@@ -585,7 +587,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !pao2fio2ratio.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        PaO2/FiO2 ratio<span>*</span>
+                        <span style="color:red;">PaO2/FiO2 ratio*</span>
                       </label>
                       <div class="col-9">
                           <input class="form-control" placeholder="PaO2/FiO2 ratio" 
@@ -607,7 +609,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !peep.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        PEEP<span>*</span>
+                       <span style="color:red;">PEEP *</span> 
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="PEEP" 
@@ -702,7 +704,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !lungCompliance.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        Lung Compliance<span>*</span>
+                        <span style="color:red;">Lung Compliance*(mls/cmH2O)</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="lungCompliance" 
@@ -724,7 +726,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }"> <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        CXR quadrants<span>*</span>
+                        <span style="color:red;"> CXR quadrants*</span>
                       </label>
                       <div class="col-9">
                         <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
