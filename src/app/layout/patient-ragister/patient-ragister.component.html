@@ -891,28 +891,28 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       BP<span>*</span>
                     </label>
-                    <div class="col-4">
-                        <input class="form-control" 
-                        type="text"
+                    <div class="col-1 px-0 ml-3">
+                        <input class="form-control pr-0" placeholder="s"
+                        style="border-right: none; border-radius:0.25rem 0 0 0.25rem;"
+                        type="text" 
                         [(ngModel)]="_patient.bp"
                         name="bp"
-                        #bp="ngModel"
+                        #bp="ngModel" maxlength="3" pattern="^[0-9]*$"
                         id="bp" required
                          />
                       <span class="help-block "*ngIf="f.submitted && bp.errors?.required">
                         *BP is required
                       </span> 
-                      <span class="help-block " style="color: red" *ngIf="bp.errors?.pattern">
-                        *BP should be 100-80 format
-                      </span> 
+                      
                     </div>
-                    <label for="disabledSelect" class="col-1 col-form-label">
-                        --
+                    
+                    <label for="disabledSelect" class="col-1 col-form-label px-0 text-center" style="height:38px; border:1px solid #ced4da; background:#fff; border-width: 1px 0;">
+                        /
                       </label>
-                    <div class="col-4">
-                        <input class="form-control" 
-                        type="text"
-                        [(ngModel)]="_patient.bp1"
+                    <div class="col-1 px-0">
+                        <input class="form-control pl-0" style="border-left: none; border-radius:0 0.25rem 0.25rem 0;"
+                        type="text" placeholder="d"
+                        [(ngModel)]="_patient.bp1" maxlength="3" pattern="^[0-9]*$"
                         name="bp1"
                         #bp1="ngModel"
                         id="bp1" required
@@ -920,10 +920,14 @@
                       <span class="help-block "*ngIf="f.submitted && bp1.errors?.required">
                         *BP is required
                       </span> 
-                      <span class="help-block " style="color: red" *ngIf="bp1.errors?.pattern">
-                        *BP should be 100-80 format
-                      </span> 
+                      
                     </div>
+                    <span class="help-block " style="color: red" *ngIf="bp.errors?.pattern">
+                      *S should be number .
+                    </span> 
+                    <span class="help-block " style="color: red" *ngIf="bp1.errors?.pattern">
+                      *B should be number.
+                    </span> 
                   </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->

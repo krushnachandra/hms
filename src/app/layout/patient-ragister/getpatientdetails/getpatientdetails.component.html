@@ -9,7 +9,7 @@
           <h5>
               <strong>Hospital Information</strong>
               <span class="text-warning">
-                (* has to completed, otherwise the consultation will be rejected)
+                (* has to be completed, otherwise the consultation will be rejected)
               </span>
           </h5>
           <hr>
@@ -17,7 +17,7 @@
             <div class="col-6"> <!-- col1 -->
               <div class="row">
               <label class="col-4 col-form-label">
-                Ref Consulutant Name
+                Referring Consultant
               </label>
               <div class="col-8">
                 <input readonly  class="form-control"
@@ -32,7 +32,7 @@
             <div class="col-6">  <!-- col2 -->
               <div class="row">
               <label class="col-2 col-form-label">
-                Ref Date
+                Referral Date
               </label>
               <div class="col-10">
                 <input readonly  class="form-control"
@@ -50,7 +50,7 @@
             <div class="col-6"> <!-- col1 -->
               <div class="row">
               <label class="col-4 col-form-label">
-                Ref Speciality
+                Referring Speciality
               </label>
               <div class="col-8">
                 <input readonly  class="form-control"
@@ -65,7 +65,7 @@
             <div class="col-6">  <!-- col2 -->
               <div class="row">
               <label class="col-2 col-form-label">
-                Ref Hospital
+                Referring Hospital
               </label>
               <div class="col-10">
                 <input readonly  class="form-control"
@@ -97,9 +97,9 @@
 
         <div class="col-12">
           <h5>
-              <strong>Patients Information</strong>
+              <strong>Patient Information</strong>
               <span class="text-warning">
-                (* has to completed,otherwise the consultation will be rejected)
+                (* has to be completed, otherwise the consultation will be rejected)
               </span>
               <!--Please Complete this consultation formfoe all ECMO referrals to Adan Hospital-->
           </h5>
@@ -109,7 +109,7 @@
             <div class="col-6"> <!-- col1 -->
               <div class="row">
               <label class="col-4 col-form-label">
-                Patient Name
+                Patient name
               </label>
               <div class="col-8">
                 <input readonly  [(ngModel)]="patientDetail.patientName"
@@ -123,7 +123,7 @@
             <div class="col-6">  <!-- col2 -->
               <div class="row">
               <label class="col-2 col-form-label">
-                Civil ID
+                civil ID
               </label>
               <div class="col-10">
                 <input readonly  type="text" class="form-control"
@@ -255,9 +255,9 @@
 
         <div class="col-12">
           <h5>
-              <strong>Patients Parameters</strong>
+              <strong>Patient parameters</strong>
               <span class="text-warning">
-                (* has to completed, otherwise the consultation will be rejected)
+                (* has to be completed, otherwise the consultation will be rejected)
               </span>
               <!--Please Complete this consultation formfoe all ECMO referrals to Adan Hospital-->
           </h5>
@@ -283,7 +283,7 @@
             <div class="col-6">  <!-- col2 -->
               <div class="row">
               <label class="col-4 col-form-label pr-0">
-                Pre-morbid functional conscious Status
+                Pre-morbid conscious status
               </label>
               <div class="col-8">
                 <input readonly  class="form-control"
@@ -301,7 +301,7 @@
               <div class="row"> 
             <h6> 
               <label class="text-primary">
-                Current GCS Total
+                Current GCS
               </label>
             </h6>
             <div class="form-group row">
@@ -353,7 +353,7 @@
               <div class="col-3">  <!-- col4 -->
                 <div class="row"> 
                 <label class="col-3 col-form-label">
-                  Total
+                  Total score
                 </label>
                 <div class="col-9">
                   <input readonly  class="form-control"
@@ -375,7 +375,7 @@
             </h6>
             <div class="form-group row">
                 <label class="col-4 col-form-label pr-0">
-                  Duraton of conventional mechanical ventination
+                  Duration of conventional mechanical ventilation
                 </label>
                 <div class="col-2">
                   <input readonly  class="form-control" placeholder="Days"
@@ -391,7 +391,7 @@
               <div class="col-6"> <!-- col1 -->
                 <div class="row"> 
                 <label class="col-4 col-form-label">
-                  PO2 %
+                  PO2
                 </label>
                 <div class="col-8">
                   <input readonly  class="form-control" placeholder="mmHg"
@@ -407,7 +407,7 @@
               <div class="col-6">  <!-- col2 -->
                 <div class="row"> 
                 <label class="col-2 col-form-label">
-                  SPO2 %
+                  SpO2
                 </label>
                 <div class="col-10">
                   <input readonly  class="form-control"
@@ -423,7 +423,7 @@
             <div class="form-group row">
               <div class="col-6"> <!-- col1 --><div class="row"> 
                 <label class="col-4 col-form-label">
-                  Pao2/Fio2 ratio
+                  <span style="color: red" >Pao2/Fio2 ratio</span>
                 </label>
                 <div class="col-8">
                   <input readonly  class="form-control"
@@ -437,7 +437,7 @@
 
               <div class="col-6">  <!-- col2 --><div class="row"> 
                 <label class="col-2 col-form-label">
-                  FIO2 %
+                  FiO2
                 </label>
                 <div class="col-10">
                   <input readonly  class="form-control"
@@ -454,7 +454,7 @@
             <div class="form-group row">
               <div class="col-6"> <!-- col1 --><div class="row"> 
                 <label class="col-4 col-form-label">
-                  PEEP
+                    <span style="color: red" >PEEP</span>
                 </label>
                 <div class="col-8">
                   <input readonly  class="form-control" placeholder="CMH2O"
@@ -469,7 +469,7 @@
               <div class="col-6">  <!-- col2 -->
                 <div class="row"> 
                 <label class="col-2 col-form-label">
-                  pip %
+                  PIP
                 </label>
                 <div class="col-10">
                   <input readonly  class="form-control" placeholder="CMH2O"
@@ -518,7 +518,7 @@
             <div class="form-group row">
               <div class="col-6"> <!-- col1 --><div class="row"> 
                 <label class="col-4 col-form-label">
-                  Lung Compliance
+                  <span style="color:red;">Lung Compliance(mls/cmH2O)</span>
                 </label>
                 <div class="col-8">
                   <input readonly  class="form-control"
@@ -534,7 +534,7 @@
 
               <div class="col-6"> <!-- col2 --><div class="row"> 
                 <label class="col-2 col-form-label">
-                  CXR quadrants
+                  <span style="color:red;"> CXR quadrants</span>
                 </label>
                 <div class="col-10">
                   <input readonly  class="form-control"
@@ -552,12 +552,12 @@
 
         <div style="padding:15px;">
           <h6>
-            <label class="text-primary">Investigation Result</label>
+            <label class="text-primary">Investigation results</label>
           </h6>
           <div class="form-group row">
             <div class="col-4"> <!-- col1 --><div class="row"> 
               <label class="col-4 col-form-label">
-                UREA
+                urea
               </label>
               <div class="col-8">
                 <input readonly  class="form-control"
@@ -572,7 +572,7 @@
 
             <div class="col-4"> <!-- col2 --><div class="row"> 
               <label class="col-4 col-form-label">
-                CR
+                Cr
               </label>
               <div class="col-8">
                 <input readonly  class="form-control"
@@ -687,7 +687,7 @@
               <div class="col-6">  <!-- col2 -->
                 <div class="row"> 
                 <label class="col-2 col-form-label">
-                  TEMP
+                  Temp
                 </label>
                 <div class="col-10">
                   <input readonly  class="form-control"
@@ -724,7 +724,7 @@
             <div class="col-6"> <!-- col1 -->
               <div class="row"> 
               <label class="col-4 col-form-label">
-                Left ventricular ejection fraction
+                left ventricular ejection fraction
               </label>
               <div class="col-8">
                 <input readonly  class="form-control"
@@ -739,7 +739,7 @@
             <div class="col-6">  <!-- col2 -->
               <div class="row"> 
               <label class="col-2 col-form-label">
-                CARDIAC INDEX
+                cardiac index
               </label>
               <div class="col-10">
                 <input readonly  class="form-control"
@@ -1041,7 +1041,7 @@
             <div class="col-4"> <!-- col1 -->
               <div class="row"> 
               <label class="col-4 col-form-label">
-                PCO2
+                <span style="color:red;">PCO2</span>
               </label>
               <div class="col-8">
                 <input readonly  class="form-control" placeholder="PCO2"
@@ -1061,7 +1061,7 @@
             <div class="col-4">  <!-- col2 -->
               <div class="row"> 
               <label class="col-4 col-form-label">
-                HC03
+                HCO3
               </label>
               <div class="col-8">
                 <input readonly  class="form-control" placeholder="HCO3"
@@ -1105,7 +1105,7 @@
             <div class="col-6"> <!-- col1 -->
               <div class="row"> 
               <label class="col-4 col-form-label">
-                Refral Designation
+                Designation
               </label>
               <div class="col-8">
                 <input readonly class="form-control" placeholder="Designation"
@@ -1120,7 +1120,7 @@
             <div class="col-6">  <!-- col2 -->
               <div class="row"> 
               <label class="col-4 col-form-label">
-                Refral Telephone
+                Telephone number
               </label>
               <div class="col-8">
                 <input readonly class="form-control" placeholder="telephone"
