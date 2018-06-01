@@ -8,7 +8,7 @@ import { HospitalModel } from '../model/hospital-model';
  */
 @Injectable()
 export class HospitalService {
-    private BASE_URL = 'http://13.127.190.221';
+    private BASE_URL = 'http://api.ecmoadan.com';
     // inject http provider to service.
     constructor(private http: Http) {
     }
@@ -16,7 +16,7 @@ export class HospitalService {
      * Returns the current login user.
      */
     public getHospitals(hospitals: HospitalModel): Observable<Array<HospitalModel>> {
-        const url = `${this.BASE_URL}/hms/api/Common/GetHospitalLIst`;
+        const url = `${this.BASE_URL}/api/Common/GetHospitalLIst`;
         const body = JSON.stringify(hospitals); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');

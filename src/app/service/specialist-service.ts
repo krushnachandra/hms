@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
  */
 @Injectable()
 export class SpecialistService {
-    private BASE_URL = 'http://13.127.190.221';
+    private BASE_URL = 'https://ecmoadan.com';
     // inject http provider to service.
     constructor(private http: Http) {
     }
@@ -15,7 +15,7 @@ export class SpecialistService {
      * Returns the current login user.
      */
     public getSpecialists(specialist: SpecialistModel): Observable<Array<SpecialistModel>> {
-        const url = `${this.BASE_URL}/hms/api/Common/GetSpecialistLIst`;
+        const url = `${this.BASE_URL}/api/Common/GetSpecialistLIst`;
         const body = JSON.stringify(specialist); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');

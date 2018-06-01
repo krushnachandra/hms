@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
  */
 @Injectable()
 export class DoctorService {
-    private BASE_URL = 'http://13.127.190.221';
+    private BASE_URL = 'https://ecmoadan.com';
     // inject http provider to service.
     constructor(private http: Http) {
     }
@@ -15,7 +15,7 @@ export class DoctorService {
      * Returns the current login user.
      */
     public getDoctorLists(doclist: any): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/Common/GetAllDoctorDetails`;
+        const url = `${this.BASE_URL}/api/Common/GetAllDoctorDetails`;
         const body = JSON.stringify(doclist); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
@@ -27,7 +27,7 @@ export class DoctorService {
     }
 
     public changeDoctorStatus(doclist: any): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/Common/AddUpdateDoctor`;
+        const url = `${this.BASE_URL}/api/Common/AddUpdateDoctor`;
         const body = JSON.stringify(doclist); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
