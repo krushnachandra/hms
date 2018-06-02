@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
  */
 @Injectable()
 export class DoctorService {
-    private BASE_URL = 'https://ecmoadan.com';
+    private BASE_URL = 'https://ecmoadan.com/api/';
     // inject http provider to service.
     constructor(private http: Http) {
     }

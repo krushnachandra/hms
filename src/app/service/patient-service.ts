@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
  */
 @Injectable()
 export class PatientService {
-    private BASE_URL = 'https://ecmoadan.com';
+    private BASE_URL = 'https://ecmoadan.com/api/';
     // inject http provider to service.
     constructor(private http: Http) {
     }
@@ -27,7 +27,7 @@ export class PatientService {
     }
 
     public getStatusCount(specialist: any): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/Common/GetStatusCount`;
+        const url = `${this.BASE_URL}/api/Common/GetStatusCount`;
         const body = JSON.stringify(specialist); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
@@ -39,7 +39,7 @@ export class PatientService {
     }
 
     public getPatientDetails(patient: any): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/RefPatient/GetRefPatientDetails`;
+        const url = `${this.BASE_URL}/api/RefPatient/GetRefPatientDetails`;
         const body = JSON.stringify(patient); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
@@ -51,7 +51,7 @@ export class PatientService {
     }
 
     public patientStatusAction(patient: any): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/RefPatient/AddUpdatePatientStatus`;
+        const url = `${this.BASE_URL}/api/RefPatient/AddUpdatePatientStatus`;
         const body = JSON.stringify(patient); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
@@ -63,7 +63,7 @@ export class PatientService {
     }
 
     public patientFileUpload(formData: FormData): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/RefPatient/SavePatientFile`;
+        const url = `${this.BASE_URL}/api/RefPatient/SavePatientFile`;
         //const body = JSON.stringify(formData); // Stringify payload
         //const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         //headers.append('Access-Control-Allow-Origin', '*');
