@@ -71,6 +71,11 @@ export class PatientRagisterComponent implements OnInit {
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this._patient = res.data[0];
+                    let toArray =  this._patient.bp.split("-");
+
+                    this._patient.bp = toArray[0];
+                    this._patient.bp1 = toArray[1];
+
                 } else if (res.Result === 'FAILED') {
                     this.errorMessage = res.Result;
                 }
@@ -110,7 +115,7 @@ export class PatientRagisterComponent implements OnInit {
         {
             this.Spvalid = false;
         }
-       this._patient.bp = this._patient.bp +"-"+this._patient.bp1;
+       
     if(this.Hsvalid && this.Spvalid){
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {

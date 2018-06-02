@@ -8,7 +8,7 @@ import { HospitalModel } from '../model/hospital-model';
  */
 @Injectable()
 export class HospitalService {
-    private BASE_URL = 'https://ecmoadan.com';
+    private BASE_URL = 'https://ecmoadan.com/api/';
     // inject http provider to service.
     constructor(private http: Http) {
     }

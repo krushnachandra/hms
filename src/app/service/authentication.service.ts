@@ -38,7 +38,7 @@ export class AuthenticationService {
      * @memberof AuthenticationService
      */
     public DoctorRegister(userData: User): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/Common/AddUpdateDoctor`;
+        const url = `${this.BASE_URL}/api/Common/AddUpdateDoctor`;
         const body = JSON.stringify(userData); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
@@ -55,7 +55,7 @@ export class AuthenticationService {
      * @memberof AuthenticationService
      */
     public PatientRegister(patientData: PatientModel): Observable<any> {
-        const url = `${this.BASE_URL}/hms/api/RefPatient/AddUpdateRefPatient`;
+        const url = `${this.BASE_URL}/api/RefPatient/AddUpdateRefPatient`;
         const body = JSON.stringify(patientData); // Stringify payload
         const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         headers.append('Access-Control-Allow-Origin', '*');
