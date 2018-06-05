@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
         debugger;
         this.loginCredentials.transactiontype = 'login';
         this.loginCredentials.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-        this.loginCredentials.web_token = this.web_token;
-        this.loginCredentials.hwid = this.hwid;
+        this.loginCredentials.web_token = localStorage.getItem('wt');//this.web_token;
+        this.loginCredentials.hwid = localStorage.getItem('hwid');//this.hwid;
         this._authenticationService.logIn(this.loginCredentials)
             .subscribe((res) => {
                 if (res !== undefined) {

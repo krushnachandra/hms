@@ -52,6 +52,8 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('sessid');
         localStorage.removeItem('created_by');
+        localStorage.removeItem('hwid');
+        localStorage.removeItem('wt');
     }
 
     changeLang(language: string) {

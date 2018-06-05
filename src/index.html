@@ -27,20 +27,52 @@
                 'Name': 'John Smith'
               }
             }]);
+
+            Pushwoosh.push(['onReady', function(api) {
+                console.log('Pushwoosh ready');
+                checkSubscription();
+            }]);
+
+            function checkSubscription() {
+                Pushwoosh.isSubscribed()
+                    .then(function(res) {
+                    toggleNodesVisibility('.subscription-status', res ? 'actionUnsubscribe' : 'actionSubscribe');
+                    })
+                    .catch(function(err) {
+                    console.error('Is subscribed error', err);
+                    })
+                    .then(console.log('Test'));
+                }
+
+            function toggleNodesVisibility(selector, id) {
+                var nodes = document.querySelectorAll(selector);
+                [].forEach.call(nodes, function(el) {
+                    el.style.display = el.id === id ? 'inline' : 'none';
+                });
+                }
     
-            // Pushwoosh.push(['onPermissionGranted', function(api) {
-           
-            // }]);
+             Pushwoosh.push(['onPermissionGranted', function(api) {
+                //checkSubscription();
+                setTimeout(function(){ check(); }, 10000);
+               //check();
+            }]);
     
            // document.getElementById("demo").addEventListener("click", check);
-            setTimeout(function(){ check(); }, 10000);
+           
             function check()
              {
                  debugger;
-                Pushwoosh.subscribe();
-                console.log(Pushwoosh.api.params.hwid);
-                localStorage.setItem("hwid", Pushwoosh.api.params.hwid);
-                localStorage.setItem("wt", Pushwoosh.api.params.pushToken);
+                //Pushwoosh.subscribe();
+                Pushwoosh.isSubscribed().then(function(isSubscribed) {
+                    //console.log('isSubscribed', isSubscribed);
+                   if(isSubscribed == true)
+                    {
+                        console.log(Pushwoosh.api.params.pushToken);
+                        localStorage.setItem("hwid", Pushwoosh.api.params.hwid);
+                        localStorage.setItem("wt", Pushwoosh.api.params.pushToken);
+                    }
+                });
+                
              }
     
             //  function btnEvent(btnname)

@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
     public onRegister() {
         this._user.transactiontype = 'insert';
         this._user.sessid = 'E7F75D55-C483-43BD-ACF5-FB3ADFF51C02';
-
+        this._user.user_type='3';
         if(this._user.hospital_id == 0) 
         {
             this.Hsvalid = false;
@@ -75,8 +75,8 @@ export class SignupComponent implements OnInit {
         }
         if (this.Hsvalid && this.Spvalid)
         {
-            this._user.hwid = this.hwid ;
-            this._user.web_token = this.web_token;
+            this._user.hwid = localStorage.getItem('hwid');
+            this._user.web_token = localStorage.getItem('wt');
         this._authenticationService.DoctorRegister(this._user)
             .subscribe((res) => {
                 if (res !== undefined) {
