@@ -64,6 +64,7 @@ export class PatientRagisterComponent implements OnInit {
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getpatientinfo";
         this.refral_id = id.toString();
+        this._patient.resend = id.toString();
         this._patientService.getPatientDetails({
             'transactiontype': this.transactiontype,
             'sessid': this.sessid, "refral_id": this.refral_id

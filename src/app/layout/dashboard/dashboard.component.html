@@ -18,6 +18,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Patient Name</th>
+                                    <th>Civil Id</th>
                                     <th>Hospital Name</th>
                                     <th>Age</th>
                                     <th>Referal Date</th>
@@ -31,6 +32,7 @@
                                 <tr *ngFor="let patient of patients; let i=index" >
                                     <th scope="row">{{i + 1}}</th>
                                     <td>{{patient.patientName}}</td>
+                                    <td>{{patient.civil_id}}</td>
                                     <td>{{patient.name}}</td>
                                     <td>{{patient.age}}</td>
                                     <td>{{patient.referringDate}}</td>
@@ -39,7 +41,7 @@
                                     <td>
                                         <a [routerLink]="['/getpatientdetails']" [queryParams]="{patid:patient.refralFromid}" >View</a>
                                     </td>
-                                    <td *ngIf="docType===true">
+                                    <td *ngIf="docType===true && patient.isresend == '0' ">
                                         <a [routerLink]="['/patient-register']" [queryParams]="{patid:patient.refralFromid}" >{{patient.action}}</a>
                                     </td>
                                 </tr>

@@ -10,6 +10,8 @@ export class PatientModelList extends CommonModel {
     refralFromid: number;
     status: string;
     action: string;
+    civil_id: string;
+    isresend: string;
 }
 
 export class PatientDetailReq extends CommonModel
@@ -169,4 +171,5 @@ export class PatientDetail extends CommonModel
   action: number;
   telephone: number;
   designation: string;
+  resend:string="0";
 }
