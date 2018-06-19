@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
     patientsNew: PatientModelList[] = [];
    // public pwInstance: Pushwoosh = new Pushwoosh();
     constructor(public router: Router, private _patientService: PatientService) {
+        debugger;
         this.sessid = localStorage.getItem('sessid');
         if (localStorage.getItem('user_type') === '3') {
             this.docType = true;
@@ -55,6 +56,7 @@ export class DashboardComponent implements OnInit {
 
                         // this.patients = res.data;
                         // this.patientsNew = res.data;
+                        debugger;
                         for (let i = 0; i < res.data.length; i++) {
                             const docdata = res.data[i];
                             switch (docdata.status) {
@@ -63,7 +65,7 @@ export class DashboardComponent implements OnInit {
                                     this.patients.push(Object.assign({ action: '' }, docdata));
                                     this.patientsNew.push(Object.assign({ action: '' }, docdata));
                                     break;
-                                case 'Reject':
+                                case 'Rejected':
                                 case 'Hold':
                                 case 1:
                                     this.patients.push(Object.assign({ action: 'Resend' }, docdata));

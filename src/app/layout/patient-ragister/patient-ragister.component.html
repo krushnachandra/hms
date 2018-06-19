@@ -47,7 +47,7 @@
                   <div class="col-6"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Referring Speciality <span>*</span>
+                      Referring Specialty <span>*</span>
                     </label>
                     <div class="col-8">
                       <select [(ngModel)]="_patient.speciallistId"
@@ -137,7 +137,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !patientName.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Patient name
+                      Patient Name
                     </label>
                     <div class="col-8">
                       <input [(ngModel)]="_patient.patientName"
@@ -152,7 +152,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !civilId.valid }">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      civil ID<span>*</span>
+                      Civil ID<span>*</span>
                     </label>
                     <div class="col-10">
                       <input type="text" class="form-control"
@@ -398,10 +398,10 @@
                               id="e"
                               (change)="onEVMChanged()"
                               required>
-                          <option value="1/4">1/4</option>
-                          <option value="2/4">2/4</option>
-                          <option value="3/4">3/4</option>
-                          <option value="4/4">4/4</option>
+                          <option value="4/4">Open Spontancously</option>
+                          <option value="3/4">Open to Speech</option>
+                          <option value="2/4">Open to painful stimulus</option>
+                          <option value="1/4">No response (no eye opening)</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && e.errors?.required">
                           *E value is required
@@ -421,11 +421,11 @@
                           #v="ngModel"
                           id="v"
                           (change)="onEVMChanged()" required>
-                          <option value="1/5">1/5</option>
-                          <option value="2/5">2/5</option>
-                          <option value="3/5">3/5</option>
-                          <option value="4/5">4/5</option>
-                          <option value="5/5">5/5</option>
+                          <option value="1/5">Responds sensibly</option>
+                          <option value="2/5">Confused</option>
+                          <option value="3/5">Inappropriate words</option>
+                          <option value="4/5">Incomprehensible Sounds</option>
+                          <option value="5/5">No response(Silent)</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && v.errors?.required">
                           *V value is required
@@ -447,12 +447,12 @@
                                 id="m"
                                 (change)="onEVMChanged()"
                                 required>
-                            <option value="1/6">1/6</option>
-                            <option value="2/6">2/6</option>
-                            <option value="3/6">3/6</option>
-                            <option value="4/6">4/6</option>
-                            <option value="5/6">5/6</option>
-                            <option value="6/6">6/6</option>
+                            <option value="6/6">Obeys commands</option>
+                            <option value="5/6">Points (localises to pain)</option>
+                            <option value="4/6">Withdraws from pain</option>
+                            <option value="3/6">Bends limbs in response to pain(Flexion)</option>
+                            <option value="2/6">Straigten limbs in response to pian(extension)</option>
+                            <option value="1/6">No response</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && m.errors?.required">
                               *M value is required
@@ -514,7 +514,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !pO2.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        PO2<span>*</span>
+                        PO2<span>* (mmHG)</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="mmHG" 
@@ -537,7 +537,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        SpO2<span>*</span>
+                        SpO2<span>* %</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="Spo2" 
@@ -565,18 +565,22 @@
                           FiO2<span>*</span>
                         </label>
                         <div class="col-9">
-                          <input class="form-control" placeholder="FiO2" 
-                            type="text"
-                            [(ngModel)]="_patient.fiO2"
+                            <select class="form-control" [(ngModel)]="_patient.fiO2"
                             name="fiO2"
-                            id="fiO2" (change)="PaO2FiO2ratio($event.target.value,2)"
-                            #fiO2="ngModel" pattern="^(0*(\.\d{1,2})?|1)$"
-                            required>
+                            #fiO2="ngModel"
+                            id="fiO2" required>
+                            <option value=".21">.21</option>
+                            <option value=".3">.3</option>
+                            <option value=".4">.4</option>
+                            <option value=".5">.5</option>
+                            <option value=".6">.6</option>
+                            <option value=".7">.7</option>
+                            <option value=".8">.8</option>
+                            <option value=".9">.9</option>
+                            <option value="1.0">1.0</option>
+                          </select>
                           <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
                            *FiO2 is required
-                          </span>
-                          <span class="help-block " style="color:red;" *ngIf="fiO2.errors?.pattern">
-                            *FiO2  should be in between 0 and 1.
                           </span>
                         </div>
                         </div>
@@ -587,7 +591,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !pao2fio2ratio.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        <span style="color:red;">PaO2/FiO2 ratio*</span>
+                        <span style="color:red;">PaO2/FiO2 ratio* (mmHG)</span>
                       </label>
                       <div class="col-9">
                           <input class="form-control" placeholder="PaO2/FiO2 ratio" 
@@ -609,7 +613,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !peep.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                       <span style="color:red;">PEEP *</span> 
+                       <span style="color:red;">PEEP * (cm H20)</span> 
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="PEEP" 
@@ -631,7 +635,7 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !pip.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        PIP<span>*</span>
+                        PIP<span>*(peak insp pressure/PAW)</span>
                       </label>
                       <div class="col-9">
                         <input class="form-control" placeholder="PIP" 
@@ -733,10 +737,11 @@
                           name="cxrquadrants"
                           #cxrquadrants="ngModel"
                           id="cxrquadrants" required>
-                          <option value="0">>0</option>
+                          <option value="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
+                          <option value="4">4</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && cxrquadrants.errors?.required">
                                 *CXR quadrants is required

@@ -28,11 +28,11 @@ export class SidebarComponent {
        
         if (this.user_type === 1) 
         {
-            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'},{url: '/doctorList', menuText: 'Doctor List'},{url: '/patient-register', menuText: 'ECMO Referal Form'}];
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'},{url: '/doctorList', menuText: 'Doctor List'},{url: '/patient-register', menuText: 'ECMO Referral Form'}];
         }
         else if (this.user_type === 3)
         {
-            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}, {url: '/patient-register', menuText: 'ECMO Referal Form'}];
+            this._sideMenu = [{url: '/dashboard', menuText: 'Dashboard'}, {url: '/patient-register', menuText: 'ECMO Referral Form'}];
         }
         else if (this.user_type === 4)
         {

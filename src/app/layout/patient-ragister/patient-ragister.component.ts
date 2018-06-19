@@ -63,6 +63,7 @@ export class PatientRagisterComponent implements OnInit {
     public getPatientDetails(id: number) {
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getpatientinfo";
+        debugger;
         this.refral_id = id.toString();
         this._patient.resend = id.toString();
         this._patientService.getPatientDetails({
@@ -100,10 +101,11 @@ export class PatientRagisterComponent implements OnInit {
         );
     }
     public onRegister() {
-        
+        debugger;
         this._patient.transactiontype = 'insert';
         this._patient.sessid = localStorage.getItem('sessid');
         this.created_by = +localStorage.getItem('created_by');
+        this._patient.resend= this.pageNum.toString();
         if (this.created_by !== undefined) {
             this._patient.docId = this.created_by;
         }
@@ -118,8 +120,10 @@ export class PatientRagisterComponent implements OnInit {
         }
        
     if(this.Hsvalid && this.Spvalid){
+        debugger;
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
+                debugger;
                  if (res !== undefined) {
                     if (res.Result === 'Success') {
                         this.toastr.success(res.Result, res.Result);
