@@ -222,7 +222,7 @@ export class PatientRagisterComponent implements OnInit {
 
         if(op < 13)
         {
-            this._patient.pao2fio2ratio = "100";
+            this._patient.pao2fio2ratio = op + "KP 100";
         }
         else if(op >= 13 && op < 23)
         {
