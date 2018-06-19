@@ -222,23 +222,23 @@ export class PatientRagisterComponent implements OnInit {
 
         if(op < 13)
         {
-            this._patient.pao2fio2ratio = op + "KP 100";
+            this._patient.pao2fio2ratio = op + "kp 100";
         }
         else if(op >= 13 && op < 23)
         {
-            this._patient.pao2fio2ratio = "100-174";
+            this._patient.pao2fio2ratio =  op + "kp 100-174";
         }
         else if(op >= 23 && op < 30)
         {
-            this._patient.pao2fio2ratio = "175-224";
+            this._patient.pao2fio2ratio = op + "kp 175-224";
         }
         else if(op >= 30 && op < 40)
         {
-            this._patient.pao2fio2ratio = "225-229";
+            this._patient.pao2fio2ratio = op + "kp 225-229";
         }
         else if( op> 40)
         {
-            this._patient.pao2fio2ratio = "300";
+            this._patient.pao2fio2ratio = op + "kp 300";
         }
     }
 
