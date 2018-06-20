@@ -421,11 +421,11 @@
                           #v="ngModel"
                           id="v"
                           (change)="onEVMChanged()" required>
-                          <option value="1/5">Responds sensibly</option>
-                          <option value="2/5">Confused</option>
+                          <option value="5/5">Responds sensibly</option>
+                          <option value="4/5">Confused</option>
                           <option value="3/5">Inappropriate words</option>
-                          <option value="4/5">Incomprehensible Sounds</option>
-                          <option value="5/5">No response(Silent)</option>
+                          <option value="2/5">Incomprehensible Sounds</option>
+                          <option value="1/5">No response(Silent)</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && v.errors?.required">
                           *V value is required
@@ -930,7 +930,7 @@
                       BP<span>*</span>
                     </label>
                     <div class="col-1 px-0 ml-3">
-                        <input class="form-control pr-0" placeholder="s"
+                        <input class="form-control pr-0" placeholder="S"
                         style="border-right: none; border-radius:0.25rem 0 0 0.25rem;"
                         type="text" 
                         [(ngModel)]="_patient.bp"
@@ -949,7 +949,7 @@
                       </label>
                     <div class="col-1 px-0">
                         <input class="form-control pl-0" style="border-left: none; border-radius:0 0.25rem 0.25rem 0;"
-                        type="text" placeholder="d"
+                        type="text" placeholder="D"
                         [(ngModel)]="_patient.bp1" maxlength="3" pattern="^[0-9]*$"
                         name="bp1"
                         #bp1="ngModel"
