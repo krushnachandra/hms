@@ -600,8 +600,8 @@
                           type="text"
                           [(ngModel)]="_patient.pao2fio2ratio"
                           name="pao2fio2ratio"
-                          id="pao2fio2ratio"
-                          #pao2fio2ratio="ngModel" required>
+                          id="pao2fio2ratio" 
+                          #pao2fio2ratio="ngModel" readonly required>
                         <span class="help-block "*ngIf="f.submitted && pao2fio2ratio.errors?.required">
                           *PaO2/FiO2 ratio is required
                         </span>
@@ -738,7 +738,7 @@
                         <div class="col-6 offset-3">
                             <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
                               name="cxrquadrants"
-                              #cxrquadrants="ngModel"
+                              #cxrquadrants="ngModel" (change)="GetMurrayScore()"
                               id="cxrquadrants" required>
                               <option value="0">0</option>
                               <option value="1">1</option>
@@ -764,7 +764,7 @@
                         <label for="disabledSelect" class="col-3 pl-0 col-form-label">
                           Murray Score<span>*</span>
                         </label>
-                        <div class="col-9">
+                        <div class="col-6">
                           <input class="form-control" placeholder="murrayscore" 
                           type="text"
                           [(ngModel)]="_patient.murrayscore"

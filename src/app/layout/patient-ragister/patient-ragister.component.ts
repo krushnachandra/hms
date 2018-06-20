@@ -222,24 +222,25 @@ export class PatientRagisterComponent implements OnInit {
 
         if(op < 13)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + " kp 100";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 100";
         }
         else if(op >= 13 && op < 23)
         {
-            this._patient.pao2fio2ratio =  Math.round(parseFloat(op.toString())) + " kp 100-174";
+            this._patient.pao2fio2ratio =  Math.round(parseFloat(op.toString())) + "kPa 100-174";
         }
         else if(op >= 23 && op < 30)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + " kp 175-224";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 175-224";
         }
         else if(op >= 30 && op < 40)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + " kp 225-229";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 225-229";
         }
         else if( op> 40)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + " kp 300";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 300";
         }
+        this.GetMurrayScore();
     }
 
     public LungComplianceCalc(ev)
@@ -257,8 +258,115 @@ export class PatientRagisterComponent implements OnInit {
         }
         else
         {
-            this._patient.lungCompliance = OP;
+            this._patient.lungCompliance = Math.round(OP).toString();
         }
+
+        this.GetMurrayScore();
+    }
+
+    public GetMurrayScore()
+    {
+        let PaFiRatioVal:string = "0kPa0";
+        let CXRVal:string = "0";
+        let PEEPVal:string = "0";
+        let ComplianceVal:string = "0";
+        let murrayop1 = 0;
+        let murrayop2 = 0;
+        let murrayop3 = 0;
+        let murrayop4 = 0;
+
+        PaFiRatioVal = this._patient.pao2fio2ratio == undefined ? PaFiRatioVal : this._patient.pao2fio2ratio;
+        CXRVal = this._patient.cxrquadrants == undefined ? CXRVal: this._patient.cxrquadrants;
+        PEEPVal = this._patient.peep == undefined ? PEEPVal : this._patient.peep;
+        ComplianceVal = this._patient.lungCompliance == undefined ? ComplianceVal : this._patient.lungCompliance == "" ? "0" :this._patient.lungCompliance;
+
+        let paFiRatioArray =  PaFiRatioVal.toString().split("kPa");
+        if(Number(paFiRatioArray[0]) > 40)
+        {
+            murrayop1 = 0;
+        }
+        else if(Number(paFiRatioArray[0]) <= 40 && Number(paFiRatioArray[0]) > 30)
+        {
+            murrayop1 = 1;
+        }
+        else if(Number(paFiRatioArray[0]) <= 30 && Number(paFiRatioArray[0]) > 23)
+        {
+            murrayop1 = 2;
+        }
+        else if(Number(paFiRatioArray[0]) <= 23 && Number(paFiRatioArray[0]) > 13)
+        {
+            murrayop1 = 3;
+        }
+        else
+        {
+            murrayop1 = 4;
+        }
+
+        if(Number(CXRVal) == 0)
+        {
+            murrayop2 = 0;
+        }
+        else if(Number(CXRVal) == 1)
+        {
+            murrayop2 = 1;
+        }
+        else if(Number(CXRVal) == 2)
+        {
+            murrayop2 = 1;
+        }
+        else if(Number(CXRVal) == 3)
+        {
+            murrayop2 = 3;
+        }
+        else if(Number(CXRVal) == 4)
+        {
+            murrayop2 = 4;
+        }
+
+        if(Number(PEEPVal) <= 5)
+        {
+            murrayop3 = 0;
+        }
+        else if(Number(PEEPVal) <= 8 && Number(PEEPVal) >=6)
+        {
+            murrayop3 = 1;
+        }
+        else if(Number(PEEPVal) <= 11 && Number(PEEPVal) >=9)
+        {
+            murrayop3 = 2;
+        }
+        else if(Number(PEEPVal) <= 14 && Number(PEEPVal) >=12)
+        {
+            murrayop3 = 3;
+        }
+        else if(Number(PEEPVal) >= 15)
+        {
+            murrayop3 = 4;
+        }
+
+        if(Number(ComplianceVal) >= 80)
+        {
+            murrayop4 = 0;
+        }
+        else if(Number(ComplianceVal) <= 79 && Number(ComplianceVal) >=60)
+        {
+            murrayop4 = 1;
+        }
+        else if(Number(ComplianceVal) <= 69 && Number(ComplianceVal) >=45)
+        {
+            murrayop4 = 2;
+        }
+        else if(Number(ComplianceVal) <= 39 && Number(ComplianceVal) >=20)
+        {
+            murrayop4 = 3;
+        }
+        else if(Number(ComplianceVal) <= 19)
+        {
+            murrayop4 = 4;
+        }
+
+        this._patient.murrayscore = ((murrayop1+murrayop2+murrayop3+murrayop4)*0.250).toString();
+        
     }
 
     public onspecialist(event) {
