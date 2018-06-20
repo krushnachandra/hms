@@ -514,10 +514,10 @@
                       [ngClass]="{ 'has-error': f.submitted && !pO2.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        PO2<span>* (mmHG)</span>
+                        PO2<span>*</span>
                       </label>
-                      <div class="col-9">
-                        <input class="form-control" placeholder="mmHG" 
+                      <div class="col-6">
+                        <input class="form-control" 
                           type="text"
                           [(ngModel)]="_patient.pO2"
                           name="pO2"
@@ -531,16 +531,17 @@
                           *PO2  should be in between 0 and 100.
                         </span>
                       </div>
+                      <div class="col-3">mmHg</div>
                       </div>
                     </div> <!-- col1 close -->
 
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !spO2.valid }">  <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                        SpO2<span>* %</span>
+                        SpO2<span>*</span>
                       </label>
-                      <div class="col-9">
-                        <input class="form-control" placeholder="Spo2" 
+                      <div class="col-6">
+                        <input class="form-control" 
                           type="text"
                           [(ngModel)]="_patient.spO2"
                           name="spO2"
@@ -554,6 +555,7 @@
                           *SpO2  should be in between 0 and 100.
                         </span>
                       </div>
+                      <div class="col-3">%</div>
                       </div>
                     </div> <!-- col2 close -->
                   </div><!--form group -->
@@ -564,19 +566,19 @@
                         <label for="disabledSelect" class="col-3 col-form-label">
                           FiO2<span>*</span>
                         </label>
-                        <div class="col-9">
+                        <div class="col-6">
                             <select class="form-control" [(ngModel)]="_patient.fiO2"
                             name="fiO2"
-                            #fiO2="ngModel"
+                            #fiO2="ngModel" (change)="PaO2FiO2ratio($event.target.value,2)"
                             id="fiO2" required>
-                            <option value=".21">.21</option>
-                            <option value=".3">.3</option>
-                            <option value=".4">.4</option>
-                            <option value=".5">.5</option>
-                            <option value=".6">.6</option>
-                            <option value=".7">.7</option>
-                            <option value=".8">.8</option>
-                            <option value=".9">.9</option>
+                            <option value="0.21">.21</option>
+                            <option value="0.3">.3</option>
+                            <option value="0.4">.4</option>
+                            <option value="0.5">.5</option>
+                            <option value="0.6">.6</option>
+                            <option value="0.7">.7</option>
+                            <option value="0.8">.8</option>
+                            <option value="0.9">.9</option>
                             <option value="1.0">1.0</option>
                           </select>
                           <span class="help-block "*ngIf="f.submitted && fiO2.errors?.required">
@@ -591,10 +593,10 @@
                       [ngClass]="{ 'has-error': f.submitted && !pao2fio2ratio.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        <span style="color:red;">PaO2/FiO2 ratio* (mmHG)</span>
+                        <span style="color:red;">PaO2/FiO2 ratio*</span>
                       </label>
-                      <div class="col-9">
-                          <input class="form-control" placeholder="PaO2/FiO2 ratio" 
+                      <div class="col-6">
+                          <input class="form-control" 
                           type="text"
                           [(ngModel)]="_patient.pao2fio2ratio"
                           name="pao2fio2ratio"
@@ -604,6 +606,7 @@
                           *PaO2/FiO2 ratio is required
                         </span>
                       </div>
+                      <div class="col-3">mmHg</div>
                       </div>
                     </div> <!-- col1 close -->
 
@@ -613,10 +616,10 @@
                     <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !peep.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-3 col-form-label">
-                       <span style="color:red;">PEEP * (cm H20)</span> 
+                       <span style="color:red;">PEEP *</span> 
                       </label>
-                      <div class="col-9">
-                        <input class="form-control" placeholder="PEEP" 
+                      <div class="col-6">
+                        <input class="form-control" 
                           type="text"
                           [(ngModel)]="_patient.peep"
                           name="peep"
@@ -637,8 +640,8 @@
                       <label for="disabledSelect" class="col-3 col-form-label">
                         PIP<span>*(peak insp pressure/PAW)</span>
                       </label>
-                      <div class="col-9">
-                        <input class="form-control" placeholder="PIP" 
+                      <div class="col-6">
+                        <input class="form-control"
                           type="text"
                           [(ngModel)]="_patient.pip"
                           name="pip"
@@ -652,6 +655,7 @@
                             *PIP  should be in number format.
                           </span>
                       </div>
+                      <div class="col-3">cmH20</div>
                       </div>
                     </div> <!-- col2 close -->
                   </div><!--form group -->
@@ -662,7 +666,7 @@
                       <label for="disabledSelect" class="col-3 col-form-label">
                         RR<span>*</span>
                       </label>
-                      <div class="col-9">
+                      <div class="col-6">
                         <input class="form-control" placeholder="RR" 
                         type="text"
                         [(ngModel)]="_patient.rr"
@@ -684,7 +688,7 @@
                       <label for="disabledSelect" class="col-3 col-form-label">
                         TV<span>*</span>
                       </label>
-                      <div class="col-9">
+                      <div class="col-6">
                         <input class="form-control" placeholder="TV" 
                           type="text"
                           [(ngModel)]="_patient.tv"
@@ -710,8 +714,8 @@
                       <label for="disabledSelect" class="col-3 pr-0 col-form-label">
                         <span style="color:red;">Lung Compliance*(mls/cmH2O)</span>
                       </label>
-                      <div class="col-9">
-                        <input class="form-control" placeholder="lungCompliance" 
+                      <div class="col-6">
+                        <input class="form-control" 
                         type="text"
                         [(ngModel)]="_patient.lungCompliance"
                         name="lungCompliance"
@@ -729,27 +733,55 @@
                     <div class="col-6"
                       [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }"> <!-- col2 -->
                       <div class="row"> 
-                      <label for="disabledSelect" class="col-3 pr-0 col-form-label">
-                        <span style="color:red;"> CXR quadrants*</span>
+                      <label for="disabledSelect" class="col-12 pr-0 col-form-label" style="color:red;">
+                         CXR quadrants* <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
+                        <div class="col-6 offset-3">
+                            <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
+                              name="cxrquadrants"
+                              #cxrquadrants="ngModel"
+                              id="cxrquadrants" required>
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                            </select>
+                            <span class="help-block "*ngIf="f.submitted && cxrquadrants.errors?.required">
+                                    *CXR quadrants is required
+                            </span>
+                          </div>
                       </label>
-                      <div class="col-9">
-                        <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
-                          name="cxrquadrants"
-                          #cxrquadrants="ngModel"
-                          id="cxrquadrants" required>
-                          <option value="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                        </select>
-                        <span class="help-block "*ngIf="f.submitted && cxrquadrants.errors?.required">
-                                *CXR quadrants is required
-                        </span>
-                      </div>
+                      
                       </div>
                     </div> <!-- col2 close -->
                   </div><!--form group -->
+                  <div class="form-group row">
+                      <div class="col-12" 
+                        [ngClass]="{ 'has-error': f.submitted && !murrayscore.valid}"> <!-- col1 -->
+                        <div class="col-6">
+                        <div class="row">
+                          
+                        <label for="disabledSelect" class="col-3 pl-0 col-form-label">
+                          Murray Score<span>*</span>
+                        </label>
+                        <div class="col-9">
+                          <input class="form-control" placeholder="murrayscore" 
+                          type="text"
+                          [(ngModel)]="_patient.murrayscore"
+                          name="murrayscore"
+                          id="murrayscore"
+                          #murrayscore="ngModel"
+                          required readonly>
+                        </div>
+                      </div>
+                        <span
+                        class="help-block"
+                        *ngIf="f.submitted && murrayscore.errors?.required">
+                        *Murray Scoreis required
+                      </span>
+                        </div>
+                      </div> <!-- col1 close -->
+                    </div> 
                 </div>
               
 
@@ -784,7 +816,7 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       Cr
                     </label>
-                    <div class="col-10">
+                    <div class="col-6">
                       <input class="form-control" placeholder="Cr"
                         type="text"
                         [(ngModel)]="_patient.cr"
@@ -825,7 +857,7 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       UO<span>*</span>
                     </label>
-                    <div class="col-10">
+                    <div class="col-6">
                       <input class="form-control" placeholder="UO"
                         type="text"
                         [(ngModel)]="_patient.uo"
@@ -836,6 +868,7 @@
                         *UO is required
                       </span>
                     </div>
+                    <div class="col-3">mls/hr</div>
                     </div>
                   </div> <!-- col2 close -->
                 </div>
@@ -964,7 +997,7 @@
                       <label for="disabledSelect" class="col-2 col-form-label">
                         Temp<span>*</span>
                       </label>
-                      <div class="col-10">
+                      <div class="col-6">
                         <input class="form-control" placeholder="Temp"
                         type="text"
                         [(ngModel)]="_patient.temp"
@@ -1034,7 +1067,7 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       cardiac index<span>*</span>
                     </label>
-                    <div class="col-10">
+                    <div class="col-6">
                       <select class="form-control" [(ngModel)]="_patient.cardiacindex"
                         name="cardiacindex"
                         #cardiacindex="ngModel"
@@ -1053,7 +1086,7 @@
                         *cardiac index is required
                       </span>
                     </div>
-
+                    <div class="col-3">L/min/m2</div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
@@ -1085,7 +1118,7 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       Dose
                     </label>
-                    <div class="col-10">
+                    <div class="col-6">
                       <input class="form-control"
                         type="text"
                         [(ngModel)]="_patient.Inotropesdose1"
@@ -1093,6 +1126,7 @@
                         #Inotropesdose1="ngModel"
                         id="Inotropesdose1">
                     </div>
+                    <div class="col-3">mcg/kg/min</div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
@@ -1118,7 +1152,7 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       Dose
                     </label>
-                    <div class="col-10">
+                    <div class="col-6">
                       <input class="form-control"
                         type="text"
                         [(ngModel)]="_patient.Inotropesdose2"
@@ -1126,6 +1160,7 @@
                         #Inotropesdose2="ngModel"
                         id="Inotropesdose2">
                     </div>
+                    <div class="col-3">mcg/kg/min</div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
@@ -1151,7 +1186,7 @@
                     <label for="disabledSelect" class="col-2 col-form-label">
                       Dose
                     </label>
-                    <div class="col-10">
+                    <div class="col-6">
                       <input class="form-control"
                         type="text"
                         [(ngModel)]="_patient.Inotropesdose3"
@@ -1292,7 +1327,7 @@
                   <div class="col-6">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      Dose
+                      Dose (bolus/infusion)
                     </label>
                     <div class="col-10">
                       <input class="form-control"
@@ -1317,7 +1352,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !bloodgasPH.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      PH<span>*</span>
+                      pH<span>*</span>
                     </label>
                     <div class="col-10">
                       <input class="form-control" placeholder="PH"
@@ -1412,7 +1447,7 @@
 
               <div class="col-12">
                 <h6>
-                  <label class="text-primary">Refral's</label>
+                  <label class="text-primary">Referral's</label>
                 </h6>
 
                 <div class="form-group row">
