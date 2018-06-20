@@ -523,7 +523,7 @@
             <div class="form-group row">
               <div class="col-6"> <!-- col1 --><div class="row"> 
                 <label class="col-4 col-form-label">
-                  <span style="color:red;">Lung Compliance(mls/cmH2O)</span>
+                  <span style="color:red;">Lung&nbsp;Compliance (mls/cmH2O)</span>
                 </label>
                 <div class="col-5">
                   <input readonly  class="form-control"
@@ -554,6 +554,32 @@
               </div> <!-- col2 close -->
             </div><!--form group -->
           </div>
+          <div class="form-group row">
+            <div class="col-12"> <!-- col1 -->
+              <div class="col-6">
+              <div class="row">
+                
+              <label for="disabledSelect" class="col-3 pl-0 col-form-label">
+                Murray Score<span>*</span>
+              </label>
+              <div class="col-6">
+                <input class="form-control" placeholder="murrayscore" 
+                type="text"
+                [(ngModel)]="patientDetail.murrayscore"
+                name="murrayscore"
+                id="murrayscore"
+                #murrayscore="ngModel"
+                required readonly>
+              </div>
+            </div>
+              <!-- <span
+              class="help-block"
+              *ngIf="f.submitted && murrayscore.errors?.required">
+              *Murray Scoreis required
+            </span> -->
+              </div>
+            </div> <!-- col1 close -->
+          </div> 
         </div> <!-- closing of Ventilation -->
 
         <div style="padding:15px;">

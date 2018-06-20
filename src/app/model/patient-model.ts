@@ -95,6 +95,7 @@ export class PatientDetail extends CommonModel
     file1:string;
     file2:string;
     file3:string;
+    murrayscore: string;
 }
 
  export class PatientModel extends CommonModel {

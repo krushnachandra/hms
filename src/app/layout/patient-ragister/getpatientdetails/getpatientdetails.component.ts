@@ -71,7 +71,6 @@ export class GetPatientDetailsComponent1 implements OnInit {
         this._patientService.getPatientDetails ({'transactiontype': this.transactiontype,
         'sessid': this.sessid,"refral_id": this.refral_id})
         .subscribe((res) => {
-            
             if (res !== undefined) {
                 if (res.Result === 'SUCCESS') {
                     this.patientDetail = res.data[0];
