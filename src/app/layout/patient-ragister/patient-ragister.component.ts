@@ -63,7 +63,7 @@ export class PatientRagisterComponent implements OnInit {
     public getPatientDetails(id: number) {
         this.sessid = localStorage.getItem('sessid');
         this.transactiontype = "getpatientinfo";
-        debugger;
+        
         this.refral_id = id.toString();
         this._patient.resend = id.toString();
         this._patientService.getPatientDetails({
@@ -118,12 +118,12 @@ export class PatientRagisterComponent implements OnInit {
         {
             this.Spvalid = false;
         }
-       
+        this._patient.resend="0";
     if(this.Hsvalid && this.Spvalid){
-        debugger;
+        
         this._authenticationService.PatientRegister(this._patient)
             .subscribe((res) => {
-                debugger;
+                
                  if (res !== undefined) {
                     if (res.Result === 'Success') {
                         this.toastr.success(res.Result, res.Result);
@@ -144,10 +144,10 @@ export class PatientRagisterComponent implements OnInit {
 
     public onCivilIdChange(val)
     {
-    debugger;
+    
         if(val.length == 12)
         {
-            debugger;
+            
             this.cidyy = +val.substr(1, 2);//+this._patient.civilId.substr(1, 2);
             const c = new Date();
             this.year = +c.getFullYear();
@@ -393,13 +393,13 @@ export class PatientRagisterComponent implements OnInit {
 
       public fileChange(event,value)
       {
-          debugger;
+          
           if (value == 1)
           {
             let fileList: FileList = event.target.files;
             if (fileList.length > 0) 
             {
-                debugger;
+                
                 let file: File = fileList[0];  
                 let formData: FormData = new FormData();  
                 formData.append('file', file); 
@@ -408,7 +408,7 @@ export class PatientRagisterComponent implements OnInit {
                 formData.append('docid',localStorage.getItem('created_by'));
                 this._patientService.patientFileUpload(formData)
                 .subscribe((res) => {
-                    debugger;
+                    
                      if (res !== undefined) {
                         if (res.Result === 'SUCCESS') {
                             this.toastr.success("File Uploaded Successfully.", res.Result);
