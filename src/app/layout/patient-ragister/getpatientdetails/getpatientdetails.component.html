@@ -410,13 +410,14 @@
                 <label class="col-2 col-form-label">
                   SpO2
                 </label>
-                <div class="col-10">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.spO2"
                     name="spO2"
                     id="spO2">
                     </div>
+                    <div class="col-3">%</div>
                 </div>
               </div> <!-- col2 close -->
             </div><!--form group -->
@@ -426,21 +427,23 @@
                 <label class="col-4 col-form-label">
                   <span style="color: red" >Pao2/Fio2 ratio</span>
                 </label>
-                <div class="col-8">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.pao2fio2ratio"
                     name="pao2fio2ratio"
                     #pao2fio2ratio="ngModel"
                     id="pao2fio2ratio">
-                </div></div>
+                </div>
+                <div class="col-3">mmHg</div>
+              </div>
               </div> <!-- col1 close -->
 
               <div class="col-6">  <!-- col2 --><div class="row"> 
                 <label class="col-2 col-form-label">
                   FiO2
                 </label>
-                <div class="col-10">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.fiO2"
@@ -457,7 +460,7 @@
                 <label class="col-4 col-form-label">
                     <span style="color: red" >PEEP</span>
                 </label>
-                <div class="col-8">
+                <div class="col-5">
                   <input readonly  class="form-control" placeholder="CMH2O"
                     type="text"
                     [(ngModel)]="patientDetail.peep"
@@ -470,16 +473,17 @@
               <div class="col-6">  <!-- col2 -->
                 <div class="row"> 
                 <label class="col-2 col-form-label">
-                  PIP
+                  PIP(peak insp pressure/PAW)
                 </label>
-                <div class="col-10">
-                  <input readonly  class="form-control" placeholder="CMH2O"
+                <div class="col-5">
+                  <input readonly  class="form-control" 
                     type="text"
                     [(ngModel)]="patientDetail.pip"
                     name="pip"
                     #pip="ngModel"
                     id="pip">
                 </div>
+                <div class="col-3">cmH20</div>
                 </div>
               </div> <!-- col2 close -->
             </div><!--form group -->
@@ -489,7 +493,7 @@
                 <label class="col-4 col-form-label">
                   RR
                 </label>
-                <div class="col-8">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.rr"
@@ -503,7 +507,7 @@
                 <label class="col-2 col-form-label">
                   TV
                 </label>
-                <div class="col-10">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.tv"
@@ -521,7 +525,7 @@
                 <label class="col-4 col-form-label">
                   <span style="color:red;">Lung Compliance(mls/cmH2O)</span>
                 </label>
-                <div class="col-8">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.lungCompliance"
@@ -529,15 +533,16 @@
                     #lungCompliance="ngModel"
                     id="lungCompliance">
                 </div>
+                <div class="col-3">calculated as TV/(PIP-PEEP)</div>
                 </div>
               </div> <!-- col1 close -->
 
 
-              <div class="col-6"> <!-- col2 --><div class="row"> 
-                <label class="col-2 col-form-label">
-                  <span style="color:red;"> CXR quadrants</span>
-                </label>
-                <div class="col-10">
+              <div class="col-6"> <!-- col2 -->
+                <div class="row"> 
+                    <label for="disabledSelect" class="col-12 pr-0 col-form-label" style="color:red;">
+                        CXR quadrants* <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
+                  <div class="col-5 offset-2">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.cxrquadrants"
@@ -545,6 +550,8 @@
                     #cxrquadrants="ngModel"
                     id="cxrquadrants">
                 </div>
+                
+              </label>
                 </div>
               </div> <!-- col2 close -->
             </div><!--form group -->
@@ -605,7 +612,7 @@
               <label class="col-4 col-form-label">
                 UO
               </label>
-              <div class="col-8">
+              <div class="col-5">
                 <input readonly  class="form-control" placeholder="mls/hr"
                   type="text"
                   [(ngModel)]="patientDetail.uo"
@@ -613,6 +620,7 @@
                   #uo="ngModel"
                   id="uo">
               </div>
+              <div class="col-3">mls/hr</div>
               </div>
             </div> <!-- col2 close -->
             <div class="col-4"> <!-- col1 --><div class="row"> 
@@ -656,7 +664,7 @@
               <label class="col-2 col-form-label">
                 BP
               </label>
-              <div class="col-10">
+              <div class="col-5">
                 <input readonly  class="form-control"
                   type="text"
                   [(ngModel)]="patientDetail.bp"
@@ -690,7 +698,7 @@
                 <label class="col-2 col-form-label">
                   Temp
                 </label>
-                <div class="col-10">
+                <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.temp"
@@ -742,7 +750,7 @@
               <label class="col-2 col-form-label">
                 cardiac index
               </label>
-              <div class="col-10">
+              <div class="col-5">
                 <input readonly  class="form-control"
                   type="text"
                   [(ngModel)]="patientDetail.cardiacindex"
@@ -750,6 +758,7 @@
                   #cardiacindex="ngModel"
                   id="cardiacindex">
               </div>
+              <div class="col-3">L/min/m2</div>
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
@@ -781,7 +790,7 @@
               <label class="col-2 col-form-label">
                 Dose
               </label>
-              <div class="col-10">
+              <div class="col-5">
                 <input readonly  class="form-control"
                   type="text"
                   [(ngModel)]="patientDetail.Inotropesdose1"
@@ -789,6 +798,7 @@
                   #Inotropesdose1="ngModel"
                   id="Inotropesdose1">
               </div>
+              <div class="col-3">mcg/kg/min</div>
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
@@ -814,7 +824,7 @@
               <label class="col-2 col-form-label">
                 Dose
               </label>
-              <div class="col-10">
+              <div class="col-5">
                 <input readonly  class="form-control"
                   type="text"
                   [(ngModel)]="patientDetail.Inotropesdose2"
@@ -822,6 +832,7 @@
                   #Inotropesdose2="ngModel"
                   id="Inotropesdose2">
               </div>
+              <div class="col-3">mcg/kg/min</div>
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
@@ -847,7 +858,7 @@
               <label class="col-2 col-form-label">
                 Dose
               </label>
-              <div class="col-10">
+              <div class="col-5">
                 <input readonly  class="form-control"
                   type="text"
                   [(ngModel)]="patientDetail.Inotropesdose3"
@@ -1012,7 +1023,7 @@
             <div class="col-4"> <!-- col1 -->
               <div class="row"> 
               <label class="col-4 col-form-label">
-                PH
+                pH
               </label>
               <div class="col-8">
                 <input readonly  class="form-control" placeholder="PH"
