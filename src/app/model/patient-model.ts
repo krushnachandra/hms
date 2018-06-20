@@ -172,4 +172,5 @@ export class PatientDetail extends CommonModel
   telephone: number;
   designation: string;
   resend:string="0";
+  murrayscore: string;
 }
