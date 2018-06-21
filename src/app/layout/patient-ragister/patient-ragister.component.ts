@@ -220,25 +220,25 @@ export class PatientRagisterComponent implements OnInit {
             }
         }
 
-        if(op < 13)
+        if(op < 100)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 100";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString()))+'';
         }
-        else if(op >= 13 && op < 23)
+        else if(op >= 100 && op < 174.9)
         {
-            this._patient.pao2fio2ratio =  Math.round(parseFloat(op.toString())) + "kPa 100-174";
+            this._patient.pao2fio2ratio =  Math.round(parseFloat(op.toString()))+'';
         }
-        else if(op >= 23 && op < 30)
+        else if(op >= 175 && op < 224.9)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 175-224";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString()))+ "";
         }
-        else if(op >= 30 && op < 40)
+        else if(op >= 225 && op < 29.9)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 225-229";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "";
         }
-        else if( op> 40)
+        else if( op> 300)
         {
-            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "kPa 300";
+            this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "";
         }
         this.GetMurrayScore();
     }
@@ -266,7 +266,7 @@ export class PatientRagisterComponent implements OnInit {
 
     public GetMurrayScore()
     {
-        let PaFiRatioVal:string = "0kPa0";
+        let PaFiRatioVal:string = "0";
         let CXRVal:string = "0";
         let PEEPVal:string = "0";
         let ComplianceVal:string = "0";
@@ -279,21 +279,22 @@ export class PatientRagisterComponent implements OnInit {
         CXRVal = this._patient.cxrquadrants == undefined ? CXRVal: this._patient.cxrquadrants;
         PEEPVal = this._patient.peep == undefined ? PEEPVal : this._patient.peep;
         ComplianceVal = this._patient.lungCompliance == undefined ? ComplianceVal : this._patient.lungCompliance == "" ? "0" :this._patient.lungCompliance;
-
-        let paFiRatioArray =  PaFiRatioVal.toString().split("kPa");
-        if(Number(paFiRatioArray[0]) > 40)
+debugger;
+        let paFiRatioArray =  PaFiRatioVal.toString();
+        if(Number(paFiRatioArray[0]) >= 300)
         {
             murrayop1 = 0;
+        
         }
-        else if(Number(paFiRatioArray[0]) <= 40 && Number(paFiRatioArray[0]) > 30)
+        else if(Number(paFiRatioArray[0]) >= 225 && Number(paFiRatioArray[0]) <= 299)
         {
             murrayop1 = 1;
         }
-        else if(Number(paFiRatioArray[0]) <= 30 && Number(paFiRatioArray[0]) > 23)
+        else if(Number(paFiRatioArray[0]) <= 224 && Number(paFiRatioArray[0]) >= 175)
         {
             murrayop1 = 2;
         }
-        else if(Number(paFiRatioArray[0]) <= 23 && Number(paFiRatioArray[0]) > 13)
+        else if(Number(paFiRatioArray[0]) <= 174 && Number(paFiRatioArray[0]) >= 100)
         {
             murrayop1 = 3;
         }
@@ -312,7 +313,7 @@ export class PatientRagisterComponent implements OnInit {
         }
         else if(Number(CXRVal) == 2)
         {
-            murrayop2 = 1;
+            murrayop2 = 2;
         }
         else if(Number(CXRVal) == 3)
         {

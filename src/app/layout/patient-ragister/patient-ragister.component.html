@@ -398,10 +398,10 @@
                               id="e"
                               (change)="onEVMChanged()"
                               required>
-                          <option value="4/4">Open Spontancously</option>
-                          <option value="3/4">Open to Speech</option>
-                          <option value="2/4">Open to painful stimulus</option>
-                          <option value="1/4">No response (no eye opening)</option>
+                          <option value="4/4">Open spontaneously-4</option>
+                          <option value="3/4">Open to speech-3</option>
+                          <option value="2/4">Open to painful stimulus-2</option>
+                          <option value="1/4">No response (no eye opening)-1</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && e.errors?.required">
                           *E value is required
@@ -421,11 +421,11 @@
                           #v="ngModel"
                           id="v"
                           (change)="onEVMChanged()" required>
-                          <option value="5/5">Responds sensibly</option>
-                          <option value="4/5">Confused</option>
-                          <option value="3/5">Inappropriate words</option>
-                          <option value="2/5">Incomprehensible Sounds</option>
-                          <option value="1/5">No response(Silent)</option>
+                          <option value="5/5">Responds sensibly-5</option>
+                          <option value="4/5">Confused-4</option>
+                          <option value="3/5">Inappropriate words-3</option>
+                          <option value="2/5">Incomprehensible sounds-2</option>
+                          <option value="1/5">No response(silent)-1</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && v.errors?.required">
                           *V value is required
@@ -447,12 +447,12 @@
                                 id="m"
                                 (change)="onEVMChanged()"
                                 required>
-                            <option value="6/6">Obeys commands</option>
-                            <option value="5/6">Points (localises to pain)</option>
-                            <option value="4/6">Withdraws from pain</option>
-                            <option value="3/6">Bends limbs in response to pain(Flexion)</option>
-                            <option value="2/6">Straigten limbs in response to pian(extension)</option>
-                            <option value="1/6">No response</option>
+                            <option value="6/6">Obeys commands-6</option>
+                            <option value="5/6">Points (localises) to pain-5</option>
+                            <option value="4/6">Withdraws from pain-4</option>
+                            <option value="3/6">Bends limbs in response to pain(flexion)-3</option>
+                            <option value="2/6">Straigten limbs in response to pian(extension)-2</option>
+                            <option value="1/6">No response-1</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && m.errors?.required">
                               *M value is required
@@ -726,6 +726,7 @@
                           *Lung Compliance is required
                         </span>
                       </div>
+                      <div class="col-3">(calculated as TV/(PIP-PEEP))</div>
                       </div>
                     </div> <!-- col1 close -->
 
@@ -734,7 +735,8 @@
                       [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }"> <!-- col2 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-12 pr-0 col-form-label" style="color:red;">
-                         CXR quadrants* <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
+                         CXR quadrants* 
+                         <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
                         <div class="col-6 offset-3">
                             <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
                               name="cxrquadrants"
@@ -838,7 +840,7 @@
                       Lactate<span>*</span>
                     </label>
                     <div class="col-10">
-                      <input class="form-control" placeholder="Locate"
+                      <input class="form-control"
                         type="text"
                         [(ngModel)]="_patient.lactate"
                         name="lactate"
