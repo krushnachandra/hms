@@ -730,14 +730,14 @@
                       </div>
                     </div> <!-- col1 close -->
 
-
                     <div class="col-6"
                       [ngClass]="{ 'has-error': f.submitted && !cxrquadrants.valid }"> <!-- col2 -->
-                      <div class="row"> 
-                      <label for="disabledSelect" class="col-12 pr-0 col-form-label" style="color:red;">
-                         CXR quadrants* 
-                         <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
-                        <div class="col-6 offset-3">
+                      <div class="row">
+                          <label for="disabledSelect" class="col-3 col-form-label" style="color:red;">
+                              CXR quadrants*
+                            </label> 
+                         
+                         <div class="col-6">
                             <select class="form-control" [(ngModel)]="_patient.cxrquadrants"
                               name="cxrquadrants"
                               #cxrquadrants="ngModel" (change)="GetMurrayScore()"
@@ -752,9 +752,8 @@
                                     *CXR quadrants is required
                             </span>
                           </div>
-                      </label>
-                      
-                      </div>
+                          <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
+                        </div>
                     </div> <!-- col2 close -->
                   </div><!--form group -->
                   <div class="form-group row">
@@ -762,7 +761,6 @@
                         [ngClass]="{ 'has-error': f.submitted && !murrayscore.valid}"> <!-- col1 -->
                         <div class="col-6">
                         <div class="row">
-                          
                         <label for="disabledSelect" class="col-3 pl-0 col-form-label">
                           Murray Score<span>*</span>
                         </label>

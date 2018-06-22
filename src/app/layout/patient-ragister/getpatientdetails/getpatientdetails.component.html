@@ -538,9 +538,10 @@
               </div> <!-- col1 close -->
               <div class="col-6"> <!-- col2 -->
                 <div class="row"> 
-                    <label for="disabledSelect" class="col-12 pr-0 col-form-label" style="color:red;">
-                        CXR quadrants* <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
-                  <div class="col-5 offset-2">
+                    <label for="disabledSelect" class="col-2 col-form-label"  style="color:red;">
+                        CXR quadrants* 
+                      </label>
+                    <div class="col-5">
                   <input readonly  class="form-control"
                     type="text"
                     [(ngModel)]="patientDetail.cxrquadrants"
@@ -548,9 +549,10 @@
                     #cxrquadrants="ngModel"
                     id="cxrquadrants">
                 </div>
-                
-              </label>
-                </div>
+                <div class="col-12">
+                <small class="display-inline"  style="color:black;">(number of quadrants with infiltrations seen on CXR:alveolar consolidation) 1 point per quadrant, minimum 0, maximum 4 )</small>
+              </div>  
+              </div>
               </div> <!-- col2 close -->
             </div><!--form group -->
           </div>
