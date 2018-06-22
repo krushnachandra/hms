@@ -189,7 +189,7 @@ export class PatientRagisterComponent implements OnInit {
 
     public PaO2FiO2ratio(ev,val)
     {
-        
+       debugger; 
         let runtimeVarible ;
         let op = 0;
         if(val == 1)
@@ -232,7 +232,7 @@ export class PatientRagisterComponent implements OnInit {
         {
             this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString()))+ "";
         }
-        else if(op >= 225 && op < 29.9)
+        else if(op >= 225 && op < 299.9)
         {
             this._patient.pao2fio2ratio = Math.round(parseFloat(op.toString())) + "";
         }
@@ -279,22 +279,22 @@ export class PatientRagisterComponent implements OnInit {
         CXRVal = this._patient.cxrquadrants == undefined ? CXRVal: this._patient.cxrquadrants;
         PEEPVal = this._patient.peep == undefined ? PEEPVal : this._patient.peep;
         ComplianceVal = this._patient.lungCompliance == undefined ? ComplianceVal : this._patient.lungCompliance == "" ? "0" :this._patient.lungCompliance;
-debugger;
+
         let paFiRatioArray =  PaFiRatioVal.toString();
-        if(Number(paFiRatioArray[0]) >= 300)
+        if(Number(paFiRatioArray) >= 300)
         {
             murrayop1 = 0;
         
         }
-        else if(Number(paFiRatioArray[0]) >= 225 && Number(paFiRatioArray[0]) <= 299)
+        else if(Number(paFiRatioArray) >= 225 && Number(paFiRatioArray) <= 299)
         {
             murrayop1 = 1;
         }
-        else if(Number(paFiRatioArray[0]) <= 224 && Number(paFiRatioArray[0]) >= 175)
+        else if(Number(paFiRatioArray) <= 224 && Number(paFiRatioArray) >= 175)
         {
             murrayop1 = 2;
         }
-        else if(Number(paFiRatioArray[0]) <= 174 && Number(paFiRatioArray[0]) >= 100)
+        else if(Number(paFiRatioArray) <= 174 && Number(paFiRatioArray) >= 100)
         {
             murrayop1 = 3;
         }
