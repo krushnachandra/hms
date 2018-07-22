@@ -8,4 +8,23 @@ export class SpecialistModel {
     password: string;
     transactiontype: string;
     sessid: string;
+    actiontype:string;
+}
+
+export class InotropesModel {
+    id: number;
+    name: string;
+    actiontype:string;
+}
+
+export class SedationModel {
+    id: number;
+    name: string;
+    actiontype:string;
+}
+
+export class UnitsModel {
+    id: number;
+    name: string;
+    actiontype:string;
 }

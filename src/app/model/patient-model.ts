@@ -66,12 +66,16 @@ export class PatientDetail extends CommonModel
     Inotropesdose2:  string;
     Inotropesagent3:  string;
     Inotropesdose3:  string;
+    Inotropesagent4:  string;
+    Inotropesdose4:  string;
     Sedationagent1:  string;
     Sedationdose1:  string;
     Sedationagent2:  string;
     Sedationdose2:  string;
     Sedationagent3:  string;
     Sedationdose3:  string;
+    Sedationagent4:  string;
+    Sedationdose4:  string;
     musclerelaxantsagent1:  string;
     musclerelaxantsdose1:  string;
     urea:  string;
@@ -96,6 +100,19 @@ export class PatientDetail extends CommonModel
     file2:string;
     file3:string;
     murrayscore: string;
+  Prone_Positioning: string;
+  Prone_Positioning_improv: string;
+  Nitric_Acid	: string;
+  Nitric_Acid_improv	: string;
+  Plasmaphersis	: string;
+  Plasmaphersis_improv: string;
+  Therapuetic_Hypothermia	: string;
+  Therapuetic_Hypothermia_improv	: string;
+  Others	: string;
+  Others_improv: string;
+  abg_lactate: string;
+  bg_sao2: string;
+  bg_spo2: string;
 }
 
  export class PatientModel extends CommonModel {
@@ -142,12 +159,16 @@ export class PatientDetail extends CommonModel
   Inotropesdose2: string;
   Inotropesagent3: string;
   Inotropesdose3: string;
+  Inotropesagent4: string;
+  Inotropesdose4: string;
   Sedationagent1: string;
   Sedationdose1: string;
   Sedationagent2: string;
   Sedationdose2: string ;
   Sedationagent3: string;
   Sedationdose3: string;
+  Sedationagent4: string;
+  Sedationdose4: string;
   musclerelaxantsagent1: string;
   musclerelaxantsdose1: string;
   urea: string;
@@ -174,4 +195,17 @@ export class PatientDetail extends CommonModel
   designation: string;
   resend:string="0";
   murrayscore: string;
+  Prone_Positioning: string;
+    Prone_Positioning_improv: string;
+    Nitric_Acid	: string;
+    Nitric_Acid_improv	: string;
+    Plasmaphersis	: string;
+    Plasmaphersis_improv: string;
+    Therapuetic_Hypothermia	: string;
+    Therapuetic_Hypothermia_improv	: string;
+    Others	: string;
+    Others_improv: string;
+    abg_lactate: string;
+    bg_sao2: string;
+    bg_spo2: string;
 }

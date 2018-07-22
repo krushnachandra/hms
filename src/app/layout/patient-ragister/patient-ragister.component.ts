@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpecialistModel } from '../../model/specialist-model';
+import { SpecialistModel, InotropesModel, SedationModel, UnitsModel } from '../../model/specialist-model';
 import { HospitalModel } from '../../model/hospital-model';
 import { HospitalService } from '../../service/hospital-service';
 import { SpecialistService } from '../../service/specialist-service';
@@ -34,9 +34,16 @@ export class PatientRagisterComponent implements OnInit {
     guid :string;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
+    inotropes: Array<InotropesModel>;
+    Sedation: Array<SedationModel>;
+    units: Array<UnitsModel>;
+
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
     public _patient: PatientModel = new PatientModel();
+    public _inotropes: InotropesModel = new InotropesModel();
+    public _Sedation: SedationModel = new SedationModel();
+    public _unit: UnitsModel = new UnitsModel();
     constructor(public router: Router,
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
@@ -55,6 +62,9 @@ export class PatientRagisterComponent implements OnInit {
         // call the method on initial load of page to bind drop down
         this.getHospitals();
         this.getSpecialists();
+        this.getInotropesList();
+        this.getSedationList();
+        this.getUnitsList();
         this._patient.referConsulutantName = localStorage.getItem('user');
         //this.age();
         this._patient.referHospitalId = parseInt(localStorage.getItem('hospital_id'));
@@ -100,6 +110,37 @@ export class PatientRagisterComponent implements OnInit {
             error => this.errorMessage = <any>error
         );
     }
+
+    public getInotropesList()
+    {
+        
+        this._inotropes.actiontype = 'inotropes';
+        this._specialistService.getInotropesList(this._inotropes).subscribe(
+            res => this.inotropes = res,
+            error => this.errorMessage = <any>error
+        );
+    }
+
+    public getSedationList()
+    {
+        this._Sedation.actiontype = 'sedation';
+        this._specialistService.getSedationList(this._Sedation).subscribe(
+            res => this.Sedation = res,
+            error => this.errorMessage = <any>error
+        );
+    }
+
+    public getUnitsList()
+    {
+        debugger;
+
+        this._unit.actiontype = 'units';
+        this._specialistService.getIUnitsList(this._unit).subscribe(
+            res => this.units = res,
+            error => this.errorMessage = <any>error
+        );
+    }
+
     public onRegister() {
         debugger;
         this._patient.transactiontype = 'insert';

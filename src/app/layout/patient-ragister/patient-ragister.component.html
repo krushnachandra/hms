@@ -16,7 +16,7 @@
                   <div class="col-6"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Referring Consultant<span>*</span>
+                      Referring&nbsp;Consultant<span>*</span>
                     </label>
                     <div class="col-8">
                       <input [(ngModel)]="_patient.referConsulutantName"
@@ -29,10 +29,10 @@
                   </div> <!-- col1 close -->
                   <div class="col-6">  <!-- col2 -->
                     <div class="row"> 
-                    <label for="disabledSelect" class="col-2 col-form-label pr-0">
-                      Referral Date<span>*</span>
+                    <label for="disabledSelect" class="col-3 col-form-label pr-0">
+                      Referral&nbsp;Date<span>*</span>
                     </label>
-                    <div class="col-10">
+                    <div class="col-9">
                       <input [(ngModel)]="_patient.RefDate"
                         name="RefDate"
                         id="RefDate"
@@ -47,7 +47,7 @@
                   <div class="col-6"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-4 col-form-label">
-                      Referring Specialty <span>*</span>
+                      Referring&nbsp;Specialty <span>*</span>
                     </label>
                     <div class="col-8">
                       <select [(ngModel)]="_patient.speciallistId"
@@ -69,10 +69,10 @@
 
                   <div class="col-6" [ngClass]="{ 'has-error': f.submitted && !referHospitalId.valid }">  <!-- col2 -->
                     <div class="row"> 
-                    <label for="disabledSelect" class="col-2 col-form-label pr-0">
-                      Referring Hospital<span>*</span>
+                    <label for="disabledSelect" class="col-3 col-form-label pr-0">
+                      Referring&nbsp;Hospital<span>*</span>
                     </label>
-                    <div class="col-10">
+                    <div class="col-9">
                       <select
                         [(ngModel)]="_patient.referHospitalId"
                         (change)="onhospital($event)"
@@ -98,7 +98,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !admissionDiagnosis.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      Admission diagnosis<span>*</span>
+                      Admission&nbsp;diagnosis<span>*</span>
                     </label>
                     <div class="col-10">
                       <textarea
@@ -464,7 +464,7 @@
                     <div class="col-3">  <!-- col4 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-4 col-form-label">
-                        Total score
+                        Total&nbsp;score
                       </label>
                       <div class="col-8">
                         <input class="form-control"
@@ -1145,12 +1145,15 @@
                       Agent
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Inotropesagent1"
+                      <select [(ngModel)]="_patient.Inotropesagent1"
                         name="Inotropesagent1"
+                        id="Inotropesagent1"
                         #Inotropesagent1="ngModel"
-                        id="Inotropesagent1">
+                        class="form-control"
+                        placeholder="Inotropes Agent1"
+                        >
+                        <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1160,14 +1163,17 @@
                       Dose
                     </label>
                     <div class="col-6">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Inotropesdose1"
+
+                      <select [(ngModel)]="_patient.Inotropesdose1"
                         name="Inotropesdose1"
+                        id="Inotropesdose1"
                         #Inotropesdose1="ngModel"
-                        id="Inotropesdose1">
+                        class="form-control"
+                        placeholder="Inotropes Dose1"
+                        >
+                        <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
-                    <div class="col-3">mcg/kg/min</div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
@@ -1179,12 +1185,15 @@
                       Agent
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Inotropesagent2"
+                      <select [(ngModel)]="_patient.Inotropesagent2"
                         name="Inotropesagent2"
+                        id="Inotropesagent2"
                         #Inotropesagent2="ngModel"
-                        id="Inotropesagent2">
+                        class="form-control"
+                        placeholder="Inotropes Agent2"
+                        >
+                        <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1194,14 +1203,16 @@
                       Dose
                     </label>
                     <div class="col-6">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Inotropesdose2"
+                        <select [(ngModel)]="_patient.Inotropesdose2"
                         name="Inotropesdose2"
+                        id="Inotropesdose2"
                         #Inotropesdose2="ngModel"
-                        id="Inotropesdose2">
+                        class="form-control"
+                        placeholder="Inotropes Dose2"
+                        >
+                        <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
-                    <div class="col-3">mcg/kg/min</div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
@@ -1213,12 +1224,15 @@
                       Agent
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Inotropesagent3"
+                        <select [(ngModel)]="_patient.Inotropesagent3"
                         name="Inotropesagent3"
+                        id="Inotropesagent3"
                         #Inotropesagent3="ngModel"
-                        id="Inotropesagent3">
+                        class="form-control"
+                        placeholder="Inotropes Agent3"
+                        >
+                        <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1228,16 +1242,61 @@
                       Dose
                     </label>
                     <div class="col-6">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Inotropesdose3"
+                        <select [(ngModel)]="_patient.Inotropesdose3"
                         name="Inotropesdose3"
+                        id="Inotropesdose3"
                         #Inotropesdose3="ngModel"
-                        id="Inotropesdose3">
+                        class="form-control"
+                        placeholder="Inotropes Dose3"
+                        >
+                        <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
+
+                <div class="form-group row">
+                    <div class="col-6"> <!-- col1 -->
+                      <div class="row"> 
+                      <label for="disabledSelect" class="col-2 col-form-label">
+                        Agent
+                      </label>
+                      <div class="col-10">
+                        <select [(ngModel)]="_patient.Inotropesagent4"
+                          name="Inotropesagent4"
+                          id="Inotropesagent4"
+                          #Inotropesagent4="ngModel"
+                          class="form-control"
+                          placeholder="Inotropes Agent4"
+                          >
+                          <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
+                      </div>
+                      </div>
+                    </div> <!-- col1 close -->
+                    <div class="col-6">  <!-- col2 -->
+                      <div class="row"> 
+                      <label for="disabledSelect" class="col-2 col-form-label">
+                        Dose
+                      </label>
+                      <div class="col-6">
+  
+                        <select [(ngModel)]="_patient.Inotropesdose4"
+                          name="Inotropesdose4"
+                          id="Inotropesdose4"
+                          #Inotropesdose4="ngModel"
+                          class="form-control"
+                          placeholder="Inotropes Dose4"
+                          >
+                          <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
+                      </div>
+                      </div>
+                    </div> <!-- col2 close -->
+                  </div><!--form group -->
+
+
               </div> <!-- closing for Inotropes/vasoconstrictors -->
 
               <div class="col-12"><!-- start for Sedation -->
@@ -1252,12 +1311,15 @@
                       Agent
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Sedationagent1"
-                        name="Sedationagent1"
-                        #Sedationagent2="ngModel"
-                        id="Sedationagent1">
+                        <select [(ngModel)]="_patient.Sedationagent1"
+                          name="Sedationagent1"
+                          id="Sedationagent1"
+                          #Sedationagent1="ngModel"
+                          class="form-control"
+                          placeholder="Inotropes Agent"
+                          >
+                          <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1267,12 +1329,15 @@
                       Dose
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Sedationdose1"
-                        name="Sedationdose1"
-                        #Sedationdose1="ngModel"
-                        id="Sedationdose1">
+                        <select [(ngModel)]="_patient.Sedationdose1"
+                          name="Sedationdose1"
+                          id="Sedationdose1"
+                          #Sedationdose1="ngModel"
+                          class="form-control"
+                          placeholder="Inotropes Dose"
+                          >
+                          <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
                     </div>
                     </div>
                   </div> <!-- col2 close -->
@@ -1285,12 +1350,15 @@
                       Agent
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Sedationagent2"
+                        <select [(ngModel)]="_patient.Sedationagent2"
                         name="Sedationagent2"
+                        id="Sedationagent2"
                         #Sedationagent2="ngModel"
-                        id="Sedationagent2">
+                        class="form-control"
+                        placeholder="Inotropes  Agent2"
+                        >
+                        <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1300,12 +1368,15 @@
                       Dose
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Sedationdose2"
+                        <select [(ngModel)]="_patient.Sedationdose2"
                         name="Sedationdose2"
+                        id="Sedationdose2"
                         #Sedationdose2="ngModel"
-                        id="Sedationdose2">
+                        class="form-control"
+                        placeholder="Inotropes Dose2"
+                        >
+                        <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col2 close -->
@@ -1318,12 +1389,15 @@
                       Agent
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Sedationagent3"
+                        <select [(ngModel)]="_patient.Sedationagent3"
                         name="Sedationagent3"
+                        id="Sedationagent3"
                         #Sedationagent3="ngModel"
-                        id="Sedationagent3">
+                        class="form-control"
+                        placeholder="Inotropes Agent3"
+                        >
+                        <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1333,16 +1407,58 @@
                       Dose
                     </label>
                     <div class="col-10">
-                      <input class="form-control"
-                        type="text"
-                        [(ngModel)]="_patient.Sedationdose3"
+                        <select [(ngModel)]="_patient.Sedationdose3"
                         name="Sedationdose3"
+                        id="Sedationdose3"
                         #Sedationdose3="ngModel"
-                        id="Sedationdose3">
+                        class="form-control"
+                        placeholder="Inotropes Dose2"
+                        >
+                        <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                      </select>
                     </div>
                     </div>
                   </div> <!-- col2 close -->
                 </div><!--form group -->
+
+                <div class="form-group row">
+                    <div class="col-6"> <!-- col1 -->
+                      <div class="row"> 
+                      <label for="disabledSelect" class="col-2 col-form-label">
+                        Agent
+                      </label>
+                      <div class="col-10">
+                          <select [(ngModel)]="_patient.Sedationagent4"
+                          name="Sedationagent4"
+                          id="Sedationagent4"
+                          #Sedationagent4="ngModel"
+                          class="form-control"
+                          placeholder="Inotropes Agent4"
+                          >
+                          <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
+                      </div>
+                      </div>
+                    </div> <!-- col1 close -->
+                    <div class="col-6">  <!-- col2 -->
+                      <div class="row"> 
+                      <label for="disabledSelect" class="col-2 col-form-label">
+                        Dose
+                      </label>
+                      <div class="col-10">
+                          <select [(ngModel)]="_patient.Sedationdose4"
+                          name="Sedationdose4"
+                          id="Sedationdose4"
+                          #Sedationdose4="ngModel"
+                          class="form-control"
+                          placeholder="Inotropes Dose4"
+                          >
+                          <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                        </select>
+                      </div>
+                      </div>
+                    </div> <!-- col2 close -->
+                  </div><!--form group -->
               </div> <!-- closing for Sedation -->
 
               <div class="col-12"><!-- start for Muscle relaxants -->
@@ -1382,6 +1498,278 @@
                   </div> <!-- col2 close -->
                 </div><!--form group -->
               </div> <!-- closing for Muscle relaxants -->
+
+              <div class="col-12"><!-- start for Other Support -->
+                <h6>
+                  <label class="text-primary">Other Support</label>
+                </h6>
+                <div class="form-group row">
+                    <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                    Prone Positioning
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Prone_Positioning"
+                               value="Yes"
+                               name="Prone_Positioning"
+                               #Prone_Positioning="ngModel"
+                               id="Prone_Positioning" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Prone_Positioning"
+                                 value="No"
+                                 name="Prone_Positioning"
+                                 #Prone_Positioning="ngModel"
+                                 id="Prone_Positioning" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                  <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        > Improvement
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Prone_Positioning_improv"
+                               value="Yes"
+                               name="Prone_Positioning_improv"
+                               #Prone_Positioning_improv="ngModel"
+                               id="Prone_Positioning_improv" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Prone_Positioning_improv"
+                                 value="No"
+                                 name="Prone_Positioning_improv"
+                                 #Prone_Positioning_improv="ngModel"
+                                 id="Prone_Positioning_improv" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                </div><!--form group -->
+
+                <div class="form-group row">
+                    <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                    Nitric Acid
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Nitric_Acid"
+                               value="Yes"
+                               name="Nitric_Acid"
+                               #Nitric_Acid="ngModel"
+                               id="Nitric_Acid" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Nitric_Acid"
+                                 value="No"
+                                 name="Nitric_Acid"
+                                 #Nitric_Acid="ngModel"
+                                 id="Nitric_Acid" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                  <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        > Improvement
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Nitric_Acid_improv"
+                               value="Yes"
+                               name="Nitric_Acid_improv"
+                               #Nitric_Acid_improv="ngModel"
+                               id="Nitric_Acid_improv" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Nitric_Acid_improv"
+                                 value="No"
+                                 name="Nitric_Acid_improv"
+                                 #Nitric_Acid_improv="ngModel"
+                                 id="Nitric_Acid_improv" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                </div><!--form group -->
+
+                <div class="form-group row">
+                    <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        Plasmaphersis
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Plasmaphersis"
+                               value="Yes"
+                               name="Plasmaphersis"
+                               #Plasmaphersis="ngModel"
+                               id="Plasmaphersis" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Plasmaphersis"
+                                 value="No"
+                                 name="Plasmaphersis"
+                                 #Plasmaphersis="ngModel"
+                                 id="Plasmaphersis" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                  <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        > Improvement
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Plasmaphersis_improv"
+                               value="Yes"
+                               name="Plasmaphersis_improv"
+                               #Plasmaphersis_improv="ngModel"
+                               id="Plasmaphersis_improv" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Plasmaphersis_improv"
+                                 value="No"
+                                 name="Plasmaphersis_improv"
+                                 #Plasmaphersis_improv="ngModel"
+                                 id="Plasmaphersis_improv" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                </div><!--form group -->
+
+                <div class="form-group row">
+                    <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        Therapuetic&nbsp;Hypothermia
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Therapuetic_Hypothermia"
+                               value="Yes"
+                               name="Therapuetic_Hypothermia"
+                               #Therapuetic_Hypothermia="ngModel"
+                               id="Therapuetic_Hypothermia" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Therapuetic_Hypothermia"
+                                 value="No"
+                                 name="Therapuetic_Hypothermia"
+                                 #Therapuetic_Hypothermia="ngModel"
+                                 id="Therapuetic_Hypothermia" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                  <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        > Improvement
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Therapuetic_Hypothermia_improv"
+                               value="Yes"
+                               name="Therapuetic_Hypothermia_improv"
+                               #Therapuetic_Hypothermia_improv="ngModel"
+                               id="Therapuetic_Hypothermia_improv" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Therapuetic_Hypothermia_improv"
+                                 value="No"
+                                 name="Therapuetic_Hypothermia_improv"
+                                 #Therapuetic_Hypothermia_improv="ngModel"
+                                 id="Therapuetic_Hypothermia_improv" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                </div><!--form group -->
+
+                <div class="form-group row">
+                    <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        Others	
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Others"
+                               value="Yes"
+                               name="Others"
+                               #Others="ngModel"
+                               id="Others" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Others"
+                                 value="No"
+                                 name="Others"
+                                 #Others="ngModel"
+                                 id="Others" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                  <div class="col-6">  <!-- col2 -->
+                    <div class="row"> 
+                    <label class="col-5 col-form-label">
+                        > Improvement
+                    </label>
+                    <div class="col-7">
+                      <label class="radio-inline">
+                        <input type="radio"
+                               [(ngModel)]="_patient.Others_improv"
+                               value="Yes"
+                               name="Others_improv"
+                               #Others_improv="ngModel"
+                               id="Others_improv" required> &nbsp; Yes
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio"
+                                 [(ngModel)]="_patient.Others_improv"
+                                 value="No"
+                                 name="Others_improv"
+                                 #Others_improv="ngModel"
+                                 id="Others_improv" required>&nbsp; No
+                      </label>
+                    </div>
+                  </div>
+                  </div> <!-- col2 close -->
+                </div><!--form group -->
+
+              </div> <!-- closing for Other Support -->
+
 
               <div class="col-12"><!-- start for Blood Glass: -->
                 <h6>
