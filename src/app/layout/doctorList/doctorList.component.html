@@ -36,13 +36,13 @@
                                                    (click)="DocActionA(doctor)"
                                                    class="btn btn-primary">
                                             <input type="button"
-                                                   value="DISAPPROVE"
+                                                   value="REJECTED"
                                                    (click)="DocActionD(doctor)"
                                                    class="btn btn-danger">
                                         </div>
                                         <div  *ngIf="doctor.status==='Approved'">
                                             <input type="button"
-                                                   value="DISAPPROVE"
+                                                   value="REJECTED"
                                                    (click)="DocActionD(doctor)"
                                                    class="btn btn-danger">
                                         </div>

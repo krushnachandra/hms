@@ -451,7 +451,7 @@
                             <option value="5/6">Points (localises) to pain-5</option>
                             <option value="4/6">Withdraws from pain-4</option>
                             <option value="3/6">Bends limbs in response to pain(flexion)-3</option>
-                            <option value="2/6">Straigten limbs in response to pian(extension)-2</option>
+                            <option value="2/6">Straighten limbs in response to pian(extension)-2</option>
                             <option value="1/6">No response-1</option>
                         </select>
                         <span class="help-block "*ngIf="f.submitted && m.errors?.required">
@@ -493,11 +493,25 @@
                         Duration of conventional mechanical ventilation<span>*</span>
                       </label>
                       <div class="col-3">
-                        <input class="form-control" placeholder="Days" type="text"
+                          <select class="form-control" [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
+                          name="durOfConventianalMechanicalVentination"
+                          #durOfConventianalMechanicalVentination="ngModel" 
+                          id="durOfConventianalMechanicalVentination" required>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value=">7">>7</option>
+                        </select>
+
+                       <!-- <input class="form-control" placeholder="Days" type="text"
                           [(ngModel)]="_patient.durOfConventianalMechanicalVentination"
                           name="durOfConventianalMechanicalVentination"
                           #durOfConventianalMechanicalVentination="ngModel"
-                          id="durOfConventianalMechanicalVentination" required>
+                          id="durOfConventianalMechanicalVentination" required>-->
                       </div>
                     </div>
                       <span
@@ -522,13 +536,13 @@
                           [(ngModel)]="_patient.pO2"
                           name="pO2"
                           id="pO2" (change)="PaO2FiO2ratio($event.target.value,1)"
-                          #pO2="ngModel" pattern="^(\d{0,2}(\.\d{1,2})?|100(\.00?)?)$"
+                          #pO2="ngModel" pattern="^[0-9]*$"
                           required>
                         <span class="help-block "*ngIf="f.submitted && pO2.errors?.required">
-                         *PO2 is required
+                         *PaO2 is required
                         </span>
                         <span class="help-block " style="color:red;" *ngIf="pO2.errors?.pattern">
-                          *PO2  should be in between 0 and 100.
+                          *PO2  should be only number.
                         </span>
                       </div>
                       <div class="col-3">mmHg</div>
@@ -915,7 +929,7 @@
                         #hr="ngModel"
                         id="hr" required>
                         <option value="<80"><80</option>
-                        <option value="120-80">120-80</option>
+                        <option value="80-120">80-120</option>
                         <option value=">120">>120</option>
                       </select>
                       <span class="help-block "*ngIf="f.submitted && hr.errors?.required">
@@ -976,18 +990,16 @@
                       [ngClass]="{ 'has-error': f.submitted && !cvp.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-2 col-form-label">
-                        CVP<span>*</span>
+                        CVP
                       </label>
                       <div class="col-10">
-                        <input class="form-control" placeholder="CVP"
+                        <input class="form-control" 
                           type="text"
                           [(ngModel)]="_patient.cvp"
                           name="cvp"
                           #cvp="ngModel"
-                          id="cvp" required>
-                        <span class="help-block "*ngIf="f.submitted && cvp.errors?.required">
-                          *CVP is required
-                        </span>
+                          id="cvp" >
+                        
                       </div>
                       </div>
                     </div> <!-- col1 close -->
@@ -1021,7 +1033,7 @@
                       [ngClass]="{ 'has-error': f.submitted && !co.valid }"> <!-- col1 -->
                       <div class="row"> 
                       <label for="disabledSelect" class="col-2 col-form-label">
-                        CO<span>*</span>
+                        CO
                       </label>
                       <div class="col-10">
                         <input class="form-control"
@@ -1029,10 +1041,8 @@
                           [(ngModel)]="_patient.co"
                           name="co"
                           #co="ngModel"
-                          id="co" required>
-                          <span class="help-block "*ngIf="f.submitted && co.errors?.required">
-                            *CO is required
-                          </span>
+                          id="co" >
+                         
                       </div>
                       </div>
                     </div> <!-- col1 close -->
@@ -1068,7 +1078,38 @@
                       cardiac index<span>*</span>
                     </label>
                     <div class="col-6">
-                      <select class="form-control" [(ngModel)]="_patient.cardiacindex"
+                        <input class="form-control" 
+                        type="text"
+                        [(ngModel)]="_patient.cardiacindex"
+                        name="cardiacindex"
+                        #cardiacindex="ngModel" pattern="^\d+\.?\d{0,2}$"
+                        id="cardiacindex" required>
+                        <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
+                          *Cardiacindex is required
+                        </span>
+                        <span class="help-block " style="color: red" *ngIf="cardiacindex.errors?.pattern">
+                            *Cardiacindex should be in decimal format.
+                          </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     <!--  <select class="form-control" [(ngModel)]="_patient.cardiacindex"
                         name="cardiacindex"
                         #cardiacindex="ngModel"
                         id="cardiacindex" required>
@@ -1084,7 +1125,7 @@
                       </select>
                       <span class="help-block "*ngIf="f.submitted && cardiacindex.errors?.required">
                         *cardiac index is required
-                      </span>
+                      </span>-->
                     </div>
                     <div class="col-3">L/min/m2</div>
                     </div>
@@ -1140,10 +1181,10 @@
                     <div class="col-10">
                       <input class="form-control"
                         type="text"
-                        [(ngModel)]="_patient.Inotropesdose2"
-                        name="Inotropesdose2"
-                        #Inotropesdose2="ngModel"
-                        id="Inotropesdose2">
+                        [(ngModel)]="_patient.Inotropesagent2"
+                        name="Inotropesagent2"
+                        #Inotropesagent2="ngModel"
+                        id="Inotropesagent2">
                     </div>
                     </div>
                   </div> <!-- col1 close -->
@@ -1370,7 +1411,7 @@
                   <div class="col-6">  <!-- col2 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                      PO2
+                      PaO2
                     </label>
                     <div class="col-10">
                       <input class="form-control" placeholder="PO2"
@@ -1390,7 +1431,7 @@
                     [ngClass]="{ 'has-error': f.submitted && !bloodgasPCO2.valid }"> <!-- col1 -->
                     <div class="row"> 
                     <label for="disabledSelect" class="col-2 col-form-label">
-                        <span style="color:red;">PCO2*</span>
+                        <span style="color:red;">PaCO2*</span>
                     </label>
                     <div class="col-10">
                       <input class="form-control" placeholder="PCO2"
