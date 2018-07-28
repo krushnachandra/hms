@@ -309,12 +309,16 @@
                 <div class="row"> 
                 <label class="col-2 col-form-label">E</label>
                 <div class="col-10">
-                  <input readonly  class="form-control"
-                    type="text"
-                    [(ngModel)]="patientDetail.e"
+                    <select class="form-control" [(ngModel)]="patientDetail.e"
                     name="e"
                     #e="ngModel"
-                    id="e">
+                    id="e" disabled
+                    >
+                <option value="4/4">Open spontaneously-4</option>
+                <option value="3/4">Open to speech-3</option>
+                <option value="2/4">Open to painful stimulus-2</option>
+                <option value="1/4">No response (no eye opening)-1</option>
+              </select>
                     </div>
                 </div>
               </div> <!-- col1 close -->
@@ -324,12 +328,17 @@
                   V
                 </label>
                 <div class="col-10">
-                  <input readonly  class="form-control"
-                    type="text"
-                    [(ngModel)]="patientDetail.v"
+                    <select class="form-control" [(ngModel)]="patientDetail.v"
                     name="v"
                     #v="ngModel"
-                    id="v">
+                    id="v"  disabled>
+                    <option value="5/5">Responds sensibly-5</option>
+                    <option value="4/5">Confused-4</option>
+                    <option value="3/5">Inappropriate words-3</option>
+                    <option value="2/5">Incomprehensible sounds-2</option>
+                    <option value="1/5">No response(silent)-1</option>
+                  </select>
+                  
                 </div>
                 </div>
               </div> <!-- col2 close -->
@@ -340,12 +349,17 @@
                   M
                 </label>
                 <div class="col-10">
-                  <input readonly  class="form-control"
-                    type="text"
-                    [(ngModel)]="patientDetail.m"
+                    <select class="form-control" [(ngModel)]="patientDetail.m"
                     name="m"
                     #m="ngModel"
-                    id="m">
+                    id="m" disabled>
+                <option value="6/6">Obeys commands-6</option>
+                <option value="5/6">Points (localises) to pain-5</option>
+                <option value="4/6">Withdraws from pain-4</option>
+                <option value="3/6">Bends limbs in response to pain(flexion)-3</option>
+                <option value="2/6">Straighten limbs in response to pian(extension)-2</option>
+                <option value="1/6">No response-1</option>
+            </select>
                 </div>
                 </div>
               </div> <!-- col3 close -->
@@ -791,218 +805,640 @@
 
         </div> <!-- closing for Cardiovascular Parameters: complication -->
 
+      
         <div class="col-12"><!-- start for Inotropes/vasoconstrictors -->
           <h6>
-            <label class="text-primary">Inotropes/vasoconstrictors</label>
+            <label class="text-primary">Vasocative Infusions</label>
           </h6>
           <div class="form-group row">
-            <div class="col-6"> <!-- col1 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-3 col-form-label">
+              <label for="disabledSelect" class="col-3 col-form-label">
                 Agent
               </label>
               <div class="col-9">
-                <input readonly  class="form-control"
-                  type="text"
-                  [(ngModel)]="patientDetail.Inotropesagent1"
+                <select [(ngModel)]="patientDetail.Inotropesagent1" disabled
                   name="Inotropesagent1"
+                  id="Inotropesagent1"
                   #Inotropesagent1="ngModel"
-                  id="Inotropesagent1">
+                  class="form-control"
+                  placeholder="Inotropes Agent1" (change)="BindOthers('Inotropes','1')"
+                  >
+                  <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
               </div>
             </div> <!-- col1 close -->
-            <div class="col-6">  <!-- col2 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-2 col-form-label">
-                Dose
-              </label>
-              <div class="col-5">
-                <input readonly  class="form-control"
+              <div class="col-12" *ngIf="insOther1">
+                <input class="form-control" 
                   type="text"
-                  [(ngModel)]="patientDetail.Inotropesdose1"
-                  name="Inotropesdose1"
-                  #Inotropesdose1="ngModel"
-                  id="Inotropesdose1">
+                  [(ngModel)]="patientDetail.Inotropes_agent_1_others"
+                  name="Inotropes_agent_1_others"
+                  #Inotropes_agent_1_others="ngModel" placeholder="Others"
+                  id="Inotropes_agent_1_others">
               </div>
-              <div class="col-3">mcg/kg/min</div>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-3">
+              <!-- col2 -->
+              <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Dose
+                </label>
+                <div class="col-9">
+                  <input class="form-control" readonly
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropes_dose_1_value"
+                  name="Inotropes_dose_1_value"
+                  #Inotropes_dose_1_value="ngModel" placeholder="dose"
+                  id="Inotropes_dose_1_value">
+                </div>
+            </div>
+          </div><!-- col1 close -->
+            <div class="col-3"> 
+              <div class="col-12">
+
+                  <select [(ngModel)]="patientDetail.Inotropesdose1" disabled
+                    name="Inotropesdose1"
+                    id="Inotropesdose1"
+                    #Inotropesdose1="ngModel"
+                    class="form-control"
+                      >
+                    <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+               
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
 
           <div class="form-group row">
-            <div class="col-6"> <!-- col1 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-3 col-form-label">
+              <label for="disabledSelect" class="col-3 col-form-label">
                 Agent
               </label>
               <div class="col-9">
-                <input readonly  class="form-control"
-                  type="text"
-                  [(ngModel)]="patientDetail.Inotropesagent2"
+                <select [(ngModel)]="patientDetail.Inotropesagent2" disabled
                   name="Inotropesagent2"
+                  id="Inotropesagent2"
                   #Inotropesagent2="ngModel"
-                  id="Inotropesagent2">
+                  class="form-control"
+                  placeholder="Inotropes Agent2" (change)="BindOthers('Inotropes','2')"
+                  >
+                  <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
               </div>
             </div> <!-- col1 close -->
-            <div class="col-6">  <!-- col2 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-2 col-form-label">
-                Dose
-              </label>
-              <div class="col-5">
-                <input readonly  class="form-control"
+              <div class="col-12" *ngIf="insOther2">
+                <input class="form-control" 
                   type="text"
-                  [(ngModel)]="patientDetail.Inotropesdose2"
-                  name="Inotropesdose2"
-                  #Inotropesdose2="ngModel"
-                  id="Inotropesdose2">
+                  [(ngModel)]="patientDetail.Inotropes_agent_2_others"
+                  name="Inotropes_agent_2_others"
+                  #Inotropes_agent_2_others="ngModel" placeholder="Others"
+                  id="Inotropes_agent_2_others">
               </div>
-              <div class="col-3">mcg/kg/min</div>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-3">
+              <!-- col2 -->
+              <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Dose
+                </label>
+                <div class="col-9">
+                  <input class="form-control" readonly
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropes_dose_2_value"
+                  name="Inotropes_dose_2_value"
+                  #Inotropes_dose_2_value="ngModel" placeholder="dose"
+                  id="Inotropes_dose_2_value">
+                </div>
+            </div>
+          </div><!-- col1 close -->
+            <div class="col-3">  <!-- col2 -->
+              <div class="col-12">
+
+                  <select [(ngModel)]="patientDetail.Inotropesdose2" disabled
+                    name="Inotropesdose2"
+                    id="Inotropesdose2"
+                    #Inotropesdose2="ngModel"
+                    class="form-control"
+                      >
+                    <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+                
+                  
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
 
           <div class="form-group row">
-            <div class="col-6"> <!-- col1 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-3 col-form-label">
+              <label for="disabledSelect" class="col-3 col-form-label">
                 Agent
               </label>
               <div class="col-9">
-                <input readonly  class="form-control"
-                  type="text"
-                  [(ngModel)]="patientDetail.Inotropesagent3"
+                  <select [(ngModel)]="patientDetail.Inotropesagent3" disabled
                   name="Inotropesagent3"
+                  id="Inotropesagent3"
                   #Inotropesagent3="ngModel"
-                  id="Inotropesagent3">
+                  class="form-control"
+                  placeholder="Inotropes Agent3" (change)="BindOthers('Inotropes','3')"
+                  >
+                  <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
               </div>
             </div> <!-- col1 close -->
-            <div class="col-6">  <!-- col2 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-2 col-form-label">
-                Dose
-              </label>
-              <div class="col-5">
-                <input readonly  class="form-control"
+              <div class="col-12" *ngIf="insOther3">
+                <input class="form-control" 
                   type="text"
-                  [(ngModel)]="patientDetail.Inotropesdose3"
-                  name="Inotropesdose3"
-                  #Inotropesdose3="ngModel"
-                  id="Inotropesdose3">
+                  [(ngModel)]="patientDetail.Inotropes_agent_3_others"
+                  name="Inotropes_agent_3_others"
+                  #Inotropes_agent_3_others="ngModel" placeholder="Others"
+                  id="Inotropes_agent_3_others">
               </div>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-3">
+              <!-- col2 -->
+              <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Dose
+                </label>
+                <div class="col-9">
+                  <input class="form-control" readonly
+                  type="text"
+                  [(ngModel)]="patientDetail.Inotropes_dose_3_value"
+                  name="Inotropes_dose_3_value"
+                  #Inotropes_dose_3_value="ngModel" placeholder="dose"
+                  id="Inotropes_dose_3_value">
+                </div>
+            </div>
+          </div><!-- col1 close -->
+            <div class="col-3">  <!-- col2 -->
+              <div class="col-12">
+                  <select [(ngModel)]="patientDetail.Inotropesdose3" disabled
+                    name="Inotropesdose3"
+                    id="Inotropesdose3"
+                    #Inotropesdose3="ngModel"
+                    class="form-control"
+                      >
+                    <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
+
+          <div class="form-group row">
+              <div class="col-3"> <!-- col1 -->
+                <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Agent
+                </label>
+                <div class="col-9">
+                  <select [(ngModel)]="patientDetail.Inotropesagent4" disabled
+                    name="Inotropesagent4"
+                    id="Inotropesagent4"
+                    #Inotropesagent4="ngModel"
+                    class="form-control"
+                    placeholder="Inotropes Agent4" (change)="BindOthers('Inotropes','4')"
+                    >
+                    <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+                </div>
+                </div>
+              </div> <!-- col1 close -->
+              <div class="col-3"> <!-- col1 -->
+                <div class="row"> 
+                <div class="col-12" *ngIf="insOther4">
+                  <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="patientDetail.Inotropes_agent_4_others"
+                    name="Inotropes_agent_4_others"
+                    #Inotropes_agent_4_others="ngModel" placeholder="Others"
+                    id="Inotropes_agent_4others">
+                </div>
+                </div>
+              </div> <!-- col1 close -->
+              <div class="col-3">
+                <!-- col2 -->
+                <div class="row"> 
+                  <label for="disabledSelect" class="col-3 col-form-label">
+                    Dose
+                  </label>
+                  <div class="col-9">
+                    <input class="form-control" readonly
+                    type="text"
+                    [(ngModel)]="patientDetail.Inotropes_dose_4_value"
+                    name="Inotropes_dose_4_value"
+                    #Inotropes_dose_4_value="ngModel" placeholder="dose"
+                    id="Inotropes_dose_4_value">
+                  </div>
+              </div>
+            </div><!-- col1 close -->
+              <div class="col-3">  <!-- col2 -->
+                <div class="col-12">
+                    <select [(ngModel)]="patientDetail.Inotropesdose4" disabled
+                    name="Inotropesdose4"
+                    id="Inotropesdose4"
+                    #Inotropesdose4="ngModel"
+                    class="form-control"
+                      >
+                    <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+            <div class="form-group row">
+                <div class="col-3"> <!-- col1 -->
+                  <div class="row"> 
+                  <label for="disabledSelect" class="col-3 col-form-label">
+                    Agent
+                  </label>
+                  <div class="col-9">
+                    <select [(ngModel)]="patientDetail.Inotropesagent5" disabled
+                      name="Inotropesagent5"
+                      id="Inotropesagent5"
+                      #Inotropesagent5="ngModel" (change)="BindOthers('Inotropes','5')"
+                      class="form-control">
+                      <option *ngFor="let splt of inotropes" value={{splt.Value}}>{{splt.Text}} </option>
+                    </select>
+                  </div>
+                  </div>
+                </div> <!-- col1 close -->
+                <div class="col-3"> <!-- col1 -->
+                  <div class="row"> 
+                  <div class="col-12" *ngIf="insOther5">
+                    <input class="form-control" 
+                      type="text"
+                      [(ngModel)]="patientDetail.Inotropes_agent_5_others"
+                      name="Inotropes_agent_5_others"
+                      #Inotropes_agent_5_others="ngModel" placeholder="Others"
+                      id="Inotropes_agent_5_others">
+                  </div>
+                  </div>
+                </div> <!-- col1 close -->
+                <div class="col-3">
+                  <!-- col2 -->
+                  <div class="row"> 
+                    <label for="disabledSelect" class="col-3 col-form-label">
+                      Dose
+                    </label>
+                    <div class="col-9">
+                      <input class="form-control" readonly
+                      type="text"
+                      [(ngModel)]="patientDetail.Inotropes_dose_5_value"
+                      name="Inotropes_dose_5_value"
+                      #Inotropes_dose_5_value="ngModel" placeholder="dose"
+                      id="Inotropes_dose_5_value">
+                    </div>
+                </div>
+              </div><!-- col1 close -->
+                <div class="col-3">  <!-- col2 -->
+                  <div class="col-12">
+                      <select [(ngModel)]="patientDetail.Inotropesdose5" disabled
+                      name="Inotropesdose5"
+                      id="Inotropesdose5"
+                      #Inotropesdose5="ngModel"
+                      class="form-control"
+                        >
+                      <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                    </select>
+                  </div>
+                </div> <!-- col2 close -->
+              </div><!--form group -->
+
+
+
         </div> <!-- closing for Inotropes/vasoconstrictors -->
 
         <div class="col-12"><!-- start for Sedation -->
           <h6>
-            <label class="text-primary">Sedation</label>
+            <label class="text-primary">Sedatives/Opioids/Muscle Relaxants</label>
           </h6>
 
           <div class="form-group row">
-            <div class="col-6"> <!-- col1 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-3 col-form-label">
+              <label for="disabledSelect" class="col-3 col-form-label">
                 Agent
               </label>
               <div class="col-9">
-                <input readonly  class="form-control"
-                  type="text"
-                  [(ngModel)]="patientDetail.Sedationagent1"
-                  name="Sedationagent1"
-                  #Sedationagent1="ngModel"
-                  id="Sedationagent1">
+                  <select [(ngModel)]="patientDetail.Sedationagent1" disabled
+                    name="Sedationagent1"
+                    id="Sedationagent1"
+                    #Sedationagent1="ngModel"
+                    class="form-control"
+                    placeholder="Inotropes Agent" (change)="BindOthers('Sedation','1')"
+                    >
+                    <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
               </div>
               </div>
             </div> <!-- col1 close -->
-            <div class="col-6">  <!-- col2 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-2 col-form-label">
-                Dose
-              </label>
-              <div class="col-10">
-                <input readonly  class="form-control"
+              <div class="col-12" *ngIf="sedOther1">
+                <input class="form-control" 
                   type="text"
-                  [(ngModel)]="patientDetail.Sedationdose1"
+                  [(ngModel)]="patientDetail.Sedation_agent_1_others"
+                  name="Sedation_agent_1_others"
+                  #Sedation_agent_1_others="ngModel" placeholder="Others"
+                  id="Sedation_agent_1_others">
+              </div>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-3">
+              <!-- col2 -->
+              <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Dose
+                </label>
+                <div class="col-9">
+                  <input class="form-control" readonly
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedation_dose_1_value"
+                  name="Sedation_dose_1_value"
+                  #Sedation_dose_1_value="ngModel" placeholder="dose"
+                  id="Sedation_dose_1_value">
+                </div>
+            </div>
+          </div><!-- col1 close -->
+            <div class="col-3">  <!-- col2 -->
+              <div class="col-12">
+
+                  <select [(ngModel)]="patientDetail.Sedationdose1" disabled
                   name="Sedationdose1"
+                  id="Sedationdose1"
                   #Sedationdose1="ngModel"
-                  id="Sedationdose1">
-              </div>
+                  class="form-control"
+                  placeholder="Inotropes Dose5"
+                  >
+                  <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
+
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
 
           <div class="form-group row">
-            <div class="col-6"> <!-- col1 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-3 col-form-label">
+              <label for="disabledSelect" class="col-3 col-form-label">
                 Agent
               </label>
               <div class="col-9">
-                <input readonly  class="form-control"
-                  type="text"
-                  [(ngModel)]="patientDetail.Sedationagent2"
+                  <select [(ngModel)]="patientDetail.Sedationagent2" disabled
                   name="Sedationagent2"
+                  id="Sedationagent2"
                   #Sedationagent2="ngModel"
-                  id="Sedationagent2">
+                  class="form-control"
+                  placeholder="Inotropes  Agent2" (change)="BindOthers('Sedation','2')"
+                  >
+                  <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
               </div>
             </div> <!-- col1 close -->
-            <div class="col-6">  <!-- col2 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-2 col-form-label">
-                Dose
-              </label>
-              <div class="col-10">
-                <input readonly  class="form-control"
+              <div class="col-12" *ngIf="sedOther2">
+                <input class="form-control" 
                   type="text"
-                  [(ngModel)]="patientDetail.Sedationdose2"
-                  name="Sedationdose2"
-                  #Sedationdose2="ngModel"
-                  id="Sedationdose2">
+                  [(ngModel)]="patientDetail.Sedation_agent_2_others"
+                  name="Sedation_agent_2_others"
+                  #Sedation_agent_2_others="ngModel" placeholder="Others"
+                  id="Sedation_agent_2_others">
               </div>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-3">
+              <!-- col2 -->
+              <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Dose
+                </label>
+                <div class="col-9">
+                  <input class="form-control" readonly
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedation_dose_2_value"
+                  name="Sedation_dose_2_value"
+                  #Sedation_dose_2_value="ngModel" placeholder="dose"
+                  id="Sedation_dose_2_value">
+                </div>
+            </div>
+          </div><!-- col1 close -->
+            <div class="col-3">  <!-- col2 -->
+              <div class="col-12">
+                  <select [(ngModel)]="patientDetail.Sedationdose2" disabled
+                  name="Sedationdose2"
+                  id="Sedationdose2"
+                  #Sedationdose2="ngModel"
+                  class="form-control"
+                    >
+                  <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
 
           <div class="form-group row">
-            <div class="col-6"> <!-- col1 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-3 col-form-label">
+              <label for="disabledSelect" class="col-3 col-form-label">
                 Agent
               </label>
               <div class="col-9">
-                <input readonly  class="form-control"
-                  type="text"
-                  [(ngModel)]="patientDetail.Sedationagent3"
+                  <select [(ngModel)]="patientDetail.Sedationagent3" disabled
                   name="Sedationagent3"
+                  id="Sedationagent3"
                   #Sedationagent3="ngModel"
-                  id="Sedationagent3">
+                  class="form-control"
+                  placeholder="Inotropes Agent3" (change)="BindOthers('Sedation','3')"
+                  >
+                  <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
               </div>
             </div> <!-- col1 close -->
-            <div class="col-6">  <!-- col2 -->
+            <div class="col-3"> <!-- col1 -->
               <div class="row"> 
-              <label class="col-2 col-form-label">
-                Dose
-              </label>
-              <div class="col-10">
-                <input readonly  class="form-control"
+              <div class="col-12" *ngIf="sedOther3">
+                <input class="form-control" 
                   type="text"
-                  [(ngModel)]="patientDetail.Sedationdose3"
-                  name="Sedationdose3"
-                  #Sedationdose3="ngModel"
-                  id="Sedationdose3">
+                  [(ngModel)]="patientDetail.Sedation_agent_3_others"
+                  name="Sedation_agent_3_others"
+                  #Sedation_agent_3_others="ngModel" placeholder="Others"
+                  id="Sedation_agent_3_others">
               </div>
+              </div>
+            </div> <!-- col1 close -->
+            <div class="col-3">
+              <!-- col2 -->
+              <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Dose
+                </label>
+                <div class="col-9">
+                  <input class="form-control" readonly
+                  type="text"
+                  [(ngModel)]="patientDetail.Sedation_dose_3_value"
+                  name="Sedation_dose_3_value"
+                  #Sedation_dose_3_value="ngModel" placeholder="dose"
+                  id="Sedation_dose_3_value">
+                </div>
+            </div>
+          </div><!-- col1 close -->
+            <div class="col-3">  <!-- col2 -->
+              <div class="col-12">
+                  <select [(ngModel)]="patientDetail.Sedationdose3" disabled
+                  name="Sedationdose3"
+                  id="Sedationdose3"
+                  #Sedationdose3="ngModel"
+                  class="form-control"
+                    >
+                  <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                </select>
               </div>
             </div> <!-- col2 close -->
           </div><!--form group -->
+
+          <div class="form-group row">
+              <div class="col-3"> <!-- col1 -->
+                <div class="row"> 
+                <label for="disabledSelect" class="col-3 col-form-label">
+                  Agent
+                </label>
+                <div class="col-9">
+                    <select [(ngModel)]="patientDetail.Sedationagent4" disabled
+                    name="Sedationagent4"
+                    id="Sedationagent4"
+                    #Sedationagent4="ngModel"
+                    class="form-control"
+                    placeholder="Inotropes Agent4" (change)="BindOthers('Sedation','4')"
+                    >
+                    <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+                </div>
+                </div>
+              </div> <!-- col1 close -->
+              <div class="col-3"> <!-- col1 -->
+                <div class="row"> 
+                <div class="col-12" *ngIf="sedOther4">
+                  <input class="form-control" 
+                    type="text"
+                    [(ngModel)]="patientDetail.Sedation_agent_4_others"
+                    name="Sedation_agent_4_others"
+                    #Sedation_agent_4_others="ngModel" placeholder="Others"
+                    id="Sedation_agent_4_others">
+                </div>
+                </div>
+              </div> <!-- col1 close -->
+              <div class="col-3">
+                <!-- col2 -->
+                <div class="row"> 
+                  <label for="disabledSelect" class="col-3 col-form-label">
+                    Dose
+                  </label>
+                  <div class="col-9">
+                    <input class="form-control" readonly
+                    type="text"
+                    [(ngModel)]="patientDetail.Sedation_dose_4_value"
+                    name="Sedation_dose_4_value"
+                    #Sedation_dose_4_value="ngModel" placeholder="dose"
+                    id="Sedation_dose_4_value">
+                  </div>
+              </div>
+            </div><!-- col1 close -->
+              <div class="col-3">  <!-- col2 -->
+                <div class="col-12">
+                    <select [(ngModel)]="patientDetail.Sedationdose4" disabled
+                    name="Sedationdose4"
+                    id="Sedationdose4"
+                    #Sedationdose4="ngModel"
+                    class="form-control"
+                      >
+                    <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+                </div>
+              </div> <!-- col2 close -->
+            </div><!--form group -->
+
+
+            <div class="form-group row">
+                <div class="col-3"> <!-- col1 -->
+                  <div class="row"> 
+                  <label for="disabledSelect" class="col-3 col-form-label">
+                    Agent
+                  </label>
+                  <div class="col-9">
+                      <select [(ngModel)]="patientDetail.Sedationagent5" disabled
+                      name="Sedationagent5"
+                      id="Sedationagent5"
+                      #Sedationagent5="ngModel"
+                      class="form-control"
+                      placeholder="Inotropes Agent5" (change)="BindOthers('Sedation','5')"
+                      >
+                      <option *ngFor="let splt of Sedation" value={{splt.Value}}>{{splt.Text}} </option>
+                    </select>
+                  </div>
+                  </div>
+                </div> <!-- col1 close -->
+                <div class="col-3"> <!-- col1 -->
+                  <div class="row"> 
+                  <div class="col-12" *ngIf="sedOther5">
+                    <input class="form-control" 
+                      type="text"
+                      [(ngModel)]="patientDetail.Sedation_agent_5_others"
+                      name="Sedation_agent_5_others"
+                      #Sedation_agent_5_others="ngModel" placeholder="Others"
+                      id="Sedation_agent_5_others">
+                  </div>
+                  </div>
+                </div> <!-- col1 close -->
+                <div class="col-3">
+                  <!-- col2 -->
+                  <div class="row"> 
+                    <label for="disabledSelect" class="col-3 col-form-label">
+                      Dose
+                    </label>
+                    <div class="col-9">
+                      <input class="form-control" readonly
+                      type="text"
+                      [(ngModel)]="patientDetail.Sedation_dose_5_value"
+                      name="Sedation_dose_5_value"
+                      #Sedation_dose_5_value="ngModel" placeholder="dose"
+                      id="Sedation_dose_5_value">
+                    </div>
+                </div>
+              </div><!-- col1 close -->
+                <div class="col-3">  <!-- col2 -->
+                  <div class="col-12">
+                      <select [(ngModel)]="patientDetail.Sedationdose5" disabled
+                    name="Sedationdose5"
+                    id="Sedationdose5"
+                    #Sedationdose5="ngModel"
+                    class="form-control"
+                      >
+                    <option *ngFor="let splt of units" value={{splt.Value}}>{{splt.Text}} </option>
+                  </select>
+                  </div>
+                </div> <!-- col2 close -->
+              </div><!--form group -->
+
         </div> <!-- closing for Sedation -->
 
-        <div class="col-12"><!-- start for Muscle relaxants -->
+        <div class="col-12"  style="display: none;"><!-- start for Muscle relaxants -->
           <h6>
             <label class="text-primary">Muscle relaxants</label>
           </h6>

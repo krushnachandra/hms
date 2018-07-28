@@ -37,6 +37,17 @@ export class PatientRagisterComponent implements OnInit {
     inotropes: Array<InotropesModel>;
     Sedation: Array<SedationModel>;
     units: Array<UnitsModel>;
+     insOther1:boolean = false;
+     insOther2:boolean = false;
+     insOther3:boolean = false;
+     insOther4:boolean = false;
+     insOther5:boolean = false;
+
+     sedOther1:boolean = false;
+     sedOther2:boolean = false;
+     sedOther3:boolean = false;
+     sedOther4:boolean = false;
+     sedOther5:boolean = false;
 
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
@@ -56,6 +67,7 @@ export class PatientRagisterComponent implements OnInit {
                     .subscribe(params => {
                      this.pageNum = +params['patid']});
         this.getPatientDetails(this.pageNum);
+        
          }
 
     public ngOnInit() {
@@ -69,6 +81,8 @@ export class PatientRagisterComponent implements OnInit {
         //this.age();
         this._patient.referHospitalId = parseInt(localStorage.getItem('hospital_id'));
         this._patient.speciallistId = parseInt(localStorage.getItem('specialist_id'));
+
+        
     }
     public getPatientDetails(id: number) {
         this.sessid = localStorage.getItem('sessid');
@@ -110,7 +124,125 @@ export class PatientRagisterComponent implements OnInit {
             error => this.errorMessage = <any>error
         );
     }
-
+    public BindOthers(type,val)
+    {
+        if(type == 'Inotropes')
+        {
+            switch(val)
+            {
+                case "1":
+                    if  (this._patient.Inotropesagent1 == "17")//Others
+                    {
+                        this.insOther1 = true;
+                    }
+                    else
+                    {
+                        this.insOther1 = false;
+                    }
+                break;
+                case "2":
+                if  (this._patient.Inotropesagent2 == "17")//Others
+                    {
+                        this.insOther2 = true;
+                    }
+                    else
+                    {
+                        this.insOther2 = false;
+                    }
+                break;
+                case "3":
+                if  (this._patient.Inotropesagent3== "17")//Others
+                    {
+                        this.insOther3 = true;
+                    }
+                    else
+                    {
+                        this.insOther3 = false;
+                    }
+                break;
+                case "4":
+                if  (this._patient.Inotropesagent4 == "17")//Others
+                    {
+                        this.insOther4 = true;
+                    }
+                    else
+                    {
+                        this.insOther4 = false;
+                    }
+                break;
+                case "5":
+                if  (this._patient.Inotropesagent5 == "17")//Others
+                    {
+                        this.insOther5 = true;
+                    }
+                    else
+                    {
+                        this.insOther5 = false;
+                    }
+                break;
+                default:
+                break;
+            }
+        }
+        else
+        {
+            switch(val)
+            {
+                case "1":
+                    if  (this._patient.Sedationagent1 == "9")//Others
+                    {
+                        this.sedOther1 = true;
+                    }
+                    else
+                    {
+                        this.sedOther1 = false;
+                    }
+                break;
+                case "2":
+                if  (this._patient.Sedationagent2 == "9")//Others
+                    {
+                        this.sedOther2 = true;
+                    }
+                    else
+                    {
+                        this.sedOther2 = false;
+                    }
+                break;
+                case "3":
+                if  (this._patient.Sedationagent3== "9")//Others
+                    {
+                        this.sedOther3 = true;
+                    }
+                    else
+                    {
+                        this.sedOther3 = false;
+                    }
+                break;
+                case "4":
+                if  (this._patient.Sedationagent4 == "9")//Others
+                    {
+                        this.sedOther4 = true;
+                    }
+                    else
+                    {
+                        this.sedOther4 = false;
+                    }
+                break;
+                case "5":
+                if  (this._patient.Sedationagent5 == "9")//Others
+                    {
+                        this.sedOther5 = true;
+                    }
+                    else
+                    {
+                        this.sedOther5 = false;
+                    }
+                break;
+                default:
+                break;
+            }
+        }
+    }
     public getInotropesList()
     {
         

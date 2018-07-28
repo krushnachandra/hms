@@ -68,6 +68,8 @@ export class PatientDetail extends CommonModel
     Inotropesdose3:  string;
     Inotropesagent4:  string;
     Inotropesdose4:  string;
+    Inotropesagent5:  string;
+    Inotropesdose5:  string;
     Sedationagent1:  string;
     Sedationdose1:  string;
     Sedationagent2:  string;
@@ -76,6 +78,8 @@ export class PatientDetail extends CommonModel
     Sedationdose3:  string;
     Sedationagent4:  string;
     Sedationdose4:  string;
+    Sedationagent5:  string;
+    Sedationdose5:  string;
     musclerelaxantsagent1:  string;
     musclerelaxantsdose1:  string;
     urea:  string;
@@ -113,6 +117,27 @@ export class PatientDetail extends CommonModel
   abg_lactate: string;
   bg_sao2: string;
   bg_spo2: string;
+  Inotropes_dose_1_value : string;
+  Inotropes_dose_2_value : string;
+  Inotropes_dose_3_value : string;
+  Inotropes_dose_4_value : string;
+  Inotropes_dose_5_value : string;
+  Sedation_dose_1_value : string;
+  Sedation_dose_2_value : string;
+  Sedation_dose_3_value : string;
+  Sedation_dose_4_value : string;
+  Sedation_dose_5_value : string;
+  Inotropes_agent_1_others: string;
+  Inotropes_agent_2_others: string;
+  Inotropes_agent_3_others: string;
+  Inotropes_agent_4_others: string;
+  Inotropes_agent_5_others: string;
+  Sedation_agent_1_others: string;
+	Sedation_agent_2_others: string;
+	Sedation_agent_3_others: string;
+	Sedation_agent_4_others: string;
+	Sedation_agent_5_others: string;
+
 }
 
  export class PatientModel extends CommonModel {
@@ -161,6 +186,8 @@ export class PatientDetail extends CommonModel
   Inotropesdose3: string;
   Inotropesagent4: string;
   Inotropesdose4: string;
+  Inotropesagent5: string;
+  Inotropesdose5: string;
   Sedationagent1: string;
   Sedationdose1: string;
   Sedationagent2: string;
@@ -169,6 +196,8 @@ export class PatientDetail extends CommonModel
   Sedationdose3: string;
   Sedationagent4: string;
   Sedationdose4: string;
+  Sedationagent5: string;
+  Sedationdose5: string;
   musclerelaxantsagent1: string;
   musclerelaxantsdose1: string;
   urea: string;
@@ -196,7 +225,7 @@ export class PatientDetail extends CommonModel
   resend:string="0";
   murrayscore: string;
   Prone_Positioning: string;
-    Prone_Positioning_improv: string;
+  Prone_Positioning_improv: string;
     Nitric_Acid	: string;
     Nitric_Acid_improv	: string;
     Plasmaphersis	: string;
@@ -208,4 +237,25 @@ export class PatientDetail extends CommonModel
     abg_lactate: string;
     bg_sao2: string;
     bg_spo2: string;
+    
+  Inotropes_dose_1_value : string;
+  Inotropes_dose_2_value : string;
+  Inotropes_dose_3_value : string;
+  Inotropes_dose_4_value : string;
+  Inotropes_dose_5_value : string;
+  Sedation_dose_1_value : string;
+  Sedation_dose_2_value : string;
+  Sedation_dose_3_value : string;
+  Sedation_dose_4_value : string;
+  Sedation_dose_5_value : string;
+	Inotropes_agent_1_others: string;
+	Inotropes_agent_2_others: string;
+	Inotropes_agent_3_others: string;
+	Inotropes_agent_4_others: string;
+	Inotropes_agent_5_others: string;
+	Sedation_agent_1_others: string;
+	Sedation_agent_2_others: string;
+	Sedation_agent_3_others: string;
+	Sedation_agent_4_others: string;
+	Sedation_agent_5_others: string;
 }

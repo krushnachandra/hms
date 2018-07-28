@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpecialistModel } from '../../../model/specialist-model';
+import { SpecialistModel, InotropesModel, SedationModel, UnitsModel } from '../../../model/specialist-model';
 import { HospitalModel } from '../../../model/hospital-model';
 import { HospitalService } from '../../../service/hospital-service';
 import { SpecialistService } from '../../../service/specialist-service';
@@ -33,11 +33,17 @@ export class GetPatientDetailsComponent1 implements OnInit {
     IsDocAvailable3:boolean=true;
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
+    inotropes: Array<InotropesModel>;
+    Sedation: Array<SedationModel>;
+    units: Array<UnitsModel>;
     patientDetail: PatientDetail = new PatientDetail();
     public _PatientDetailReq: PatientDetail = new PatientDetail();
     public _specialist: SpecialistModel = new SpecialistModel();
     public _hospital: HospitalModel = new HospitalModel();
     public _patient: PatientModel = new PatientModel();
+    public _inotropes: InotropesModel = new InotropesModel();
+    public _Sedation: SedationModel = new SedationModel();
+    public _unit: UnitsModel = new UnitsModel();
     constructor(public router: Router,
         private _authenticationService: AuthenticationService,
         private _hospitalService: HospitalService,
@@ -56,12 +62,43 @@ export class GetPatientDetailsComponent1 implements OnInit {
         }
         this.getHospitals();
         this.getSpecialists();
+        this.getInotropesList();
+        this.getSedationList();
+        this.getUnitsList();
         this.patientid = this._activatedRoute.queryParams
                     .subscribe(params => {
                      this.pageNum = +params['patid']});
         this.getPatientDetails(this.pageNum);
     }
+    public getInotropesList()
+    {
+        
+        this._inotropes.actiontype = 'inotropes';
+        this._specialistService.getInotropesList(this._inotropes).subscribe(
+            res => this.inotropes = res,
+            error => this.errorMessage = <any>error
+        );
+    }
 
+    public getSedationList()
+    {
+        this._Sedation.actiontype = 'sedation';
+        this._specialistService.getSedationList(this._Sedation).subscribe(
+            res => this.Sedation = res,
+            error => this.errorMessage = <any>error
+        );
+    }
+
+    public getUnitsList()
+    {
+        debugger;
+
+        this._unit.actiontype = 'units';
+        this._specialistService.getIUnitsList(this._unit).subscribe(
+            res => this.units = res,
+            error => this.errorMessage = <any>error
+        );
+    }
     public getPatientDetails(id:number)
     {
         
