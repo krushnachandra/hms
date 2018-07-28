@@ -31,6 +31,19 @@ export class GetPatientDetailsComponent1 implements OnInit {
     IsDocAvailable1:boolean=true;
     IsDocAvailable2:boolean=true;
     IsDocAvailable3:boolean=true;
+
+    insOther1:boolean = false;
+    insOther2:boolean = false;
+    insOther3:boolean = false;
+    insOther4:boolean = false;
+    insOther5:boolean = false;
+
+    sedOther1:boolean = false;
+    sedOther2:boolean = false;
+    sedOther3:boolean = false;
+    sedOther4:boolean = false;
+    sedOther5:boolean = false;
+
     specialists: Array<SpecialistModel>;
     hospitals: Array<HospitalModel>;
     inotropes: Array<InotropesModel>;
@@ -98,6 +111,126 @@ export class GetPatientDetailsComponent1 implements OnInit {
             res => this.units = res,
             error => this.errorMessage = <any>error
         );
+    }
+
+    public BindOthers(type,val)
+    {
+        if(type == 'Inotropes')
+        {
+            switch(val)
+            {
+                case "1":
+                    if  (this._patient.Inotropesagent1 == "17")//Others
+                    {
+                        this.insOther1 = true;
+                    }
+                    else
+                    {
+                        this.insOther1 = false;
+                    }
+                break;
+                case "2":
+                if  (this._patient.Inotropesagent2 == "17")//Others
+                    {
+                        this.insOther2 = true;
+                    }
+                    else
+                    {
+                        this.insOther2 = false;
+                    }
+                break;
+                case "3":
+                if  (this._patient.Inotropesagent3== "17")//Others
+                    {
+                        this.insOther3 = true;
+                    }
+                    else
+                    {
+                        this.insOther3 = false;
+                    }
+                break;
+                case "4":
+                if  (this._patient.Inotropesagent4 == "17")//Others
+                    {
+                        this.insOther4 = true;
+                    }
+                    else
+                    {
+                        this.insOther4 = false;
+                    }
+                break;
+                case "5":
+                if  (this._patient.Inotropesagent5 == "17")//Others
+                    {
+                        this.insOther5 = true;
+                    }
+                    else
+                    {
+                        this.insOther5 = false;
+                    }
+                break;
+                default:
+                break;
+            }
+        }
+        else
+        {
+            switch(val)
+            {
+                case "1":
+                    if  (this._patient.Sedationagent1 == "9")//Others
+                    {
+                        this.sedOther1 = true;
+                    }
+                    else
+                    {
+                        this.sedOther1 = false;
+                    }
+                break;
+                case "2":
+                if  (this._patient.Sedationagent2 == "9")//Others
+                    {
+                        this.sedOther2 = true;
+                    }
+                    else
+                    {
+                        this.sedOther2 = false;
+                    }
+                break;
+                case "3":
+                if  (this._patient.Sedationagent3== "9")//Others
+                    {
+                        this.sedOther3 = true;
+                    }
+                    else
+                    {
+                        this.sedOther3 = false;
+                    }
+                break;
+                case "4":
+                if  (this._patient.Sedationagent4 == "9")//Others
+                    {
+                        this.sedOther4 = true;
+                    }
+                    else
+                    {
+                        this.sedOther4 = false;
+                    }
+                break;
+                case "5":
+                if  (this._patient.Sedationagent5 == "9")//Others
+                    {
+                        this.sedOther5 = true;
+                    }
+                    else
+                    {
+                        this.sedOther5 = false;
+                    }
+                break;
+                default:
+                break;
+            }
+        }
     }
     public getPatientDetails(id:number)
     {
